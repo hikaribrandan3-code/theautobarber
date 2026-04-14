@@ -25,8 +25,8 @@ const Navbar = ({ onQuoteClick }: { onQuoteClick: (service?: string) => void }) 
   return (
     <>
       {/* Black Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-[100] bg-[#0A0A0A] border-b border-white/10">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
+      <nav className="fixed top-0 left-0 right-0 z-[100] bg-[#0A0A0A] border-b border-white/10 h-[60px]">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-full">
           {/* Logo Text Only */}
           <Link to="/" className="flex items-center gap-3 shrink-0">
             <span className="font-black text-lg tracking-tight text-white uppercase leading-none">

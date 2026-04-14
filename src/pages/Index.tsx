@@ -163,8 +163,8 @@ const Index = () => {
         </div>
       )}
 
-      {/* PROMO BAR (STATIC TOP) */}
-      <div className="bg-white text-[#0A0A0A] text-center py-2 px-4 sticky top-0 z-[110]">
+      {/* PROMO BAR (RELATIVE TOP) */}
+      <div className="bg-white text-[#0A0A0A] text-center py-2 px-4 relative z-[90] hidden lg:block">
         <p className="text-[10px] font-black uppercase tracking-[0.3em]">
           Spring Special: Interior Detail{" "}
           <span className="font-black">$199</span>{" "}
@@ -176,8 +176,8 @@ const Index = () => {
         </p>
       </div>
 
-      {/* LUXURY HERO SECTION - SPLIT LAYOUT */}
-      <section className="relative px-6 overflow-hidden py-32 md:py-40 mt-16 min-h-[90vh] flex items-center">
+      {/* LUXURY HERO SECTION - CENTER STACKED */}
+      <section className="relative px-6 overflow-hidden pt-[140px] pb-24 min-h-[85vh] flex flex-col justify-center items-center text-center">
         {/* Full-bleed background */}
         <div className="absolute inset-0 z-0">
           <img
@@ -189,61 +189,61 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-[#0A0A0A]" />
         </div>
 
-        {/* Noir Content Container */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+        {/* Noir Content Container - Stacked */}
+        <div className="relative z-10 w-full max-w-3xl mx-auto flex flex-col items-center gap-8">
           
-          {/* Left: Text */}
-          <div className="flex flex-col items-start text-left">
+          {/* Top: Text */}
+          <div className="flex flex-col items-center w-full">
             <h1 
-              className="text-5xl md:text-7xl lg:text-[7rem] font-black leading-[0.85] mb-8 tracking-tighter"
+              className="text-[48px] md:text-[56px] font-black leading-[1.1] md:leading-[1.1] tracking-tighter"
               style={{ textShadow: "0 4px 20px rgba(0,0,0,0.5)" }}
             >
-              YOUR CAR.<br />OUR CRAFT.
+              YOUR CAR. OUR CRAFT.
             </h1>
-            <p className="max-w-xl text-white text-sm md:text-xl font-medium tracking-tight mb-12 border-l-2 border-white pl-4">
+            <p className="mt-2 text-[#e5e5e5] text-[16px] md:text-[18px] font-medium tracking-wide">
               Seattle's car protection studio. Established 2020.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="#pricing"
-                className="bg-white text-black font-black uppercase tracking-[0.1em] px-12 py-6 text-sm hover:bg-gray-200 transition-all shadow-[0_0_40px_rgba(255,255,255,0.1)] active:scale-95 text-center"
-              >
-                VIEW THE MENU
-              </a>
-              <a
-                href="tel:2538939452"
-                className="border border-white/20 text-white font-black uppercase tracking-[0.1em] px-12 py-6 text-sm hover:bg-white hover:text-black transition-all active:scale-95 text-center"
-              >
-                (253) 893-9452
-              </a>
-            </div>
+            <button
+              onClick={() => {
+                const form = document.getElementById('quote-form');
+                form?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }}
+              className="mt-6 bg-white text-black font-black uppercase tracking-[0.1em] px-10 py-4 text-sm border-2 border-white hover:bg-transparent hover:text-white transition-all shadow-[0_0_40px_rgba(255,255,255,0.1)] active:scale-95"
+            >
+              GET A QUOTE
+            </button>
           </div>
 
-          {/* Right: Lead Form */}
-          <div className="bg-[#0A0A0A] border border-white/10 p-8 md:p-12 shadow-2xl relative overflow-hidden backdrop-blur-md">
+          {/* Bottom: Lead Form */}
+          <div id="quote-form" className="w-full bg-[#0A0A0A] border border-white/10 p-6 md:p-8 shadow-2xl relative overflow-hidden backdrop-blur-md mt-4 text-left">
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl rounded-full" />
-            <h3 className="text-2xl font-black uppercase mb-8 tracking-tighter relative z-10 border-b border-white/10 pb-4">GET A QUICK QUOTE</h3>
             <form className="space-y-6 relative z-10" onSubmit={e => { e.preventDefault(); openQuote(); }}>
-              <div>
-                <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-2">Name</label>
-                <input type="text" className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors" required />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-[10px] font-black w-full uppercase tracking-widest text-white/60 mb-2">Name</label>
+                  <input type="text" className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors" required />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-black w-full uppercase tracking-widest text-white/60 mb-2">Phone</label>
+                  <input type="tel" className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors" required />
+                </div>
               </div>
-              <div>
-                <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-2">Phone</label>
-                <input type="tel" className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors" required />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+                <div>
+                  <label className="block text-[10px] font-black w-full uppercase tracking-widest text-white/60 mb-2">Service Interest</label>
+                  <select className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors text-white/80">
+                    <option className="bg-[#0A0A0A]">Auto Detailing</option>
+                    <option className="bg-[#0A0A0A]">Ceramic Coating</option>
+                    <option className="bg-[#0A0A0A]">Window Tint</option>
+                    <option className="bg-[#0A0A0A]">PPF (Clear Bra)</option>
+                  </select>
+                </div>
+                <div>
+                  <button type="submit" className="w-full bg-white text-black font-black uppercase tracking-[0.2em] py-4 text-sm hover:bg-gray-200 transition-all active:scale-[0.98]">
+                    REQUEST QUOTE
+                  </button>
+                </div>
               </div>
-              <div>
-                <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-2">Service Interest</label>
-                <select className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors text-white/80">
-                  <option className="bg-[#0A0A0A]">Auto Detailing</option>
-                  <option className="bg-[#0A0A0A]">Ceramic Coating</option>
-                  <option className="bg-[#0A0A0A]">Window Tint</option>
-                  <option className="bg-[#0A0A0A]">PPF (Clear Bra)</option>
-                </select>
-              </div>
-              <button type="submit" className="w-full bg-white text-black font-black uppercase tracking-[0.2em] py-5 mt-4 text-sm hover:bg-gray-200 transition-all active:scale-[0.98]">
-                REQUEST QUOTE
-              </button>
             </form>
           </div>
 
