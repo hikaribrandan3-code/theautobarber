@@ -95,11 +95,11 @@ export default function PPF() {
         </div>
         
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")" }}></div>
-        <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24 w-full">
-          <div className="lg:w-1/2">
-            <span className="text-[#C9A962] font-display font-bold uppercase tracking-[0.2em] text-[10px] lg:text-xs italic">Protect Your Investment</span>
-            <h2 className="mt-4 text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[0.9] uppercase tracking-tighter italic text-white drop-shadow-lg">
-              PAINT PROTECTION FILM<br/><span className="text-[#C9A962]">THE MASTER STANDARD</span>
+        <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-start w-full">
+          <div className="w-full lg:max-w-5xl">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-display font-black leading-[0.9] uppercase tracking-tighter italic text-white drop-shadow-lg">
+              <span className="block whitespace-nowrap">PAINT PROTECTION FILM</span>
+              <span className="text-[#C9A962]">THE MASTER STANDARD</span>
             </h2>
             <p className="mt-6 text-[#adaaaa] max-w-md font-mono text-xs lg:text-sm uppercase tracking-widest leading-relaxed">
               <span className="lg:hidden text-white/90">One rock chip at highway speed and you're looking at a $800 body shop visit — if they can even match the paint. PPF stops it before it starts. Professionally applied, virtually invisible, and if it ever takes a hit — just peel it off and replace it. Your paint underneath stays factory perfect.</span>
@@ -120,11 +120,10 @@ export default function PPF() {
               ))}
             </div>
           </div>
-          <div className="lg:w-1/2 w-full pt-12 lg:pt-0">
-
+          <div className="lg:hidden w-full pt-12">
 
             {/* Mobile-only "Even Easier to Clean" Section */}
-            <div className="lg:hidden mt-8 bg-[#131313] p-6 border border-[#C9A962]/20 shadow-[0_0_20px_rgba(0,102,255,0.05)]">
+            <div className="bg-[#131313] p-6 border border-[#C9A962]/20 shadow-[0_0_20px_rgba(0,102,255,0.05)]">
               <h3 className="text-2xl font-display font-black uppercase italic text-white mb-1 leading-none">THE HYBRID CUT</h3>
               <p className="text-[10px] font-mono font-bold text-[#C9A962] uppercase tracking-[0.2em] mb-3">PPF + CERAMIC COATING</p>
               <p className="text-[#adaaaa] font-mono text-[9px] uppercase tracking-widest leading-relaxed">
@@ -430,7 +429,7 @@ export default function PPF() {
         </div>
         <button
           onClick={() => openQuote(`PPF: ${currentPkg.name} (${currentPkg.price})`)}
-          className="px-8 lg:px-12 py-4 lg:py-6 font-display font-black uppercase italic tracking-[0.1em] text-sm lg:text-xl rounded-none transition-all bg-[#C9A962] text-white hover:bg-[#A6884A] shadow-[0_0_20px_rgba(0,102,255,0.4)]"
+          className="whitespace-nowrap shrink-0 px-8 lg:px-12 py-4 lg:py-6 font-display font-black uppercase italic tracking-[0.1em] text-sm lg:text-xl rounded-none transition-all bg-[#C9A962] text-white hover:bg-[#A6884A] shadow-[0_0_20px_rgba(0,102,255,0.4)]"
         >
           <span className="lg:hidden">GET QUOTE →</span>
           <span className="hidden lg:inline">
