@@ -34,14 +34,6 @@ const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=The+Auto+Barber+Revi
 
 const Index = () => {
   const { openQuote } = useOutletContext<{ openQuote: (service?: string) => void }>();
-  const [showPromo, setShowPromo] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowPromo(true);
-    }, 1500);
-    return () => clearTimeout(timer);
-  }, []);
 
   // Consolidated service data in one flat array with categories
   const menuItems = [
@@ -140,28 +132,6 @@ const Index = () => {
         description="Seattle's top-rated mobile detailing service. Interior Detail $199. Full Detail $350. Ceramic Coating from $600. We come to you. Book now."
       />
 
-      {/* PROMO MODAL */}
-      {showPromo && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-          <div className="bg-white text-black p-8 max-w-md w-full relative border-4 border-black/10 shadow-2xl animate-in zoom-in duration-300">
-            <button onClick={() => setShowPromo(false)} className="absolute top-4 right-4 text-black/40 hover:text-black transition-colors font-black text-xl">✕</button>
-            <div className="mb-6">
-              <span className="bg-black text-white text-[9px] font-black uppercase tracking-widest px-3 py-1.5 mb-4 inline-block">SPRING PROMO</span>
-              <h2 className="text-4xl font-black uppercase tracking-tighter leading-none mb-2">INTERIOR<br/>DETAIL</h2>
-              <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-black italic">$199</span>
-                <span className="text-lg text-black/40 line-through">(Reg $250)</span>
-              </div>
-            </div>
-            <p className="text-sm font-medium text-black/70 mb-8 border-l-2 border-black pl-3">
-              Deep clean every surface. Leather treated. Carpets restored. Like new inside.
-            </p>
-            <button onClick={() => { setShowPromo(false); openQuote("Interior Detail"); }} className="w-full bg-black text-white font-black uppercase tracking-[0.2em] py-5 text-sm hover:bg-black/80 transition-all shadow-xl">
-              BOOK $199 SPECIAL
-            </button>
-          </div>
-        </div>
-      )}
 
       {/* PROMO BAR (RELATIVE TOP) */}
       <div className="bg-white text-[#0A0A0A] text-center py-2 px-4 relative z-[90] hidden lg:block">
@@ -310,13 +280,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* THE MENU / CONSOLIDATED CATEGORIES */}
+      {/* PRICING CARDS */}
       <section id="pricing" className="py-16 bg-[#0E0E0E] px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16 text-center lg:text-left">
-            <h2 className="text-5xl md:text-7xl font-black uppercase leading-none mb-6 tracking-tighter">THE MENU</h2>
-            <p className="text-white/60 text-xs font-bold uppercase tracking-[0.3em]">Direct Pricing • Professional Precision • Guaranteed Results</p>
-          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {menuItems.map((s, i) => (
@@ -337,7 +303,7 @@ const Index = () => {
                       {s.category}
                     </span>
                     {s.popular && (
-                      <span className="bg-white text-black text-[9px] font-black uppercase tracking-widest px-3 py-1.5">
+                      <span className="bg-[#C9A962] text-white text-[9px] font-black uppercase tracking-widest px-3 py-1.5">
                         MOST POPULAR
                       </span>
                     )}
@@ -450,77 +416,78 @@ const Index = () => {
       </section>
 
       {/* CONTACT / BOOKING */}
-      <section id="contact" className="py-16 px-6 bg-[#0E0E0E]">
+      <section id="contact" className="py-20 px-6 bg-[#0E0E0E] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
-            <div>
-              <h2 className="text-5xl md:text-7xl font-black uppercase leading-[0.85] mb-16 tracking-tighter">THE<br />BOOKING</h2>
-              <div className="space-y-12">
-                <a href="tel:2538939452" className="flex items-center gap-8 group">
-                  <div className="w-16 h-16 border border-white/10 flex items-center justify-center group-hover:border-white transition-all group-hover:scale-110">
-                    <Phone size={24} />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+
+            {/* Left — Form */}
+            <div className="bg-[#0A0A0A] border border-white/10 p-10 lg:p-14 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-40 h-40 bg-[#C9A962]/5 blur-3xl rounded-full pointer-events-none" />
+              <p className="text-[9px] font-black uppercase tracking-[0.3em] text-[#C9A962] mb-3">Free • No Commitment</p>
+              <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tighter leading-none mb-10">THE<br/>BOOKING</h2>
+              <form className="space-y-7 relative z-10" onSubmit={e => { e.preventDefault(); openQuote(); }}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-7">
+                  <div className="relative">
+                    <input type="text" placeholder=" " id="name" className="peer w-full bg-transparent border-b border-white/20 pt-5 pb-2 text-sm focus:border-[#C9A962] outline-none transition-colors" required />
+                    <label htmlFor="name" className="absolute left-0 top-1 text-[9px] font-black uppercase tracking-widest text-white/40 peer-focus:text-[#C9A962] transition-colors">Name</label>
                   </div>
-                  <div>
-                    <p className="text-[10px] text-white/60 uppercase tracking-widest font-black mb-1">Direct Line / Text</p>
-                    <p className="font-black text-3xl italic tracking-tighter text-white">(253) 893-9452</p>
-                  </div>
-                </a>
-                <div className="flex items-center gap-8">
-                  <div className="w-16 h-16 border border-white/10 flex items-center justify-center">
-                    <MapPin size={24} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-white/60 uppercase tracking-widest font-black mb-1">Studio Location</p>
-                    <p className="font-black text-xl italic tracking-tighter text-white">7418 St 126th Unit 1C, Seattle</p>
-                    <p className="text-white text-[10px] uppercase font-bold tracking-widest mt-1">Shop-Based Studio Only</p>
+                  <div className="relative">
+                    <input type="tel" placeholder=" " id="phone" className="peer w-full bg-transparent border-b border-white/20 pt-5 pb-2 text-sm focus:border-[#C9A962] outline-none transition-colors" required />
+                    <label htmlFor="phone" className="absolute left-0 top-1 text-[9px] font-black uppercase tracking-widest text-white/40 peer-focus:text-[#C9A962] transition-colors">Phone</label>
                   </div>
                 </div>
-                <div className="flex items-center gap-8">
-                  <div className="w-16 h-16 border border-white/10 flex items-center justify-center">
-                    <Clock size={24} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-white/60 uppercase tracking-widest font-black mb-1">Operating Hours</p>
-                    <p className="font-black text-xl italic tracking-tighter text-white">Mon – Sun: 8AM – 6PM</p>
-                    <p className="text-white text-[10px] uppercase font-bold tracking-widest mt-1">By Appointment Only</p>
-                  </div>
+                <div className="relative">
+                  <input type="text" placeholder=" " id="vehicle" className="peer w-full bg-transparent border-b border-white/20 pt-5 pb-2 text-sm focus:border-[#C9A962] outline-none transition-colors placeholder:text-white/20" required />
+                  <label htmlFor="vehicle" className="absolute left-0 top-1 text-[9px] font-black uppercase tracking-widest text-white/40 peer-focus:text-[#C9A962] transition-colors">Vehicle (Year / Make / Model)</label>
                 </div>
-              </div>
-            </div>
-            
-            <div className="bg-[#0A0A0A] border border-white/5 p-12 lg:p-16 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl rounded-full" />
-              <h3 className="text-3xl font-black uppercase mb-10 tracking-tighter relative z-10">BOOK YOUR DETAIL</h3>
-              <form className="space-y-6 relative z-10" onSubmit={e => { e.preventDefault(); openQuote(); }}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-2">Name</label>
-                    <input type="text" className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors" required />
-                  </div>
-                  <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-2">Phone</label>
-                    <input type="tel" className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors" required />
-                  </div>
+                <div className="relative">
+                  <select id="service" className="w-full bg-transparent border-b border-white/20 pt-5 pb-2 text-sm focus:border-[#C9A962] outline-none transition-colors text-white/80 appearance-none">
+                    <option className="bg-[#0A0A0A]">Auto Detailing</option>
+                    <option className="bg-[#0A0A0A]">Ceramic Coating</option>
+                    <option className="bg-[#0A0A0A]">Window Tint</option>
+                    <option className="bg-[#0A0A0A]">PPF (Clear Bra)</option>
+                  </select>
+                  <label htmlFor="service" className="absolute left-0 top-1 text-[9px] font-black uppercase tracking-widest text-white/40">Service Interest</label>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-2">Vehicle (Year/Make)</label>
-                    <input type="text" className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors placeholder:text-white/20" placeholder="e.g. 2024 Tesla Model Y" required />
-                  </div>
-                  <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-2">Service Interest</label>
-                    <select className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors">
-                      <option className="bg-[#0A0A0A]">Auto Detailing</option>
-                      <option className="bg-[#0A0A0A]">Ceramic Coating</option>
-                      <option className="bg-[#0A0A0A]">Window Tint</option>
-                      <option className="bg-[#0A0A0A]">PPF (Clear Bra)</option>
-                    </select>
-                  </div>
-                </div>
-                <button type="submit" className="w-full bg-white text-black font-black uppercase tracking-[0.2em] py-5 mt-4 text-sm hover:bg-gray-200 transition-all active:scale-[0.98] shadow-2xl">
-                  BOOK NOW
+                <button type="submit" className="w-full bg-white text-black font-black uppercase tracking-[0.25em] py-5 text-sm hover:bg-[#C9A962] hover:text-white transition-all duration-300 active:scale-[0.98] mt-2">
+                  REQUEST A QUOTE →
                 </button>
               </form>
+            </div>
+
+            {/* Right — What to Expect */}
+            <div className="flex flex-col justify-center gap-10">
+              <div>
+                <p className="text-[9px] font-black uppercase tracking-[0.3em] text-[#C9A962] mb-4">How It Works</p>
+                <h3 className="text-3xl font-black uppercase tracking-tighter mb-8">WHAT TO EXPECT</h3>
+                <div className="space-y-6">
+                  {[
+                    { n: "01", t: "Submit this form", d: "Takes 60 seconds. No spam, ever." },
+                    { n: "02", t: "Get a firm quote", d: "We reply within 2 hours via text." },
+                    { n: "03", t: "Book your date", d: "Pick a time that works for you." },
+                    { n: "04", t: "Drop off & relax", d: "We'll handle the rest at the studio." },
+                  ].map((step) => (
+                    <div key={step.n} className="flex items-start gap-5">
+                      <span className="text-[#C9A962] font-black text-lg leading-none mt-0.5">{step.n}</span>
+                      <div>
+                        <p className="font-black text-sm uppercase tracking-wide">{step.t}</p>
+                        <p className="text-white/50 text-xs mt-1">{step.d}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="border-t border-white/10 pt-8">
+                <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest mb-3">★★★★★ Google Review</p>
+                <p className="text-white italic text-sm leading-relaxed mb-2">"Absolutely amazing job. Best detailing I've had on any of my cars. 100% recommended!"</p>
+                <p className="text-white/50 text-[10px] uppercase tracking-widest font-bold">— Manu GP, Tesla Model Y</p>
+              </div>
+
+              <a href="tel:2538939452" className="flex items-center gap-4 group">
+                <Phone size={16} className="text-[#C9A962]" />
+                <span className="font-black text-lg tracking-tighter hover:text-[#C9A962] transition-colors">(253) 893-9452</span>
+              </a>
             </div>
           </div>
         </div>

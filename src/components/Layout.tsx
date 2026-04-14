@@ -31,6 +31,7 @@ const Layout = () => {
         defaultService={selectedService} 
         defaultLocation={selectedLocation}
       />
+      <SpringPromo onClaim={(service) => handleOpenQuote(service)} />
     </div>
   );
 };
