@@ -27,9 +27,9 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* CATEGORY: COMMON AUTO DETAILING */}
+      {/* CATEGORY: SIGNATURE DETAILING */}
       <div className="w-full bg-[#0E0E0E] py-12 border-b border-white/20 text-center relative z-10">
-        <h2 className="text-3xl lg:text-5xl font-black uppercase text-white tracking-widest">COMMON AUTO DETAILING</h2>
+        <h2 className="text-3xl lg:text-5xl font-black uppercase text-white tracking-widest">SIGNATURE DETAILING</h2>
         <p className="text-white/60 text-xs font-bold uppercase tracking-[0.2em] mt-2">Interior and Exterior Restorations</p>
       </div>
 
@@ -360,9 +360,9 @@ const ServiceDetail = ({ id, badge, serviceNumber, title, tagline, price, time, 
         </div>
 
         {/* RIGHT — Sticky Booking Card */}
-        <div className="lg:sticky lg:top-32 space-y-8">
-          <div className="border border-white/20 bg-[#0A0A0A] overflow-hidden relative group">
-            <div className="absolute top-0 left-0 w-full h-1 bg-white" />
+        <div className="lg:sticky lg:top-40 space-y-8">
+          <div className="border border-white/10 bg-[#0A0A0A]/80 backdrop-blur-md overflow-hidden relative group">
+            <div className="absolute top-0 left-0 w-full h-1 bg-[#C9A962]" />
             {bgImage && (
               <div
                 className="h-64 bg-cover bg-center relative transition-all duration-700 opacity-60 group-hover:opacity-100"
@@ -385,7 +385,7 @@ const ServiceDetail = ({ id, badge, serviceNumber, title, tagline, price, time, 
               </div>
               <Button
                 onClick={() => openQuote(ctaService)}
-                className="w-full bg-white text-black font-display uppercase tracking-[0.2em] text-sm lg:text-xl font-black hover:bg-gray-200 py-10 rounded-none italic shadow-none whitespace-normal h-auto break-words leading-tight"
+                className="w-full bg-[#C9A962] text-white font-display uppercase tracking-[0.2em] text-sm lg:text-xl font-black hover:bg-[#A6884A] py-10 rounded-none italic shadow-none whitespace-normal h-auto break-words leading-tight"
               >
                 {ctaLabel} →
               </Button>
