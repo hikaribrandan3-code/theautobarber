@@ -233,10 +233,10 @@ const Index = () => {
                   <h3 className="text-2xl font-black uppercase tracking-widest mb-4">AUTO DETAILING</h3>
                   <p className="text-white text-sm leading-relaxed mb-3 font-medium">Interior and exterior restorations performed to the highest standard. We treat every vehicle like it's our own.</p>
                   <ul className="hidden lg:grid grid-cols-2 gap-y-3 gap-x-4 mt-6 text-[9px] font-black uppercase tracking-[0.2em] text-white/50 group-hover:text-white/80 transition-colors">
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> FULL VACUUM & STEAM</li>
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> LEATHER TREATMENT</li>
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> PAINT DECON</li>
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> CLAY BAR FINISH</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> FULL VACUUM & STEAM</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> LEATHER TREATMENT</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> PAINT DECON</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> CLAY BAR FINISH</li>
                   </ul>
                 </div>
                 <button onClick={() => openQuote('Auto Detailing')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start mt-6">Book Service →</button>
@@ -252,10 +252,10 @@ const Index = () => {
                   <h3 className="text-2xl font-black uppercase tracking-widest mb-4">PAINT PROTECTION</h3>
                   <p className="text-white text-sm leading-relaxed mb-3 font-medium">Clear bra and PPF film application that defends your paint from rock chips, road debris, and UV damage.</p>
                   <ul className="hidden lg:grid grid-cols-2 gap-y-3 gap-x-4 mt-6 text-[9px] font-black uppercase tracking-[0.2em] text-white/50 group-hover:text-white/80 transition-colors">
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> SELF-HEALING FILM</li>
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> XPEL & STEK CERTIFIED</li>
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> 10-YEAR WARRANTY</li>
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> ZERO-ORANGE PEEL</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> SELF-HEALING FILM</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> XPEL & STEK CERTIFIED</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> 10-YEAR WARRANTY</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> ZERO-ORANGE PEEL</li>
                   </ul>
                 </div>
                 <button onClick={() => openQuote('PPF')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start mt-6">Book Service →</button>
@@ -271,10 +271,10 @@ const Index = () => {
                   <h3 className="text-2xl font-black uppercase tracking-widest mb-4">WINDOW TINT</h3>
                   <p className="text-white text-sm leading-relaxed mb-3 font-medium">99% UV rejection. Precision-cut carbon or ceramic film for privacy, heat control, and a factory look.</p>
                   <ul className="hidden lg:grid grid-cols-2 gap-y-3 gap-x-4 mt-6 text-[9px] font-black uppercase tracking-[0.2em] text-white/50 group-hover:text-white/80 transition-colors">
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> 99% UV REJECTION</li>
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> NANO-CERAMIC FILM</li>
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> NO-PEEL GUARANTEE</li>
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> COMPUTER CUT</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> 99% UV REJECTION</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> NANO-CERAMIC FILM</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> NO-PEEL GUARANTEE</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> COMPUTER CUT</li>
                   </ul>
                 </div>
                 <button onClick={() => openQuote('Window Tint')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start mt-6">Book Service →</button>
