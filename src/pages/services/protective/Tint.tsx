@@ -291,67 +291,18 @@ export default function Tint() {
                 </div>
               </div>
             </div>
-          </div>
         </section>
 
         {/* INTERACTIVE CONFIGURATOR */}
         <section ref={funnelRef} id="configurator" className="py-16 px-6 lg:px-12 bg-[#0e0e0e]">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8">
-              {/* LEFT: Visualizer */}
-              <div className="lg:col-span-7 space-y-8">
-                <div className="bg-[#131313] rounded-sm p-6 lg:p-12 border border-white/5 relative overflow-hidden flex flex-col items-center">
-                  <div
-                    className="absolute inset-0 opacity-10 pointer-events-none"
-                    style={{
-                      backgroundImage: 'radial-gradient(#484847 1px, transparent 1px)',
-                      backgroundSize: '20px 20px',
-                    }}
-                  />
-
-                  {/* Car SVG */}
-                  <svg className="w-full h-auto drop-shadow-2xl relative z-10 max-w-2xl mx-auto" viewBox="0 0 400 120">
-                    <path
-                      d="M40,95 L360,95 L355,85 L330,45 L250,30 L100,32 L50,65 Z"
-                      fill="#050505"
-                    />
-                    <path
-                      d="M40,95 L70,95 A18,18 0 0,1 106,95 L294,95 A18,18 0 0,1 330,95 L360,95 L350,75 L315,38 C280,30 180,28 115,38 L50,75 Z"
-                      fill="none"
-                      stroke="#adaaaa"
-                      strokeWidth="1.5"
-                      opacity="0.3"
-                    />
-                    <circle cx="88" cy="95" fill="#111" r="16" stroke="#333" strokeWidth="2" />
-                    <circle cx="312" cy="95" fill="#111" r="16" stroke="#333" strokeWidth="2" />
-
-                    <path
-                      onClick={() => toggleZone('windshield')}
-                      style={getZoneStyle('windshield')}
-                      className="cursor-pointer hover:stroke-[#C9A962] hover:fill-[#C9A962]/20"
-                      d="M125,40 L160,38 L165,72 L120,74 Z"
-                    />
-                    <path
-                      onClick={() => toggleZone('front')}
-                      style={getZoneStyle('front')}
-                      className="cursor-pointer hover:stroke-[#C9A962] hover:fill-[#C9A962]/20"
-                      d="M165,37 L225,36 L225,72 L170,72 Z"
-                    />
-                    <path
-                      onClick={() => toggleZone('rear-side')}
-                      style={getZoneStyle('rear-side')}
-                      className="cursor-pointer hover:stroke-[#C9A962] hover:fill-[#C9A962]/20"
-                      d="M230,36 L285,38 L300,72 L230,72 Z"
-                    />
-                    <path
-                      onClick={() => toggleZone('rear-windshield')}
-                      style={getZoneStyle('rear-windshield')}
-                      className="cursor-pointer hover:stroke-[#C9A962] hover:fill-[#C9A962]/20"
-                      d="M290,40 L315,45 L320,72 L305,72 Z"
-                    />
-                  </svg>
-
-                  <div className="mt-8 flex gap-2 w-full max-w-xl mx-auto overflow-x-auto no-scrollbar pb-2 z-20">
+          <div className="max-w-3xl mx-auto space-y-6">
+                {/* Coverage Selector */}
+                <div className="bg-[#131313] p-6 border border-white/5">
+                  <h3 className="text-[#e5e2e1] text-[10px] font-mono uppercase tracking-[0.3em] font-bold mb-4 flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 bg-[#C9A962] rounded-full shadow-[0_0_5px_#C9A962]"></span>
+                    COVERAGE
+                  </h3>
+                  <div className="flex gap-2 w-full overflow-x-auto no-scrollbar pb-2">
                     {(['full', 'front', 'rear', 'custom'] as Coverage[]).map((c) => (
                       <button
                         key={c}
@@ -366,11 +317,25 @@ export default function Tint() {
                       </button>
                     ))}
                   </div>
+                  {coverage === 'custom' && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {ALL_ZONES.map((z) => (
+                        <button
+                          key={z}
+                          onClick={() => toggleZone(z)}
+                          className={`px-3 py-2 text-[10px] font-mono font-black uppercase tracking-wider border transition-all ${
+                            selectedZones.includes(z)
+                              ? 'bg-[#C9A962]/10 text-[#C9A962] border-[#C9A962]'
+                              : 'bg-[#191a1a] text-[#adaaaa] border-[#262626] hover:bg-[#202020]'
+                          }`}
+                        >
+                          {z === 'windshield' ? 'Windshield' : z === 'front' ? 'Front Sides' : z === 'rear-side' ? 'Rear Sides' : 'Rear Window'}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </div>
 
-              {/* RIGHT: Controls */}
-              <div className="lg:col-span-5 space-y-6">
                 {/* VLT Selector */}
                 <div className="bg-[#131313] p-6 border border-white/5">
                   <h3 className="text-[#e5e2e1] text-[10px] font-mono uppercase tracking-[0.3em] font-bold mb-4 flex items-center gap-3">
