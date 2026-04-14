@@ -34,6 +34,14 @@ const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=The+Auto+Barber+Revi
 
 const Index = () => {
   const { openQuote } = useOutletContext<{ openQuote: (service?: string) => void }>();
+  const [showPromo, setShowPromo] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPromo(true);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Consolidated service data in one flat array with categories
   const menuItems = [
@@ -132,6 +140,29 @@ const Index = () => {
         description="Seattle's top-rated mobile detailing service. Interior Detail $199. Full Detail $350. Ceramic Coating from $600. We come to you. Book now."
       />
 
+      {/* PROMO MODAL */}
+      {showPromo && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+          <div className="bg-white text-black p-8 max-w-md w-full relative border-4 border-black/10 shadow-2xl animate-in zoom-in duration-300">
+            <button onClick={() => setShowPromo(false)} className="absolute top-4 right-4 text-black/40 hover:text-black transition-colors font-black text-xl">✕</button>
+            <div className="mb-6">
+              <span className="bg-black text-white text-[9px] font-black uppercase tracking-widest px-3 py-1.5 mb-4 inline-block">SPRING PROMO</span>
+              <h2 className="text-4xl font-black uppercase tracking-tighter leading-none mb-2">INTERIOR<br/>DETAIL</h2>
+              <div className="flex items-baseline gap-2">
+                <span className="text-4xl font-black italic">$199</span>
+                <span className="text-lg text-black/40 line-through">(Reg $250)</span>
+              </div>
+            </div>
+            <p className="text-sm font-medium text-black/70 mb-8 border-l-2 border-black pl-3">
+              Deep clean every surface. Leather treated. Carpets restored. Like new inside.
+            </p>
+            <button onClick={() => { setShowPromo(false); openQuote("Interior Detail"); }} className="w-full bg-black text-white font-black uppercase tracking-[0.2em] py-5 text-sm hover:bg-black/80 transition-all shadow-xl">
+              BOOK $199 SPECIAL
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* PROMO BAR (STATIC TOP) */}
       <div className="bg-white text-[#0A0A0A] text-center py-2 px-4 sticky top-0 z-[110]">
         <p className="text-[10px] font-black uppercase tracking-[0.3em]">
@@ -145,8 +176,8 @@ const Index = () => {
         </p>
       </div>
 
-      {/* LUXURY HERO SECTION */}
-      <section className="relative flex flex-col items-center justify-center text-center px-6 overflow-hidden py-32 md:py-48 mt-16">
+      {/* LUXURY HERO SECTION - SPLIT LAYOUT */}
+      <section className="relative px-6 overflow-hidden py-32 md:py-40 mt-16 min-h-[90vh] flex items-center">
         {/* Full-bleed background */}
         <div className="absolute inset-0 z-0">
           <img
@@ -159,30 +190,63 @@ const Index = () => {
         </div>
 
         {/* Noir Content Container */}
-        <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
-          <h1 
-            className="text-5xl md:text-7xl lg:text-[7rem] font-black leading-[0.9] mb-8 tracking-tighter"
-            style={{ textShadow: "0 4px 20px rgba(0,0,0,0.5)" }}
-          >
-            YOUR CAR.<br />OUR CRAFT.
-          </h1>
-          <p className="max-w-2xl text-white text-sm md:text-xl font-medium tracking-tight mb-12">
-            Seattle's car protection studio. Established 2020.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button
-              onClick={() => openQuote()}
-              className="bg-white text-black font-black uppercase tracking-[0.1em] px-12 py-6 text-sm hover:bg-gray-200 transition-all shadow-[0_0_40px_rgba(255,255,255,0.1)] active:scale-95"
+        <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+          
+          {/* Left: Text */}
+          <div className="flex flex-col items-start text-left">
+            <h1 
+              className="text-5xl md:text-7xl lg:text-[7rem] font-black leading-[0.85] mb-8 tracking-tighter"
+              style={{ textShadow: "0 4px 20px rgba(0,0,0,0.5)" }}
             >
-              GET A QUOTE
-            </button>
-            <a
-              href="tel:2538939452"
-              className="border border-white/20 text-white font-black uppercase tracking-[0.1em] px-12 py-6 text-sm hover:bg-white hover:text-black transition-all active:scale-95"
-            >
-              (253) 893-9452
-            </a>
+              YOUR CAR.<br />OUR CRAFT.
+            </h1>
+            <p className="max-w-xl text-white text-sm md:text-xl font-medium tracking-tight mb-12 border-l-2 border-white pl-4">
+              Seattle's car protection studio. Established 2020.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a
+                href="#pricing"
+                className="bg-white text-black font-black uppercase tracking-[0.1em] px-12 py-6 text-sm hover:bg-gray-200 transition-all shadow-[0_0_40px_rgba(255,255,255,0.1)] active:scale-95 text-center"
+              >
+                VIEW THE MENU
+              </a>
+              <a
+                href="tel:2538939452"
+                className="border border-white/20 text-white font-black uppercase tracking-[0.1em] px-12 py-6 text-sm hover:bg-white hover:text-black transition-all active:scale-95 text-center"
+              >
+                (253) 893-9452
+              </a>
+            </div>
           </div>
+
+          {/* Right: Lead Form */}
+          <div className="bg-[#0A0A0A] border border-white/10 p-8 md:p-12 shadow-2xl relative overflow-hidden backdrop-blur-md">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl rounded-full" />
+            <h3 className="text-2xl font-black uppercase mb-8 tracking-tighter relative z-10 border-b border-white/10 pb-4">GET A QUICK QUOTE</h3>
+            <form className="space-y-6 relative z-10" onSubmit={e => { e.preventDefault(); openQuote(); }}>
+              <div>
+                <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-2">Name</label>
+                <input type="text" className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors" required />
+              </div>
+              <div>
+                <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-2">Phone</label>
+                <input type="tel" className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors" required />
+              </div>
+              <div>
+                <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-2">Service Interest</label>
+                <select className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors text-white/80">
+                  <option className="bg-[#0A0A0A]">Auto Detailing</option>
+                  <option className="bg-[#0A0A0A]">Ceramic Coating</option>
+                  <option className="bg-[#0A0A0A]">Window Tint</option>
+                  <option className="bg-[#0A0A0A]">PPF (Clear Bra)</option>
+                </select>
+              </div>
+              <button type="submit" className="w-full bg-white text-black font-black uppercase tracking-[0.2em] py-5 mt-4 text-sm hover:bg-gray-200 transition-all active:scale-[0.98]">
+                REQUEST QUOTE
+              </button>
+            </form>
+          </div>
+
         </div>
       </section>
 

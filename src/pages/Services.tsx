@@ -27,6 +27,12 @@ const ServicesPage = () => {
         </div>
       </section>
 
+      {/* CATEGORY: COMMON AUTO DETAILING */}
+      <div className="w-full bg-[#0E0E0E] py-12 border-b border-white/20 text-center relative z-10">
+        <h2 className="text-3xl lg:text-5xl font-black uppercase text-white tracking-widest">COMMON AUTO DETAILING</h2>
+        <p className="text-white/60 text-xs font-bold uppercase tracking-[0.2em] mt-2">Interior and Exterior Restorations</p>
+      </div>
+
       {/* ─────────── SERVICE 01: FULL DETAIL ─────────── */}
       <ServiceDetail
         id="full-detail"
@@ -39,7 +45,7 @@ const ServicesPage = () => {
         ctaLabel="Book Full Detail"
         ctaService="Full Detail"
         openQuote={openQuote}
-        bgImage="/images/bg/full-detail-bg.png"
+        bgImage="/images/assets/exterior_paint_gloss_1776187353898.png"
         experience="Six months of neglect, gone in one appointment. We hit the spots that cost you at trade-in: engine bay, wheel wells, door seals — the details that separate 'clean' from *new*."
         sections={[
           {
@@ -65,6 +71,8 @@ const ServicesPage = () => {
         difference="Book this if your car hasn't seen a detail in 6+ months. It's also our most popular pre-sale service — because buyers open the hood and check the door jambs."
       />
 
+      <div className="w-full h-px bg-white/20 block" /> {/* Desktop Separator Line */}
+
       {/* ─────────── SERVICE 02: INTERIOR ─────────── */}
       <ServiceDetail
         id="interior"
@@ -76,7 +84,7 @@ const ServicesPage = () => {
         ctaLabel="Book Interior Detail"
         ctaService="Interior Detail"
         openQuote={openQuote}
-        bgImage="/images/bg/interior-bg.png"
+        bgImage="/images/assets/interior_detailing_focus_1776187301149.png"
         experience="The seats you sit in every day. The steering wheel you touch. We extract what grocery-store cleaners leave behind — the oils, the salt, the grit ground into seams."
         sections={[
           {
@@ -94,6 +102,12 @@ const ServicesPage = () => {
         difference="Interior-only when the outside is already maintained. If both need work, the Full Detail saves you money."
       />
 
+      {/* CATEGORY: HIGH-END PAINT PROTECTION */}
+      <div className="w-full bg-[#0E0E0E] py-12 border-y border-white/20 text-center relative z-10 mt-16">
+        <h2 className="text-3xl lg:text-5xl font-black uppercase text-white tracking-widest">HIGH-END PAINT PROTECTION</h2>
+        <p className="text-white/60 text-xs font-bold uppercase tracking-[0.2em] mt-2">Correction, Polish, and Preservation</p>
+      </div>
+
       {/* ─────────── SERVICE 03: ONE-STEP POLISH ─────────── */}
       <ServiceDetail
         id="one-step"
@@ -105,7 +119,7 @@ const ServicesPage = () => {
         ctaLabel="Get Polish Quote"
         ctaService="One-Step Polish"
         openQuote={openQuote}
-        bgImage="/images/bg/onestep-bg.png"
+        bgImage="/images/assets/exterior_paint_gloss_1776187353898.png"
         experience="Swirls in your black paint. Haze on the hood. One machine pass restores 60–70% of gloss without going deep into your clear coat. Perfect for newer cars or maintenance between full corrections."
         sections={[
           {
@@ -128,18 +142,20 @@ const ServicesPage = () => {
         difference="Newer vehicles (under 3 years). Prep before ceramic or PPF. If your fingernail catches the scratch, you need Paint Correction instead."
       />
 
+      <div className="w-full h-px bg-white/20 block" /> {/* Desktop Separator Line */}
+
       {/* ─────────── SERVICE 04: PAINT CORRECTION ─────────── */}
       <ServiceDetail
         id="paint-correction"
         serviceNumber="04"
         title="PAINT CORRECTION"
         tagline="Permanent defect removal. Multi-stage."
-        price="Quote-Based — Size, Condition, Level"
+        price="Quote-Based — Custom"
         time="4–12 hours"
         ctaLabel="Book Correction Consultation"
         ctaService="Paint Correction"
         openQuote={openQuote}
-        bgImage="/images/bg/twostep-bg.png"
+        bgImage="/images/assets/car_protection_ceramic_ppf_1776187387918.png"
         experience="Swirls that show in sunlight. Scratches you can feel. We measure your paint depth first, then remove damage at the micron level — permanently. This is the step before ceramic or PPF on any car with visible paint issues."
         sections={[
           {
@@ -164,7 +180,7 @@ const ServicesPage = () => {
         difference="Required when defects show in direct sun, or when a fingernail catches the scratch. Also mandatory prep for ceramic coating if your paint isn't perfect."
       />
 
-      {/* ADDITIONAL SERVICES GRID */}
+      {/* ADDITIONAL SERVICES GRID (REFINEMENTS) */}
       <section id="other-services" className="py-24 border-t border-white/5 bg-[#0e0e0e]">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mb-16">
@@ -173,29 +189,34 @@ const ServicesPage = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: "Wax Package", price: "From $150", desc: "Hand-applied protection. 2–3 months of gloss and UV defense. For paint that's already in good shape." },
-              { title: "Mini Detail", price: "From $150", desc: "Quick maintenance. Exterior hand wash, interior vacuum and wipe, glass inside and out." },
-              { id: "exterior", title: "Exterior Detail", price: "Quote-Based", desc: "Wash, decontaminate, clay bar, wheels and tires. Exterior-only when the inside is already clean." },
-              { title: "Water Spot Treatment", price: "Quote-Based", desc: "Mineral deposit removal. Paint-safe process — we measure clear coat before we start." },
-              { title: "Ceramic Coating", price: "From $1,100", desc: "3–5 year protection. Nano-ceramic molecular bond. Requires paint correction first if defects exist.", link: "/services/protective/ceramic", linkText: "Full Details" },
-              { title: "PPF / Window Tint", price: "From $1,300", desc: "XPEL and STEK film. Master-tier protective film specialists.", link: "/services/protective/ppf", linkText: "Full Details" },
+              { title: "Wax Package", price: "From $150", desc: "Hand-applied protection. 2–3 months of gloss and UV defense. For paint that's already in good shape.", img: "/images/assets/exterior_paint_gloss_1776187353898.png" },
+              { title: "Mini Detail", price: "From $150", desc: "Quick maintenance. Exterior hand wash, interior vacuum and wipe, glass inside and out.", img: "/images/assets/interior_detailing_focus_1776187301149.png" },
+              { id: "exterior", title: "Exterior Detail", price: "Quote-Based", desc: "Wash, decontaminate, clay bar, wheels and tires. Exterior-only when the inside is already clean.", img: "/images/assets/car_protection_ceramic_ppf_1776187387918.png" },
+              { title: "Water Spot Treatment", price: "Quote-Based", desc: "Mineral deposit removal. Paint-safe process — we measure clear coat before we start.", img: "/images/assets/ceramic_water_beading_1776189745679.png" },
+              { title: "Ceramic Coating", price: "From $1,100", desc: "3–5 year protection. Nano-ceramic molecular bond. Requires paint correction first if defects exist.", link: "/services/protective/ceramic", linkText: "Full Details", img: "/images/assets/ceramic_water_beading_1776189745679.png" },
+              { title: "PPF / Window Tint", price: "From $1,300", desc: "XPEL and STEK film. Master-tier protective film specialists.", link: "/services/protective/ppf", linkText: "Full Details", img: "/images/assets/window_tint_luxury_1776189700411.png" },
             ].map(s => (
-              <div key={s.title} id={s.id} className="p-8 border border-white/5 bg-[#141414] space-y-4 hover:border-[#C9A962]/30 transition-all group relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-1 h-full bg-[#C9A962] scale-y-0 group-hover:scale-y-100 transition-transform origin-top" />
-                <h3 className="font-display font-black uppercase tracking-wider text-xl text-white italic">{s.title}</h3>
-                <p className="font-mono text-xs text-[#C9A962] font-bold italic uppercase">{s.price}</p>
-                <p className="text-[11px] font-mono text-[#adaaaa] leading-relaxed uppercase tracking-widest italic">{s.desc}</p>
-                {s.link ? (
-                  <Link to={s.link}>
-                    <Button variant="ghost" size="sm" className="mt-4 text-[10px] uppercase tracking-[0.3em] font-display font-black text-[#C9A962] hover:text-white p-0 h-auto italic">
-                      {s.linkText} <ChevronRight size={14} className="ml-1" />
+              <div key={s.title} id={s.id} className="p-8 border border-white/5 bg-[#141414] space-y-4 hover:border-white/30 transition-all group relative overflow-hidden min-h-[250px] flex flex-col justify-end">
+                <div className="absolute inset-0 z-0">
+                  <img src={s.img} alt={s.title} className="w-full h-full object-cover opacity-60 mix-blend-overlay group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-black/60" />
+                </div>
+                <div className="relative z-10 flex flex-col items-start gap-2">
+                  <h3 className="font-display font-black uppercase tracking-wider text-xl text-white italic">{s.title}</h3>
+                  <p className="font-mono text-xs text-[#C9A962] font-bold italic uppercase">{s.price}</p>
+                  <p className="text-[11px] font-mono text-[#adaaaa] leading-relaxed uppercase tracking-widest italic line-clamp-3">{s.desc}</p>
+                  {s.link ? (
+                    <Link to={s.link}>
+                      <Button variant="ghost" size="sm" className="mt-4 text-[10px] uppercase tracking-[0.3em] font-display font-black text-white hover:text-[#C9A962] p-0 h-auto italic underline underline-offset-4">
+                        {s.linkText} <ChevronRight size={14} className="ml-1" />
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button variant="ghost" size="sm" onClick={() => openQuote(s.title)} className="mt-4 text-[10px] uppercase tracking-[0.3em] font-display font-black text-white hover:text-[#C9A962] p-0 h-auto italic underline underline-offset-4">
+                      GET THE QUOTE <ChevronRight size={14} className="ml-1" />
                     </Button>
-                  </Link>
-                ) : (
-                  <Button variant="ghost" size="sm" onClick={() => openQuote(s.title)} className="mt-4 text-[10px] uppercase tracking-[0.3em] font-display font-black text-[#C9A962] hover:text-white p-0 h-auto italic">
-                    GET THE QUOTE <ChevronRight size={14} className="ml-1" />
-                  </Button>
-                )}
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -279,8 +300,8 @@ interface ServiceDetailProps {
 }
 
 const ServiceDetail = ({ id, badge, serviceNumber, title, tagline, price, time, ctaLabel, ctaService, openQuote, bgImage, experience, sections, difference }: ServiceDetailProps) => (
-  <section id={id} className="py-16 border-t border-border/30">
-    <div className="container mx-auto px-4 lg:px-8">
+  <section id={id} className="py-16 pt-24 bg-black relative">
+    <div className="container mx-auto px-4 lg:px-8 relative z-10">
       <div className="grid lg:grid-cols-[1fr_380px] gap-16 items-start">
 
         {/* LEFT — Content */}
@@ -289,23 +310,23 @@ const ServiceDetail = ({ id, badge, serviceNumber, title, tagline, price, time, 
           {/* Header */}
           <div className="space-y-4">
             <div className="flex items-center gap-4">
-              <span className="font-mono text-[10px] text-primary tracking-[0.4em] uppercase">// {serviceNumber}</span>
+              <span className="font-mono text-[10px] text-white/50 tracking-[0.4em] uppercase">// {serviceNumber}</span>
               {badge && (
-                <span className="px-2 py-0.5 bg-primary text-black font-mono text-[9px] font-black uppercase tracking-widest">
+                <span className="px-2 py-0.5 bg-white text-black font-mono text-[9px] font-black uppercase tracking-widest">
                   ★ {badge}
                 </span>
               )}
             </div>
-            <h2 className="text-4xl lg:text-6xl font-black italic uppercase tracking-tighter leading-none">{title}</h2>
-            <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest leading-relaxed border-l-2 border-primary pl-4">
+            <h2 className="text-4xl lg:text-6xl font-black uppercase tracking-tighter leading-none text-white">{title}</h2>
+            <p className="font-mono text-xs text-white/80 uppercase tracking-widest leading-relaxed border-l-2 border-white pl-4">
               {tagline}
             </p>
           </div>
 
           {/* The Experience */}
           <div className="space-y-3">
-            <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary">THE EXPERIENCE</h3>
-            <p className="text-foreground/80 leading-relaxed text-sm lg:text-base">{experience}</p>
+            <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-white">THE EXPERIENCE</h3>
+            <p className="text-white/80 leading-relaxed text-sm lg:text-base">{experience}</p>
           </div>
 
           {/* What's Included */}
@@ -333,43 +354,43 @@ const ServiceDetail = ({ id, badge, serviceNumber, title, tagline, price, time, 
 
           {/* The Difference */}
           <div className="space-y-3">
-            <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary">THE DIFFERENCE</h3>
-            <p className="text-foreground/70 leading-relaxed text-sm border border-border/30 bg-card/20 p-4 rounded">{difference}</p>
+            <h3 className="font-mono text-[10px] uppercase tracking-[0.4em] text-white">THE DIFFERENCE</h3>
+            <p className="text-white/70 leading-relaxed text-sm border border-white/20 bg-white/5 p-4 rounded-none">{difference}</p>
           </div>
         </div>
 
         {/* RIGHT — Sticky Booking Card */}
         <div className="lg:sticky lg:top-32 space-y-8">
-          <div className="border border-white/5 bg-[#141414] overflow-hidden relative group">
-            <div className="absolute top-0 left-0 w-full h-1 bg-[#C9A962]" />
+          <div className="border border-white/20 bg-[#0A0A0A] overflow-hidden relative group">
+            <div className="absolute top-0 left-0 w-full h-1 bg-white" />
             {bgImage && (
               <div
-                className="h-64 bg-cover bg-center relative grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="h-64 bg-cover bg-center relative transition-all duration-700 opacity-60 group-hover:opacity-100"
                 style={{ backgroundImage: `url(${bgImage})` }}
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent" />
               </div>
             )}
             <div className="p-8 space-y-10">
               <div className="space-y-2">
-                <p className="font-display text-xs uppercase tracking-[0.4em] text-[#adaaaa] italic">The Investment</p>
-                <p className="text-5xl font-display font-black text-[#C9A962] italic tracking-tighter leading-none">{price}</p>
+                <p className="font-display text-xs uppercase tracking-[0.4em] text-white/50 italic">The Investment</p>
+                <p className="text-5xl font-display font-black text-white italic tracking-tighter leading-none">{price}</p>
               </div>
               <div className="space-y-2">
-                <p className="font-display text-xs uppercase tracking-[0.4em] text-[#adaaaa] italic">THE CHAIR TIME</p>
+                <p className="font-display text-xs uppercase tracking-[0.4em] text-white/50 italic">THE CHAIR TIME</p>
                 <div className="flex items-center gap-3 text-white">
-                  <Clock size={16} className="text-[#C9A962]" />
+                  <Clock size={16} className="text-white" />
                   <span className="text-xl font-display font-black uppercase tracking-widest italic">{time}</span>
                 </div>
               </div>
               <Button
                 onClick={() => openQuote(ctaService)}
-                className="w-full bg-[#C9A962] text-white font-display uppercase tracking-[0.2em] text-xl font-black hover:bg-[#A6884A] py-10 rounded-none italic shadow-[0_0_30px_rgba(0,102,255,0.2)]"
+                className="w-full bg-white text-black font-display uppercase tracking-[0.2em] text-sm lg:text-xl font-black hover:bg-gray-200 py-10 rounded-none italic shadow-none whitespace-normal h-auto break-words leading-tight"
               >
                 {ctaLabel} →
               </Button>
               <p className="font-mono text-[9px] text-[#adaaaa] text-center uppercase tracking-[0.4em] font-bold italic leading-relaxed">
-                FULLY SELF-CONTAINED MOBILE UNIT
+                FULLY EQUIPPED SHOP-BASED STUDIO
               </p>
             </div>
           </div>

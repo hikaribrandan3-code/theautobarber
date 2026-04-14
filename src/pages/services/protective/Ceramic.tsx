@@ -221,11 +221,11 @@ const Ceramic = () => {
                       <div className="flex items-baseline gap-2">
                         <span className="text-[#adaaaa] text-[10px] font-bold uppercase tracking-widest">Starting From</span>
                         <span className="text-4xl lg:text-5xl font-mono font-black text-white italic tracking-tighter">${currentPkg.price}</span>
-                        <span className="text-xs font-bold text-[#8eff71]">/ {packages[selectedPackage].years}</span>
+                        <span className="text-xs font-bold text-white">/ {packages[selectedPackage].years}</span>
                       </div>
                       <Button 
                         onClick={() => openQuote(`Ceramic: ${currentPkg.name}`)}
-                        className="w-full sm:w-auto bg-[#8eff71] text-[#053900] px-10 py-6 font-black uppercase text-xs tracking-[0.2em] hover:bg-[#7ce065] transition-all"
+                        className="w-full sm:w-auto bg-white text-[#0A0A0A] px-10 py-6 font-black uppercase text-xs tracking-[0.2em] hover:bg-gray-200 transition-all font-display rounded-none shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                       >
                         REQUEST QUOTE
                       </Button>
