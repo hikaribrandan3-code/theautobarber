@@ -36,8 +36,8 @@ const Navbar = ({ onQuoteClick }: { onQuoteClick: (service?: string) => void }) 
 
           {/* Desktop Navigation */}
           <div className="hidden items-center gap-8 lg:flex">
-            <Link to="/" className={`font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#0066FF] ${location.pathname === "/" ? "text-[#0066FF]" : "text-muted-foreground"}`}>Home</Link>
-            <Link to="/about" className={`font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#0066FF] ${location.pathname === "/about" ? "text-[#0066FF]" : "text-muted-foreground"}`}>About</Link>
+            <Link to="/" className={`font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#C9A962] ${location.pathname === "/" ? "text-[#C9A962]" : "text-muted-foreground"}`}>Home</Link>
+            <Link to="/about" className={`font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#C9A962] ${location.pathname === "/about" ? "text-[#C9A962]" : "text-muted-foreground"}`}>About</Link>
             
             {/* Services Dropdown */}
             <div 
@@ -47,7 +47,7 @@ const Navbar = ({ onQuoteClick }: { onQuoteClick: (service?: string) => void }) 
             >
               <Link 
                 to="/services"
-                className={`flex items-center gap-1 font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#0066FF] ${location.pathname.startsWith("/services") ? "text-[#0066FF]" : "text-muted-foreground"}`}
+                className={`flex items-center gap-1 font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#C9A962] ${location.pathname.startsWith("/services") ? "text-[#C9A962]" : "text-muted-foreground"}`}
               >
                 Services <ChevronDown size={14} className={`transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`} />
               </Link>
@@ -58,14 +58,14 @@ const Navbar = ({ onQuoteClick }: { onQuoteClick: (service?: string) => void }) 
                   
                   {/* Detailing Column */}
                   <div className="space-y-4">
-                    <h4 className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#0066FF]/50 font-black border-b border-white/5 pb-2">Detailing Division</h4>
+                    <h4 className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#C9A962]/50 font-black border-b border-white/5 pb-2">Detailing Division</h4>
                     <div className="flex flex-col gap-2">
                       {detailingLinks.map(l => (
                         <Link 
                           key={l.label} 
                           to={l.path} 
                           onClick={() => setServicesOpen(false)}
-                          className="text-[11px] uppercase tracking-wider text-white/70 hover:text-[#0066FF] transition-colors"
+                          className="text-[11px] uppercase tracking-wider text-white/70 hover:text-[#C9A962] transition-colors"
                         >
                           {l.label}
                         </Link>
@@ -75,22 +75,22 @@ const Navbar = ({ onQuoteClick }: { onQuoteClick: (service?: string) => void }) 
                         onClick={() => setServicesOpen(false)}
                         className="flex items-center gap-2 group/pc"
                       >
-                         <span className="text-[11px] uppercase tracking-widest text-[#0066FF] font-bold">Paint Correction</span>
-                         <Zap size={10} className="text-[#0066FF] group-hover/pc:animate-pulse" />
+                         <span className="text-[11px] uppercase tracking-widest text-[#C9A962] font-bold">Paint Correction</span>
+                         <Zap size={10} className="text-[#C9A962] group-hover/pc:animate-pulse" />
                       </Link>
                     </div>
                   </div>
 
                   {/* Protective Column */}
                   <div className="space-y-4 border-l border-white/5 pl-4">
-                    <h4 className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#0066FF]/50 font-black border-b border-white/5 pb-2">Protective Services</h4>
+                    <h4 className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#C9A962]/50 font-black border-b border-white/5 pb-2">Protective Services</h4>
                     <div className="flex flex-col gap-2">
                       {protectiveLinks.map(l => (
                         <Link 
                           key={l.label} 
                           to={l.path} 
                           onClick={() => setServicesOpen(false)}
-                          className="text-[11px] uppercase tracking-wider text-white/70 hover:text-[#0066FF] transition-colors"
+                          className="text-[11px] uppercase tracking-wider text-white/70 hover:text-[#C9A962] transition-colors"
                         >
                           {l.label}
                         </Link>
@@ -101,11 +101,11 @@ const Navbar = ({ onQuoteClick }: { onQuoteClick: (service?: string) => void }) 
               </div>
             </div>
 
-            <Link to="/gallery" className={`font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#0066FF] ${location.pathname === "/gallery" ? "text-[#0066FF]" : "text-muted-foreground"}`}>Gallery</Link>
-            <Link to="/faq" className={`font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#0066FF] ${location.pathname === "/faq" ? "text-[#0066FF]" : "text-muted-foreground"}`}>FAQ</Link>
-            <Link to="/contact" className={`font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#0066FF] ${location.pathname === "/contact" ? "text-[#0066FF]" : "text-muted-foreground"}`}>Contact</Link>
+            <Link to="/gallery" className={`font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#C9A962] ${location.pathname === "/gallery" ? "text-[#C9A962]" : "text-muted-foreground"}`}>Gallery</Link>
+            <Link to="/faq" className={`font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#C9A962] ${location.pathname === "/faq" ? "text-[#C9A962]" : "text-muted-foreground"}`}>FAQ</Link>
+            <Link to="/contact" className={`font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#C9A962] ${location.pathname === "/contact" ? "text-[#C9A962]" : "text-muted-foreground"}`}>Contact</Link>
             
-            <Button onClick={() => onQuoteClick()} className="bg-[#0066FF] text-white font-display text-[10px] uppercase tracking-[0.2em] font-black italic hover:bg-[#0052CC] transition-all px-6">
+            <Button onClick={() => onQuoteClick()} className="bg-[#C9A962] text-white font-display text-[10px] uppercase tracking-[0.2em] font-black italic hover:bg-[#A6884A] transition-all px-6">
               Get a Quote
             </Button>
           </div>
@@ -130,38 +130,38 @@ const Navbar = ({ onQuoteClick }: { onQuoteClick: (service?: string) => void }) 
           />
           <div className="absolute inset-y-0 right-0 w-[85vw] max-w-sm bg-background p-6 shadow-2xl animate-in slide-in-from-right duration-300 border-l border-white/5">
             <div className="flex flex-col gap-6 overflow-y-auto h-full pt-20 no-scrollbar pb-12">
-               <Link onClick={() => setMobileOpen(false)} to="/" className="text-2xl font-black italic tracking-tighter uppercase text-white hover:text-[#0066FF] transition-colors">Home</Link>
-               <Link onClick={() => setMobileOpen(false)} to="/about" className="text-2xl font-black italic tracking-tighter uppercase text-white hover:text-[#0066FF] transition-colors">About</Link>
+               <Link onClick={() => setMobileOpen(false)} to="/" className="text-2xl font-black italic tracking-tighter uppercase text-white hover:text-[#C9A962] transition-colors">Home</Link>
+               <Link onClick={() => setMobileOpen(false)} to="/about" className="text-2xl font-black italic tracking-tighter uppercase text-white hover:text-[#C9A962] transition-colors">About</Link>
                
                <div className="space-y-6">
                   {/* Detailing Division */}
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#0066FF]/60 font-black mb-3 border-b border-white/5 pb-1">Detailing Division</p>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#C9A962]/60 font-black mb-3 border-b border-white/5 pb-1">Detailing Division</p>
                     <div className="grid grid-cols-1 gap-3 pl-2">
-                       <Link onClick={() => setMobileOpen(false)} to="/services#interior" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#0066FF] transition-colors">Interior Detailing</Link>
-                       <Link onClick={() => setMobileOpen(false)} to="/services#other-services" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#0066FF] transition-colors">Exterior Detailing</Link>
-                       <Link onClick={() => setMobileOpen(false)} to="/services#full-detail" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#0066FF] transition-colors">Full Detail</Link>
+                       <Link onClick={() => setMobileOpen(false)} to="/services#interior" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#C9A962] transition-colors">Interior Detailing</Link>
+                       <Link onClick={() => setMobileOpen(false)} to="/services#other-services" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#C9A962] transition-colors">Exterior Detailing</Link>
+                       <Link onClick={() => setMobileOpen(false)} to="/services#full-detail" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#C9A962] transition-colors">Full Detail</Link>
                     </div>
                   </div>
 
                   {/* Protective Services */}
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#0066FF] font-black mb-3 border-b border-white/5 pb-1">Protective Services</p>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#C9A962] font-black mb-3 border-b border-white/5 pb-1">Protective Services</p>
                     <div className="grid grid-cols-1 gap-3 pl-2">
-                       <Link onClick={() => setMobileOpen(false)} to="/services/protective/paint-correction" className="text-sm font-bold uppercase tracking-widest text-[#0066FF] hover:text-[#0066FF]/80 transition-colors">Paint Correction</Link>
-                       <Link onClick={() => setMobileOpen(false)} to="/services/protective/ceramic" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#0066FF] transition-colors">Ceramic Coatings</Link>
-                       <Link onClick={() => setMobileOpen(false)} to="/services/protective/ppf" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#0066FF] transition-colors">PPF (Clear Bra)</Link>
-                       <Link onClick={() => setMobileOpen(false)} to="/services/protective/tint" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#0066FF] transition-colors">Window Tint</Link>
+                       <Link onClick={() => setMobileOpen(false)} to="/services/protective/paint-correction" className="text-sm font-bold uppercase tracking-widest text-[#C9A962] hover:text-[#C9A962]/80 transition-colors">Paint Correction</Link>
+                       <Link onClick={() => setMobileOpen(false)} to="/services/protective/ceramic" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#C9A962] transition-colors">Ceramic Coatings</Link>
+                       <Link onClick={() => setMobileOpen(false)} to="/services/protective/ppf" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#C9A962] transition-colors">PPF (Clear Bra)</Link>
+                       <Link onClick={() => setMobileOpen(false)} to="/services/protective/tint" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#C9A962] transition-colors">Window Tint</Link>
                     </div>
                   </div>
                </div>
   
-               <Link onClick={() => setMobileOpen(false)} to="/gallery" className="text-2xl font-black italic tracking-tighter uppercase text-white hover:text-[#0066FF] transition-colors">Proof of Work</Link>
-               <Link onClick={() => setMobileOpen(false)} to="/faq" className="text-2xl font-black italic tracking-tighter uppercase text-white hover:text-[#0066FF] transition-colors">FAQ</Link>
-               <Link onClick={() => setMobileOpen(false)} to="/contact" className="text-2xl font-black italic tracking-tighter uppercase text-white hover:text-[#0066FF] transition-colors">Contact</Link>
+               <Link onClick={() => setMobileOpen(false)} to="/gallery" className="text-2xl font-black italic tracking-tighter uppercase text-white hover:text-[#C9A962] transition-colors">Proof of Work</Link>
+               <Link onClick={() => setMobileOpen(false)} to="/faq" className="text-2xl font-black italic tracking-tighter uppercase text-white hover:text-[#C9A962] transition-colors">FAQ</Link>
+               <Link onClick={() => setMobileOpen(false)} to="/contact" className="text-2xl font-black italic tracking-tighter uppercase text-white hover:text-[#C9A962] transition-colors">Contact</Link>
                
                <div className="mt-8 pb-12">
-                 <Button onClick={() => { onQuoteClick(); setMobileOpen(false); }} className="w-full bg-[#0066FF] text-white font-display uppercase font-black italic tracking-widest py-8 hover:bg-[#0052CC] transition-all">
+                 <Button onClick={() => { onQuoteClick(); setMobileOpen(false); }} className="w-full bg-[#C9A962] text-white font-display uppercase font-black italic tracking-widest py-8 hover:bg-[#A6884A] transition-all">
                    Get A Quote
                  </Button>
                </div>

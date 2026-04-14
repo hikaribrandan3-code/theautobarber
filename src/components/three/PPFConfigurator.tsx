@@ -54,7 +54,7 @@ function Scene({ selectedPackage }: { selectedPackage: 'partial' | 'full-front' 
         shadow-mapSize={[2048, 2048]}
       />
       <directionalLight position={[-5, 5, -5]} intensity={0.4} />
-      <pointLight position={[0, 8, 0]} intensity={0.3} color="#0066FF" />
+      <pointLight position={[0, 8, 0]} intensity={0.3} color="#C9A962" />
       
       {/* Environment for reflections */}
       <Environment preset="city" />
@@ -86,10 +86,10 @@ function Scene({ selectedPackage }: { selectedPackage: 'partial' | 'full-front' 
         args={[30, 30]}
         cellSize={0.5}
         cellThickness={0.5}
-        cellColor="#0066FF"
+        cellColor="#C9A962"
         sectionSize={2}
         sectionThickness={1}
-        sectionColor="#0066FF"
+        sectionColor="#C9A962"
         fadeDistance={25}
         fadeStrength={1}
         followCamera={false}

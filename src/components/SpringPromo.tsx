@@ -53,7 +53,7 @@ const SpringPromo = ({ onClaim }: SpringPromoProps) => {
         >
           <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
           <div className="absolute top-4 left-4">
-             <div className="flex items-center gap-2 bg-[#0066FF] px-4 py-1.5 text-[10px] font-display font-black text-white uppercase tracking-[0.2em] italic shadow-[0_0_20px_rgba(0,102,255,0.4)]">
+             <div className="flex items-center gap-2 bg-[#C9A962] px-4 py-1.5 text-[10px] font-display font-black text-white uppercase tracking-[0.2em] italic shadow-[0_0_20px_rgba(0,102,255,0.4)]">
                 <Sparkles size={12} className="animate-pulse" />
                 Special Requisition
              </div>
@@ -70,9 +70,9 @@ const SpringPromo = ({ onClaim }: SpringPromoProps) => {
         <div className="p-8 pt-4 text-center">
           <div className="mb-6 space-y-2">
             <h3 className="font-display text-2xl font-black italic uppercase tracking-tighter text-white">
-              SPRING <span className="text-[#0066FF] text-glow">RESET</span>
+              SPRING <span className="text-[#C9A962] text-glow">RESET</span>
             </h3>
-            <p className="font-mono text-sm font-bold text-[#0066FF]/90 tracking-widest leading-none">
+            <p className="font-mono text-sm font-bold text-[#C9A962]/90 tracking-widest leading-none">
               INTERIOR + EXTERIOR DECON
             </p>
             <div className="h-px w-8 bg-border mx-auto my-4" />
@@ -84,7 +84,7 @@ const SpringPromo = ({ onClaim }: SpringPromoProps) => {
           <div className="space-y-3">
              <Button 
                 onClick={() => onClaim("Spring Reset Special $249")}
-                className="w-full bg-[#0066FF] text-white font-display font-black uppercase italic tracking-[0.2em] transform active:scale-[0.98] transition-all h-16 text-lg rounded-none shadow-[0_0_30px_rgba(0,102,255,0.2)] group"
+                className="w-full bg-[#C9A962] text-white font-display font-black uppercase italic tracking-[0.2em] transform active:scale-[0.98] transition-all h-16 text-lg rounded-none shadow-[0_0_30px_rgba(0,102,255,0.2)] group"
              >
                 CLAIM THE RESET
                 <span className="ml-3 transition-transform group-hover:translate-x-2">→</span>
@@ -100,7 +100,7 @@ const SpringPromo = ({ onClaim }: SpringPromoProps) => {
         </div>
         
         {/* Glowing bottom accent */}
-        <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#0066FF]/50 to-transparent" />
+        <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#C9A962]/50 to-transparent" />
       </div>
     </div>
   );

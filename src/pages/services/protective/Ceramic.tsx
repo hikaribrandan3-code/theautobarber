@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
+import ReviewStats from "@/components/ReviewStats";
 
 const packages = {
   entry: { 
@@ -81,14 +82,14 @@ const Ceramic = () => {
         description="Experience the Barber's Standard. The Auto Barber specializes in professional ceramic coating in Seattle, WA. Ultra-high gloss, hydrophobic surface, and permanent UV protection for your investment."
       />
       {/* Sub-header Bar (Mobile-first feel) */}
-      <div className="bg-[#131313] text-[#0066FF] font-mono tracking-tighter uppercase border-b border-white/5 flex justify-between items-center w-full px-6 py-2 z-40 lg:hidden">
+      <div className="bg-[#131313] text-[#C9A962] font-mono tracking-tighter uppercase border-b border-white/5 flex justify-between items-center w-full px-6 py-2 z-40 lg:hidden">
         <div className="flex items-center gap-2">
-          <Settings className="text-[#0066FF] w-4 h-4" />
+          <Settings className="text-[#C9A962] w-4 h-4" />
           <span className="text-sm font-bold tracking-[0.2em]">The Ceramic Division</span>
         </div>
         <button 
           onClick={() => openQuote(`Ceramic: ${selectedPackage}`)}
-          className="bg-[#0066FF] text-white px-3 py-1 text-[10px] font-bold tracking-widest rounded-none font-mono"
+          className="bg-[#C9A962] text-white px-3 py-1 text-[10px] font-bold tracking-widest rounded-none font-mono"
         >
           GET QUOTE
         </button>
@@ -107,16 +108,19 @@ const Ceramic = () => {
           </div>
           
           <div className="relative z-10 space-y-6 max-w-4xl mx-auto w-full lg:px-12">
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#0066FF]/10 border border-[#0066FF]/20 shadow-[0_0_20px_rgba(0,102,255,0.1)]">
-              <span className="text-[10px] lg:text-xs font-bold text-[#0066FF] tracking-[0.3em] uppercase">Ceramic Division</span>
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#C9A962]/10 border border-[#C9A962]/20 shadow-[0_0_20px_rgba(0,102,255,0.1)]">
+              <span className="text-[10px] lg:text-xs font-bold text-[#C9A962] tracking-[0.3em] uppercase">Ceramic Division</span>
             </div>
-            <h1 className="text-5xl md:text-7xl lg:text-9xl font-display font-black border-l-8 border-[#0066FF] pl-6 leading-[0.8] tracking-tighter uppercase italic drop-shadow-[0_0_30px_rgba(0,0,0,0.5)]">
-              SEATTLE WA<br/><span className="text-[#0066FF]">CERAMIC</span>
+            <h1 className="text-5xl md:text-7xl lg:text-9xl font-display font-black border-l-8 border-[#C9A962] pl-6 leading-[0.8] tracking-tighter uppercase italic drop-shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+              SEATTLE WA<br/><span className="text-[#C9A962]">CERAMIC</span>
             </h1>
             <p className="text-[#adaaaa] text-lg lg:text-2xl font-mono leading-tight max-w-[450px] uppercase tracking-tighter opacity-80">
               <span className="lg:hidden">5 years. Zero wax.</span>
               <span className="hidden lg:inline">Ultra-High Gloss Protection That Outlasts Wax</span>
             </p>
+            <div className="pt-4">
+              <ReviewStats />
+            </div>
             <div className="pt-8 flex flex-col sm:flex-row items-center gap-6">
               <div className="flex items-end gap-3 lg:border-r border-white/10 lg:pr-8">
                 <span className="text-[#adaaaa] text-xs font-bold uppercase tracking-[0.2em] mb-1">Starting Level</span>
@@ -124,7 +128,7 @@ const Ceramic = () => {
               </div>
               <Button 
                 onClick={scrollToPackages}
-                className="w-full sm:w-auto py-8 px-12 bg-[#0066FF] text-white font-black rounded-none uppercase font-display tracking-[0.2em] text-sm shadow-[0_8px_32px_rgba(0,102,255,0.2)] hover:bg-[#0052CC] transition-all duration-300"
+                className="w-full sm:w-auto py-8 px-12 bg-[#C9A962] text-white font-black rounded-none uppercase font-display tracking-[0.2em] text-sm shadow-[0_8px_32px_rgba(0,102,255,0.2)] hover:bg-[#A6884A] transition-all duration-300"
               >
                 VIEW THE MENU
               </Button>
@@ -137,8 +141,8 @@ const Ceramic = () => {
           <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none grid-bg"></div>
           
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 gap-4 lg:gap-8 max-w-7xl mx-auto">
-            <div className="border-l-4 border-[#0066FF] pl-6">
-              <h2 className="font-display text-4xl lg:text-6xl font-black uppercase tracking-tighter text-white">Select Your <span className="text-[#0066FF]">Cut</span></h2>
+            <div className="border-l-4 border-[#C9A962] pl-6">
+              <h2 className="font-display text-4xl lg:text-6xl font-black uppercase tracking-tighter text-white">Select Your <span className="text-[#C9A962]">Cut</span></h2>
               <p className="font-mono text-[10px] text-[#adaaaa] font-bold uppercase tracking-[0.4em] mt-2">Ceramic coating tiers — Matched to your investment.</p>
             </div>
           </div>
@@ -154,19 +158,19 @@ const Ceramic = () => {
                     onClick={() => setSelectedPackage(pkgKey)} 
                     className={`snap-center min-w-[200px] lg:flex-1 p-6 transition-all duration-300 border-l-4 relative group ${
                       isActive 
-                        ? 'bg-[#0066FF]/10 border-[#0066FF] ring-1 ring-[#0066FF]/20' 
+                        ? 'bg-[#C9A962]/10 border-[#C9A962] ring-1 ring-[#C9A962]/20' 
                         : 'bg-[#202020] border-transparent border-opacity-0 hover:bg-[#262626] grayscale hover:grayscale-0'
                     }`}
                   >
                     {pkgKey === 'pro' && (
-                      <div className="absolute top-0 right-0 bg-[#0066FF] text-white px-3 py-1">
+                      <div className="absolute top-0 right-0 bg-[#C9A962] text-white px-3 py-1">
                         <span className="text-[10px] font-black uppercase tracking-tighter italic font-display">Recommended</span>
                       </div>
                     )}
-                    <span className={`text-[10px] font-bold uppercase tracking-[0.3em] block mb-2 ${isActive ? 'text-[#0066FF]' : 'text-[#adaaaa]'}`}>{pkgKey}</span>
+                    <span className={`text-[10px] font-bold uppercase tracking-[0.3em] block mb-2 ${isActive ? 'text-[#C9A962]' : 'text-[#adaaaa]'}`}>{pkgKey}</span>
                     <div className="flex items-baseline gap-2">
                        <span className={`text-4xl font-display font-black italic tracking-tighter ${isActive ? 'text-white' : 'text-[#adaaaa]'}`}>${pkg.price}</span>
-                       <span className={`text-[10px] font-bold ${isActive ? 'text-[#0066FF]' : 'text-[#adaaaa]/40'}`}>/ {pkg.years}</span>
+                       <span className={`text-[10px] font-bold ${isActive ? 'text-[#C9A962]' : 'text-[#adaaaa]/40'}`}>/ {pkg.years}</span>
                     </div>
                   </button>
                 );
@@ -175,16 +179,16 @@ const Ceramic = () => {
 
             {/* PACKAGE DETAIL CARD */}
             <div className="mt-8 p-8 lg:p-12 bg-[#202020] border border-white/5 relative overflow-hidden">
-               <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#0066FF]/10 blur-3xl rounded-full"></div>
+               <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#C9A962]/10 blur-3xl rounded-full"></div>
                
                <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-12 gap-12">
                  <div className="lg:col-span-4 space-y-4">
-                   <h3 className="text-4xl font-display font-black text-[#0066FF] italic tracking-tighter leading-none mb-1 uppercase">{currentPkg.name}</h3>
+                   <h3 className="text-4xl font-display font-black text-[#C9A962] italic tracking-tighter leading-none mb-1 uppercase">{currentPkg.name}</h3>
                    <p className="text-sm font-mono text-[#adaaaa] font-bold uppercase tracking-widest">{currentPkg.subtitle}</p>
                    <div className="pt-6 border-t border-white/10 space-y-6">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-none bg-[#0e0e0e] border border-white/5 flex items-center justify-center shadow-inner">
-                          <Layers className="text-[#0066FF] w-5 h-5" />
+                          <Layers className="text-[#C9A962] w-5 h-5" />
                         </div>
                         <div>
                           <p className="text-[10px] text-[#adaaaa] uppercase font-bold tracking-widest font-mono">Ceramic Layers</p>
@@ -193,7 +197,7 @@ const Ceramic = () => {
                       </div>
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-none bg-[#0e0e0e] border border-white/5 flex items-center justify-center shadow-inner">
-                          <Shield className="text-[#0066FF] w-5 h-5" />
+                          <Shield className="text-[#C9A962] w-5 h-5" />
                         </div>
                         <div>
                           <p className="text-[10px] text-[#adaaaa] uppercase font-bold tracking-widest font-mono">Warranty</p>
@@ -206,8 +210,8 @@ const Ceramic = () => {
                  <div className="lg:col-span-8 flex flex-col justify-between">
                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
                       {currentPkg.features.map((feature, i) => (
-                        <div key={i} className="flex items-center gap-3 py-3 border-b border-white/5 hover:border-[#0066FF]/30 transition-colors">
-                          <CheckCircle2 className="text-[#0066FF] w-4 h-4 shrink-0" />
+                        <div key={i} className="flex items-center gap-3 py-3 border-b border-white/5 hover:border-[#C9A962]/30 transition-colors">
+                          <CheckCircle2 className="text-[#C9A962] w-4 h-4 shrink-0" />
                           <span className="text-xs lg:text-sm font-mono uppercase font-bold tracking-wider text-[#e5e2e1]">{feature}</span>
                         </div>
                       ))}
@@ -236,31 +240,31 @@ const Ceramic = () => {
         <section className="py-20 px-6 lg:px-12 bg-[#0e0e0e]">
           <div className="max-w-7xl mx-auto">
             <h2 className="font-display text-4xl lg:text-7xl font-black uppercase tracking-tighter mb-12 flex items-center gap-4">
-              <Sparkles className="text-[#0066FF] w-8 h-8 lg:w-12 lg:h-12" />
+              <Sparkles className="text-[#C9A962] w-8 h-8 lg:w-12 lg:h-12" />
               Optional Upgrades
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
-                { icon: <Timer className="w-6 h-6 text-[#0066FF]" />, title: 'Wheel & Caliper', price: '+$299', 
+                { icon: <Timer className="w-6 h-6 text-[#C9A962]" />, title: 'Wheel & Caliper', price: '+$299', 
                   image: '/images/portfolio/wheel-caliper.jpg',
                   desc: { mobile: 'Brake dust bonds to bare metal fast. Ceramic-coated wheels clean in seconds and resist the iron buildup that turns wheels brown.', desktop: 'Protects against brake dust' } },
-                { icon: <User className="w-6 h-6 text-[#0066FF]" />, title: 'Interior Leather', price: '+$199', 
+                { icon: <User className="w-6 h-6 text-[#C9A962]" />, title: 'Interior Leather', price: '+$199', 
                   image: '/images/addons/interior-leather.png', alt: 'Leather conditioning treatment',
                   desc: { mobile: 'Leather in Seattle heat cracks and fades fast. Ceramic coating bonds to the surface and keeps it supple, stain-resistant, and looking new.', desktop: 'Prevents stains and wear' } },
-                { icon: <Waves className="w-6 h-6 text-[#0066FF]" />, title: 'Plastic Trim', price: '+$149', 
+                { icon: <Waves className="w-6 h-6 text-[#C9A962]" />, title: 'Plastic Trim', price: '+$149', 
                   image: 'https://images.unsplash.com/photo-1620891549027-942fdc95d3f5?w=800&q=80',
                   desc: { mobile: 'Faded grey trim drops your car\'s whole look. We restore it black and coat it so it stays that way — not for a week, for years.', desktop: 'Restores and protects trim' } },
-                { icon: <Droplets className="w-6 h-6 text-[#0066FF]" />, title: 'Glass Coating', price: '+$99', 
+                { icon: <Droplets className="w-6 h-6 text-[#C9A962]" />, title: 'Glass Coating', price: '+$99', 
                   image: '/images/addons/glass-coating.png', alt: 'Hydrophobic glass coating',
                   desc: { mobile: 'Rain beads off at speed. No more squinting through a smeared windshield on I-5. Visibility up, wiper use down.', desktop: 'Improves rain visibility' } },
               ].map((addon, i) => (
-                <div key={i} className="p-6 bg-[#191a1a] border border-white/5 hover:border-[#0066FF]/30 transition-all group flex flex-col gap-4 relative overflow-hidden">
+                <div key={i} className="p-6 bg-[#191a1a] border border-white/5 hover:border-[#C9A962]/30 transition-all group flex flex-col gap-4 relative overflow-hidden">
                   <div className="absolute inset-0 z-0 opacity-20 transition-transform duration-700 group-hover:scale-110">
                     <img src={addon.image} alt={addon.alt || addon.title} className="w-full h-full object-cover" />
                   </div>
                   <div className="absolute inset-0 bg-[#0e0e0e]/40 z-1" />
                   
-                  <div className="relative z-10 w-12 h-12 bg-[#0e0e0e] flex items-center justify-center border border-white/10 group-hover:bg-[#0066FF]/10 group-hover:border-[#0066FF]/20 transition-all">
+                  <div className="relative z-10 w-12 h-12 bg-[#0e0e0e] flex items-center justify-center border border-white/10 group-hover:bg-[#C9A962]/10 group-hover:border-[#C9A962]/20 transition-all">
                     {addon.icon}
                   </div>
                   <div className="relative z-10">
@@ -269,7 +273,7 @@ const Ceramic = () => {
                       <span className="lg:hidden">{addon.desc.mobile}</span>
                       <span className="hidden lg:inline">{addon.desc.desktop}</span>
                     </p>
-                    <span className="text-[#0066FF] font-display font-black text-sm italic">{addon.price}</span>
+                    <span className="text-[#C9A962] font-display font-black text-sm italic">{addon.price}</span>
                   </div>
                 </div>
               ))}
@@ -279,12 +283,12 @@ const Ceramic = () => {
 
         {/* TECH PROFILE (ACCORDIONS) */}
         <section className="py-20 px-6 lg:px-12 bg-[#131313] relative overflow-hidden">
-           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0066FF]/5 blur-[120px] rounded-full"></div>
+           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C9A962]/5 blur-[120px] rounded-full"></div>
            
            <div className="max-w-4xl mx-auto relative z-10">
               <div className="text-center mb-16">
-                <span className="text-[10px] font-bold text-[#0066FF] tracking-[0.5em] uppercase block mb-4 italic">The Investment</span>
-                <h2 className="font-display text-5xl md:text-8xl font-black uppercase tracking-tighter text-white italic leading-none">THE <span className="text-[#0066FF]">STANDARD</span></h2>
+                <span className="text-[10px] font-bold text-[#C9A962] tracking-[0.5em] uppercase block mb-4 italic">The Investment</span>
+                <h2 className="font-display text-5xl md:text-8xl font-black uppercase tracking-tighter text-white italic leading-none">THE <span className="text-[#C9A962]">STANDARD</span></h2>
               </div>
               
               <div className="space-y-4">
@@ -320,19 +324,19 @@ const Ceramic = () => {
                   <div 
                     key={spec.id} 
                     className={`p-6 bg-[#191a1a] border-l-4 transition-all duration-500 cursor-pointer ${
-                      openAccordion === spec.id ? 'border-[#0066FF] shadow-[0_0_40px_rgba(0,102,255,0.05)]' : 'border-white/10 opacity-70 hover:opacity-100'
+                      openAccordion === spec.id ? 'border-[#C9A962] shadow-[0_0_40px_rgba(0,102,255,0.05)]' : 'border-white/10 opacity-70 hover:opacity-100'
                     }`}
                     onClick={() => toggleAccordion(spec.id)}
                   >
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-4">
-                        <div className={`${openAccordion === spec.id ? 'text-[#0066FF]' : 'text-white/40'}`}>{spec.icon}</div>
+                        <div className={`${openAccordion === spec.id ? 'text-[#C9A962]' : 'text-white/40'}`}>{spec.icon}</div>
                         <span className="font-display font-black uppercase text-sm tracking-[0.2em]">{spec.title}</span>
                       </div>
-                      <ChevronDown className={`transition-transform duration-500 ${openAccordion === spec.id ? 'rotate-180 text-[#0066FF]' : 'text-white/20'}`} />
+                      <ChevronDown className={`transition-transform duration-500 ${openAccordion === spec.id ? 'rotate-180 text-[#C9A962]' : 'text-white/20'}`} />
                     </div>
                     <div className={`transition-all duration-500 overflow-hidden ${openAccordion === spec.id ? 'max-h-40 opacity-100 mt-6' : 'max-h-0 opacity-0'}`}>
-                      <p className="font-mono text-xs text-[#adaaaa] leading-relaxed uppercase tracking-widest bg-[#0e0e0e] p-4 border border-white/5 border-l-2 border-l-[#0066FF]">
+                      <p className="font-mono text-xs text-[#adaaaa] leading-relaxed uppercase tracking-widest bg-[#0e0e0e] p-4 border border-white/5 border-l-2 border-l-[#C9A962]">
                         <span className="lg:hidden">{spec.desc.mobile}</span>
                         <span className="hidden lg:inline">{spec.desc.desktop}</span>
                       </p>
@@ -346,13 +350,13 @@ const Ceramic = () => {
         {/* APPLICATION PROCESS TIMELINE */}
         <section className="py-20 px-6 lg:px-12 bg-[#0e0e0e]">
           <div className="max-w-4xl mx-auto">
-            <div className="mb-16 border-l-4 border-[#0066FF] pl-8">
-              <h2 className="font-display text-4xl lg:text-7xl font-black uppercase tracking-tighter">THE <span className="text-[#0066FF]">PROCESS</span></h2>
+            <div className="mb-16 border-l-4 border-[#C9A962] pl-8">
+              <h2 className="font-display text-4xl lg:text-7xl font-black uppercase tracking-tighter">THE <span className="text-[#C9A962]">PROCESS</span></h2>
               <p className="font-mono text-xs font-bold text-[#adaaaa] uppercase tracking-[0.3em] mt-3">The Barber's Standard</p>
             </div>
             
             <div className="relative space-y-16 ml-6 py-4">
-              <div className="absolute left-[7px] top-6 bottom-6 w-0.5 border-l-2 border-dashed border-[#0066FF]/30"></div>
+              <div className="absolute left-[7px] top-6 bottom-6 w-0.5 border-l-2 border-dashed border-[#C9A962]/30"></div>
               
               {[
                 { step: '01', title: 'Wash & Decontaminate', time: '1-2H', 
@@ -366,12 +370,12 @@ const Ceramic = () => {
               ].map((item, i) => (
                 <div key={i} className="relative flex gap-8 group">
                   <div className={`absolute -left-[14px] top-1.5 w-6 h-6 rounded-none border-4 border-[#0e0e0e] z-10 transition-all duration-500 ${
-                    i === 0 ? 'bg-[#0066FF] shadow-[0_0_20px_#0066FF]' : 'bg-[#202020] group-hover:bg-[#0066FF]/50'
+                    i === 0 ? 'bg-[#C9A962] shadow-[0_0_20px_#C9A962]' : 'bg-[#202020] group-hover:bg-[#C9A962]/50'
                   }`}></div>
-                  <div className="flex-1 bg-[#131313] p-6 border border-white/5 group-hover:border-[#0066FF]/20 transition-all">
+                  <div className="flex-1 bg-[#131313] p-6 border border-white/5 group-hover:border-[#C9A962]/20 transition-all">
                     <div className="flex justify-between items-start mb-2">
-                       <h4 className={`font-display font-black uppercase text-lg tracking-widest ${i === 0 ? 'text-[#0066FF]' : 'text-white/90'}`}>{item.step} {item.title}</h4>
-                       <span className="font-mono text-[9px] bg-[#0066FF]/10 text-[#0066FF] px-2 py-1 uppercase font-bold tracking-widest">{item.time}</span>
+                       <h4 className={`font-display font-black uppercase text-lg tracking-widest ${i === 0 ? 'text-[#C9A962]' : 'text-white/90'}`}>{item.step} {item.title}</h4>
+                       <span className="font-mono text-[9px] bg-[#C9A962]/10 text-[#C9A962] px-2 py-1 uppercase font-bold tracking-widest">{item.time}</span>
                     </div>
                     <p className="font-mono text-xs text-[#adaaaa] leading-relaxed uppercase tracking-wider">{item.desc}</p>
                   </div>
@@ -384,15 +388,15 @@ const Ceramic = () => {
         {/* PERFORMANCE VS WAX TABLE */}
         <section className="py-20 px-6 lg:px-12 bg-[#191a1a]">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-display text-4xl lg:text-7xl font-black uppercase tracking-tighter text-center mb-4">THE <span className="text-[#0066FF]">UPGRADE</span></h2>
-            <p className="lg:hidden text-center font-mono text-[10px] text-[#0066FF] uppercase font-bold tracking-[0.2em] mb-12">Ceramic vs Wax Comparison</p>
+            <h2 className="font-display text-4xl lg:text-7xl font-black uppercase tracking-tighter text-center mb-4">THE <span className="text-[#C9A962]">UPGRADE</span></h2>
+            <p className="lg:hidden text-center font-mono text-[10px] text-[#C9A962] uppercase font-bold tracking-[0.2em] mb-12">Ceramic vs Wax Comparison</p>
             <div className="overflow-x-auto no-scrollbar">
               <div className="rounded-none border border-white/10 shadow-2xl min-w-[700px]">
                 <table className="w-full text-left text-sm border-collapse bg-[#131313]">
                   <thead className="bg-[#202020] font-mono font-black text-[10px] uppercase tracking-[0.3em]">
                     <tr>
                       <th className="p-6 border-b border-white/5">Armor Feature</th>
-                      <th className="p-6 border-b border-white/5 text-[#0066FF]">Nano Ceramic</th>
+                      <th className="p-6 border-b border-white/5 text-[#C9A962]">Nano Ceramic</th>
                       <th className="p-6 border-b border-white/5 text-[#adaaaa]">Standard Wax</th>
                     </tr>
                   </thead>
@@ -405,7 +409,7 @@ const Ceramic = () => {
                     ].map((row, i) => (
                       <tr key={i} className="hover:bg-white/[0.02] transition-colors">
                         <td className="p-6 font-display font-black text-xs uppercase tracking-widest border-r border-white/5">{row.feature}</td>
-                        <td className="p-6 text-[#0066FF] font-display font-black text-2xl italic tracking-tighter">{row.ceramic}</td>
+                        <td className="p-6 text-[#C9A962] font-display font-black text-2xl italic tracking-tighter">{row.ceramic}</td>
                         <td className="p-6 text-[#adaaaa]/60 font-mono text-xs tracking-widest">{row.wax}</td>
                       </tr>
                     ))}
@@ -417,7 +421,7 @@ const Ceramic = () => {
             <div className="mt-12 text-center lg:hidden">
               <Button 
                 onClick={() => openQuote(`Ceramic: ${currentPkg.name}`)}
-                className="bg-[#0066FF] text-white px-10 py-6 font-display font-black uppercase text-xs tracking-[0.2em] hover:bg-[#0052CC] transition-all rounded-none"
+                className="bg-[#C9A962] text-white px-10 py-6 font-display font-black uppercase text-xs tracking-[0.2em] hover:bg-[#A6884A] transition-all rounded-none"
               >
                 GET A QUOTE
               </Button>
@@ -427,17 +431,17 @@ const Ceramic = () => {
 
         {/* PPF + COATING BUNDLE SECTION */}
         <section className="py-20 px-6 lg:px-12 bg-gradient-to-b from-[#0e0e0e] to-[#131313]">
-           <div className="max-w-4xl mx-auto bg-black border border-[#0066FF]/20 p-8 lg:p-12 text-center relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-full h-1 bg-[#0066FF]" />
-              <span className="text-[10px] font-black text-[#0066FF] uppercase tracking-[0.4em] block mb-4 italic">The Master Pairing</span>
-              <h2 className="font-display text-4xl lg:text-7xl font-black uppercase tracking-tighter mb-6">PPF + <span className="text-[#0066FF]">COATING</span></h2>
+           <div className="max-w-4xl mx-auto bg-black border border-[#C9A962]/20 p-8 lg:p-12 text-center relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-full h-1 bg-[#C9A962]" />
+              <span className="text-[10px] font-black text-[#C9A962] uppercase tracking-[0.4em] block mb-4 italic">The Master Pairing</span>
+              <h2 className="font-display text-4xl lg:text-7xl font-black uppercase tracking-tighter mb-6">PPF + <span className="text-[#C9A962]">COATING</span></h2>
               <p className="text-[#adaaaa] font-mono text-sm leading-relaxed mb-8 uppercase tracking-widest italic">
                 Bundle <span className="text-white font-bold">STEALTH PPF</span> + <span className="text-white font-bold">NANO CERAMIC</span> for absolute rock chip protection and a permanent mirror gloss.
               </p>
               <Button 
                 onClick={() => navigate('/services/protective/ppf')}
                 variant="outline" 
-                className="w-full sm:w-auto border-[#0066FF] text-[#0066FF] hover:bg-[#0066FF] hover:text-white px-12 py-8 font-display font-black uppercase tracking-[0.2em] transition-all rounded-none"
+                className="w-full sm:w-auto border-[#C9A962] text-[#C9A962] hover:bg-[#C9A962] hover:text-white px-12 py-8 font-display font-black uppercase tracking-[0.2em] transition-all rounded-none"
               >
                 THE COMBO →
               </Button>
@@ -447,7 +451,7 @@ const Ceramic = () => {
         {/* FAQ SECTION */}
         <section className="py-20 px-6 lg:px-12 bg-[#0e0e0e]">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-display text-4xl lg:text-7xl font-black uppercase tracking-tighter mb-12 border-l-4 border-[#0066FF] pl-8 leading-none italic">COMMON <span className="text-[#0066FF]">QUESTIONS</span></h2>
+            <h2 className="font-display text-4xl lg:text-7xl font-black uppercase tracking-tighter mb-12 border-l-4 border-[#C9A962] pl-8 leading-none italic">COMMON <span className="text-[#C9A962]">QUESTIONS</span></h2>
             <div className="divide-y divide-white/10 border-t border-white/10">
               {[
                 { q: 'How long does the application take?', a: { mobile: 'Typically 1–2 days depending on the correction stage and vehicle size. We come to you — just tell us where to show up.', desktop: 'Typically 1-2 days. Most of that time is spent on paint correction — getting the surface flawless before the coating goes on. The coating itself cures within 24–48 hours.' } },
@@ -456,11 +460,11 @@ const Ceramic = () => {
               ].map((faq, i) => (
                 <div key={i} className="py-6 group cursor-pointer overflow-hidden">
                   <div className="flex justify-between items-center" onClick={() => toggleAccordion(`faq-${i}`)}>
-                    <span className="font-display font-black text-sm lg:text-2xl uppercase tracking-tight text-white/90 group-hover:text-[#0066FF] transition-colors italic leading-none">{faq.q}</span>
-                    <ChevronDown className={`transition-all duration-300 ${openAccordion === `faq-${i}` ? 'rotate-180 text-[#0066FF]' : 'text-[#adaaaa]'}`} />
+                    <span className="font-display font-black text-sm lg:text-2xl uppercase tracking-tight text-white/90 group-hover:text-[#C9A962] transition-colors italic leading-none">{faq.q}</span>
+                    <ChevronDown className={`transition-all duration-300 ${openAccordion === `faq-${i}` ? 'rotate-180 text-[#C9A962]' : 'text-[#adaaaa]'}`} />
                   </div>
                   <div className={`transition-all duration-500 overflow-hidden ${openAccordion === `faq-${i}` ? 'max-height-40 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
-                    <p className="font-mono text-[11px] lg:text-xs text-[#adaaaa] leading-relaxed uppercase tracking-widest bg-[#131313] p-6 border-l-2 border-[#0066FF]">
+                    <p className="font-mono text-[11px] lg:text-xs text-[#adaaaa] leading-relaxed uppercase tracking-widest bg-[#131313] p-6 border-l-2 border-[#C9A962]">
                       <span className="lg:hidden">{faq.a.mobile}</span>
                       <span className="hidden lg:inline">{faq.a.desktop}</span>
                     </p>
@@ -475,17 +479,17 @@ const Ceramic = () => {
       </main>
 
       {/* STICKY BOTTOM CONVERSION BAR (MOBILE) */}
-      <div className="lg:hidden fixed bottom-0 left-0 w-full bg-[#0e0e0e]/95 backdrop-blur-xl z-50 flex items-center justify-between px-6 pb-8 pt-4 border-t border-[#0066FF]/20 safe-area-bottom">
+      <div className="lg:hidden fixed bottom-0 left-0 w-full bg-[#0e0e0e]/95 backdrop-blur-xl z-50 flex items-center justify-between px-6 pb-8 pt-4 border-t border-[#C9A962]/20 safe-area-bottom">
         <div className="flex flex-col">
           <span className="text-[10px] font-bold text-[#adaaaa] uppercase tracking-[0.4em] mb-1">Selected Plan</span>
           <div className="flex items-baseline gap-1">
             <span className="text-3xl font-display font-black text-white tracking-tighter italic">${currentPkg.price}</span>
-            <span className="text-[10px] font-black text-[#0066FF] font-display tracking-widest uppercase bg-[#0066FF]/10 px-2 ml-1">{selectedPackage}</span>
+            <span className="text-[10px] font-black text-[#C9A962] font-display tracking-widest uppercase bg-[#C9A962]/10 px-2 ml-1">{selectedPackage}</span>
           </div>
         </div>
         <button 
           onClick={() => openQuote(`Ceramic: ${currentPkg.name}`)}
-          className="bg-[#0066FF] px-8 py-4 rounded-none text-white font-display font-black uppercase text-xs tracking-[0.3em] active:scale-90 transition-all shadow-[0_0_20px_rgba(0,102,255,0.3)]"
+          className="bg-[#C9A962] px-8 py-4 rounded-none text-white font-display font-black uppercase text-xs tracking-[0.3em] active:scale-90 transition-all shadow-[0_0_20px_rgba(0,102,255,0.3)]"
         >
           GET THE CUT
         </button>
@@ -495,7 +499,7 @@ const Ceramic = () => {
       <div className="hidden lg:flex fixed bottom-8 right-8 z-50">
          <Button 
           onClick={() => openQuote(`Ceramic: ${currentPkg.name}`)}
-          className="bg-[#0066FF] text-white p-12 font-display font-black italic text-2xl uppercase tracking-[0.2em] rounded-none hover:bg-[#0052CC] shadow-[0_20px_50px_rgba(0,102,255,0.4)] transition-all transform hover:scale-110"
+          className="bg-[#C9A962] text-white p-12 font-display font-black italic text-2xl uppercase tracking-[0.2em] rounded-none hover:bg-[#A6884A] shadow-[0_20px_50px_rgba(0,102,255,0.4)] transition-all transform hover:scale-110"
          >
            RESERVE YOUR CUT <ArrowRight className="ml-4 w-8 h-8" />
          </Button>

@@ -79,16 +79,16 @@ export default function PPF() {
   const currentPkg = packages[selectedPackage];
 
   return (
-    <div className="min-h-screen bg-[#0e0e0e] text-[#adaaaa] font-sans pt-16 pb-32 overflow-x-hidden selection:bg-[#0066FF] selection:text-white">
+    <div className="min-h-screen bg-[#0e0e0e] text-[#adaaaa] font-sans pt-16 pb-32 overflow-x-hidden selection:bg-[#C9A962] selection:text-white">
       
       {/* HERO SECTION */}
       <section className="px-6 py-12 lg:py-16 relative overflow-hidden bg-[#0e0e0e] border-b border-white/5">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")" }}></div>
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
           <div className="lg:w-1/2">
-            <span className="text-[#0066FF] font-display font-bold uppercase tracking-[0.2em] text-[10px] lg:text-xs italic">Protect Your Investment</span>
+            <span className="text-[#C9A962] font-display font-bold uppercase tracking-[0.2em] text-[10px] lg:text-xs italic">Protect Your Investment</span>
             <h2 className="mt-4 text-5xl md:text-7xl lg:text-9xl font-display font-black leading-[0.8] uppercase tracking-tighter italic text-white drop-shadow-lg">
-              <span className="lg:hidden text-[#0066FF]">P.P.F.</span><br className="lg:hidden"/>THE MASTER<br/><span className="text-[#0066FF]">STANDARD</span>
+              <span className="lg:hidden text-[#C9A962]">P.P.F.</span><br className="lg:hidden"/>THE MASTER<br/><span className="text-[#C9A962]">STANDARD</span>
             </h2>
             <p className="mt-6 text-[#adaaaa] max-w-md font-mono text-xs lg:text-sm uppercase tracking-widest leading-relaxed">
               <span className="lg:hidden text-white/90">One rock chip at highway speed and you're looking at a $800 body shop visit — if they can even match the paint. PPF stops it before it starts. Professionally applied, virtually invisible, and if it ever takes a hit — just peel it off and replace it. Your paint underneath stays factory perfect.</span>
@@ -103,7 +103,7 @@ export default function PPF() {
                 "PEEL & REPLACE IF DAMAGED"
               ].map(trust => (
                 <div key={trust} className="flex items-center gap-2 px-1">
-                  <span className="text-[#0066FF] text-xs">✓</span>
+                  <span className="text-[#C9A962] text-xs">✓</span>
                   <span className="text-[8px] font-mono font-black tracking-widest text-[#adaaaa] leading-tight uppercase">{trust}</span>
                 </div>
               ))}
@@ -137,9 +137,9 @@ export default function PPF() {
             </div>
 
             {/* Mobile-only "Even Easier to Clean" Section */}
-            <div className="lg:hidden mt-8 bg-[#131313] p-6 border border-[#0066FF]/20 shadow-[0_0_20px_rgba(0,102,255,0.05)]">
+            <div className="lg:hidden mt-8 bg-[#131313] p-6 border border-[#C9A962]/20 shadow-[0_0_20px_rgba(0,102,255,0.05)]">
               <h3 className="text-2xl font-display font-black uppercase italic text-white mb-1 leading-none">THE HYBRID CUT</h3>
-              <p className="text-[10px] font-mono font-bold text-[#0066FF] uppercase tracking-[0.2em] mb-3">PPF + CERAMIC COATING</p>
+              <p className="text-[10px] font-mono font-bold text-[#C9A962] uppercase tracking-[0.2em] mb-3">PPF + CERAMIC COATING</p>
               <p className="text-[#adaaaa] font-mono text-[9px] uppercase tracking-widest leading-relaxed">
                 PPF alone is great. PPF + ceramic coating is next level. The coating bonds to the film — water beads off, dirt slides off, and your car stays cleaner longer between washes. Ask us about the combo package.
               </p>
@@ -152,7 +152,7 @@ export default function PPF() {
       <section className="bg-[#0e0e0e] border-b border-white/5 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-40 pb-0">
           <p className="text-center font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-6 text-[#adaaaa] italic">The Coverage Map</p>
-          <h2 className="text-center font-display text-5xl lg:text-9xl font-black uppercase tracking-tighter text-white mb-10 leading-[0.8]">SELECT YOUR <span className="text-[#0066FF]">SHIELD</span></h2>
+          <h2 className="text-center font-display text-5xl lg:text-9xl font-black uppercase tracking-tighter text-white mb-10 leading-[0.8]">SELECT YOUR <span className="text-[#C9A962]">SHIELD</span></h2>
 
           {/* ── TAB STRIP ── */}
           <div className="flex overflow-x-auto no-scrollbar gap-2 pb-2 mb-0 pt-4">
@@ -165,12 +165,12 @@ export default function PPF() {
                   onClick={() => setSelectedPackage(pkgKey)}
                   className={`relative flex-shrink-0 px-5 py-3 font-display font-black text-sm lg:text-lg uppercase tracking-[0.1em] transition-all duration-200 border-b-4 ${
                     isActive
-                      ? 'border-[#0066FF] text-[#0066FF] bg-[#0066FF]/5'
+                      ? 'border-[#C9A962] text-[#C9A962] bg-[#C9A962]/5'
                       : 'border-transparent text-[#adaaaa] hover:text-white hover:border-white/20'
                   }`}
                 >
                   {pkgKey === 'fullFront' && (
-                    <span className="absolute -top-2 right-1 text-[8px] bg-[#0066FF] text-white px-1.5 font-black uppercase tracking-wider">★ Standard</span>
+                    <span className="absolute -top-2 right-1 text-[8px] bg-[#C9A962] text-white px-1.5 font-black uppercase tracking-wider">★ Standard</span>
                   )}
                   {pkg.name}
                 </button>
@@ -271,8 +271,8 @@ export default function PPF() {
           }} />
 
           {/* Coverage label badge */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#0e0e0e]/80 backdrop-blur-sm border border-[#0066FF]/30 px-5 py-2 z-30">
-            <span className="font-display font-black text-[#0066FF] text-xl uppercase tracking-[0.15em] italic">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#0e0e0e]/80 backdrop-blur-sm border border-[#C9A962]/30 px-5 py-2 z-30">
+            <span className="font-display font-black text-[#C9A962] text-xl uppercase tracking-[0.15em] italic">
               {currentPkg.name} — {currentPkg.price !== 'GET QUOTE' ? `$${currentPkg.price}` : 'THE CUT'}
             </span>
           </div>
@@ -303,7 +303,7 @@ export default function PPF() {
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mb-8">
                 {currentPkg.features.map((feature, i) => (
                   <li key={i} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 shrink-0 text-[#0066FF]" />
+                    <CheckCircle2 className="w-4 h-4 shrink-0 text-[#C9A962]" />
                     <span className="font-mono text-[10px] lg:text-xs text-[#e5e2e1] uppercase tracking-wider">{feature}</span>
                   </li>
                 ))}
@@ -317,7 +317,7 @@ export default function PPF() {
                 </div>
                 <button
                   onClick={() => openQuote(`PPF: ${currentPkg.name}`)}
-                  className="w-full sm:w-auto bg-[#0066FF] text-white font-display font-black uppercase tracking-[0.2em] text-sm px-12 py-5 hover:bg-[#0052CC] active:scale-95 transition-all shadow-[0_0_24px_rgba(0,102,255,0.3)] rounded-none"
+                  className="w-full sm:w-auto bg-[#C9A962] text-white font-display font-black uppercase tracking-[0.2em] text-sm px-12 py-5 hover:bg-[#A6884A] active:scale-95 transition-all shadow-[0_0_24px_rgba(0,102,255,0.3)] rounded-none"
                 >
                   RESERVE THE CUT →
                 </button>
@@ -331,8 +331,8 @@ export default function PPF() {
       <section className="px-6 py-12 lg:py-16 bg-[#0e0e0e]" id="funnel" ref={funnelRef}>
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-6xl md:text-8xl lg:text-[10rem] font-display font-black uppercase tracking-tighter italic text-white leading-[0.7]">NOT SURE? <br/><span className="text-[#0066FF]">WE'LL HELP.</span></h2>
-            <div className="h-1 w-24 bg-[#0066FF] mx-auto mt-12 shadow-[0_0_20px_#0066FF]"></div>
+            <h2 className="text-6xl md:text-8xl lg:text-[10rem] font-display font-black uppercase tracking-tighter italic text-white leading-[0.7]">NOT SURE? <br/><span className="text-[#C9A962]">WE'LL HELP.</span></h2>
+            <div className="h-1 w-24 bg-[#C9A962] mx-auto mt-12 shadow-[0_0_20px_#C9A962]"></div>
             <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-[#adaaaa] italic">
               Answer 2 questions to find your coverage tier.
             </p>
@@ -342,17 +342,17 @@ export default function PPF() {
             
             {/* Step 1 */}
             <div className="space-y-4">
-              <p className="font-display font-bold uppercase text-lg tracking-[0.2em] text-[#0066FF] italic">01 — HOW DO YOU DRIVE?</p>
+              <p className="font-display font-bold uppercase text-lg tracking-[0.2em] text-[#C9A962] italic">01 — HOW DO YOU DRIVE?</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <button 
                   onClick={() => setUsage('city')}
-                  className={`py-8 px-6 border-2 transition-all font-display text-2xl font-black uppercase italic tracking-widest flex items-center justify-center rounded-none ${usage === 'city' ? 'border-[#0066FF] bg-[#0066FF]/10 text-[#0066FF]' : 'border-[#262626] bg-[#131313] hover:border-[#484847] text-white hover:bg-[#1a1a1a]'}`}
+                  className={`py-8 px-6 border-2 transition-all font-display text-2xl font-black uppercase italic tracking-widest flex items-center justify-center rounded-none ${usage === 'city' ? 'border-[#C9A962] bg-[#C9A962]/10 text-[#C9A962]' : 'border-[#262626] bg-[#131313] hover:border-[#484847] text-white hover:bg-[#1a1a1a]'}`}
                 >
                   City Standard
                 </button>
                 <button 
                   onClick={() => setUsage('highway')}
-                  className={`py-8 px-6 border-2 transition-all font-display text-2xl font-black uppercase italic tracking-widest flex items-center justify-center rounded-none ${usage === 'highway' ? 'border-[#0066FF] bg-[#0066FF]/10 text-[#0066FF]' : 'border-[#262626] bg-[#131313] hover:border-[#484847] text-white hover:bg-[#1a1a1a]'}`}
+                  className={`py-8 px-6 border-2 transition-all font-display text-2xl font-black uppercase italic tracking-widest flex items-center justify-center rounded-none ${usage === 'highway' ? 'border-[#C9A962] bg-[#C9A962]/10 text-[#C9A962]' : 'border-[#262626] bg-[#131313] hover:border-[#484847] text-white hover:bg-[#1a1a1a]'}`}
                 >
                   Highway Commuter
                 </button>
@@ -361,21 +361,21 @@ export default function PPF() {
             
             {/* Step 2 */}
             <div className="space-y-4">
-              <p className="font-display font-bold uppercase text-lg tracking-[0.2em] text-[#0066FF] italic">02 — WHAT'S THE MAIN CONCERN?</p>
+              <p className="font-display font-bold uppercase text-lg tracking-[0.2em] text-[#C9A962] italic">02 — WHAT'S THE MAIN CONCERN?</p>
               <div className="grid grid-cols-1 gap-4">
                 <button 
                   onClick={() => setThreat('rocks')}
-                  className={`flex justify-between items-center p-6 lg:p-8 border-2 transition-all group rounded-none ${threat === 'rocks' ? 'bg-[#0066FF]/10 border-[#0066FF]' : 'bg-[#131313] border-[#262626] hover:bg-white/5'}`}
+                  className={`flex justify-between items-center p-6 lg:p-8 border-2 transition-all group rounded-none ${threat === 'rocks' ? 'bg-[#C9A962]/10 border-[#C9A962]' : 'bg-[#131313] border-[#262626] hover:bg-white/5'}`}
                 >
-                  <span className={`font-display text-2xl font-black uppercase italic tracking-widest ${threat === 'rocks' ? 'text-[#0066FF]' : 'text-white'}`}>Rock Chips & Debris</span>
-                  <ArrowRight className={`w-6 h-6 transition-opacity ${threat === 'rocks' ? 'opacity-100 text-[#0066FF]' : 'opacity-0 group-hover:opacity-50 text-white'}`} />
+                  <span className={`font-display text-2xl font-black uppercase italic tracking-widest ${threat === 'rocks' ? 'text-[#C9A962]' : 'text-white'}`}>Rock Chips & Debris</span>
+                  <ArrowRight className={`w-6 h-6 transition-opacity ${threat === 'rocks' ? 'opacity-100 text-[#C9A962]' : 'opacity-0 group-hover:opacity-50 text-white'}`} />
                 </button>
                 <button 
                   onClick={() => setThreat('bugs')}
-                  className={`flex justify-between items-center p-6 lg:p-8 border-2 transition-all group rounded-none ${threat === 'bugs' ? 'bg-[#0066FF]/10 border-[#0066FF]' : 'bg-[#131313] border-[#262626] hover:bg-white/5'}`}
+                  className={`flex justify-between items-center p-6 lg:p-8 border-2 transition-all group rounded-none ${threat === 'bugs' ? 'bg-[#C9A962]/10 border-[#C9A962]' : 'bg-[#131313] border-[#262626] hover:bg-white/5'}`}
                 >
-                  <span className={`font-display text-2xl font-black uppercase italic tracking-widest ${threat === 'bugs' ? 'text-[#0066FF]' : 'text-white'}`}>Environmental Fallout</span>
-                  <ArrowRight className={`w-6 h-6 transition-opacity ${threat === 'bugs' ? 'opacity-100 text-[#0066FF]' : 'opacity-0 group-hover:opacity-50 text-white'}`} />
+                  <span className={`font-display text-2xl font-black uppercase italic tracking-widest ${threat === 'bugs' ? 'text-[#C9A962]' : 'text-white'}`}>Environmental Fallout</span>
+                  <ArrowRight className={`w-6 h-6 transition-opacity ${threat === 'bugs' ? 'opacity-100 text-[#C9A962]' : 'opacity-0 group-hover:opacity-50 text-white'}`} />
                 </button>
               </div>
             </div>
@@ -390,22 +390,22 @@ export default function PPF() {
         <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-60">
           <div className="flex flex-col items-center hover:opacity-100 transition-opacity">
             <span className="text-3xl lg:text-5xl font-display font-black italic tracking-tighter text-white">STEK</span>
-            <span className="font-mono text-[8px] lg:text-[10px] font-bold uppercase tracking-widest mt-1 text-[#0066FF]">Authorized Dealer</span>
+            <span className="font-mono text-[8px] lg:text-[10px] font-bold uppercase tracking-widest mt-1 text-[#C9A962]">Authorized Dealer</span>
           </div>
           <div className="flex flex-col items-center hover:opacity-100 transition-opacity">
             <span className="text-3xl lg:text-5xl font-display font-black tracking-tight text-white">XPEL</span>
-            <span className="font-mono text-[8px] lg:text-[10px] font-bold uppercase tracking-widest mt-1 text-[#0066FF]">Ultimate Plus</span>
+            <span className="font-mono text-[8px] lg:text-[10px] font-bold uppercase tracking-widest mt-1 text-[#C9A962]">Ultimate Plus</span>
           </div>
           <div className="flex flex-col items-center hover:opacity-100 transition-opacity">
             <span className="text-3xl lg:text-5xl font-display font-black italic tracking-tighter text-white">3M</span>
-            <span className="font-mono text-[8px] lg:text-[10px] font-bold uppercase tracking-widest mt-1 text-[#0066FF]">Pro Series</span>
+            <span className="font-mono text-[8px] lg:text-[10px] font-bold uppercase tracking-widest mt-1 text-[#C9A962]">Pro Series</span>
           </div>
         </div>
       </section>
 
-      <div className="fixed bottom-0 w-full z-[60] bg-black/95 backdrop-blur-2xl border-t border-[#0066FF]/20 px-6 py-4 flex items-center justify-between shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
+      <div className="fixed bottom-0 w-full z-[60] bg-black/95 backdrop-blur-2xl border-t border-[#C9A962]/20 px-6 py-4 flex items-center justify-between shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
         <div className="flex flex-col max-w-[50%]">
-          <span className="lg:hidden text-[8px] text-[#0066FF] uppercase font-bold tracking-[0.3em] font-mono mb-1 animate-pulse">Master Application. Seattle Standard.</span>
+          <span className="lg:hidden text-[8px] text-[#C9A962] uppercase font-bold tracking-[0.3em] font-mono mb-1 animate-pulse">Master Application. Seattle Standard.</span>
           <span className="font-mono text-[8px] lg:text-[10px] font-bold uppercase tracking-[0.3em] text-[#adaaaa] mb-1 italic">Selected Cut</span>
           <span className="font-display text-2xl lg:text-4xl font-black italic uppercase tracking-tighter text-white truncate leading-none">
             {currentPkg.name}
@@ -413,7 +413,7 @@ export default function PPF() {
         </div>
         <button
           onClick={() => openQuote(`PPF: ${currentPkg.name} (${currentPkg.price})`)}
-          className="px-8 lg:px-12 py-4 lg:py-6 font-display font-black uppercase italic tracking-[0.1em] text-sm lg:text-xl rounded-none transition-all bg-[#0066FF] text-white hover:bg-[#0052CC] shadow-[0_0_20px_rgba(0,102,255,0.4)]"
+          className="px-8 lg:px-12 py-4 lg:py-6 font-display font-black uppercase italic tracking-[0.1em] text-sm lg:text-xl rounded-none transition-all bg-[#C9A962] text-white hover:bg-[#A6884A] shadow-[0_0_20px_rgba(0,102,255,0.4)]"
         >
           <span className="lg:hidden">GET QUOTE →</span>
           <span className="hidden lg:inline">

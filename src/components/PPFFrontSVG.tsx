@@ -8,7 +8,7 @@ export interface PPFFrontSVGProps {
 }
 
 export default function PPFFrontSVG({ currentPackage, isZoneActive, handleZoneClick, setHoveredZone }: PPFFrontSVGProps) {
-  const activeClass = 'fill-[rgba(57,255,20,0.25)] stroke-[#0066FF] stroke-[2.5]';
+  const activeClass = 'fill-[rgba(57,255,20,0.25)] stroke-[#C9A962] stroke-[2.5]';
   const inactiveClass = 'fill-transparent stroke-[#c6c6c6] stroke-opacity-[0.15]';
 
   const getPathClass = (zoneId: string) => {
