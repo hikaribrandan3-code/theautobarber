@@ -172,8 +172,8 @@ const Index = () => {
             </h1>
             
             <div className="mt-8 flex flex-col items-center gap-6">
-              <p className="text-[#6B7280] text-[12px] md:text-[14px] font-black uppercase tracking-[0.4em]">
-                ★ 4.9/5 — 165 Google Reviews • Seattle's Trusted Detailer
+              <p className="text-white text-[12px] md:text-[14px] font-black uppercase tracking-[0.4em]">
+                <span className="text-[#C9A962] text-lg">★★★★★</span> 4.9/5 — <span className="text-[#C9A962] font-black">165 Google Reviews</span> • Seattle's Trusted Detailer
               </p>
               
               {/* Floating Testimonial Space */}
@@ -211,59 +211,63 @@ const Index = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 text-center lg:text-left">
             <h2 className="text-5xl md:text-7xl font-black uppercase leading-none tracking-tighter mb-4 italic">SERVICES</h2>
-            <p className="text-[#6B7280] text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em]">Professional protection for vehicles you value</p>
+            <p className="text-white text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em]">Professional protection for vehicles you value</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="group relative border border-white/10 p-10 hover:border-white/30 transition-colors flex flex-col justify-between overflow-hidden bg-black min-h-[300px]">
               <div className="absolute inset-0 z-0">
-                <img src="/images/assets/interior_detailing_focus_1776187301149.png" alt="Auto Detailing" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
+                <img src="/images/assets/interior_detailing_focus_1776187301149.png" alt="Auto Detailing" className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
               </div>
               <div className="relative z-10 flex flex-col h-full justify-between">
                 <div>
                   <h3 className="text-2xl font-black uppercase tracking-widest mb-4">AUTO DETAILING</h3>
-                  <p className="text-white text-sm leading-relaxed mb-6 font-medium">Interior and exterior restorations performed to the Master Craftsman standard.</p>
+                  <p className="text-white text-sm leading-relaxed mb-3 font-medium">Interior and exterior restorations performed to the highest standard. We treat every vehicle like it's our own.</p>
+                  <p className="hidden lg:block text-white/60 text-xs leading-relaxed">Full vacuum, steam clean, leather conditioning, clay bar, hand wash, and paint decontamination. From $199.</p>
                 </div>
-                <button onClick={() => openQuote('Auto Detailing')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start">Book Service →</button>
+                <button onClick={() => openQuote('Auto Detailing')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start mt-6">Book Service →</button>
               </div>
             </div>
             <div className="group relative border border-white/10 p-10 hover:border-white/30 transition-colors flex flex-col justify-between overflow-hidden bg-black min-h-[300px]">
               <div className="absolute inset-0 z-0">
-                <img src="/images/assets/exterior_paint_gloss_1776187353898.png" alt="Paint Protection" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
+                <img src="/images/assets/exterior_paint_gloss_1776187353898.png" alt="Paint Protection" className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
               </div>
               <div className="relative z-10 flex flex-col h-full justify-between">
                 <div>
                   <h3 className="text-2xl font-black uppercase tracking-widest mb-4">PAINT PROTECTION</h3>
-                  <p className="text-white text-sm leading-relaxed mb-6 font-medium">Defend your clear coat and preserve its showroom finish.</p>
+                  <p className="text-white text-sm leading-relaxed mb-3 font-medium">Clear bra and PPF film application that defends your paint from rock chips, road debris, and UV damage.</p>
+                  <p className="hidden lg:block text-white/60 text-xs leading-relaxed">Self-healing film. Xpel, STEK & 3M certified. 10-year warranty. Custom quote for every vehicle.</p>
                 </div>
-                <button onClick={() => openQuote('PPF')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start">Book Service →</button>
+                <button onClick={() => openQuote('PPF')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start mt-6">Book Service →</button>
               </div>
             </div>
             <div className="group relative border border-white/10 p-10 hover:border-white/30 transition-colors flex flex-col justify-between overflow-hidden bg-black min-h-[300px]">
               <div className="absolute inset-0 z-0">
-                <img src="/images/assets/window_tint_luxury_1776189700411.png" alt="Window Tint" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
+                <img src="/images/assets/window_tint_luxury_1776189700411.png" alt="Window Tint" className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
               </div>
               <div className="relative z-10 flex flex-col h-full justify-between">
                 <div>
                   <h3 className="text-2xl font-black uppercase tracking-widest mb-4">WINDOW TINT</h3>
-                  <p className="text-white text-sm leading-relaxed mb-6 font-medium">Privacy, safety, and 99% UV heat rejection precision applied.</p>
+                  <p className="text-white text-sm leading-relaxed mb-3 font-medium">99% UV rejection. Precision-cut carbon or ceramic film for privacy, heat control, and a factory look.</p>
+                  <p className="hidden lg:block text-white/60 text-xs leading-relaxed">No-peel guarantee. Computer-cut to your exact vehicle. Significant heat and glare reduction year-round.</p>
                 </div>
-                <button onClick={() => openQuote('Window Tint')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start">Book Service →</button>
+                <button onClick={() => openQuote('Window Tint')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start mt-6">Book Service →</button>
               </div>
             </div>
             <div className="group relative border border-white/10 p-10 hover:border-white/30 transition-colors flex flex-col justify-between overflow-hidden bg-black min-h-[300px]">
               <div className="absolute inset-0 z-0">
-                <img src="/images/assets/ceramic_water_beading_1776189745679.png" alt="Ceramic Coatings" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
+                <img src="/images/assets/ceramic_water_beading_1776189745679.png" alt="Ceramic Coatings" className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
               </div>
               <div className="relative z-10 flex flex-col h-full justify-between">
                 <div>
                   <h3 className="text-2xl font-black uppercase tracking-widest mb-4">CERAMIC COATINGS</h3>
-                  <p className="text-white text-sm leading-relaxed mb-6 font-medium">Years of permanent, extreme hydrophobic protection and deep gloss.</p>
+                  <p className="text-white text-sm leading-relaxed mb-3 font-medium">Nano-bond ceramic protection. Extreme hydrophobics, UV defense, and a deep gloss that lasts years.</p>
+                  <p className="hidden lg:block text-white/60 text-xs leading-relaxed">Multi-stage paint prep included. 3–5 year protection. Makes every wash effortless. From $600.</p>
                 </div>
-                <button onClick={() => openQuote('Ceramic Coating')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start">Book Service →</button>
+                <button onClick={() => openQuote('Ceramic Coating')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start mt-6">Book Service →</button>
               </div>
             </div>
           </div>
@@ -361,7 +365,6 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-16 gap-4">
             <div>
               <h2 className="text-5xl md:text-7xl font-black uppercase leading-none tracking-tighter">PROOF OF WORK</h2>
-              <p className="text-white text-[10px] font-bold uppercase tracking-[0.4em] mt-4">Actual results. No corporate fluff.</p>
             </div>
             <Link to="/gallery" className="text-xs font-black uppercase tracking-[0.2em] underline underline-offset-8 text-white hover:text-white/60 transition-colors">
               Full Archive →
