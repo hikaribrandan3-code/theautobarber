@@ -19,15 +19,12 @@ const Layout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Navbar onQuoteClick={() => handleOpenQuote()} />
-      <main className="pt-20">
+      <main>
         <Outlet context={{ openQuote: handleOpenQuote }} />
       </main>
       <Footer onQuoteClick={handleOpenQuote} />
-      <SpringPromo onClaim={handleOpenQuote} />
-      <AmbientUFO />
-      <StickyCallBar />
       <QuoteModal 
         open={quoteOpen} 
         onOpenChange={setQuoteOpen} 

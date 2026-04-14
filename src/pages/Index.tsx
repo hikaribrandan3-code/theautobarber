@@ -1,260 +1,374 @@
 import { useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Shield, Droplets, Car, Clock, MapPin, Phone, Sparkles, Star, ChevronRight, Wrench, Zap, Award, CheckCircle2, Scissors, UserCheck, ShieldCheck } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Star, Phone, MapPin, Clock, CheckCircle, Award, Truck, Shield, ChevronRight } from "lucide-react";
 import SEO from "@/components/SEO";
 import logo from "@/assets/logo.png";
-import ReviewStats from "@/components/ReviewStats";
+import { useState, useEffect, useRef } from "react";
+
+// Animated counter
+const Counter = ({ end, duration = 2000 }: { end: number; duration?: number }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true;
+        let start = 0;
+        const step = Math.ceil(end / (duration / 16));
+        const timer = setInterval(() => {
+          start = Math.min(start + step, end);
+          setCount(start);
+          if (start >= end) clearInterval(timer);
+        }, 16);
+      }
+    }, { threshold: 0.3 });
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [end, duration]);
+
+  return <span ref={ref}>{count}</span>;
+};
+
+const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=The+Auto+Barber+Reviews";
 
 const Index = () => {
   const { openQuote } = useOutletContext<{ openQuote: (service?: string) => void }>();
 
   const services = [
-    { 
-      title: "Interior Detailing", 
+    {
+      name: "Interior Detail",
       price: "$199",
-      desc: "Deep clean every surface. Leather treated. Carpets restored. Like new inside.",
-      icon: <Scissors className="w-6 h-6" />
+      regularPrice: "$250",
+      badge: "SPRING SPECIAL",
+      desc: "Full vacuum, steam clean, leather conditioning, glass, and door jambs. Like new inside.",
+      time: "2–3 hrs",
+      items: ["Full vacuum & extraction", "Steam clean surfaces", "Leather condition", "Glass & door jambs"],
+      service: "Interior Detail",
     },
-    { 
-      title: "Exterior Detailing", 
-      price: "From $150",
-      desc: "Hand wash, decon, paint correction. Mirror finish.",
-      icon: <CheckCircle2 className="w-6 h-6" />
+    {
+      name: "Full Detail",
+      price: "$350",
+      desc: "Complete interior + exterior. Hand wash, clay bar, hand wax, tire dressing. The full works.",
+      time: "5–6 hrs",
+      items: ["Everything in Interior", "Hand wash & clay bar", "Hand wax & polish", "Wheels & tire dressing"],
+      service: "Full Detail",
+      popular: true,
     },
-    { 
-      title: "Wax & Polish", 
-      price: "From $150",
-      desc: "Showroom shine. Premium protection that lasts.",
-      icon: <Sparkles className="w-6 h-6" />
+    {
+      name: "Ceramic Coating",
+      price: "$600+",
+      desc: "3–5 year nano-ceramic protection. Hydrophobic, UV-resistant, permanent-grade gloss.",
+      time: "8+ hrs",
+      items: ["Paint correction prep", "Ceramic nano-bond", "5-year protection", "Annual maintenance plan"],
+      service: "Ceramic Coating",
     },
-    { 
-      title: "Window Tint", 
-      price: "From $199",
-      desc: "Precision cut. UV protection. Privacy. Style.",
-      icon: <Zap className="w-6 h-6" />
-    }
-  ];
-
-  const pillars = [
-    { title: "ATTENTION TO DETAIL", desc: "No spot missed.", icon: <UserCheck className="w-6 h-6" /> },
-    { title: "PREMIUM PRODUCTS", desc: "Only the best for your ride.", icon: <Award className="w-6 h-6" /> },
-    { title: "OLD SCHOOL ETHIC", desc: "Hand work. No shortcuts.", icon: <Clock className="w-6 h-6" /> },
-    { title: "MODERN PROTECTION", desc: "Ceramic. PPF. Years of defense.", icon: <ShieldCheck className="w-6 h-6" /> }
-  ];
-
-  const menu = [
-    { name: "The Trim", price: "$150-250", features: ["Interior vacuum", "Wipe down", "Hand wash", "Tire dressing"] },
-    { name: "The Cut", price: "$300-500", features: ["Full interior detail", "Full exterior detail", "Hand wax", "Full protection"], popular: true },
-    { name: "The Works", price: "$600-900", features: ["Everything included", "Paint correction", "Ceramic coating", "Master finish"] }
   ];
 
   const gallery = [
-    { img: "/images/portfolio/jeep-green.jpg", title: "Jeep Wrangler", desc: "Full Exterior Detail" },
-    { img: "/images/portfolio/tesla-masked.jpg", title: "Tesla Model Y", desc: "Paint Correction Prep" },
-    { img: "/images/portfolio/polisher-setup.jpg", title: "Master Setup", desc: "Precision Tools" },
-    { img: "/images/portfolio/hot-rod.jpg", title: "Classic Hot Rod", desc: "Master Correction" },
-    { img: "/images/portfolio/sb3-alpha.jpg", title: "SB3 Alpha", desc: "Ceramic Application" },
-    { img: "/images/portfolio/paint-correction-5050.jpg", title: "50/50 Reveal", desc: "Mirror Finish" }
+    { img: "/images/portfolio/jeep-green.jpg", title: "Jeep Wrangler", tag: "Full Exterior Detail" },
+    { img: "/images/portfolio/tesla-masked.jpg", title: "Tesla Model Y", tag: "Paint Correction Prep" },
+    { img: "/images/portfolio/hot-rod.jpg", title: "Classic Hot Rod", tag: "Full Restoration" },
+    { img: "/images/portfolio/paint-correction-5050.jpg", title: "50/50 Split", tag: "Paint Correction" },
+    { img: "/images/portfolio/ceramic-red-car.jpg", title: "Red Sport", tag: "Ceramic Coating" },
+    { img: "/images/portfolio/sb3-alpha.jpg", title: "SB3 Alpha", tag: "Ceramic Application" },
+  ];
+
+  const trust = [
+    { icon: <Star size={28} fill="currentColor" />, stat: "165", label: "Google Reviews", sub: "★★★★★ avg" },
+    { icon: <Truck size={28} />, stat: "100%", label: "Mobile Service", sub: "We come to you" },
+    { icon: <Award size={28} />, stat: "15+", label: "Years Experience", sub: "Proven craft" },
+    { icon: <Shield size={28} />, stat: "100%", label: "Satisfaction", sub: "Guaranteed" },
+  ];
+
+  const process = [
+    { step: "01", title: "Book Online", desc: "Pick your service, date, and location. Takes 60 seconds." },
+    { step: "02", title: "We Show Up", desc: "Fully self-contained van arrives at your door on time." },
+    { step: "03", title: "We Get to Work", desc: "Detail performed with professional-grade products." },
+    { step: "04", title: "Pick Up the Keys", desc: "Inspect your ride. You'll be impressed. Guaranteed." },
+  ];
+
+  const reviews = [
+    { name: "Marcus T.", rating: 5, text: "Best detail I've ever had on my Tesla. The paint looked like it just rolled off the lot. Booked a ceramic coating after seeing the results.", service: "Full Detail" },
+    { name: "Jamie L.", rating: 5, text: "On time, professional, absolutely transformed the inside of my Tahoe. Kids had wrecked it. Now it smells and looks brand new. Will not go anywhere else.", service: "Interior Detail" },
+    { name: "Derek C.", rating: 5, text: "Came to my office parking lot, did the full ceramic package on my 4Runner. Didn't have to drop it off anywhere. The results speak for themselves.", service: "Ceramic Coating" },
+    { name: "Priya M.", rating: 5, text: "Messaged him on Sunday, booked for Tuesday, done by noon. Fast, clean, my car literally gleamed. 165 reviews don't lie.", service: "Full Detail" },
   ];
 
   return (
-    <div className="bg-[#0A0A0A] text-white selection:bg-primary/30">
-      <SEO 
-        title="The Auto Barber | Seattle's Premium Vehicle Craftsman"
-        description="INVEST. PROTECT. ENJOY. Premium detailing, paint correction, and ceramic coating in Seattle, WA. The Barber's Standard for your investment."
+    <div className="bg-white text-[#0A0A0A]">
+      <SEO
+        title="The Auto Barber | Seattle Mobile Detailing — 165 Five-Star Reviews"
+        description="Seattle's top-rated mobile detailing service. Interior Detail $199. Full Detail $350. Ceramic Coating from $600. We come to you. Book now."
       />
 
-      {/* 1. HERO SECTION */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden hero-gradient grid-bg pt-20">
-        <div className="relative z-10 animate-in fade-in zoom-in duration-1000">
-          <div className="relative mx-auto mb-8 w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-[#C9A962]/20 bg-black p-1 shadow-[0_0_50px_rgba(0,102,255,0.3)] group overflow-hidden">
-            <img src={logo} alt="The Auto Barber" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+      {/* PROMO BAR */}
+      <div className="bg-[#0A0A0A] text-white text-center py-2.5 px-4">
+        <p className="text-xs font-bold uppercase tracking-widest">
+          🌸 Spring Special: Interior Detail{" "}
+          <span className="text-white font-black">$199</span>{" "}
+          <span className="text-[#6B7280] line-through font-normal">Reg $250</span>
+          {"  "}·{"  "}
+          <button onClick={() => openQuote("Interior Detail")} className="underline underline-offset-2 hover:no-underline">
+            Book Now →
+          </button>
+        </p>
+      </div>
+
+      {/* HERO */}
+      <section className="relative">
+        {/* Full-bleed image */}
+        <div className="relative h-[85vh] min-h-[500px] overflow-hidden">
+          <img
+            src="/images/portfolio/paint-correction-5050.jpg"
+            alt="Seattle auto detailing"
+            className="w-full h-full object-cover"
+            style={{ filter: "brightness(0.55)" }}
+          />
+          {/* Small logo top-left */}
+          <div className="absolute top-6 left-6 z-10">
+            <div className="flex items-center gap-3">
+              <img src={logo} alt="The Auto Barber" className="w-10 h-10 rounded-full object-cover" />
+              <span className="text-white font-bold text-sm tracking-wider uppercase">The Auto Barber</span>
+            </div>
           </div>
-          <p className="font-mono text-xs md:text-sm uppercase tracking-[0.5em] text-[#C9A962] font-black mb-4 animate-in slide-in-from-bottom duration-700 delay-300">INVEST. PROTECT. ENJOY.</p>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-black tracking-tight leading-[0.85] uppercase mb-6 animate-in slide-in-from-bottom duration-1000 delay-500">
-            THE AUTO<br /><span className="text-[#C9A962]">BARBER</span>
-          </h1>
-          <div className="mb-10 animate-in fade-in duration-1000 delay-700">
-            <ReviewStats />
+          {/* Nav links top-right */}
+          <div className="hidden md:flex absolute top-6 right-6 z-10 gap-8">
+            {["Services", "Gallery", "Reviews", "Contact"].map(l => (
+              <a key={l} href={`#${l.toLowerCase()}`} className="text-white/80 hover:text-white text-sm font-semibold uppercase tracking-widest transition-colors">
+                {l}
+              </a>
+            ))}
           </div>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in duration-1000 delay-1000">
-            <Button onClick={() => openQuote()} size="lg" className="w-full sm:w-auto bg-[#C9A962] text-white font-display text-sm uppercase tracking-widest py-8 px-12 rounded-none hover:bg-[#A6884A] transition-all transform hover:scale-105 box-glow">
-              Book Appointment
-            </Button>
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto border-[#C9A962] text-[#C9A962] font-display text-sm uppercase tracking-widest py-8 px-12 rounded-none hover:bg-[#C9A962] hover:text-white transition-all">
-              <a href="tel:2538939452">Call (253) 893-9452</a>
-            </Button>
-          </div>
-          
-          {/* Promo Cards */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12 animate-in fade-in duration-1000 delay-[1200ms]">
-             <div className="bg-[#141414] border border-white/5 p-4 flex items-center justify-between gap-6 hover:border-[#C9A962]/50 transition-colors cursor-pointer w-full sm:w-auto" onClick={() => openQuote("Interior Detail Promo")}>
-                <div className="text-left">
-                   <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#C9A962] mb-1 font-bold">PROMO</p>
-                   <p className="font-display text-lg uppercase tracking-widest font-black text-white">Interior Detail</p>
-                </div>
-                <div className="text-2xl font-display font-black text-[#C9A962] italic">$199</div>
-             </div>
-             <div className="bg-[#141414] border border-white/5 p-4 flex items-center justify-between gap-6 hover:border-[#C9A962]/50 transition-colors cursor-pointer w-full sm:w-auto" onClick={() => openQuote("All-In-One Polish Promo")}>
-                <div className="text-left">
-                   <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#C9A962] mb-1 font-bold">PROMO</p>
-                   <p className="font-display text-lg uppercase tracking-widest font-black text-white">All-In-One Polish</p>
-                </div>
-                <div className="text-2xl font-display font-black text-[#C9A962] italic">$300</div>
-             </div>
+          {/* Headline over image */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-10">
+            <p className="text-white/70 text-xs font-bold uppercase tracking-[0.3em] mb-4">Seattle, WA • Mobile Detailing</p>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.0] mb-6 max-w-4xl" style={{ letterSpacing: "-0.03em" }}>
+              165 FIVE-STAR<br />DETAILS IN SEATTLE
+            </h1>
+            <p className="text-white/80 text-base md:text-lg font-medium mb-10">
+              Interior • Exterior • Paint Protection
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={() => openQuote()}
+                className="bg-white text-[#0A0A0A] font-black uppercase tracking-widest px-10 py-4 text-sm hover:bg-gray-100 transition-colors"
+              >
+                BOOK NOW
+              </button>
+              <a
+                href="tel:2538939452"
+                className="border-2 border-white text-white font-black uppercase tracking-widest px-10 py-4 text-sm hover:bg-white hover:text-[#0A0A0A] transition-colors text-center"
+              >
+                CALL (253) 893-9452
+              </a>
+            </div>
           </div>
         </div>
-        
-        {/* Floating Background Badge - Decorative */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#C9A962]/5 rounded-full blur-[120px] pointer-events-none" />
+
+        {/* Review badge + subtitle below hero */}
+        <div className="bg-white border-b border-[#E5E7EB] py-6 px-6">
+          <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <a
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 group"
+            >
+              <div className="flex gap-0.5">
+                {[1,2,3,4,5].map(i => (
+                  <Star key={i} size={18} fill="#F59E0B" stroke="none" />
+                ))}
+              </div>
+              <span className="font-bold text-[#0A0A0A] text-sm">165 Google Reviews</span>
+              <span className="text-[#6B7280] text-xs underline group-hover:no-underline">See all →</span>
+            </a>
+            <p className="text-[#6B7280] text-sm font-medium">
+              📍 Serving all of Seattle, WA · (253) 893-9452
+            </p>
+          </div>
+        </div>
       </section>
 
-      {/* 2. SERVICES SECTION */}
-      <section className="py-14 lg:py-24 px-6 border-y border-white/5 bg-[#141414]">
-        <div className="container mx-auto">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 gap-8">
-            <div className="border-l-4 border-[#C9A962] pl-8">
-              <h2 className="text-4xl md:text-6xl font-display font-black uppercase leading-none mb-2">THE DIVISION</h2>
-              <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-[0.4em] font-bold">Premium protection packages</p>
-            </div>
-            <Link to="/services" className="font-mono text-[10px] uppercase tracking-widest text-[#C9A962] hover:underline font-bold">See full capabilities →</Link>
+      {/* SERVICES */}
+      <section id="services" className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <p className="text-[#6B7280] text-xs font-bold uppercase tracking-[0.2em] mb-3">What We Offer</p>
+            <h2 className="text-4xl md:text-5xl font-black" style={{ letterSpacing: "-0.03em" }}>Services & Pricing</h2>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {services.map((s, i) => (
-              <div key={i} className="group p-8 bg-[#0A0A0A] border border-white/5 hover:border-[#C9A962]/40 transition-all duration-300 relative overflow-hidden flex flex-col h-full">
-                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-20 transition-opacity">
-                   {s.icon}
-                </div>
-                <h3 className="text-xl font-display font-black uppercase mb-4 text-white group-hover:text-[#C9A962] transition-colors tracking-tight">{s.title}</h3>
-                <p className="text-muted-foreground text-xs leading-relaxed uppercase tracking-wider font-medium flex-grow">{s.desc}</p>
-                <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-end">
-                  <span className="font-mono text-[9px] text-muted-foreground tracking-[0.2em] uppercase mb-1">Starting At</span>
-                  <span className="font-display text-2xl text-[#C9A962] font-black italic leading-none">{s.price}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. THE CRAFTSMAN (Pillars) */}
-      <section className="py-14 lg:py-24 px-6 bg-[#0A0A0A]">
-        <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-24">
-            <h2 className="text-5xl md:text-7xl font-display font-black uppercase mb-4 tracking-tighter">THE CRAFTSMAN</h2>
-            <p className="font-mono text-sm text-muted-foreground uppercase tracking-[0.2em]">Why Seattle trusts the barber</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
-            {pillars.map((p, i) => (
-              <div key={i} className="group flex gap-8">
-                <div className="flex-shrink-0 w-16 h-16 rounded-full border border-white/10 flex items-center justify-center font-display text-2xl font-black group-hover:bg-[#C9A962] group-hover:border-[#C9A962] group-hover:text-white transition-all duration-500">
-                  {i + 1}
-                </div>
-                <div>
-                  <h4 className="text-lg font-display font-black uppercase mb-3 tracking-wider">{p.title}</h4>
-                  <p className="text-muted-foreground text-sm font-mono uppercase tracking-[0.05em]">{p.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. THE PROCESS (Timeline) */}
-      <section className="py-14 lg:py-24 px-6 bg-[#141414] border-y border-white/5 overflow-hidden">
-        <div className="container mx-auto">
-          <div className="mb-20">
-            <h2 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tight">THE <span className="text-[#C9A962]">PROCESS</span></h2>
-            <p className="font-mono text-[10px] text-muted-foreground font-bold uppercase mt-2 tracking-[0.3em]">Door-to-door precision</p>
-          </div>
-          
-          <div className="relative">
-            <div className="hidden lg:block absolute top-[28px] left-0 w-full h-px bg-white/5" />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-              {[
-                { title: "Inspect & Consult", desc: "Assess condition. Discuss goals." },
-                { title: "Wash & Decon", desc: "Thorough cleaning. Zero contaminants." },
-                { title: "Cut & Polish", desc: "Paint correction. Mirror finish." },
-                { title: "Protect & Finish", desc: "Wax, ceramic, or tint. Lasting defense." }
-              ].map((step, i) => (
-                <div key={i} className="relative group">
-                  <div className="w-14 h-14 rounded-none bg-[#0A0A0A] border border-white/10 flex items-center justify-center font-display text-xl font-black mb-6 group-hover:bg-[#C9A962] group-hover:border-[#C9A962] transition-all relative z-10 box-glow text-white">
-                    0{i + 1}
-                  </div>
-                  <h4 className="text-lg font-display font-black uppercase mb-3 tracking-wider">{step.title}</h4>
-                  <p className="text-muted-foreground text-xs leading-relaxed uppercase font-mono tracking-widest">{step.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. THE MENU (Pricing) */}
-      <section className="py-14 lg:py-24 px-6 bg-[#0A0A0A]">
-        <div className="container mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-7xl font-display font-black uppercase mb-4 tracking-tighter">THE <span className="text-[#C9A962]">MENU</span></h2>
-            <p className="font-mono text-sm text-muted-foreground uppercase tracking-[0.2em]">Select your investment level</p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {menu.map((p, i) => (
-              <div key={i} className={`relative p-10 bg-[#141414] border flex flex-col transition-all duration-300 ${p.popular ? 'border-[#C9A962] scale-105 shadow-[0_0_40px_rgba(0,102,255,0.1)]' : 'border-white/5'}`}>
-                {p.popular && (
-                  <div className="absolute top-0 right-0 bg-[#C9A962] text-white px-4 py-1 text-[10px] font-black uppercase italic tracking-widest">
-                    Recommended
+              <div
+                key={i}
+                className={`relative border bg-white p-8 card-hover flex flex-col ${s.popular ? "border-[#0A0A0A] border-2" : "border-[#E5E7EB]"}`}
+              >
+                {s.popular && (
+                  <div className="absolute top-0 left-0 bg-[#0A0A0A] text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5">
+                    MOST POPULAR
                   </div>
                 )}
-                <h3 className="text-2xl font-display font-black uppercase mb-1 tracking-wider">{p.name}</h3>
-                <div className="flex items-baseline gap-2 mb-8">
-                   <span className="text-4xl font-display font-black text-[#C9A962]">{p.price}</span>
+                {s.badge && (
+                  <div className="absolute top-0 right-0 bg-amber-400 text-[#0A0A0A] text-[10px] font-black uppercase tracking-widest px-4 py-1.5">
+                    {s.badge}
+                  </div>
+                )}
+                <div className={`${(s.popular || s.badge) ? "mt-6" : ""}`}>
+                  <h3 className="text-xl font-bold mb-2">{s.name}</h3>
+                  <div className="flex items-baseline gap-2 mb-1">
+                    <span className="text-4xl font-black">{s.price}</span>
+                    {s.regularPrice && <span className="text-[#6B7280] text-sm line-through">{s.regularPrice}</span>}
+                  </div>
+                  <p className="text-[#6B7280] text-xs uppercase tracking-widest mb-6 font-medium">{s.time} · Mobile Service</p>
+                  <p className="text-[#374151] text-sm leading-relaxed mb-6">{s.desc}</p>
+                  <ul className="space-y-2 mb-8 flex-grow">
+                    {s.items.map((item, j) => (
+                      <li key={j} className="flex items-center gap-2 text-sm text-[#374151]">
+                        <CheckCircle size={14} className="text-[#6B7280] shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="space-y-4 mb-10 flex-grow">
-                  {p.features.map((f, fi) => (
-                    <div key={fi} className="flex items-center gap-3 text-[11px] font-mono uppercase tracking-widest text-muted-foreground">
-                      <div className="w-1.5 h-1.5 bg-[#C9A962] rounded-none" />
-                      {f}
-                    </div>
+                <button
+                  onClick={() => openQuote(s.service)}
+                  className={`w-full py-4 font-bold uppercase tracking-widest text-sm transition-colors mt-auto ${s.popular ? "bg-[#0A0A0A] text-white hover:bg-[#333]" : "bg-white text-[#0A0A0A] border border-[#0A0A0A] hover:bg-[#f5f5f5]"}`}
+                >
+                  BOOK {s.name.toUpperCase()}
+                </button>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-[#6B7280] text-xs mt-6 uppercase tracking-widest font-medium">
+            All prices vary by vehicle size & condition · Free estimate available
+          </p>
+        </div>
+      </section>
+
+      {/* GALLERY / THE WORK */}
+      <section id="gallery" className="py-20 px-6 bg-[#F9FAFB]">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
+            <div>
+              <p className="text-[#6B7280] text-xs font-bold uppercase tracking-[0.2em] mb-3">Real Work. Real Results.</p>
+              <h2 className="text-4xl md:text-5xl font-black" style={{ letterSpacing: "-0.03em" }}>The Work</h2>
+            </div>
+            <Link to="/gallery" className="text-sm font-bold uppercase tracking-widest underline underline-offset-4 text-[#6B7280] hover:text-[#0A0A0A] transition-colors">
+              View All Photos →
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+            {gallery.map((item, i) => (
+              <div key={i} className="group relative aspect-square overflow-hidden bg-black">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-75"
+                />
+                <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p className="text-white font-bold text-sm">{item.title}</p>
+                  <p className="text-white/70 text-xs uppercase tracking-widest">{item.tag}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section id="why" className="py-20 px-6 bg-white border-y border-[#E5E7EB]">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12 text-center">
+            <p className="text-[#6B7280] text-xs font-bold uppercase tracking-[0.2em] mb-3">Why Seattle Chooses Us</p>
+            <h2 className="text-4xl md:text-5xl font-black" style={{ letterSpacing: "-0.03em" }}>Proven. Local. Trusted.</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            {trust.map((t, i) => (
+              <div key={i} className="text-center">
+                <div className="w-14 h-14 border border-[#E5E7EB] flex items-center justify-center mx-auto mb-4 text-[#0A0A0A]">
+                  {t.icon}
+                </div>
+                <div className="text-3xl font-black mb-1">
+                  {t.stat === "165" ? <Counter end={165} /> : t.stat}
+                </div>
+                <div className="font-bold text-sm mb-1">{t.label}</div>
+                <div className="text-[#6B7280] text-xs uppercase tracking-widest">{t.sub}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section id="process" className="py-20 px-6 bg-[#F9FAFB]">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <p className="text-[#6B7280] text-xs font-bold uppercase tracking-[0.2em] mb-3">Simple & Easy</p>
+            <h2 className="text-4xl md:text-5xl font-black" style={{ letterSpacing: "-0.03em" }}>How It Works</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {process.map((p, i) => (
+              <div key={i} className="relative">
+                <div className="text-6xl font-black text-[#E5E7EB] leading-none mb-4">{p.step}</div>
+                <h3 className="text-lg font-bold mb-2">{p.title}</h3>
+                <p className="text-[#6B7280] text-sm leading-relaxed">{p.desc}</p>
+                {i < process.length - 1 && (
+                  <div className="hidden md:block absolute top-8 right-0 text-[#D1D5DB] translate-x-1/2">
+                    <ChevronRight size={24} />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <button
+              onClick={() => openQuote()}
+              className="bg-[#0A0A0A] text-white font-black uppercase tracking-widest px-12 py-5 text-sm hover:bg-[#333] transition-colors"
+            >
+              BOOK YOUR DETAIL
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* REVIEWS */}
+      <section id="reviews" className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
+            <div>
+              <p className="text-[#6B7280] text-xs font-bold uppercase tracking-[0.2em] mb-3">Don't Take Our Word For It</p>
+              <h2 className="text-4xl md:text-5xl font-black" style={{ letterSpacing: "-0.03em" }}>
+                165 Five-Star Reviews
+              </h2>
+            </div>
+            <a
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm"
+            >
+              <div className="flex gap-0.5">
+                {[1,2,3,4,5].map(i => <Star key={i} size={14} fill="#F59E0B" stroke="none" />)}
+              </div>
+              <span className="text-[#6B7280] font-medium underline underline-offset-2">Google Reviews →</span>
+            </a>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {reviews.map((r, i) => (
+              <div key={i} className="border border-[#E5E7EB] p-8 card-hover">
+                <div className="flex gap-0.5 mb-4">
+                  {Array.from({ length: r.rating }).map((_, j) => (
+                    <Star key={j} size={14} fill="#F59E0B" stroke="none" />
                   ))}
                 </div>
-                <Button onClick={() => openQuote(`Package: ${p.name}`)} className={`w-full font-display uppercase tracking-widest py-8 rounded-none transition-all ${p.popular ? 'bg-[#C9A962] text-white hover:bg-[#A6884A]' : 'bg-transparent border border-white/20 text-white hover:border-[#C9A962] hover:text-[#C9A962]'}`}>
-                  Book {p.name}
-                </Button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. PROOF OF WORK (Gallery) */}
-      <section className="py-14 lg:py-24 px-6 bg-[#141414] border-t border-white/5">
-        <div className="container mx-auto">
-          <div className="flex flex-col lg:flex-row justify-between items-center mb-16 gap-6">
-            <div className="text-center lg:text-left">
-              <h2 className="text-4xl md:text-6xl font-display font-black uppercase mb-1">PROOF OF WORK</h2>
-              <p className="font-mono text-[10px] text-muted-foreground font-bold uppercase tracking-[0.4em]">Handled with care</p>
-            </div>
-            <Button asChild variant="outline" className="rounded-none border-white/10 text-muted-foreground hover:border-[#C9A962] hover:text-[#C9A962] font-display uppercase tracking-widest">
-              <Link to="/gallery">View Complete Portfolio →</Link>
-            </Button>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1">
-            {gallery.map((item, i) => (
-              <div key={i} className="group relative aspect-square overflow-hidden bg-black border border-white/5">
-                <img 
-                  src={item.img} 
-                  alt={item.title} 
-                  className="absolute inset-0 w-full h-full object-cover transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105" 
-                />
-                <div className="absolute inset-0 bg-[#C9A962]/0 group-hover:bg-[#C9A962]/20 transition-all duration-500" />
-                <div className="absolute inset-0 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                  <h4 className="text-xl font-display font-black uppercase tracking-tight text-white mb-1">{item.title}</h4>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-white/80">{item.desc}</p>
+                <p className="text-[#374151] text-sm leading-relaxed mb-6">"{r.text}"</p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-bold text-sm">{r.name}</p>
+                    <p className="text-[#6B7280] text-xs uppercase tracking-widest">{r.service}</p>
+                  </div>
+                  <div className="text-xs text-[#6B7280] font-medium">Google</div>
                 </div>
               </div>
             ))}
@@ -262,112 +376,122 @@ const Index = () => {
         </div>
       </section>
 
-      {/* 7. FAQ SECTION */}
-      <section className="py-14 lg:py-24 px-6 bg-[#0A0A0A]">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-4xl md:text-6xl font-display font-black uppercase mb-16 tracking-tight text-center">COMMON <span className="text-[#C9A962]">QUESTIONS</span></h2>
-          <div className="space-y-2">
-            {[
-              { q: "How long does a full detail take?", a: "Most mobile appointments take between 4 to 8 hours depending on vehicle size and condition. We treat every car like a masterwork—no rushing." },
-              { q: "Do I need an appointment?", a: "Yes. To maintain our standard of quality, we operate strictly by appointment only. We recommend booking 1-2 weeks in advance." },
-              { q: "What's the difference between wax and ceramic?", a: "Wax lasts months and adds shine. Ceramic lasts years and adds a hard sacrificial layer that resists chemicals, UV, and minor scratches." },
-              { q: "How long after tint can I wash my car?", a: "Wait at least 3-5 days for the adhesive to fully cure before rolling down windows or cleaning them inside." },
-              { q: "Do you offer mobile service?", a: "Yes. We are 100% mobile and self-sufficient. We bring our own water and power to your location in the Seattle area." }
-            ].map((faq, i) => (
-              <div key={i} className="p-8 bg-[#141414] border-l-2 border-white/5 hover:border-[#C9A962] transition-all">
-                <h4 className="text-lg font-display font-black uppercase mb-4 tracking-wider">{faq.q}</h4>
-                <p className="text-muted-foreground text-sm font-mono uppercase tracking-widest leading-relaxed">{faq.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 8. CONTACT SECTION (In-page) */}
-      <section id="contact" className="py-14 lg:py-24 px-6 bg-[#141414] border-t border-white/5">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+      {/* CONTACT */}
+      <section id="contact" className="py-20 px-6 bg-[#F9FAFB] border-t border-[#E5E7EB]">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* Info */}
             <div>
-              <div className="mb-12">
-                <div className="w-24 h-24 mb-6 rounded-full overflow-hidden border-2 border-[#C9A962]/20">
-                   <img src={logo} alt="Logo" className="w-full h-full object-cover" />
+              <p className="text-[#6B7280] text-xs font-bold uppercase tracking-[0.2em] mb-3">Get In Touch</p>
+              <h2 className="text-4xl md:text-5xl font-black mb-10" style={{ letterSpacing: "-0.03em" }}>Book Your Detail</h2>
+              <div className="space-y-6">
+                <a href="tel:2538939452" className="flex items-center gap-4 group">
+                  <div className="w-12 h-12 border border-[#E5E7EB] flex items-center justify-center bg-white group-hover:border-[#0A0A0A] transition-colors">
+                    <Phone size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-[#6B7280] uppercase tracking-widest font-bold mb-0.5">Call or Text</p>
+                    <p className="font-bold text-lg">(253) 893-9452</p>
+                  </div>
+                </a>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 border border-[#E5E7EB] flex items-center justify-center bg-white">
+                    <MapPin size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-[#6B7280] uppercase tracking-widest font-bold mb-0.5">Location</p>
+                    <p className="font-bold">Seattle, WA · Mobile Service</p>
+                    <p className="text-[#6B7280] text-sm">We come to you — anywhere in Seattle</p>
+                  </div>
                 </div>
-                <h2 className="text-5xl md:text-7xl font-display font-black uppercase mb-4 leading-none">THE <span className="text-[#C9A962]">CONTACT</span></h2>
-                <p className="font-mono text-sm text-muted-foreground uppercase tracking-widest">Reserve your spot on the menu</p>
-              </div>
-              
-              <div className="space-y-8 font-mono text-xs uppercase tracking-[0.2em]">
-                <div className="flex gap-4 items-center">
-                   <div className="w-10 h-10 border border-white/5 flex items-center justify-center text-[#C9A962]">
-                     <Phone size={16} />
-                   </div>
-                   <a href="tel:2538939452" className="hover:text-[#C9A962] transition-colors">(253) 893-9452</a>
-                </div>
-                <div className="flex gap-4 items-center">
-                   <div className="w-10 h-10 border border-white/5 flex items-center justify-center text-[#C9A962]">
-                     <MapPin size={16} />
-                   </div>
-                   <span>7418 St 126th Unit 1C, Seattle</span>
-                </div>
-                <div className="flex gap-4 items-center">
-                   <div className="w-10 h-10 border border-white/5 flex items-center justify-center text-[#C9A962]">
-                     <Clock size={16} />
-                   </div>
-                   <span>MON - SUN: 8AM - 6PM</span>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 border border-[#E5E7EB] flex items-center justify-center bg-white">
+                    <Clock size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-[#6B7280] uppercase tracking-widest font-bold mb-0.5">Hours</p>
+                    <p className="font-bold">Mon – Sun: 8AM – 6PM</p>
+                  </div>
                 </div>
               </div>
             </div>
-            
-            <div className="bg-[#0A0A0A] p-10 border border-white/5 relative overflow-hidden">
-               <div className="absolute top-0 left-0 w-full h-1 bg-[#C9A962]" />
-               <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); openQuote(); }}>
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground pl-1">Full Name</label>
-                      <input type="text" className="w-full bg-[#141414] border border-white/5 p-4 font-mono text-xs uppercase tracking-widest focus:border-[#C9A962] focus:ring-1 focus:ring-[#C9A962] outline-none transition-all" placeholder="John Doe" />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground pl-1">Phone</label>
-                      <input type="tel" className="w-full bg-[#141414] border border-white/5 p-4 font-mono text-xs uppercase tracking-widest focus:border-[#C9A962] focus:ring-1 focus:ring-[#C9A962] outline-none transition-all" placeholder="(000) 000-0000" />
-                    </div>
-                 </div>
-                 <div className="space-y-2">
-                    <label className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground pl-1">Email</label>
-                    <input type="email" className="w-full bg-[#141414] border border-white/5 p-4 font-mono text-xs uppercase tracking-widest focus:border-[#C9A962] focus:ring-1 focus:ring-[#C9A962] outline-none transition-all" placeholder="name@email.com" />
-                 </div>
-                 <div className="space-y-2">
-                    <label className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground pl-1">Service Needed</label>
-                    <select className="w-full bg-[#141414] border border-white/5 p-4 font-mono text-xs uppercase tracking-widest focus:border-[#C9A962] outline-none transition-all">
-                      <option>The Cut (Full Interior/Exterior)</option>
-                      <option>The Trim (Basic Detail)</option>
-                      <option>The Works (Master Package)</option>
-                      <option>Ceramic Coating</option>
-                      <option>Paint Correction</option>
-                      <option>Window Tint</option>
-                    </select>
-                 </div>
-                 <div className="space-y-2">
-                    <label className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground pl-1">Message</label>
-                    <textarea rows={4} className="w-full bg-[#141414] border border-white/5 p-4 font-mono text-xs uppercase tracking-widest focus:border-[#C9A962] outline-none transition-all" placeholder="Tell us about your ride..." />
-                 </div>
-                 <Button className="w-full bg-[#C9A962] text-white font-display text-base uppercase tracking-[0.2em] font-black italic py-8 rounded-none hover:bg-[#A6884A] transition-all box-glow">
-                   Reserve Your Cut
-                 </Button>
-               </form>
+            {/* Quick form */}
+            <div className="bg-white border border-[#E5E7EB] p-8">
+              <h3 className="text-xl font-black mb-6">Get a Free Quote</h3>
+              <form className="space-y-4" onSubmit={e => { e.preventDefault(); openQuote(); }}>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-widest text-[#6B7280] mb-2">Name</label>
+                    <input type="text" className="w-full border border-[#E5E7EB] p-3 text-sm focus:border-[#0A0A0A] outline-none transition-colors" placeholder="Your name" required />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-widest text-[#6B7280] mb-2">Phone</label>
+                    <input type="tel" className="w-full border border-[#E5E7EB] p-3 text-sm focus:border-[#0A0A0A] outline-none transition-colors" placeholder="(000) 000-0000" required />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-widest text-[#6B7280] mb-2">Service</label>
+                  <select className="w-full border border-[#E5E7EB] p-3 text-sm focus:border-[#0A0A0A] outline-none transition-colors bg-white">
+                    <option>Interior Detail — $199</option>
+                    <option>Full Detail — $350</option>
+                    <option>Ceramic Coating — $600+</option>
+                    <option>Paint Correction — Quote</option>
+                    <option>Window Tint — $199+</option>
+                    <option>Other / Not sure</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-widest text-[#6B7280] mb-2">Vehicle</label>
+                  <input type="text" className="w-full border border-[#E5E7EB] p-3 text-sm focus:border-[#0A0A0A] outline-none transition-colors" placeholder="Year, Make, Model" />
+                </div>
+                <button type="submit" className="w-full bg-[#0A0A0A] text-white font-black uppercase tracking-widest py-4 text-sm hover:bg-[#333] transition-colors">
+                  GET FREE QUOTE
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FINAL CALL TO ACTION */}
-      <section className="py-14 text-center border-t border-white/5 bg-[#0A0A0A]">
-         <div className="container mx-auto px-6">
-            <h2 className="text-4xl md:text-6xl font-display font-black uppercase mb-8 tracking-tighter italic animate-pulse-subtle">YOUR CAR DESERVES THE FINEST CUT.</h2>
-            <Button onClick={() => openQuote()} size="lg" className="bg-[#C9A962] text-white font-display text-xl uppercase tracking-widest py-10 px-16 rounded-none hover:bg-[#A6884A] transition-all transform hover:scale-110 box-glow">
-               BOOK NOW
-            </Button>
-         </div>
+      {/* FINAL CTA */}
+      <section className="py-20 px-6 bg-[#0A0A0A] text-white text-center">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-white/50 text-xs font-bold uppercase tracking-[0.2em] mb-4">Ready to Book?</p>
+          <h2 className="text-4xl md:text-6xl font-black mb-6" style={{ letterSpacing: "-0.03em" }}>
+            Your Car Deserves<br />The Best.
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={() => openQuote()}
+              className="bg-white text-[#0A0A0A] font-black uppercase tracking-widest px-12 py-5 text-sm hover:bg-gray-100 transition-colors"
+            >
+              BOOK A DETAIL
+            </button>
+            <a
+              href="tel:2538939452"
+              className="border-2 border-white text-white font-black uppercase tracking-widest px-12 py-5 text-sm hover:bg-white hover:text-[#0A0A0A] transition-colors text-center"
+            >
+              CALL (253) 893-9452
+            </a>
+          </div>
+        </div>
       </section>
+
+      {/* Mobile sticky bottom bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden grid grid-cols-2 border-t border-[#E5E7EB] shadow-2xl">
+        <a
+          href="tel:2538939452"
+          className="bg-white text-[#0A0A0A] font-black uppercase tracking-widest py-5 text-sm text-center border-r border-[#E5E7EB] hover:bg-[#f5f5f5] transition-colors flex items-center justify-center gap-2"
+        >
+          📞 CALL
+        </a>
+        <button
+          onClick={() => openQuote()}
+          className="bg-[#0A0A0A] text-white font-black uppercase tracking-widest py-5 text-sm hover:bg-[#333] transition-colors flex items-center justify-center gap-2"
+        >
+          📅 BOOK
+        </button>
+      </div>
     </div>
   );
 };

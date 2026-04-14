@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, Sparkles, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Navbar = ({ onQuoteClick }: { onQuoteClick: (service?: string) => void }) => {
@@ -9,163 +8,85 @@ const Navbar = ({ onQuoteClick }: { onQuoteClick: (service?: string) => void }) 
   const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
 
-  const detailingLinks = [
-    { label: "Interior Detailing", path: "/services#interior" },
-    { label: "Exterior Detailing", path: "/services#exterior" },
-    { label: "Full Detail", path: "/services#full-detail" },
+  const navLinks = [
+    { label: "Services", path: "/services" },
+    { label: "Gallery", path: "/gallery" },
+    { label: "About", path: "/about" },
+    { label: "Contact", path: "/contact" },
   ];
 
-  const protectiveLinks = [
-    { label: "Ceramic Coatings", path: "/services/protective/ceramic" },
-    { label: "Paint Protection Film (PPF)", path: "/services/protective/ppf" },
-    { label: "Window Tint", path: "/services/protective/tint" },
-  ];
+  const isActive = (path: string) => location.pathname === path || location.pathname.startsWith(path + "/");
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-[100] border-b border-border bg-background/80 backdrop-blur-xl">
-        <div className="container mx-auto flex items-center justify-between px-4 py-4 lg:px-8">
+      <nav className="fixed top-8 left-0 right-0 z-[100] bg-white border-b border-[#E5E7EB]">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-3 shrink-0">
-            <div className="relative h-10 w-10 sm:h-12 sm:w-12 overflow-hidden rounded-full border border-border bg-black shadow-[0_0_15px_rgba(0,102,255,0.1)]">
-              <img src={logo} alt="The Auto Barber" className="h-full w-full object-cover" />
-            </div>
-            <span className="font-display text-base font-black tracking-tight text-foreground sm:text-2xl whitespace-nowrap leading-none pt-1">
-              THE AUTO BARBER
+            <img src={logo} alt="The Auto Barber" className="h-9 w-9 rounded-full object-cover" />
+            <span className="font-black text-sm tracking-tight text-[#0A0A0A] uppercase hidden sm:block">
+              The Auto Barber
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden items-center gap-8 lg:flex">
-            <Link to="/" className={`font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#C9A962] ${location.pathname === "/" ? "text-[#C9A962]" : "text-muted-foreground"}`}>Home</Link>
-            <Link to="/about" className={`font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#C9A962] ${location.pathname === "/about" ? "text-[#C9A962]" : "text-muted-foreground"}`}>About</Link>
-            
-            {/* Services Dropdown */}
-            <div 
-              className="relative group"
-              onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}
-            >
-              <Link 
-                to="/services"
-                className={`flex items-center gap-1 font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#C9A962] ${location.pathname.startsWith("/services") ? "text-[#C9A962]" : "text-muted-foreground"}`}
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex items-center gap-8">
+            {navLinks.map(l => (
+              <Link
+                key={l.label}
+                to={l.path}
+                className={`text-xs font-bold uppercase tracking-[0.15em] transition-colors ${isActive(l.path) ? "text-[#0A0A0A]" : "text-[#6B7280] hover:text-[#0A0A0A]"}`}
               >
-                Services <ChevronDown size={14} className={`transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`} />
+                {l.label}
               </Link>
-              
-              {/* Dropdown Menu */}
-              <div className={`absolute top-full left-1/2 -translate-x-1/2 w-[480px] pt-4 transition-all duration-300 ${servicesOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
-                <div className="grid grid-cols-2 gap-4 p-6 border border-white/10 bg-black/90 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                  
-                  {/* Detailing Column */}
-                  <div className="space-y-4">
-                    <h4 className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#C9A962]/50 font-black border-b border-white/5 pb-2">Detailing Division</h4>
-                    <div className="flex flex-col gap-2">
-                      {detailingLinks.map(l => (
-                        <Link 
-                          key={l.label} 
-                          to={l.path} 
-                          onClick={() => setServicesOpen(false)}
-                          className="text-[11px] uppercase tracking-wider text-white/70 hover:text-[#C9A962] transition-colors"
-                        >
-                          {l.label}
-                        </Link>
-                      ))}
-                      <Link 
-                        to="/services/protective/paint-correction" 
-                        onClick={() => setServicesOpen(false)}
-                        className="flex items-center gap-2 group/pc"
-                      >
-                         <span className="text-[11px] uppercase tracking-widest text-[#C9A962] font-bold">Paint Correction</span>
-                         <Zap size={10} className="text-[#C9A962] group-hover/pc:animate-pulse" />
-                      </Link>
-                    </div>
-                  </div>
-
-                  {/* Protective Column */}
-                  <div className="space-y-4 border-l border-white/5 pl-4">
-                    <h4 className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#C9A962]/50 font-black border-b border-white/5 pb-2">Protective Services</h4>
-                    <div className="flex flex-col gap-2">
-                      {protectiveLinks.map(l => (
-                        <Link 
-                          key={l.label} 
-                          to={l.path} 
-                          onClick={() => setServicesOpen(false)}
-                          className="text-[11px] uppercase tracking-wider text-white/70 hover:text-[#C9A962] transition-colors"
-                        >
-                          {l.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <Link to="/gallery" className={`font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#C9A962] ${location.pathname === "/gallery" ? "text-[#C9A962]" : "text-muted-foreground"}`}>Gallery</Link>
-            <Link to="/faq" className={`font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#C9A962] ${location.pathname === "/faq" ? "text-[#C9A962]" : "text-muted-foreground"}`}>FAQ</Link>
-            <Link to="/contact" className={`font-mono text-xs uppercase tracking-widest transition-colors hover:text-[#C9A962] ${location.pathname === "/contact" ? "text-[#C9A962]" : "text-muted-foreground"}`}>Contact</Link>
-            
-            <Button onClick={() => onQuoteClick()} className="bg-[#C9A962] text-white font-display text-[10px] uppercase tracking-[0.2em] font-black italic hover:bg-[#A6884A] transition-all px-6">
-              Get a Quote
-            </Button>
+            ))}
+            <a href="tel:2538939452" className="text-xs font-bold uppercase tracking-[0.15em] text-[#6B7280] hover:text-[#0A0A0A] transition-colors">
+              (253) 893-9452
+            </a>
+            <button
+              onClick={() => onQuoteClick()}
+              className="bg-[#0A0A0A] text-white text-xs font-black uppercase tracking-widest px-6 py-3 hover:bg-[#333] transition-colors"
+            >
+              BOOK NOW
+            </button>
           </div>
 
           {/* Mobile Toggle */}
-          <button 
-            onClick={() => setMobileOpen(!mobileOpen)} 
-            className="text-foreground lg:hidden p-2 -mr-2 shrink-0 relative z-[200]"
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden p-2 -mr-2 text-[#0A0A0A]"
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <X size={28} /> : <Menu size={28} />}
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu Portal-like Overlay */}
+      {/* Mobile Menu */}
       {mobileOpen && (
         <div className="fixed inset-0 z-[180] lg:hidden">
-          <div 
-            className="absolute inset-0 bg-black/80 backdrop-blur-md animate-in fade-in duration-300" 
+          <div
+            className="absolute inset-0 bg-black/40"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="absolute inset-y-0 right-0 w-[85vw] max-w-sm bg-background p-6 shadow-2xl animate-in slide-in-from-right duration-300 border-l border-white/5">
-            <div className="flex flex-col gap-6 overflow-y-auto h-full pt-20 no-scrollbar pb-12">
-               <Link onClick={() => setMobileOpen(false)} to="/" className="text-2xl font-black italic tracking-tighter uppercase text-white hover:text-[#C9A962] transition-colors">Home</Link>
-               <Link onClick={() => setMobileOpen(false)} to="/about" className="text-2xl font-black italic tracking-tighter uppercase text-white hover:text-[#C9A962] transition-colors">About</Link>
-               
-               <div className="space-y-6">
-                  {/* Detailing Division */}
-                  <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#C9A962]/60 font-black mb-3 border-b border-white/5 pb-1">Detailing Division</p>
-                    <div className="grid grid-cols-1 gap-3 pl-2">
-                       <Link onClick={() => setMobileOpen(false)} to="/services#interior" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#C9A962] transition-colors">Interior Detailing</Link>
-                       <Link onClick={() => setMobileOpen(false)} to="/services#other-services" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#C9A962] transition-colors">Exterior Detailing</Link>
-                       <Link onClick={() => setMobileOpen(false)} to="/services#full-detail" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#C9A962] transition-colors">Full Detail</Link>
-                    </div>
-                  </div>
-
-                  {/* Protective Services */}
-                  <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#C9A962] font-black mb-3 border-b border-white/5 pb-1">Protective Services</p>
-                    <div className="grid grid-cols-1 gap-3 pl-2">
-                       <Link onClick={() => setMobileOpen(false)} to="/services/protective/paint-correction" className="text-sm font-bold uppercase tracking-widest text-[#C9A962] hover:text-[#C9A962]/80 transition-colors">Paint Correction</Link>
-                       <Link onClick={() => setMobileOpen(false)} to="/services/protective/ceramic" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#C9A962] transition-colors">Ceramic Coatings</Link>
-                       <Link onClick={() => setMobileOpen(false)} to="/services/protective/ppf" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#C9A962] transition-colors">PPF (Clear Bra)</Link>
-                       <Link onClick={() => setMobileOpen(false)} to="/services/protective/tint" className="text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#C9A962] transition-colors">Window Tint</Link>
-                    </div>
-                  </div>
-               </div>
-  
-               <Link onClick={() => setMobileOpen(false)} to="/gallery" className="text-2xl font-black italic tracking-tighter uppercase text-white hover:text-[#C9A962] transition-colors">Proof of Work</Link>
-               <Link onClick={() => setMobileOpen(false)} to="/faq" className="text-2xl font-black italic tracking-tighter uppercase text-white hover:text-[#C9A962] transition-colors">FAQ</Link>
-               <Link onClick={() => setMobileOpen(false)} to="/contact" className="text-2xl font-black italic tracking-tighter uppercase text-white hover:text-[#C9A962] transition-colors">Contact</Link>
-               
-               <div className="mt-8 pb-12">
-                 <Button onClick={() => { onQuoteClick(); setMobileOpen(false); }} className="w-full bg-[#C9A962] text-white font-display uppercase font-black italic tracking-widest py-8 hover:bg-[#A6884A] transition-all">
-                   Get A Quote
-                 </Button>
-               </div>
-            </div>
+          <div className="absolute inset-y-0 right-0 w-[85vw] max-w-sm bg-white p-6 shadow-2xl flex flex-col gap-6 pt-24">
+            {navLinks.map(l => (
+              <Link
+                key={l.label}
+                onClick={() => setMobileOpen(false)}
+                to={l.path}
+                className="text-2xl font-black uppercase tracking-tight text-[#0A0A0A] hover:text-[#6B7280] transition-colors"
+              >
+                {l.label}
+              </Link>
+            ))}
+            <a href="tel:2538939452" className="text-lg font-bold text-[#6B7280]">(253) 893-9452</a>
+            <button
+              onClick={() => { onQuoteClick(); setMobileOpen(false); }}
+              className="w-full bg-[#0A0A0A] text-white font-black uppercase tracking-widest py-5 text-sm hover:bg-[#333] transition-colors mt-auto"
+            >
+              BOOK NOW
+            </button>
           </div>
         </div>
       )}
