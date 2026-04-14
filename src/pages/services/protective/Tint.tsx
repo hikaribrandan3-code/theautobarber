@@ -530,9 +530,9 @@ export default function Tint() {
       <div className="hidden lg:flex fixed bottom-8 right-8 z-50">
         <Button
           onClick={() => openQuote(configString)}
-          className="bg-[#C9A962] text-white p-12 font-display font-black italic text-2xl uppercase tracking-[0.2em] rounded-none hover:bg-[#A6884A] shadow-[0_20px_50px_rgba(201,169,98,0.4)] transition-all transform hover:scale-110"
+          className="bg-[#C9A962] text-white px-8 py-5 font-display font-black italic text-lg uppercase tracking-[0.15em] rounded-none hover:bg-[#A6884A] shadow-[0_10px_30px_rgba(201,169,98,0.35)] transition-all"
         >
-          REQUEST THE TINT <ArrowRight className="ml-4 w-8 h-8" />
+          REQUEST THE TINT <ArrowRight className="ml-3 w-5 h-5" />
         </Button>
       </div>
     </div>
