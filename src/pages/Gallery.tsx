@@ -19,11 +19,18 @@ const GalleryPage = () => {
       <section className="py-16 lg:py-32">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 6 }, (_, i) => (
-              <div key={i} className="group aspect-[4/3] rounded-lg border border-border bg-card flex items-center justify-center overflow-hidden">
-                <div className="text-center">
-                  <Sparkles className="mx-auto mb-2 text-primary/30 animate-pulse-glow" size={32} />
-                  <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Project {String(i + 1).padStart(2, "0")} — Coming Soon</p>
+            {[
+              { title: "Tesla Model Y", desc: "Full Decontamination & Ceramic Coating", img: "/images/portfolio/tesla-black.png" },
+              { title: "Tesla Model 3", desc: "Multi-Stage Paint Correction", img: "/images/portfolio/tesla-blue.png" },
+              { title: "Corvette C7 Stingray", desc: "Level 2 Paint Correction & Sealant", img: "/images/portfolio/vett-red-1.png" },
+              { title: "Ford Mustang GT", desc: "Interior Restoration & Exterior Detail", img: "/images/portfolio/mustang-red.png" },
+              { title: "Corvette C7 Profile", desc: "Hydrophobic Gloss Enhancement", img: "/images/portfolio/vett-red-2.png" },
+            ].map((project, i) => (
+              <div key={i} className="group relative aspect-[4/3] rounded-lg border border-border bg-card overflow-hidden">
+                <img src={project.img} alt={project.title} className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <p className="font-display font-bold text-white text-lg">{project.title}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-wider text-primary">{project.desc}</p>
                 </div>
               </div>
             ))}

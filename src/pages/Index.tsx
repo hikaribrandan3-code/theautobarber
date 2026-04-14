@@ -236,18 +236,31 @@ const Index = () => {
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <div className="bg-primary/5 border border-primary/20 rounded-[14px] p-8 lg:p-12 text-center relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-4 opacity-10">
-                <Sparkles size={120} className="text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Real Results Coming Soon</h3>
-              <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-                Every car we touch tells a story. Check back shortly — or book now and be our next showcase.
-              </p>
-              <Button onClick={openQuote} className="bg-primary text-primary-foreground font-display uppercase tracking-wider text-sm hover:opacity-90 box-glow">
-                BOOK YOUR DETAIL
-              </Button>
+          <div className="max-w-4xl mx-auto">
+            <div className="group relative bg-[#111111] border border-white/10 rounded-[14px] overflow-hidden">
+               <div className="absolute inset-0">
+                  <img src="/images/portfolio/tesla-black.png" alt="Featured Work" className="w-full h-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+               </div>
+               <div className="relative p-8 lg:p-12 text-center">
+                  <div className="inline-block mb-4 px-3 py-1 rounded-full border border-[#00ff46]/20 bg-[#00ff46]/5">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#00ff46]">Showcase: Tesla Model Y</p>
+                  </div>
+                  <h3 className="text-3xl font-bold mb-4">Seattle's Finest Transformations</h3>
+                  <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
+                    From daily drivers to luxury exotics, we deliver showroom results anywhere in Seattle. Check out our full portfolio.
+                  </p>
+                  <div className="flex flex-col sm:flex-row justify-center gap-4">
+                    <Button asChild className="bg-primary text-primary-foreground font-display uppercase tracking-wider text-sm hover:opacity-90 box-glow px-8">
+                      <Link to="/gallery">View Full Gallery</Link>
+                    </Button>
+                    <Button onClick={openQuote} variant="outline" className="border-white/10 font-display uppercase tracking-wider text-sm hover:border-primary hover:text-primary px-8">
+                      Book Now
+                    </Button>
+                  </div>
+               </div>
             </div>
+          </div>
           </div>
         </div>
       </section>
