@@ -17,7 +17,8 @@ const Footer = ({ onQuoteClick }: FooterProps) => {
                 <img src={logo} alt="The Auto Barber" className="h-full w-full object-cover" />
               </div>
               <div>
-                <span className="font-black text-3xl tracking-tight block leading-[1] text-white mb-2">THE AUTO BARBER SEATTLE</span>
+                <span className="font-display font-black text-lg tracking-tight block leading-[1] text-white mb-1">THE AUTO BARBER</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C9A962]">Seattle</span>
               </div>
             </div>
             <p className="text-white/60 text-[12px] leading-relaxed uppercase tracking-wider font-bold">
@@ -58,14 +59,8 @@ const Footer = ({ onQuoteClick }: FooterProps) => {
           </div>
         </div>
 
-        <div className="mt-16 border-t border-white/10 pt-8 flex flex-col items-center gap-4 md:flex-row md:justify-between">
+        <div className="mt-16 border-t border-white/10 pt-8 flex flex-col items-center">
           <p className="text-white/40 text-[10px] uppercase font-black tracking-widest">© {new Date().getFullYear()} The Auto Barber LLC. All rights reserved.</p>
-          <div className="flex gap-4 text-[10px] uppercase font-black tracking-widest text-white/20">
-            <span>Cash</span>
-            <span>Card</span>
-            <span>Venmo</span>
-            <span>Zelle</span>
-          </div>
         </div>
       </div>
     </footer>

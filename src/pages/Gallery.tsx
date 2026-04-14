@@ -44,7 +44,7 @@ const GalleryPage = () => {
             ].map((project, i) => (
               <div key={i} className="group relative aspect-[4/3] border border-white/10 bg-[#131313] overflow-hidden">
                 <img src={project.img} alt={project.title} className="absolute inset-0 h-full w-full object-cover transition-all duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] via-[#0e0e0e]/40 to-transparent opacity-100 group-hover:opacity-90 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] via-[#0e0e0e]/40 to-transparent opacity-100 transition-opacity duration-300" />
                 <div className="absolute inset-0 flex flex-col justify-end p-6">
                   <p className="font-display font-black text-white text-lg uppercase tracking-tighter italic">{project.title}</p>
                   <p className="font-mono text-[10px] uppercase tracking-wider text-[#C9A962] mt-1">{project.desc}</p>

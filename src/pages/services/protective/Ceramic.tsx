@@ -440,32 +440,55 @@ const Ceramic = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="font-display text-4xl lg:text-7xl font-black uppercase tracking-tighter text-center mb-4">THE <span className="text-[#C9A962]">UPGRADE</span></h2>
             <p className="lg:hidden text-center font-mono text-[10px] text-[#C9A962] uppercase font-bold tracking-[0.2em] mb-12">Ceramic vs Wax Comparison</p>
-            <div className="overflow-x-auto no-scrollbar">
-              <div className="rounded-none border border-white/10 shadow-2xl min-w-[700px]">
-                <table className="w-full text-left text-sm border-collapse bg-[#131313]">
-                  <thead className="bg-[#202020] font-mono font-black text-[10px] uppercase tracking-[0.3em]">
-                    <tr>
-                      <th className="p-6 border-b border-white/5">Armor Feature</th>
-                      <th className="p-6 border-b border-white/5 text-[#C9A962]">Nano Ceramic</th>
-                      <th className="p-6 border-b border-white/5 text-[#adaaaa]">Standard Wax</th>
+            {/* Desktop table */}
+            <div className="hidden md:block rounded-none border border-white/10 shadow-2xl">
+              <table className="w-full text-left text-sm border-collapse bg-[#131313]">
+                <thead className="bg-[#202020] font-mono font-black text-[10px] uppercase tracking-[0.3em]">
+                  <tr>
+                    <th className="p-6 border-b border-white/5">Armor Feature</th>
+                    <th className="p-6 border-b border-white/5 text-[#C9A962]">Nano Ceramic</th>
+                    <th className="p-6 border-b border-white/5 text-[#adaaaa]">Standard Wax</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5 font-mono">
+                  {[
+                    { feature: 'Service Life', ceramic: '1-5 YEARS', wax: '2-3 MONTHS' },
+                    { feature: 'Mirror Gloss Depth', ceramic: 'MAX-DEF', wax: 'LOW/DULL' },
+                    { feature: 'Self-Cleaning Effect', ceramic: 'SELF-WASH', wax: 'DIRT MAGNET' },
+                    { feature: 'Bug/Acid Resistance', ceramic: 'COMPLETE', wax: 'NONE/LOW' },
+                  ].map((row, i) => (
+                    <tr key={i} className="hover:bg-white/[0.02] transition-colors">
+                      <td className="p-6 font-display font-black text-xs uppercase tracking-widest border-r border-white/5">{row.feature}</td>
+                      <td className="p-6 text-[#C9A962] font-display font-black text-2xl italic tracking-tighter">{row.ceramic}</td>
+                      <td className="p-6 text-[#adaaaa]/60 font-mono text-xs tracking-widest">{row.wax}</td>
                     </tr>
-                  </thead>
-                  <tbody className="divide-y divide-white/5 font-mono">
-                    {[
-                      { feature: 'Service Life', ceramic: '1-5 YEARS', wax: '2-3 MONTHS' },
-                      { feature: 'Mirror Gloss Depth', ceramic: 'MAX-DEF', wax: 'LOW/DULL' },
-                      { feature: 'Self-Cleaning Effect', ceramic: 'SELF-WASH', wax: 'DIRT MAGNET' },
-                      { feature: 'Bug/Acid Resistance', ceramic: 'COMPLETE', wax: 'NONE/LOW' },
-                    ].map((row, i) => (
-                      <tr key={i} className="hover:bg-white/[0.02] transition-colors">
-                        <td className="p-6 font-display font-black text-xs uppercase tracking-widest border-r border-white/5">{row.feature}</td>
-                        <td className="p-6 text-[#C9A962] font-display font-black text-2xl italic tracking-tighter">{row.ceramic}</td>
-                        <td className="p-6 text-[#adaaaa]/60 font-mono text-xs tracking-widest">{row.wax}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile cards */}
+            <div className="md:hidden space-y-4">
+              {[
+                { feature: 'Service Life', ceramic: '1-5 YEARS', wax: '2-3 MONTHS' },
+                { feature: 'Mirror Gloss Depth', ceramic: 'MAX-DEF', wax: 'LOW/DULL' },
+                { feature: 'Self-Cleaning Effect', ceramic: 'SELF-WASH', wax: 'DIRT MAGNET' },
+                { feature: 'Bug/Acid Resistance', ceramic: 'COMPLETE', wax: 'NONE/LOW' },
+              ].map((row, i) => (
+                <div key={i} className="bg-[#131313] border border-white/10 p-5">
+                  <p className="font-display font-black text-xs uppercase tracking-widest text-white/70 mb-3">{row.feature}</p>
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="text-[10px] font-mono uppercase tracking-widest text-[#C9A962] mb-1">Nano Ceramic</p>
+                      <p className="text-[#C9A962] font-display font-black text-xl italic tracking-tighter">{row.ceramic}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-[10px] font-mono uppercase tracking-widest text-white/40 mb-1">Standard Wax</p>
+                      <p className="text-white/50 font-mono text-xs tracking-widest">{row.wax}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
             
             <div className="mt-12 text-center lg:hidden">
@@ -547,12 +570,12 @@ const Ceramic = () => {
 
       {/* STICKY CTA (DESKTOP) */}
       <div className="hidden lg:flex fixed bottom-8 right-8 z-50">
-         <Button 
+        <Button 
           onClick={() => openQuote(`Ceramic: ${currentPkg.name}`)}
-          className="bg-[#C9A962] text-white p-12 font-display font-black italic text-2xl uppercase tracking-[0.2em] rounded-none hover:bg-[#A6884A] shadow-[0_20px_50px_rgba(0,102,255,0.4)] transition-all transform hover:scale-110"
-         >
-           RESERVE YOUR CUT <ArrowRight className="ml-4 w-8 h-8" />
-         </Button>
+          className="bg-[#C9A962] text-white px-8 py-5 font-display font-black italic text-lg uppercase tracking-[0.15em] rounded-none hover:bg-[#A6884A] shadow-[0_10px_30px_rgba(201,169,98,0.35)] transition-all"
+        >
+          RESERVE YOUR CUT <ArrowRight className="ml-3 w-5 h-5" />
+        </Button>
       </div>
     </div>
   );
