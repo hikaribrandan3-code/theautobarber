@@ -82,7 +82,7 @@ const Index = () => {
     },
     {
       category: "Car Protection",
-      image: "/images/assets/ceramic_coating_bottle_glow_1776187427504.png",
+      image: "/images/assets/window_tint_luxury_1776189700411.png",
       name: "Window Tint",
       price: "Quote",
       desc: "Heat rejection. UV blocking. Privacy and aesthetic factory look.",
@@ -92,7 +92,7 @@ const Index = () => {
     },
     {
       category: "Car Protection",
-      image: "/images/assets/ceramic_coating_bottle_glow_1776187427504.png",
+      image: "/images/assets/ppf_application_background_1776191964267.png",
       name: "PPF (Clear Bra)",
       price: "Quote",
       desc: "Impact protection. Self-healing film for your front end or full car.",
