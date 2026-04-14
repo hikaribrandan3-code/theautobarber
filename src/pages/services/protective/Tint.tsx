@@ -278,57 +278,55 @@ export default function Tint() {
         </section>
 
         {/* TESLA VISUALIZER SECTION */}
-        <section className="py-24 bg-[#131313] px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+        <section className="py-16 lg:py-24 bg-[#131313] px-6 lg:px-12">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
               <div className="max-w-2xl">
-                <span className="text-[#C9A962] tracking-[0.3em] font-bold text-sm uppercase block mb-4">Interactive Experience</span>
-                <h2 className="text-5xl md:text-6xl font-black font-display italic tracking-tighter leading-none">
-                  FIND YOUR <br /> <span className="text-[#C9A962]">PERFECT SHADE</span>
+                <span className="text-[#C9A962] tracking-[0.3em] font-bold text-sm uppercase block mb-3">Interactive Experience</span>
+                <h2 className="text-4xl md:text-5xl font-black font-display italic tracking-tighter leading-none">
+                  FIND YOUR <span className="text-[#C9A962]">PERFECT SHADE</span>
                 </h2>
               </div>
               <p className="text-[#99907c] max-w-xs text-sm leading-relaxed uppercase tracking-widest">
-                Select a percentage to preview the transformation on a matte black Tesla Model 3.
+                Select a percentage to preview the transformation.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div className="flex flex-col lg:flex-row gap-6 items-start">
               {/* Preview Canvas */}
-              <div className="lg:col-span-9 relative bg-[#0e0e0e] flex items-center justify-center aspect-[21/9] p-2 overflow-hidden border border-white/10">
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <img
-                    src="/images/tesla-model3-side-studio.png"
-                    alt="Matte black Tesla Model 3 side profile"
-                    className="w-full h-full object-cover scale-110"
-                  />
-                  {/* Window Overlays */}
-                  <div
-                    className="absolute top-[30%] left-[36%] w-[14%] h-[18%] bg-black transition-all duration-500 rounded-sm"
-                    style={{ opacity: currentShade.opacity }}
-                  />
-                  <div
-                    className="absolute top-[30%] left-[51%] w-[12%] h-[18%] bg-black transition-all duration-500 rounded-sm"
-                    style={{ opacity: currentShade.opacity }}
-                  />
-                  <div
-                    className="absolute top-[32%] left-[64%] w-[10%] h-[14%] bg-black transition-all duration-500 rounded-sm"
-                    style={{ opacity: currentShade.opacity }}
-                  />
-                  <div
-                    className="absolute top-[34%] left-[74%] w-[8%] h-[10%] bg-black transition-all duration-500 rounded-sm"
-                    style={{ opacity: currentShade.opacity }}
-                  />
-                </div>
+              <div className="flex-1 relative bg-[#0e0e0e] flex items-center justify-center aspect-[16/9] overflow-hidden border border-white/10 rounded-sm">
+                <img
+                  src="/images/tesla-model3-side-studio.png"
+                  alt="Matte black Tesla Model 3 side profile"
+                  className="w-full h-full object-cover object-center"
+                />
+                {/* Window Overlays - positioned for centered side-profile Model 3 */}
+                <div
+                  className="absolute top-[24%] left-[31%] w-[13%] h-[22%] bg-black transition-all duration-500 rounded-sm"
+                  style={{ opacity: currentShade.opacity }}
+                />
+                <div
+                  className="absolute top-[24%] left-[45%] w-[11%] h-[20%] bg-black transition-all duration-500 rounded-sm"
+                  style={{ opacity: currentShade.opacity }}
+                />
+                <div
+                  className="absolute top-[26%] left-[56%] w-[9%] h-[16%] bg-black transition-all duration-500 rounded-sm"
+                  style={{ opacity: currentShade.opacity }}
+                />
+                <div
+                  className="absolute top-[28%] left-[65%] w-[8%] h-[14%] bg-black transition-all duration-500 rounded-sm"
+                  style={{ opacity: currentShade.opacity }}
+                />
 
                 {/* Info Badge */}
-                <div className="absolute bottom-10 left-10 border-l-4 border-[#C9A962] pl-6 py-3 bg-[#0e0e0e]/80 backdrop-blur-md">
-                  <div className="text-[#C9A962] font-black text-4xl font-display italic">{currentShade.label}</div>
-                  <div className="text-xs tracking-[0.3em] text-[#99907c] uppercase font-bold">CURRENT SELECTION</div>
+                <div className="absolute bottom-6 left-6 border-l-4 border-[#C9A962] pl-4 py-2 bg-[#0e0e0e]/90 backdrop-blur-sm">
+                  <div className="text-[#C9A962] font-black text-2xl font-display italic">{currentShade.label}</div>
+                  <div className="text-[10px] tracking-[0.3em] text-[#99907c] uppercase font-bold">CURRENT SELECTION</div>
                 </div>
               </div>
 
-              {/* Shade Selectors */}
-              <div className="lg:col-span-3 flex flex-col gap-4 h-full">
+              {/* Shade Selectors - Compact */}
+              <div className="w-full lg:w-56 flex flex-row lg:flex-col gap-2 shrink-0">
                 {(Object.keys(shadeMap) as unknown as Shade[]).map((s) => {
                   const info = shadeMap[s];
                   const isActive = shade === s;
@@ -336,16 +334,16 @@ export default function Tint() {
                     <button
                       key={s}
                       onClick={() => setShade(s)}
-                      className={`group w-full flex flex-col justify-center items-start px-8 py-8 transition-all duration-300 border-r-4 ${
+                      className={`group flex-1 lg:flex-none flex flex-col justify-center items-start px-5 py-4 transition-all duration-300 border lg:border-r-4 lg:border-l-0 lg:border-b-0 border-b-4 ${
                         isActive
                           ? 'bg-[#262626] border-[#C9A962]'
                           : 'bg-[#191a1a] border-transparent hover:border-[#C9A962]/50'
                       }`}
                     >
-                      <span className={`font-display italic font-black text-3xl mb-1 ${isActive ? 'text-[#C9A962]' : 'text-white group-hover:text-[#C9A962]'} transition-colors`}>
+                      <span className={`font-display italic font-black text-xl lg:text-2xl mb-0.5 ${isActive ? 'text-[#C9A962]' : 'text-white group-hover:text-[#C9A962]'} transition-colors`}>
                         {info.label}
                       </span>
-                      <span className="text-[10px] tracking-[0.2em] text-[#99907c] uppercase">{info.tag}</span>
+                      <span className="text-[10px] tracking-[0.15em] text-[#99907c] uppercase">{info.tag}</span>
                     </button>
                   );
                 })}
