@@ -1,6 +1,6 @@
-import { useOutletContext, Link } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Shield, Droplets, Zap, Clock, Star, ChevronRight, Gauge, Layers } from "lucide-react";
+import { Clock } from "lucide-react";
 import SEO from "@/components/SEO";
 
 const ServicesPage = () => {
@@ -13,16 +13,25 @@ const ServicesPage = () => {
         description="Seattle's master-level detailing menu. From signature full restorations to mirror-finish paint correction. We bring the barber's standard to your driveway."
       />
 
-      {/* Header */}
-      <section className="pt-48 pb-24 bg-[#0a0a0a] border-b border-white/5 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none grid-bg" />
-        <div className="container mx-auto px-4 text-center lg:px-8 relative z-10">
-          <p className="font-display text-sm uppercase tracking-[0.5em] text-[#C9A962] mb-6 italic">The Service Menu</p>
-          <h1 className="text-6xl lg:text-[10rem] font-display font-black italic tracking-tighter uppercase text-white leading-[0.75]">
-             THE MASTER <br/><span className="text-[#C9A962] text-glow">SEATTLE STAND.</span>
+      {/* Hero */}
+      <section className="relative px-6 overflow-hidden pt-[140px] pb-24 min-h-[60vh] flex flex-col justify-center items-center text-center border-b border-white/5">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/portfolio/paint-correction-5050.jpg"
+            alt="Auto detailing services"
+            className="w-full h-full object-cover"
+            style={{ filter: "brightness(0.35)" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-[#0A0A0A]" />
+        </div>
+        <div className="relative z-10 w-full max-w-4xl mx-auto">
+          <h1 className="text-[56px] md:text-[100px] font-black leading-[0.85] tracking-tighter uppercase italic text-white"
+              style={{ textShadow: "0 10px 40px rgba(0,0,0,0.9)" }}>
+            YOUR CAR.<br />
+            <span className="text-[#C9A962]">OUR CRAFT.</span>
           </h1>
-          <p className="mt-12 text-[#adaaaa] max-w-2xl mx-auto font-mono text-[10px] lg:text-xs uppercase tracking-[0.4em] leading-relaxed italic">
-            EVERY DETAIL DOCUMENTED. EVERY CUT GUARANTEED.
+          <p className="mt-8 text-white/80 text-[10px] md:text-[13px] font-black uppercase tracking-[0.4em]">
+            Professional Detailing & Paint Protection
           </p>
         </div>
       </section>
@@ -103,7 +112,7 @@ const ServicesPage = () => {
       />
 
       {/* CATEGORY: HIGH-END PAINT PROTECTION */}
-      <div className="w-full bg-[#0E0E0E] py-12 border-y border-white/20 text-center relative z-10 mt-16">
+      <div className="w-full bg-[#0E0E0E] py-12 border-y border-white/20 text-center relative z-10">
         <h2 className="text-3xl lg:text-5xl font-black uppercase text-white tracking-widest">HIGH-END PAINT PROTECTION</h2>
         <p className="text-white/60 text-xs font-bold uppercase tracking-[0.2em] mt-2">Correction, Polish, and Preservation</p>
       </div>
@@ -180,95 +189,24 @@ const ServicesPage = () => {
         difference="Required when defects show in direct sun, or when a fingernail catches the scratch. Also mandatory prep for ceramic coating if your paint isn't perfect."
       />
 
-      {/* ADDITIONAL SERVICES GRID (REFINEMENTS) */}
-      <section id="other-services" className="py-24 border-t border-white/5 bg-[#0e0e0e]">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="mb-16">
-            <p className="font-display text-sm uppercase tracking-[0.5em] text-[#C9A962] mb-4 italic">The Refinements</p>
-            <h2 className="text-5xl lg:text-7xl font-display font-black italic uppercase tracking-tighter text-white">OTHER SERVICES</h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Minimal link strip for protective services */}
+      <section className="py-16 bg-[#0a0a0a] border-t border-white/5">
+        <div className="container mx-auto px-4 lg:px-8 text-center">
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40 mb-4">Looking for long-term protection?</p>
+          <div className="flex flex-wrap justify-center gap-4">
             {[
-              { title: "Wax Package", price: "From $150", desc: "Hand-applied protection. 2–3 months of gloss and UV defense. For paint that's already in good shape.", img: "/images/assets/exterior_paint_gloss_1776187353898.png" },
-              { title: "Mini Detail", price: "From $150", desc: "Quick maintenance. Exterior hand wash, interior vacuum and wipe, glass inside and out.", img: "/images/assets/interior_detailing_focus_1776187301149.png" },
-              { id: "exterior", title: "Exterior Detail", price: "Quote-Based", desc: "Wash, decontaminate, clay bar, wheels and tires. Exterior-only when the inside is already clean.", img: "/images/assets/car_protection_ceramic_ppf_1776187387918.png" },
-              { title: "Water Spot Treatment", price: "Quote-Based", desc: "Mineral deposit removal. Paint-safe process — we measure clear coat before we start.", img: "/images/assets/ceramic_water_beading_1776189745679.png" },
-              { title: "Ceramic Coating", price: "From $1,100", desc: "3–5 year protection. Nano-ceramic molecular bond. Requires paint correction first if defects exist.", link: "/services/protective/ceramic", linkText: "Full Details", img: "/images/assets/ceramic_water_beading_1776189745679.png" },
-              { title: "PPF / Window Tint", price: "From $1,300", desc: "XPEL and STEK film. Master-tier protective film specialists.", link: "/services/protective/ppf", linkText: "Full Details", img: "/images/assets/window_tint_luxury_1776189700411.png" },
-            ].map(s => (
-              <div key={s.title} id={s.id} className="p-8 border border-white/5 bg-[#141414] space-y-4 hover:border-white/30 transition-all group relative overflow-hidden min-h-[250px] flex flex-col justify-end">
-                <div className="absolute inset-0 z-0">
-                  <img src={s.img} alt={s.title} className="w-full h-full object-cover opacity-60 mix-blend-overlay group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-black/60" />
-                </div>
-                <div className="relative z-10 flex flex-col items-start gap-2">
-                  <h3 className="font-display font-black uppercase tracking-wider text-xl text-white italic">{s.title}</h3>
-                  <p className="font-mono text-xs text-[#C9A962] font-bold italic uppercase">{s.price}</p>
-                  <p className="text-[11px] font-mono text-[#adaaaa] leading-relaxed uppercase tracking-widest italic line-clamp-3">{s.desc}</p>
-                  {s.link ? (
-                    <Link to={s.link}>
-                      <Button variant="ghost" size="sm" className="mt-4 text-[10px] uppercase tracking-[0.3em] font-display font-black text-white hover:text-[#C9A962] p-0 h-auto italic underline underline-offset-4">
-                        {s.linkText} <ChevronRight size={14} className="ml-1" />
-                      </Button>
-                    </Link>
-                  ) : (
-                    <Button variant="ghost" size="sm" onClick={() => openQuote(s.title)} className="mt-4 text-[10px] uppercase tracking-[0.3em] font-display font-black text-white hover:text-[#C9A962] p-0 h-auto italic underline underline-offset-4">
-                      GET THE QUOTE <ChevronRight size={14} className="ml-1" />
-                    </Button>
-                  )}
-                </div>
-              </div>
+              { label: "Ceramic Coating", href: "/services/protective/ceramic" },
+              { label: "PPF", href: "/services/protective/ppf" },
+              { label: "Window Tint", href: "/services/protective/tint" },
+            ].map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                className="px-6 py-3 border border-white/10 text-xs font-black uppercase tracking-widest text-white hover:border-[#C9A962] hover:text-[#C9A962] transition-colors"
+              >
+                {l.label} →
+              </a>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROTECTIVE SERVICES SECTION */}
-      <section className="py-24 lg:py-48 bg-[#0a0a0a] border-t border-white/5 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[#C9A962]/5 pointer-events-none" />
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="text-center mb-24 space-y-6">
-            <p className="font-display text-sm uppercase tracking-[0.5em] text-[#C9A962] mb-4 italic">The Protection Tier</p>
-            <h2 className="text-5xl lg:text-[8rem] font-display font-black italic uppercase tracking-tighter leading-none text-white">CERAMIC • PPF • <span className="text-[#C9A962] text-glow">TINT</span></h2>
-            <p className="font-mono text-[10px] lg:text-xs uppercase tracking-[0.4em] text-[#adaaaa] italic font-bold max-w-2xl mx-auto leading-relaxed">WE PARTNER WITH CERTIFIED XPEL & STEK INSTALLERS FOR FILM AND COATING THAT LASTS YEARS, NOT MONTHS.</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            <div className="p-10 border border-white/5 bg-[#141414] flex flex-col items-center text-center space-y-8 hover:border-[#C9A962]/40 transition-all group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-[#C9A962]/5 rotate-45 translate-x-12 -translate-y-12" />
-              <Zap size={64} className="text-[#C9A962] group-hover:scale-110 transition-transform" />
-              <h3 className="text-3xl font-display font-black italic uppercase tracking-tighter text-white">CERAMIC COATING</h3>
-              <p className="font-display text-4xl text-[#C9A962] font-black italic tracking-tighter">$1,100+</p>
-              <Link to="/services/protective/ceramic" className="w-full">
-                <Button className="w-full bg-[#C9A962] text-white font-display text-lg uppercase tracking-widest font-black italic hover:bg-[#A6884A] transition-all py-10 rounded-none shadow-[0_0_30px_rgba(0,102,255,0.2)]">
-                  FULL DETAILS
-                </Button>
-              </Link>
-            </div>
-
-            <div className="p-10 border border-[#C9A962]/30 bg-[#141414] flex flex-col items-center text-center space-y-8 scale-105 shadow-[0_0_60px_rgba(0,102,255,0.1)] hover:border-[#C9A962]/60 transition-all group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-[#C9A962]/10 rotate-45 translate-x-12 -translate-y-12" />
-              <Shield size={64} className="text-[#C9A962] group-hover:scale-110 transition-transform" />
-              <h3 className="text-3xl font-display font-black italic uppercase tracking-tighter text-white">PAINT PROTECTION FILM</h3>
-              <p className="font-display text-4xl text-[#C9A962] font-black italic tracking-tighter">$1,300+</p>
-              <Link to="/services/protective/ppf" className="w-full">
-                <Button className="w-full bg-[#C9A962] text-white font-display text-lg uppercase tracking-widest font-black italic hover:bg-[#A6884A] transition-all py-10 rounded-none shadow-[0_0_40px_rgba(0,102,255,0.3)]">
-                  FULL DETAILS
-                </Button>
-              </Link>
-            </div>
-
-            <div className="p-10 border border-white/5 bg-[#141414] flex flex-col items-center text-center space-y-8 hover:border-[#C9A962]/40 transition-all group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rotate-45 translate-x-12 -translate-y-12" />
-              <Droplets size={64} className="text-white group-hover:scale-110 transition-transform" />
-              <h3 className="text-3xl font-display font-black italic uppercase tracking-tighter text-white">WINDOW TINT</h3>
-              <p className="font-display text-4xl text-white font-black italic tracking-tighter">$199+</p>
-              <Link to="/services/protective/tint" className="w-full">
-                <Button className="w-full bg-white text-black font-display text-lg uppercase tracking-widest font-black italic hover:bg-gray-200 transition-all py-10 rounded-none">
-                  FULL DETAILS
-                </Button>
-              </Link>
-            </div>
           </div>
         </div>
       </section>
@@ -385,7 +323,7 @@ const ServiceDetail = ({ id, badge, serviceNumber, title, tagline, price, time, 
               </div>
               <Button
                 onClick={() => openQuote(ctaService)}
-                className="w-full bg-[#C9A962] text-white font-display uppercase tracking-[0.2em] text-sm lg:text-xl font-black hover:bg-[#A6884A] py-10 rounded-none italic shadow-none whitespace-normal h-auto break-words leading-tight"
+                className="w-full lg:w-auto lg:self-start bg-[#C9A962] text-white font-display uppercase tracking-[0.2em] text-sm lg:text-base font-black hover:bg-[#A6884A] py-5 lg:py-4 px-8 lg:px-10 rounded-none italic shadow-none whitespace-normal h-auto break-words leading-tight"
               >
                 {ctaLabel} →
               </Button>
