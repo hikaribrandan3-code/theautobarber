@@ -110,31 +110,7 @@ export default function PPF() {
             </div>
           </div>
           <div className="lg:w-1/2 w-full pt-12 lg:pt-0">
-             {/* PAIN POINTS */}
-            <div className="grid grid-cols-1 gap-4">
-              <div className="bg-[#131313] p-6 lg:p-8 border-l-4 border-[#ff725e] group hover:border-[#ff725e]/50 transition-all">
-                <div className="flex items-center gap-2 text-[#ff725e] mb-3">
-                  <AlertTriangle className="w-4 h-4" />
-                  <span className="font-mono font-bold uppercase text-[10px] tracking-[0.3em]">Paint Matching = Impossible</span>
-                </div>
-                <h3 className="text-xl lg:text-2xl font-mono font-black uppercase leading-tight italic text-white">BODY SHOPS CAN'T MATCH ROBOTS</h3>
-                <p className="mt-2 text-[#adaaaa] font-mono text-[9px] uppercase tracking-widest leading-relaxed opacity-80">
-                  <span className="lg:hidden">Factory paint is applied by robots in a controlled environment. Body shops use spray guns and hope. One chip leads to a panel respray. One respray leads to a Carfax flag. Protect the original — it's worth more.</span>
-                  <span className="hidden lg:inline">Factory: 3-stage electrostatic precision. Body shop: Gravity-fed spray gun + hope. Your metallic pearl will never lay the same way twice.</span>
-                </p>
-              </div>
-              <div className="bg-[#131313] p-6 lg:p-8 border-l-4 border-[#ff725e] group hover:border-[#ff725e]/50 transition-all">
-                <div className="flex items-center gap-2 text-[#ff725e] mb-3">
-                  <TrendingDown className="w-4 h-4" />
-                  <span className="font-mono font-bold uppercase text-[10px] tracking-[0.3em]">CARFAX Flags</span>
-                </div>
-                <h3 className="text-xl lg:text-2xl font-mono font-black uppercase leading-tight italic text-white">A RESPRAY IS A RED FLAG</h3>
-                <p className="mt-2 text-[#adaaaa] font-mono text-[9px] uppercase tracking-widest leading-relaxed opacity-80">
-                  <span className="lg:hidden">A single paint correction or respray shows up on Carfax as a damage flag. That drops resale value by 15% instantly. PPF means your paint never needs repainting — it stays original, clean, and full value.</span>
-                  <span className="hidden lg:inline">One "minor" chip leads to a panel respray. One respray leads to a "Minor Accident" flag on CARFAX. Resale value drops 15% instantly.</span>
-                </p>
-              </div>
-            </div>
+
 
             {/* Mobile-only "Even Easier to Clean" Section */}
             <div className="lg:hidden mt-8 bg-[#131313] p-6 border border-[#C9A962]/20 shadow-[0_0_20px_rgba(0,102,255,0.05)]">
@@ -150,9 +126,9 @@ export default function PPF() {
 
       {/* ─── PPF PACKAGE VISUALIZER (unified, clean) ─── */}
       <section className="bg-[#0e0e0e] border-b border-white/5 scroll-mt-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-40 pb-0">
-          <p className="text-center font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-6 text-[#adaaaa] italic">The Coverage Map</p>
-          <h2 className="text-center font-display text-5xl lg:text-9xl font-black uppercase tracking-tighter text-white mb-10 leading-[0.8]">SELECT YOUR <span className="text-[#C9A962]">SHIELD</span></h2>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-16 pb-0">
+          <p className="text-center font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-4 text-[#adaaaa] italic">The Coverage Map</p>
+          <h2 className="text-center font-display text-5xl lg:text-9xl font-black uppercase tracking-tighter text-white mb-4 leading-[0.8]">SELECT YOUR <span className="text-[#C9A962]">SHIELD</span></h2>
 
           {/* ── TAB STRIP ── */}
           <div className="flex overflow-x-auto no-scrollbar gap-2 pb-2 mb-0 pt-4">
@@ -328,12 +304,12 @@ export default function PPF() {
       </section>
 
       {/* SMART RECOMMENDER */}
-      <section className="px-6 py-12 lg:py-16 bg-[#0e0e0e]" id="funnel" ref={funnelRef}>
+      <section className="px-6 py-6 border-t border-white/5 lg:py-8 bg-[#0e0e0e]" id="funnel" ref={funnelRef}>
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-6xl md:text-8xl lg:text-[10rem] font-display font-black uppercase tracking-tighter italic text-white leading-[0.7]">NOT SURE? <br/><span className="text-[#C9A962]">WE'LL HELP.</span></h2>
-            <div className="h-1 w-24 bg-[#C9A962] mx-auto mt-12 shadow-[0_0_20px_#C9A962]"></div>
-            <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-[#adaaaa] italic">
+          <div className="text-center mb-8">
+            <h2 className="text-5xl md:text-7xl lg:text-[8rem] font-display font-black uppercase tracking-tighter italic text-white leading-[0.7]">NOT SURE? <br/><span className="text-[#C9A962]">WE'LL HELP.</span></h2>
+            <div className="h-1 w-24 bg-[#C9A962] mx-auto mt-6 shadow-[0_0_20px_#C9A962]"></div>
+            <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-[#adaaaa] italic">
               Answer 2 questions to find your coverage tier.
             </p>
           </div>
@@ -403,10 +379,40 @@ export default function PPF() {
         </div>
       </section>
 
+      {/* QUOTE FORM */}
+      <section className="px-6 py-16 bg-[#0e0e0e] border-t border-white/5 pb-48">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="font-display text-4xl lg:text-7xl font-black uppercase tracking-tighter text-white mb-8 text-center italic">REQUEST A <span className="text-[#C9A962]">QUOTE</span></h2>
+          <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); openQuote(`Quote Request from PPF page`); }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">Name</label>
+                <input type="text" className="w-full bg-[#131313] border border-white/10 p-4 text-white font-mono focus:border-[#C9A962] outline-none" placeholder="Your Name" required />
+              </div>
+              <div>
+                <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">Phone</label>
+                <input type="tel" className="w-full bg-[#131313] border border-white/10 p-4 text-white font-mono focus:border-[#C9A962] outline-none" placeholder="(xxx) xxx-xxxx" required />
+              </div>
+            </div>
+            <div>
+              <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">Vehicle (Year / Make / Model)</label>
+              <input type="text" className="w-full bg-[#131313] border border-white/10 p-4 text-white font-mono focus:border-[#C9A962] outline-none" placeholder="e.g. 2024 Porsche 911 GT3" required />
+            </div>
+            <div>
+              <label className="block text-[10px] font-mono uppercase tracking-widest text-white/50 mb-2">Message</label>
+              <textarea rows={4} className="w-full bg-[#131313] border border-white/10 p-4 text-white font-mono focus:border-[#C9A962] outline-none" placeholder="Any specific concerns?" />
+            </div>
+            <button type="submit" className="w-full bg-[#C9A962] text-white font-display font-black uppercase tracking-[0.2em] p-6 hover:bg-[#A6884A] transition-all text-xl italic pt-8 pb-8 mt-4 rounded-none shadow-[0_0_20px_rgba(201,169,98,0.2)]">
+              SEND REQUEST
+            </button>
+          </form>
+        </div>
+      </section>
+
       <div className="fixed bottom-0 w-full z-[60] bg-black/95 backdrop-blur-2xl border-t border-[#C9A962]/20 px-6 py-4 flex items-center justify-between shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
         <div className="flex flex-col max-w-[50%]">
           <span className="lg:hidden text-[8px] text-[#C9A962] uppercase font-bold tracking-[0.3em] font-mono mb-1 animate-pulse">Master Application. Seattle Standard.</span>
-          <span className="font-mono text-[8px] lg:text-[10px] font-bold uppercase tracking-[0.3em] text-[#adaaaa] mb-1 italic">Selected Cut</span>
+          <span className="font-mono text-[8px] lg:text-[10px] font-bold uppercase tracking-[0.3em] text-[#adaaaa] mb-1 italic">YOUR PACKAGE</span>
           <span className="font-display text-2xl lg:text-4xl font-black italic uppercase tracking-tighter text-white truncate leading-none">
             {currentPkg.name}
           </span>
@@ -417,7 +423,7 @@ export default function PPF() {
         >
           <span className="lg:hidden">GET QUOTE →</span>
           <span className="hidden lg:inline">
-            BOOK THE CUT — {currentPkg.price !== 'GET QUOTE' ? '$' : ''}{currentPkg.price}
+            BOOK NOW — {currentPkg.price !== 'GET QUOTE' ? '$' : ''}{currentPkg.price}
           </span>
         </button>
       </div>
