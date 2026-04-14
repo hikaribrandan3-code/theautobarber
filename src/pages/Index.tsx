@@ -303,13 +303,16 @@ const Index = () => {
         </div>
       </section>
 
+      {/* MOST POPULAR HEADER BREAK */}
+      <section className="bg-[#0E0E0E] pt-32 pb-12 px-6 border-t border-white/5">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-6xl md:text-8xl font-black uppercase leading-none tracking-tighter italic shadow-2xl">OUR MOST POPULAR</h2>
+        </div>
+      </section>
+
       {/* PRICING CARDS */}
-      <section id="pricing" className="py-16 bg-[#0E0E0E] px-6">
+      <section id="pricing" className="pb-32 bg-[#0E0E0E] px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16 text-center lg:text-left">
-            <h2 className="text-5xl md:text-7xl font-black uppercase leading-none tracking-tighter mb-4 italic">OUR MOST POPULAR</h2>
-            <p className="text-white text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em]">The community favorites in Seattle</p>
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {menuItems.map((s, i) => (
               <div
