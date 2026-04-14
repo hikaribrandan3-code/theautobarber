@@ -140,6 +140,11 @@ export default function PPF() {
                       : 'border-white/10 text-[#adaaaa] hover:text-white hover:border-white/30 hover:bg-white/5'
                   }`}
                 >
+                  {pkgKey === 'fullFront' && (
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+                      <span className="bg-[#C9A962] text-white text-[8px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full whitespace-nowrap shadow-[0_4px_10px_rgba(201,169,98,0.3)]">★ RECOMMENDED</span>
+                    </div>
+                  )}
                   {pkg.name}
                 </button>
               );
@@ -237,25 +242,18 @@ export default function PPF() {
           <div className="absolute inset-0 pointer-events-none" style={{
             background: 'radial-gradient(ellipse at center, transparent 50%, #0e0e0e 100%)'
           }} />
-
-          {/* Coverage label badge */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#0e0e0e]/80 backdrop-blur-sm border border-[#C9A962]/30 px-5 py-2 z-30">
-            <span className="font-display font-black text-[#C9A962] text-xl uppercase tracking-[0.15em] italic">
-              {currentPkg.name} — {currentPkg.price !== 'GET QUOTE' ? `$${currentPkg.price}` : 'GET QUOTE'}
-            </span>
-          </div>
         </div>
 
-        {/* ── DETAIL PANEL ── */}
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 lg:py-10 text-center lg:text-left">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+        {/* ── DETAIL PANEL - LUXURY SPLIT ── */}
+        <div className="max-w-5xl mx-auto px-6 py-20 lg:py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             
-            {/* Left: name + description */}
-            <div className="lg:w-1/2">
-              <h3 className="font-display text-4xl lg:text-6xl font-black italic uppercase tracking-tighter text-white leading-[0.8] mb-3">
+            {/* Left: Bio / Summary */}
+            <div className="space-y-6">
+              <h3 className="font-display text-5xl lg:text-7xl font-black italic uppercase tracking-tighter text-white leading-[0.8]">
                 {currentPkg.name}
               </h3>
-              <p className="font-mono text-[10px] lg:text-xs uppercase tracking-widest text-[#adaaaa] leading-relaxed">
+              <p className="text-sm lg:text-base text-[#adaaaa] leading-relaxed font-medium max-w-md">
                 {selectedPackage === 'partial'
                   ? 'Covers the highest-impact front zones: bumper, hood leading edge, mirrors and door cups. Ideal for daily drivers who want smart protection on a tighter budget.'
                   : selectedPackage === 'fullFront'
@@ -266,31 +264,30 @@ export default function PPF() {
               </p>
             </div>
 
-            {/* Right: features + CTA */}
-            <div className="lg:w-1/2">
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mb-8">
-                {currentPkg.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 shrink-0 text-[#C9A962]" />
-                    <span className="font-mono text-[10px] lg:text-xs text-[#e5e2e1] uppercase tracking-wider">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-[#adaaaa] font-mono text-[10px] uppercase tracking-widest">Base Investment</span>
-                  <span className="font-display font-black italic text-4xl lg:text-6xl tracking-tighter text-white leading-none">
+            {/* Right: Technical Specs & Pricing */}
+            <div className="space-y-12">
+              <div className="space-y-6">
+                <h4 className="text-[10px] font-mono font-black uppercase tracking-[0.3em] text-[#C9A962]">Package Inclusive</h4>
+                <ul className="flex flex-col gap-4">
+                  {currentPkg.features.map((feature, i) => (
+                    <li key={i} className="flex items-center gap-4">
+                      <CheckCircle2 className="w-4 h-4 shrink-0 text-[#C9A962]" />
+                      <span className="font-mono text-[10px] lg:text-xs text-[#e5e2e1] uppercase tracking-wider">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="pt-8 border-t border-white/10 shrink-0">
+                <div className="flex flex-col">
+                  <span className="text-gray-500 font-mono text-[10px] uppercase tracking-[0.2em] mb-3">Base Investment</span>
+                  <span className="font-display font-black italic text-5xl lg:text-8xl tracking-tighter text-white leading-none">
                     {currentPkg.price !== 'GET QUOTE' ? `$${currentPkg.price}` : 'CALL'}
                   </span>
                 </div>
-                <button
-                  onClick={() => openQuote(`PPF: ${currentPkg.name}`)}
-                  className="w-full sm:w-auto bg-[#C9A962] text-white font-display font-black uppercase tracking-[0.2em] text-base lg:text-lg px-8 py-3 hover:bg-[#A6884A] active:scale-95 transition-all shadow-[0_0_24px_rgba(0,102,255,0.3)] rounded-none"
-                >
-                  BOOK NOW →
-                </button>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -298,8 +295,8 @@ export default function PPF() {
 
       {/* TRUST LOGOS */}
       <section className="bg-[#131313] px-6 py-6 lg:py-8 border-y border-white/5">
-        <p className="text-center font-mono font-bold text-[9px] uppercase tracking-[0.4em] text-[#adaaaa] mb-6">Certified Film Partners</p>
-        <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-60">
+        <p className="text-center font-mono font-bold text-[9px] uppercase tracking-[0.4em] text-white mb-6">Certified Film Partners</p>
+        <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-100">
           <div className="flex flex-col items-center hover:opacity-100 transition-opacity">
             <span className="text-3xl lg:text-5xl font-display font-black italic tracking-tighter text-white">STEK</span>
             <span className="font-mono text-[8px] lg:text-[10px] font-bold uppercase tracking-widest mt-1 text-[#C9A962]">Authorized Dealer</span>
