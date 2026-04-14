@@ -35,8 +35,8 @@ const ContactPage = () => {
           <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-display font-black leading-[0.9] uppercase tracking-tighter italic text-white drop-shadow-2xl">
             CONTACT<br /><span className="text-[#C9A962]">THE BARBER</span>
           </h1>
-          <p className="mt-6 text-[#e5e5e5] text-base lg:text-lg font-medium leading-relaxed max-w-2xl px-4">
-            Concierge-level support for your vehicle. We typically respond within 2 hours.
+          <p className="mt-6 text-[#e5e5e5] text-base lg:text-lg font-black uppercase tracking-widest leading-relaxed max-w-2xl px-4 font-mono italic">
+            Ready to protect your investment? Text or call — we reply in under 2 hours.
           </p>
         </div>
       </section>
@@ -54,7 +54,7 @@ const ContactPage = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
                     { icon: <Phone size={20} />, label: "(253) 893-9452", href: "tel:2538939452" },
-                    { icon: <Mail size={20} />, label: "hikaribrandan3@gmail.com", href: "mailto:hikaribrandan3@gmail.com" },
+                    { icon: <Mail size={20} />, label: "EMAIL US", href: "mailto:hikaribrandan3@gmail.com" },
                     { icon: <MapPin size={20} />, label: "Seattle, WA", href: null },
                     { icon: <Clock size={20} />, label: "Mon–Sun 8AM – 6PM", href: null },
                   ].map((c, i) => (
