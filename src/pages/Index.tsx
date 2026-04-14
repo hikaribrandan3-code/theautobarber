@@ -291,7 +291,7 @@ const Index = () => {
             {menuItems.map((s, i) => (
               <div
                 key={i}
-                className={`group relative border bg-white flex flex-col transition-all duration-500 overflow-hidden ${s.popular ? "border-[#C9A962] border-2" : "border-black/10"}`}
+                className={`group relative border bg-[#0A0A0A] flex flex-col transition-all duration-500 overflow-hidden ${s.popular ? "border-white border-2" : "border-white/10"}`}
               >
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700">
@@ -300,9 +300,9 @@ const Index = () => {
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 p-10 flex flex-col h-full text-black">
+                <div className="relative z-10 p-10 flex flex-col h-full">
                   <div className="flex justify-between items-start mb-6">
-                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-black border border-black/20 px-3 py-1.5 backdrop-blur-md">
+                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white border border-white/20 px-3 py-1.5 backdrop-blur-md">
                       {s.category}
                     </span>
                     {s.popular && (
@@ -313,19 +313,19 @@ const Index = () => {
                   </div>
                   
                   <div className="mb-10">
-                    <h3 className="text-2xl font-black uppercase tracking-tighter mb-4 pr-4">{s.name}</h3>
+                    <h3 className="text-2xl font-black uppercase tracking-tighter mb-4 pr-4 text-white">{s.name}</h3>
                     <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-5xl font-black text-black italic tracking-tighter">{s.price}</span>
-                      {s.regularPrice && <span className="text-black/40 text-lg line-through italic">{s.regularPrice}</span>}
+                      <span className="text-5xl font-black text-white italic tracking-tighter">{s.price}</span>
+                      {s.regularPrice && <span className="text-white/60 text-lg line-through italic">{s.regularPrice}</span>}
                     </div>
-                    <p className="text-black text-[10px] uppercase font-bold tracking-widest mb-6 italic">{s.time}</p>
-                    <p className="text-black/80 text-sm leading-relaxed font-medium">{s.desc}</p>
+                    <p className="text-white text-[10px] uppercase font-bold tracking-widest mb-6 italic">{s.time}</p>
+                    <p className="text-white/80 text-sm leading-relaxed font-medium">{s.desc}</p>
                   </div>
                   
                   <ul className="space-y-4 mb-12 flex-grow">
                     {s.items.map((item, j) => (
-                      <li key={j} className="flex items-start gap-4 text-black">
-                        <div className="w-1.5 h-1.5 rounded-full bg-black/20 mt-1.5 shrink-0" />
+                      <li key={j} className="flex items-start gap-4 text-white">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/40 mt-1.5 shrink-0" />
                         <span className="text-xs font-medium leading-tight">{item}</span>
                       </li>
                     ))}
@@ -333,7 +333,7 @@ const Index = () => {
 
                   <button
                     onClick={() => openQuote(s.service)}
-                    className={`w-full py-5 px-6 font-black uppercase tracking-widest text-[10px] md:text-xs transition-all shadow-lg active:scale-95 ${s.popular ? "bg-[#C9A962] text-white" : "bg-black text-white hover:bg-[#C9A962]"}`}
+                    className={`w-full py-5 px-6 font-black uppercase tracking-widest text-[10px] md:text-xs transition-all shadow-lg active:scale-95 ${s.popular ? "bg-[#C9A962] text-white" : "bg-transparent text-white border border-white hover:bg-white hover:text-black"}`}
                   >
                     <span className="block whitespace-normal leading-tight">BOOK THIS PACKAGE</span>
                   </button>
@@ -342,7 +342,7 @@ const Index = () => {
             ))}
           </div>
           
-          <p className="text-center text-black text-[10px] lg:text-sm mt-20 uppercase tracking-[0.2em] font-black">
+          <p className="text-center text-white text-[10px] lg:text-sm mt-20 uppercase tracking-[0.2em] font-black">
             Pricing may vary based on condition & size • Final valuation on-site
           </p>
         </div>
