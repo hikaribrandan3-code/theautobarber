@@ -165,64 +165,54 @@ const Index = () => {
           {/* Top: Text */}
           <div className="flex flex-col items-center w-full">
             <h1 
-              className="text-[48px] md:text-[56px] font-black leading-[1.1] md:leading-[1.1] tracking-tighter"
-              style={{ textShadow: "0 4px 20px rgba(0,0,0,0.5)" }}
+              className="text-[64px] md:text-[90px] font-black leading-[0.9] md:leading-[0.85] tracking-tighter uppercase italic"
+              style={{ textShadow: "0 10px 30px rgba(0,0,0,0.8)" }}
             >
-              YOUR CAR. OUR CRAFT.
+              YOUR CAR.<br />OUR <span className="text-[#C9A962]">CRAFT.</span>
             </h1>
-            <p className="mt-2 text-[#e5e5e5] text-[16px] md:text-[18px] font-medium tracking-wide">
-              Seattle's car protection studio. Established 2020.
-            </p>
-            <button
-              onClick={() => {
-                const form = document.getElementById('quote-form');
-                form?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              }}
-              className="mt-6 bg-white text-black font-black uppercase tracking-[0.1em] px-10 py-4 text-sm border-2 border-white hover:bg-transparent hover:text-white transition-all shadow-[0_0_40px_rgba(255,255,255,0.1)] active:scale-95"
-            >
-              GET A QUOTE
-            </button>
+            
+            <div className="mt-8 flex flex-col items-center gap-6">
+              <p className="text-[#6B7280] text-[12px] md:text-[14px] font-black uppercase tracking-[0.4em]">
+                ★ 4.9/5 — 165 Google Reviews • Seattle's Trusted Detailer
+              </p>
+              
+              {/* Floating Testimonial Space */}
+              <div className="h-12 flex items-center justify-center italic text-white/90 text-sm md:text-lg font-medium max-w-lg">
+                "Absolutely amazing job... 100% recommended!" — Manu GP, Tesla Model Y
+              </div>
+            </div>
+
+            <div className="mt-12 flex flex-col sm:flex-row gap-4 w-full max-w-md">
+              <button
+                onClick={() => {
+                  const services = document.getElementById('services-grid');
+                  services?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="flex-1 bg-white text-black font-black uppercase tracking-[0.2em] px-8 py-5 text-xs hover:bg-[#C9A962] hover:text-white transition-all shadow-2xl active:scale-95"
+              >
+                VIEW SERVICES
+              </button>
+              <a
+                href="tel:2538939452"
+                className="flex-1 bg-transparent border-2 border-white text-white font-black uppercase tracking-[0.2em] px-8 py-5 text-xs hover:bg-white hover:text-black transition-all text-center active:scale-95"
+              >
+                CALL DIRECT
+              </a>
+            </div>
           </div>
 
-          {/* Bottom: Lead Form */}
-          <div id="quote-form" className="w-full bg-[#0A0A0A] border border-white/10 p-6 md:p-8 shadow-2xl relative overflow-hidden backdrop-blur-md mt-4 text-left">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl rounded-full" />
-            <form className="space-y-6 relative z-10" onSubmit={e => { e.preventDefault(); openQuote(); }}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-[10px] font-black w-full uppercase tracking-widest text-white/60 mb-2">Name</label>
-                  <input type="text" className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors" required />
-                </div>
-                <div>
-                  <label className="block text-[10px] font-black w-full uppercase tracking-widest text-white/60 mb-2">Phone</label>
-                  <input type="tel" className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors" required />
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
-                <div>
-                  <label className="block text-[10px] font-black w-full uppercase tracking-widest text-white/60 mb-2">Service Interest</label>
-                  <select className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors text-white/80">
-                    <option className="bg-[#0A0A0A]">Auto Detailing</option>
-                    <option className="bg-[#0A0A0A]">Ceramic Coating</option>
-                    <option className="bg-[#0A0A0A]">Window Tint</option>
-                    <option className="bg-[#0A0A0A]">PPF (Clear Bra)</option>
-                  </select>
-                </div>
-                <div>
-                  <button type="submit" className="w-full bg-white text-black font-black uppercase tracking-[0.2em] py-4 text-sm hover:bg-gray-200 transition-all active:scale-[0.98]">
-                    REQUEST QUOTE
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
+
 
         </div>
       </section>
 
       {/* SERVICES 2x2 GRID */}
-      <section className="py-16 px-6 bg-[#0E0E0E] text-white border-b border-white/5">
+      <section id="services-grid" className="py-24 px-6 bg-[#0E0E0E] text-white border-b border-white/5">
         <div className="max-w-7xl mx-auto">
+          <div className="mb-16 text-center lg:text-left">
+            <h2 className="text-5xl md:text-7xl font-black uppercase leading-none tracking-tighter mb-4 italic">SERVICES</h2>
+            <p className="text-[#6B7280] text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em]">Professional protection for vehicles you value</p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="group relative border border-white/10 p-10 hover:border-white/30 transition-colors flex flex-col justify-between overflow-hidden bg-black min-h-[300px]">
               <div className="absolute inset-0 z-0">
