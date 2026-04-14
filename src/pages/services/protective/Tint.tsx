@@ -291,6 +291,7 @@ export default function Tint() {
                 </div>
               </div>
             </div>
+          </div>
         </section>
 
         {/* INTERACTIVE CONFIGURATOR */}
@@ -414,8 +415,6 @@ export default function Tint() {
                   )}
                 </div>
               </div>
-            </div>
-          </div>
         </section>
 
         {/* CORE ADVANTAGES */}
