@@ -133,8 +133,7 @@ export default function PPF() {
       {/* ─── PPF PACKAGE VISUALIZER (unified, clean) ─── */}
       <section id="coverage-map" className="bg-[#0e0e0e] border-b border-white/5 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-16 pb-0">
-          <p className="text-center font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-4 text-[#adaaaa] italic">The Coverage Map</p>
-          <h2 className="text-center font-display text-5xl lg:text-7xl font-black uppercase tracking-tighter text-white mb-4 leading-[0.8]">SELECT YOUR <span className="text-[#C9A962]">SHIELD</span></h2>
+          <h2 className="text-center font-display text-3xl lg:text-5xl font-black uppercase tracking-tighter text-white mb-4 leading-[0.8]">SELECT YOUR <span className="text-[#C9A962]">SHIELD</span></h2>
 
           {/* ── TAB STRIP ── */}
           <div className="flex justify-start md:justify-center overflow-x-auto no-scrollbar gap-2 pb-2 mb-0 pt-4">
@@ -266,7 +265,7 @@ export default function PPF() {
             
             {/* Left: name + description */}
             <div className="lg:w-1/2">
-              <h3 className="font-display text-5xl lg:text-8xl font-black italic uppercase tracking-tighter text-white leading-[0.8] mb-3">
+              <h3 className="font-display text-4xl lg:text-6xl font-black italic uppercase tracking-tighter text-white leading-[0.8] mb-3">
                 {currentPkg.name}
               </h3>
               <p className="font-mono text-[10px] lg:text-xs uppercase tracking-widest text-[#adaaaa] leading-relaxed">
@@ -309,62 +308,6 @@ export default function PPF() {
         </div>
       </section>
 
-      {/* SMART RECOMMENDER */}
-      <section className="px-6 py-6 border-t border-white/5 lg:py-8 bg-[#0e0e0e]" id="funnel" ref={funnelRef}>
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-5xl md:text-7xl lg:text-[8rem] font-display font-black uppercase tracking-tighter italic text-white leading-[0.7]">NOT SURE? <br/><span className="text-[#C9A962]">WE'LL HELP.</span></h2>
-            <div className="h-1 w-24 bg-[#C9A962] mx-auto mt-6 shadow-[0_0_20px_#C9A962]"></div>
-            <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-[#adaaaa] italic">
-              Answer 2 questions to find your coverage tier.
-            </p>
-          </div>
-          
-          <div className="space-y-12">
-            
-            {/* Step 1 */}
-            <div className="space-y-4">
-              <p className="font-display font-bold uppercase text-lg tracking-[0.2em] text-[#C9A962] italic">01 — HOW DO YOU DRIVE?</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <button 
-                  onClick={() => setUsage('city')}
-                  className={`py-8 px-6 border-2 transition-all font-display text-2xl font-black uppercase italic tracking-widest flex items-center justify-center rounded-none ${usage === 'city' ? 'border-[#C9A962] bg-[#C9A962]/10 text-[#C9A962]' : 'border-[#262626] bg-[#131313] hover:border-[#484847] text-white hover:bg-[#1a1a1a]'}`}
-                >
-                  City Standard
-                </button>
-                <button 
-                  onClick={() => setUsage('highway')}
-                  className={`py-8 px-6 border-2 transition-all font-display text-2xl font-black uppercase italic tracking-widest flex items-center justify-center rounded-none ${usage === 'highway' ? 'border-[#C9A962] bg-[#C9A962]/10 text-[#C9A962]' : 'border-[#262626] bg-[#131313] hover:border-[#484847] text-white hover:bg-[#1a1a1a]'}`}
-                >
-                  Highway Commuter
-                </button>
-              </div>
-            </div>
-            
-            {/* Step 2 */}
-            <div className="space-y-4">
-              <p className="font-display font-bold uppercase text-lg tracking-[0.2em] text-[#C9A962] italic">02 — WHAT'S THE MAIN CONCERN?</p>
-              <div className="grid grid-cols-1 gap-4">
-                <button 
-                  onClick={() => setThreat('rocks')}
-                  className={`flex justify-between items-center p-6 lg:p-8 border-2 transition-all group rounded-none ${threat === 'rocks' ? 'bg-[#C9A962]/10 border-[#C9A962]' : 'bg-[#131313] border-[#262626] hover:bg-white/5'}`}
-                >
-                  <span className={`font-display text-2xl font-black uppercase italic tracking-widest ${threat === 'rocks' ? 'text-[#C9A962]' : 'text-white'}`}>Rock Chips & Debris</span>
-                  <ArrowRight className={`w-6 h-6 transition-opacity ${threat === 'rocks' ? 'opacity-100 text-[#C9A962]' : 'opacity-0 group-hover:opacity-50 text-white'}`} />
-                </button>
-                <button 
-                  onClick={() => setThreat('bugs')}
-                  className={`flex justify-between items-center p-6 lg:p-8 border-2 transition-all group rounded-none ${threat === 'bugs' ? 'bg-[#C9A962]/10 border-[#C9A962]' : 'bg-[#131313] border-[#262626] hover:bg-white/5'}`}
-                >
-                  <span className={`font-display text-2xl font-black uppercase italic tracking-widest ${threat === 'bugs' ? 'text-[#C9A962]' : 'text-white'}`}>Environmental Fallout</span>
-                  <ArrowRight className={`w-6 h-6 transition-opacity ${threat === 'bugs' ? 'opacity-100 text-[#C9A962]' : 'opacity-0 group-hover:opacity-50 text-white'}`} />
-                </button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
 
       {/* TRUST LOGOS */}
       <section className="bg-[#131313] px-6 py-12 lg:py-16 border-y border-white/5">
@@ -418,8 +361,7 @@ export default function PPF() {
       <div className="fixed bottom-0 w-full z-[60] bg-black/95 backdrop-blur-2xl border-t border-[#C9A962]/20 px-6 py-4 flex items-center justify-between shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
         <div className="flex flex-col max-w-[50%]">
           <span className="lg:hidden text-[8px] text-[#C9A962] uppercase font-bold tracking-[0.3em] font-mono mb-1 animate-pulse">Master Application. Seattle Standard.</span>
-          <span className="font-mono text-[8px] lg:text-[10px] font-bold uppercase tracking-[0.3em] text-[#adaaaa] mb-1 italic">YOUR PACKAGE</span>
-          <span className="font-display text-2xl lg:text-4xl font-black italic uppercase tracking-tighter text-white truncate leading-none">
+          <span className="font-display text-2xl lg:text-4xl font-black italic uppercase tracking-tighter text-white truncate leading-none mt-1">
             {currentPkg.name}
           </span>
         </div>
