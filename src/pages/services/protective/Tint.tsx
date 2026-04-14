@@ -52,10 +52,10 @@ const packages = {
 };
 
 const shadeMap: Record<Shade, { label: string; tag: string; opacity: number }> = {
-  5: { label: '5% LIMO', tag: 'Maximum Privacy', opacity: 0.92 },
-  15: { label: '15% DARK', tag: 'Elite Aesthetic', opacity: 0.78 },
-  35: { label: '35% MEDIUM', tag: 'Executive Balance', opacity: 0.58 },
-  50: { label: '50% LIGHT', tag: 'Subtle Shield', opacity: 0.40 },
+  5: { label: '5% LIMO', tag: 'Maximum Privacy', opacity: 0.85 },
+  15: { label: '15% DARK', tag: 'Elite Aesthetic', opacity: 0.72 },
+  35: { label: '35% MEDIUM', tag: 'Executive Balance', opacity: 0.52 },
+  50: { label: '50% LIGHT', tag: 'Subtle Shield', opacity: 0.35 },
 };
 
 const reviews = [
@@ -297,23 +297,37 @@ export default function Tint() {
                   alt="Tesla Model 3 side profile"
                   className="w-full h-full object-cover object-center"
                 />
-                {/* Window Overlays — clip-path matched to Model 3 window glass */}
-                <div
-                  className="absolute top-[26%] left-[35%] w-[14%] h-[7%] bg-black transition-all duration-500"
-                  style={{ opacity: currentShade.opacity, clipPath: 'polygon(12% 18%, 100% 0%, 100% 100%, 0% 100%)' }}
-                />
-                <div
-                  className="absolute top-[26%] left-[49%] w-[12%] h-[7%] bg-black transition-all duration-500"
-                  style={{ opacity: currentShade.opacity, clipPath: 'polygon(0% 0%, 92% 12%, 100% 100%, 0% 100%)' }}
-                />
-                <div
-                  className="absolute top-[27%] left-[61.5%] w-[8%] h-[6%] bg-black transition-all duration-500"
-                  style={{ opacity: currentShade.opacity, clipPath: 'polygon(0% 22%, 100% 0%, 85% 100%, 0% 100%)' }}
-                />
-                <div
-                  className="absolute top-[28%] left-[70%] w-[10%] h-[6%] bg-black transition-all duration-500"
-                  style={{ opacity: currentShade.opacity, clipPath: 'polygon(0% 12%, 100% 35%, 100% 100%, 0% 85%)' }}
-                />
+                {/* SVG Window Overlays — responsive, perspective-matched polygons */}
+                <svg
+                  className="absolute inset-0 w-full h-full pointer-events-none"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="xMidYMid slice"
+                >
+                  <polygon
+                    points="35,27 36.5,24 48,23 49,26"
+                    fill="black"
+                    className="transition-all duration-500"
+                    style={{ opacity: currentShade.opacity, mixBlendMode: 'multiply' }}
+                  />
+                  <polygon
+                    points="49,26 50,23.5 60,23.8 61.5,27"
+                    fill="black"
+                    className="transition-all duration-500"
+                    style={{ opacity: currentShade.opacity, mixBlendMode: 'multiply' }}
+                  />
+                  <polygon
+                    points="61.5,27 62.5,25 67,25.5 69,28"
+                    fill="black"
+                    className="transition-all duration-500"
+                    style={{ opacity: currentShade.opacity, mixBlendMode: 'multiply' }}
+                  />
+                  <polygon
+                    points="69,28 70.5,25.5 78,26.5 76,29.5"
+                    fill="black"
+                    className="transition-all duration-500"
+                    style={{ opacity: currentShade.opacity, mixBlendMode: 'multiply' }}
+                  />
+                </svg>
 
                 {/* Info Badge */}
                 <div className="absolute bottom-6 left-6 border-l-4 border-[#C9A962] pl-4 py-2 bg-[#0e0e0e]/90 backdrop-blur-sm">
