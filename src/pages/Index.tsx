@@ -373,7 +373,7 @@ const Index = () => {
             ))}
           </div>
           
-          <p className="text-center text-white text-[10px] mt-20 uppercase tracking-[0.2em] font-black">
+          <p className="text-center text-white text-[10px] lg:text-sm mt-20 uppercase tracking-[0.2em] font-black">
             Pricing may vary based on condition & size • Final valuation on-site
           </p>
         </div>
@@ -400,7 +400,7 @@ const Index = () => {
       </section>
 
       {/* PROOF OF WORK / GALLERY */}
-      <section id="gallery" className="py-16 px-6 bg-[#0A0A0A]">
+      <section id="gallery" className="pt-16 pb-8 px-6 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-16 gap-4">
             <div>
@@ -431,9 +431,9 @@ const Index = () => {
       </section>
 
       {/* THE PROCESS */}
-      <section id="process" className="py-16 px-6 bg-[#0A0A0A]">
+      <section id="process" className="pt-8 pb-16 px-6 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-20">
+          <div className="mb-12">
             <h2 className="text-5xl md:text-7xl font-black uppercase leading-none tracking-tighter">THE PROCESS</h2>
             <p className="text-white text-xs font-bold uppercase tracking-[0.3em] mt-4">SEATTLE'S CAR PROTECTION STUDIO.</p>
           </div>
@@ -491,15 +491,25 @@ const Index = () => {
             <div className="bg-[#0A0A0A] border border-white/5 p-12 lg:p-16 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl rounded-full" />
               <h3 className="text-3xl font-black uppercase mb-10 tracking-tighter relative z-10">BOOK YOUR DETAIL</h3>
-              <form className="space-y-8 relative z-10" onSubmit={e => { e.preventDefault(); openQuote(); }}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <form className="space-y-6 relative z-10" onSubmit={e => { e.preventDefault(); openQuote(); }}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-3">Vehicle Year/Make/Model</label>
-                    <input type="text" className="w-full bg-transparent border-b border-white/20 py-4 text-sm focus:border-white outline-none transition-colors placeholder:text-white/20" placeholder="e.g. 2024 Tesla Model Y" required />
+                    <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-2">Name</label>
+                    <input type="text" className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors" required />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-3">Service Interest</label>
-                    <select className="w-full bg-transparent border-b border-white/20 py-4 text-sm focus:border-white outline-none transition-colors">
+                    <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-2">Phone</label>
+                    <input type="tel" className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors" required />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-2">Vehicle (Year/Make)</label>
+                    <input type="text" className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors placeholder:text-white/20" placeholder="e.g. 2024 Tesla Model Y" required />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-black uppercase tracking-widest text-white/60 mb-2">Service Interest</label>
+                    <select className="w-full bg-transparent border-b border-white/20 py-3 text-sm focus:border-white outline-none transition-colors">
                       <option className="bg-[#0A0A0A]">Auto Detailing</option>
                       <option className="bg-[#0A0A0A]">Ceramic Coating</option>
                       <option className="bg-[#0A0A0A]">Window Tint</option>
@@ -507,7 +517,7 @@ const Index = () => {
                     </select>
                   </div>
                 </div>
-                <button type="submit" className="w-full bg-white text-black font-black uppercase tracking-[0.2em] py-6 text-sm hover:bg-gray-200 transition-all active:scale-[0.98] shadow-2xl">
+                <button type="submit" className="w-full bg-white text-black font-black uppercase tracking-[0.2em] py-5 mt-4 text-sm hover:bg-gray-200 transition-all active:scale-[0.98] shadow-2xl">
                   BOOK NOW
                 </button>
               </form>
@@ -516,20 +526,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* FOOTER CITY LIST */}
-      <footer className="py-20 bg-[#080808] border-t border-white/5 px-6 text-center">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-white text-[10px] font-bold uppercase tracking-[0.4em] mb-8">The Auto Barber Seattle</p>
-          <p className="text-white text-[10px] font-black uppercase tracking-widest max-w-lg mx-auto leading-relaxed">
-            Serving Seattle, Bellevue, Tacoma, Kirkland, Redmond, Renton, Kent, Edmonds & surrounding areas.
-          </p>
-          <div className="mt-12 flex justify-center gap-10 border-t border-white/5 pt-12">
-            <Link to="/about" className="text-white/60 text-[10px] uppercase tracking-widest hover:text-white transition-colors">About Craftsman</Link>
-            <Link to="/services" className="text-white/60 text-[10px] uppercase tracking-widest hover:text-white transition-colors">Capabilities</Link>
-            <Link to="/contact" className="text-white/60 text-[10px] uppercase tracking-widest hover:text-white transition-colors">Location</Link>
-          </div>
-        </div>
-      </footer>
 
       {/* MOBILE STICKY BAR */}
       <div className="fixed bottom-0 left-0 right-0 z-[120] lg:hidden grid grid-cols-2 border-t border-white/10 shadow-2xl">
