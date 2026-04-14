@@ -303,26 +303,30 @@ export default function Tint() {
                   viewBox="0 0 100 100"
                   preserveAspectRatio="xMidYMid slice"
                 >
+                  {/* Front driver window */}
                   <polygon
-                    points="35,27 36.5,24 48,23 49,26"
+                    points="34.5,48.5 36,44.5 43.5,44 42.5,48"
                     fill="black"
                     className="transition-all duration-500"
                     style={{ opacity: currentShade.opacity, mixBlendMode: 'multiply' }}
                   />
+                  {/* Rear driver window */}
                   <polygon
-                    points="49,26 50,23.5 60,23.8 61.5,27"
+                    points="43.5,48 44.5,44 53.5,44.5 52.5,48.5"
                     fill="black"
                     className="transition-all duration-500"
                     style={{ opacity: currentShade.opacity, mixBlendMode: 'multiply' }}
                   />
+                  {/* Rear quarter window */}
                   <polygon
-                    points="61.5,27 62.5,25 67,25.5 69,28"
+                    points="53.5,48.5 54.5,45.5 58.5,46 57.5,49"
                     fill="black"
                     className="transition-all duration-500"
                     style={{ opacity: currentShade.opacity, mixBlendMode: 'multiply' }}
                   />
+                  {/* Rear windshield */}
                   <polygon
-                    points="69,28 70.5,25.5 78,26.5 76,29.5"
+                    points="58.5,49 60,45.5 67,46.5 65,50"
                     fill="black"
                     className="transition-all duration-500"
                     style={{ opacity: currentShade.opacity, mixBlendMode: 'multiply' }}
