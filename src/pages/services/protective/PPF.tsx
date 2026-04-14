@@ -245,7 +245,7 @@ export default function PPF() {
         </div>
 
         {/* ── DETAIL PANEL - LUXURY SPLIT ── */}
-        <div className="max-w-5xl mx-auto px-6 py-8 lg:py-12">
+        <div className="max-w-5xl mx-auto px-6 py-8 lg:py-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             
             {/* Left: Bio / Summary */}
@@ -281,7 +281,7 @@ export default function PPF() {
               <div className="pt-8 border-t border-white/10 shrink-0">
                 <div className="flex flex-col">
                   <span className="text-gray-500 font-mono text-[10px] uppercase tracking-[0.2em] mb-3">Base Investment</span>
-                  <span className="font-display font-black italic text-5xl lg:text-8xl tracking-tighter text-white leading-none">
+                  <span className="font-display font-black italic text-5xl lg:text-6xl tracking-tighter text-white leading-none">
                     {currentPkg.price !== 'GET QUOTE' ? `$${currentPkg.price}` : 'CALL'}
                   </span>
                 </div>
