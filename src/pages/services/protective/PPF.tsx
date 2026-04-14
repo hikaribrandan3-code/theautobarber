@@ -82,12 +82,23 @@ export default function PPF() {
     <div className="min-h-screen bg-[#0e0e0e] text-[#adaaaa] font-sans pt-16 pb-32 overflow-x-hidden selection:bg-[#C9A962] selection:text-white">
       
       {/* HERO SECTION */}
-      <section className="px-6 py-12 lg:py-16 relative overflow-hidden bg-[#0e0e0e] border-b border-white/5">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")" }}></div>
-        <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+      <section className="px-6 py-12 lg:py-32 relative overflow-hidden bg-[#0e0e0e] border-b border-white/5 min-h-[75vh] flex items-center">
+        {/* Background Image with Fade */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/assets/ppf_application_background.png" 
+            alt="PPF Application installation preview"
+            className="w-full h-full object-cover opacity-50 contrast-125"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0e0e0e]/90 via-[#0e0e0e]/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e0e]/30 via-transparent to-[#0e0e0e]"></div>
+        </div>
+        
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")" }}></div>
+        <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24 w-full">
           <div className="lg:w-1/2">
             <span className="text-[#C9A962] font-display font-bold uppercase tracking-[0.2em] text-[10px] lg:text-xs italic">Protect Your Investment</span>
-            <h2 className="mt-4 text-5xl md:text-7xl lg:text-9xl font-display font-black leading-[0.8] uppercase tracking-tighter italic text-white drop-shadow-lg">
+            <h2 className="mt-4 text-5xl md:text-6xl lg:text-8xl font-display font-black leading-[0.8] uppercase tracking-tighter italic text-white drop-shadow-lg">
               <span className="lg:hidden text-[#C9A962]">P.P.F.</span><br className="lg:hidden"/>THE MASTER<br/><span className="text-[#C9A962]">STANDARD</span>
             </h2>
             <p className="mt-6 text-[#adaaaa] max-w-md font-mono text-xs lg:text-sm uppercase tracking-widest leading-relaxed">
@@ -168,7 +179,7 @@ export default function PPF() {
               key={selectedPackage}
               src={currentPkg.image}
               alt={currentPkg.name + ' PPF coverage'}
-              className="w-full h-auto object-contain mx-auto block"
+              className="w-full h-auto object-contain mx-auto block -mt-10 lg:-mt-20 scale-105"
               style={{ maxHeight: '480px', objectPosition: 'center' }}
             />
           </div>
