@@ -160,17 +160,14 @@ const Index = () => {
 
         {/* Noir Content Container */}
         <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
-          <p className="text-white text-[10px] md:text-sm font-black uppercase tracking-[0.4em] mb-4">
-            Your car. Our craft. Established 2020.
-          </p>
           <h1 
             className="text-5xl md:text-7xl lg:text-[7rem] font-black leading-[0.9] mb-8 tracking-tighter"
             style={{ textShadow: "0 4px 20px rgba(0,0,0,0.5)" }}
           >
-            165 FIVE-STAR<br />DETAILS IN SEATTLE
+            YOUR CAR.<br />OUR CRAFT.
           </h1>
           <p className="max-w-2xl text-white text-sm md:text-xl font-medium tracking-tight mb-12">
-            Seattle’s Trusted Master Craftsmen in Ceramic Coatings & Precision Detailing.
+            Seattle's car protection studio. Established 2020.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button
@@ -193,25 +190,57 @@ const Index = () => {
       <section className="py-16 px-6 bg-[#0E0E0E] text-white border-b border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-[#141414] border border-white/10 p-10 hover:border-white/30 transition-colors flex flex-col justify-between">
-              <h3 className="text-2xl font-black uppercase tracking-widest mb-4">AUTO DETAILING</h3>
-              <p className="text-white text-sm leading-relaxed mb-6">Interior and exterior restorations performed to the Master Craftsman standard.</p>
-              <button onClick={() => openQuote('Auto Detailing')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start">Book Service →</button>
+            <div className="group relative border border-white/10 p-10 hover:border-white/30 transition-colors flex flex-col justify-between overflow-hidden bg-black min-h-[300px]">
+              <div className="absolute inset-0 z-0">
+                <img src="/images/assets/interior_detailing_focus_1776187301149.png" alt="Auto Detailing" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
+              </div>
+              <div className="relative z-10 flex flex-col h-full justify-between">
+                <div>
+                  <h3 className="text-2xl font-black uppercase tracking-widest mb-4">AUTO DETAILING</h3>
+                  <p className="text-white text-sm leading-relaxed mb-6 font-medium">Interior and exterior restorations performed to the Master Craftsman standard.</p>
+                </div>
+                <button onClick={() => openQuote('Auto Detailing')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start">Book Service →</button>
+              </div>
             </div>
-            <div className="bg-[#141414] border border-white/10 p-10 hover:border-white/30 transition-colors flex flex-col justify-between">
-              <h3 className="text-2xl font-black uppercase tracking-widest mb-4">PAINT PROTECTION</h3>
-              <p className="text-white text-sm leading-relaxed mb-6">Defend your clear coat and preserve its showroom finish.</p>
-              <button onClick={() => openQuote('PPF')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start">Book Service →</button>
+            <div className="group relative border border-white/10 p-10 hover:border-white/30 transition-colors flex flex-col justify-between overflow-hidden bg-black min-h-[300px]">
+              <div className="absolute inset-0 z-0">
+                <img src="/images/assets/exterior_paint_gloss_1776187353898.png" alt="Paint Protection" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
+              </div>
+              <div className="relative z-10 flex flex-col h-full justify-between">
+                <div>
+                  <h3 className="text-2xl font-black uppercase tracking-widest mb-4">PAINT PROTECTION</h3>
+                  <p className="text-white text-sm leading-relaxed mb-6 font-medium">Defend your clear coat and preserve its showroom finish.</p>
+                </div>
+                <button onClick={() => openQuote('PPF')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start">Book Service →</button>
+              </div>
             </div>
-            <div className="bg-[#141414] border border-white/10 p-10 hover:border-white/30 transition-colors flex flex-col justify-between">
-              <h3 className="text-2xl font-black uppercase tracking-widest mb-4">WINDOW TINT</h3>
-              <p className="text-white text-sm leading-relaxed mb-6">Privacy, safety, and 99% UV heat rejection precision applied.</p>
-              <button onClick={() => openQuote('Window Tint')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start">Book Service →</button>
+            <div className="group relative border border-white/10 p-10 hover:border-white/30 transition-colors flex flex-col justify-between overflow-hidden bg-black min-h-[300px]">
+              <div className="absolute inset-0 z-0">
+                <img src="/images/assets/window_tint_luxury_1776189700411.png" alt="Window Tint" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
+              </div>
+              <div className="relative z-10 flex flex-col h-full justify-between">
+                <div>
+                  <h3 className="text-2xl font-black uppercase tracking-widest mb-4">WINDOW TINT</h3>
+                  <p className="text-white text-sm leading-relaxed mb-6 font-medium">Privacy, safety, and 99% UV heat rejection precision applied.</p>
+                </div>
+                <button onClick={() => openQuote('Window Tint')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start">Book Service →</button>
+              </div>
             </div>
-            <div className="bg-[#141414] border border-white/10 p-10 hover:border-white/30 transition-colors flex flex-col justify-between">
-              <h3 className="text-2xl font-black uppercase tracking-widest mb-4">CERAMIC COATINGS</h3>
-              <p className="text-white text-sm leading-relaxed mb-6">Years of permanent, extreme hydrophobic protection and deep gloss.</p>
-              <button onClick={() => openQuote('Ceramic Coating')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start">Book Service →</button>
+            <div className="group relative border border-white/10 p-10 hover:border-white/30 transition-colors flex flex-col justify-between overflow-hidden bg-black min-h-[300px]">
+              <div className="absolute inset-0 z-0">
+                <img src="/images/assets/ceramic_water_beading_1776189745679.png" alt="Ceramic Coatings" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
+              </div>
+              <div className="relative z-10 flex flex-col h-full justify-between">
+                <div>
+                  <h3 className="text-2xl font-black uppercase tracking-widest mb-4">CERAMIC COATINGS</h3>
+                  <p className="text-white text-sm leading-relaxed mb-6 font-medium">Years of permanent, extreme hydrophobic protection and deep gloss.</p>
+                </div>
+                <button onClick={() => openQuote('Ceramic Coating')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start">Book Service →</button>
+              </div>
             </div>
           </div>
         </div>

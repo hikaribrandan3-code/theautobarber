@@ -20,11 +20,11 @@ const About = () => {
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-4xl">
             <p className="font-display text-sm uppercase tracking-[0.4em] text-[#C9A962] mb-6 italic">The Master Barber</p>
-            <h1 className="text-6xl lg:text-[10rem] font-display font-black leading-[0.75] uppercase tracking-tighter italic text-white mb-10">
-              THE BARBER <br/><span className="text-[#C9A962] text-glow">OF METAL</span>
+            <h1 className="text-6xl lg:text-[8rem] font-display font-black leading-[0.9] uppercase tracking-tighter italic text-white mb-10">
+              YOUR CAR.<br/>OUR CRAFT.
             </h1>
             <p className="text-xl lg:text-3xl font-display uppercase tracking-tight text-[#adaaaa] leading-tight italic">
-              15 YEARS OF OBSESSION. ONE MISSION. <span className="text-white">PERFECT PAINT.</span>
+              Seattle's car protection studio. Established 2020.
             </p>
           </div>
         </div>
