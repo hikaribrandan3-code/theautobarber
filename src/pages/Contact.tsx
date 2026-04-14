@@ -33,7 +33,7 @@ const ContactPage = () => {
             <span className="text-[10px] lg:text-xs font-bold text-[#C9A962] tracking-[0.3em] uppercase">Get In Touch</span>
           </div>
           <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-display font-black leading-[0.9] uppercase tracking-tighter italic text-white drop-shadow-2xl">
-            CONTACT<br /><span className="text-[#C9A962]">THE BARBER</span>
+            CONTACT<br /><span className="text-[#C9A962]">THE AUTO BARBER</span>
           </h1>
           <p className="mt-6 text-[#e5e5e5] text-base lg:text-lg font-black uppercase tracking-widest leading-relaxed max-w-2xl px-4 font-mono italic">
             Ready to protect your investment? Text or call — we reply in under 2 hours.
