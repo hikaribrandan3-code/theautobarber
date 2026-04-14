@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,17 +6,17 @@
 
 @layer base {
   :root {
-    --background: 0 0% 2%;
+    --background: 0 0% 4%;
     --foreground: 0 0% 95%;
 
-    --card: 0 0% 5.5%;
+    --card: 0 0% 8%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 5.5%;
+    --popover: 0 0% 8%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 110 100% 54%;
-    --primary-foreground: 0 0% 2%;
+    --primary: 216 100% 50%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 95%;
@@ -24,28 +24,28 @@
     --muted: 0 0% 10%;
     --muted-foreground: 0 0% 55%;
 
-    --accent: 110 100% 54%;
-    --accent-foreground: 0 0% 2%;
+    --accent: 216 100% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 95%;
 
     --border: 0 0% 14%;
     --input: 0 0% 14%;
-    --ring: 110 100% 54%;
+    --ring: 216 100% 50%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     --sidebar-background: 0 0% 4%;
     --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 110 100% 54%;
-    --sidebar-primary-foreground: 0 0% 2%;
+    --sidebar-primary: 216 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 10%;
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 0 0% 14%;
-    --sidebar-ring: 110 100% 54%;
+    --sidebar-ring: 216 100% 50%;
 
-    --glow: 110 100% 54%;
+    --glow: 216 100% 50%;
   }
 }
 
@@ -59,34 +59,34 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+    @apply font-display tracking-tight;
   }
 }
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 20px hsl(110 100% 54% / 0.4), 0 0 40px hsl(110 100% 54% / 0.2);
+    text-shadow: 0 0 20px hsl(216 100% 50% / 0.4), 0 0 40px hsl(216 100% 50% / 0.2);
   }
 
   .box-glow {
-    box-shadow: 0 0 20px hsl(110 100% 54% / 0.15), 0 0 40px hsl(110 100% 54% / 0.08);
+    box-shadow: 0 0 20px hsl(216 100% 50% / 0.15), 0 0 40px hsl(216 100% 50% / 0.08);
   }
 
   .glow-border {
-    border-color: hsl(110 100% 54% / 0.3);
-    box-shadow: 0 0 15px hsl(110 100% 54% / 0.1);
+    border-color: hsl(216 100% 50% / 0.3);
+    box-shadow: 0 0 15px hsl(216 100% 50% / 0.1);
   }
 
   .hero-gradient {
-    background: radial-gradient(ellipse at 50% 0%, hsl(110 100% 54% / 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 50%, hsl(110 100% 54% / 0.04) 0%, transparent 50%),
+    background: radial-gradient(ellipse at 50% 0%, hsl(216 100% 50% / 0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, hsl(216 100% 50% / 0.06) 0%, transparent 50%),
                 hsl(var(--background));
   }
 
   .grid-bg {
     background-image: 
-      linear-gradient(hsl(110 100% 54% / 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(110 100% 54% / 0.03) 1px, transparent 1px);
+      linear-gradient(hsl(216 100% 50% / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(216 100% 50% / 0.05) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 }

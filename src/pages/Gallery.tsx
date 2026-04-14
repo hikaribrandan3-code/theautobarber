@@ -5,14 +5,14 @@ const GalleryPage = () => {
   return (
     <div>
       <SEO 
-        title="Naples Detailing Gallery | Before & After Portfolio"
-        description="See the mirror-finish results of our ceramic coating, paint correction, and mobile detailing in Naples, FL. Real transformations, real luxury."
+        title="Seattle Detailing Gallery | Before & After Portfolio"
+        description="See the mirror-finish results of our ceramic coating, paint correction, and mobile detailing in Seattle, FL. Real transformations, real luxury."
       />
       <section className="py-16 lg:py-32 hero-gradient grid-bg">
         <div className="container mx-auto px-4 text-center lg:px-8">
           <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3">Portfolio</p>
-          <h1 className="text-4xl font-bold lg:text-6xl">Naples Detailing <span className="text-primary text-glow">Portfolio</span></h1>
-          <p className="mt-6 text-muted-foreground max-w-xl mx-auto">Before and after transformations from our Naples detailing service.</p>
+          <h1 className="text-4xl font-bold lg:text-6xl">Seattle Detailing <span className="text-primary text-glow">Portfolio</span></h1>
+          <p className="mt-6 text-muted-foreground max-w-xl mx-auto">Before and after transformations from our Seattle detailing service.</p>
         </div>
       </section>
 
@@ -25,6 +25,9 @@ const GalleryPage = () => {
               { title: "Corvette C7 Stingray", desc: "Level 2 Paint Correction & Sealant", img: "/images/portfolio/vett-red-1.png" },
               { title: "Ford Mustang GT", desc: "Interior Restoration & Exterior Detail", img: "/images/portfolio/mustang-red.png" },
               { title: "Corvette C7 Profile", desc: "Hydrophobic Gloss Enhancement", img: "/images/portfolio/vett-red-2.png" },
+              { title: "Chevy Camaro Prep", desc: "Surface Decontamination & Tape-up", img: "/images/portfolio/camaro-prep.jpg" },
+              { title: "BMW 50/50 Reveal", desc: "Master Level Paint Correction", img: "/images/portfolio/paint-correction-5050.jpg" },
+              { title: "Red Corolla Shine", desc: "Ceramic Pro Top Coat Application", img: "/images/portfolio/ceramic-red-car.jpg" },
             ].map((project, i) => (
               <div key={i} className="group relative aspect-[4/3] rounded-lg border border-border bg-card overflow-hidden">
                 <img src={project.img} alt={project.title} className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />

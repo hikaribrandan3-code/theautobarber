@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock, Instagram } from "lucide-react";
-import logo from "@/assets/alien-icon.png";
+import logo from "@/assets/logo.png";
 import ServiceRadar from "./ServiceRadar";
 import { Button } from "./ui/button";
 
@@ -14,12 +14,17 @@ const Footer = ({ onQuoteClick }: FooterProps) => {
       <div className="container mx-auto px-4 py-16 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="The Auto Barber" className="h-12 w-12 object-contain" />
-              <span className="font-display text-lg font-bold tracking-wider">THE AUTO BARBER</span>
+            <div className="flex items-center gap-4 mb-6">
+              <div className="relative h-14 w-14 overflow-hidden rounded-full border border-border bg-black shadow-[0_0_20px_rgba(0,102,255,0.2)]">
+                <img src={logo} alt="The Auto Barber" className="h-full w-full object-cover" />
+              </div>
+              <div>
+                <span className="font-display text-2xl font-black tracking-tight block leading-none">THE AUTO BARBER</span>
+                <span className="text-[10px] font-mono text-primary font-bold tracking-[0.3em] uppercase">Invest. Protect. Enjoy.</span>
+              </div>
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Detailing That Is Out of This World. Seattle's premier mobile detailing service — we come to you.
+            <p className="text-muted-foreground text-sm leading-relaxed font-body uppercase tracking-wider text-[11px]">
+              The Barber's Standard in Automotive Protection. Precision detailing for those who value their investment.
             </p>
           </div>
 
@@ -34,10 +39,10 @@ const Footer = ({ onQuoteClick }: FooterProps) => {
 
           <div>
             <h4 className="font-display text-sm uppercase tracking-wider text-primary mb-4">Contact</h4>
-            <div className="flex flex-col gap-3 text-sm text-muted-foreground">
-              <a href="tel:5550000000" className="flex items-center gap-2 hover:text-primary"><Phone size={14} />(555) 000-0000</a>
-              <a href="mailto:hikaribrandan3@gmail.com" className="flex items-center gap-2 hover:text-primary"><Mail size={14} />hikaribrandan3@gmail.com</a>
-              <span className="flex items-center gap-2"><MapPin size={14} />Seattle, WA — Mobile Service</span>
+            <div className="flex flex-col gap-3 text-sm text-muted-foreground font-mono uppercase tracking-wider text-[11px]">
+              <a href="tel:2538939452" className="flex items-center gap-2 hover:text-primary transition-colors"><Phone size={14} />(253) 893-9452</a>
+              <a href="mailto:hikaribrandan3@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors"><Mail size={14} />hikaribrandan3@gmail.com</a>
+              <span className="flex items-center gap-2"><MapPin size={14} />7418 St 126th Unit 1C, Seattle</span>
               <span className="flex items-center gap-2"><Clock size={14} />Mon–Sun 8AM–6PM</span>
             </div>
           </div>

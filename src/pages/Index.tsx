@@ -1,92 +1,167 @@
 import { useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Shield, Droplets, Car, Clock, MapPin, Phone, Sparkles, Star, ChevronRight, Wrench, Zap, Award } from "lucide-react";
+import { Shield, Droplets, Car, Clock, MapPin, Phone, Sparkles, Star, ChevronRight, Wrench, Zap, Award, CheckCircle2, Scissors, UserCheck, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
-import heroCar from "@/assets/hero-car.jpg";
+import logo from "@/assets/logo.png";
 
 const Index = () => {
-  const { openQuote } = useOutletContext<{ openQuote: () => void }>();
+  const { openQuote } = useOutletContext<{ openQuote: (service?: string) => void }>();
+
+  const services = [
+    { 
+      title: "Interior Detailing", 
+      desc: "Deep clean every surface. Leather treated. Carpets restored. Like new inside.",
+      icon: <Scissors className="w-6 h-6" />
+    },
+    { 
+      title: "Exterior Detailing", 
+      desc: "Hand wash, decon, paint correction. Mirror finish.",
+      icon: <CheckCircle2 className="w-6 h-6" />
+    },
+    { 
+      title: "Wax & Polish", 
+      desc: "Showroom shine. Premium protection that lasts.",
+      icon: <Sparkles className="w-6 h-6" />
+    },
+    { 
+      title: "Window Tint", 
+      desc: "Precision cut. UV protection. Privacy. Style.",
+      icon: <Zap className="w-6 h-6" />
+    }
+  ];
+
+  const pillars = [
+    { title: "ATTENTION TO DETAIL", desc: "No spot missed.", icon: <UserCheck className="w-6 h-6" /> },
+    { title: "PREMIUM PRODUCTS", desc: "Only the best for your ride.", icon: <Award className="w-6 h-6" /> },
+    { title: "OLD SCHOOL ETHIC", desc: "Hand work. No shortcuts.", icon: <Clock className="w-6 h-6" /> },
+    { title: "MODERN PROTECTION", desc: "Ceramic. PPF. Years of defense.", icon: <ShieldCheck className="w-6 h-6" /> }
+  ];
+
+  const menu = [
+    { name: "The Trim", price: "$150-250", features: ["Interior vacuum", "Wipe down", "Hand wash", "Tire dressing"] },
+    { name: "The Cut", price: "$300-500", features: ["Full interior detail", "Full exterior detail", "Hand wax", "Full protection"], popular: true },
+    { name: "The Works", price: "$600-900", features: ["Everything included", "Paint correction", "Ceramic coating", "Master finish"] }
+  ];
+
+  const gallery = [
+    { img: "/images/portfolio/jeep-green.jpg", title: "Jeep Wrangler", desc: "Full Exterior Detail" },
+    { img: "/images/portfolio/tesla-masked.jpg", title: "Tesla Model Y", desc: "Paint Correction Prep" },
+    { img: "/images/portfolio/polisher-setup.jpg", title: "Master Setup", desc: "Precision Tools" },
+    { img: "/images/portfolio/hot-rod.jpg", title: "Classic Hot Rod", desc: "Master Correction" },
+    { img: "/images/portfolio/sb3-alpha.jpg", title: "SB3 Alpha", desc: "Ceramic Application" },
+    { img: "/images/portfolio/paint-correction-5050.jpg", title: "50/50 Reveal", desc: "Mirror Finish" }
+  ];
 
   return (
-    <div>
+    <div className="bg-[#0A0A0A] text-white selection:bg-primary/30">
       <SEO 
-        title="The Auto Barber | Seattle's #1 Mobile Detailing & Ceramic Coating"
-        description="Experience the ultimate in vehicle care. The Auto Barber serves Seattle, WA with professional-grade ceramic coatings, precision paint correction, and full mobile detailing. 15+ years of master-level expertise. We come to you."
+        title="The Auto Barber | Seattle's Premium Vehicle Craftsman"
+        description="INVEST. PROTECT. ENJOY. Premium detailing, paint correction, and ceramic coating in Seattle, WA. The Barber's Standard for your investment."
       />
-      {/* Hero */}
-      <section className="relative min-h-[100vh] flex items-center hero-gradient grid-bg overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={heroCar} alt="Premium car detailing" width={1920} height={1080} className="h-full w-full object-cover opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
-        </div>
-        <div className="container relative mx-auto px-4 py-32 lg:px-8">
-          <div className="max-w-3xl">
-            <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-4">Seattle's #1 Mobile Detailing</p>
-            <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-7xl">
-              <div className="lg:hidden flex flex-col">
-                <span>We Show Up.</span>
-                <span>We Barbe.</span>
-                <span className="text-primary font-black italic text-glow">Seattle, WA.</span>
-              </div>
-              <span className="hidden lg:inline text-glow-subtle">Mobile Detailing & Ceramic Coating <span className="text-primary">Seattle, WA</span></span>
-            </h1>
-            <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-              <span className="lg:hidden text-white/90">One call and we're at your door — water, power, and 15 years of expertise loaded in the truck. You don't lift a finger.</span>
-              <span className="hidden lg:inline">We come to you. 15+ years of automotive expertise, fully mobile, fully self-sufficient. From ceramic coatings to paint correction — elevated precision, at your doorstep.</span>
-            </p>
-            
-            {/* Mobile Star Rating */}
-            <div className="lg:hidden mt-4 flex items-center gap-2">
-              <div className="flex gap-1 text-primary">
-                {[1, 2, 3, 4, 5].map(s => <Star key={s} size={12} className="fill-current" />)}
-              </div>
-              <span className="text-white/40 text-[12px] font-medium">200+ five-star reviews · Seattle, WA</span>
-            </div>
 
-            <div className="mt-8 flex flex-col lg:flex-row gap-4 mb-6 lg:mb-0">
-              {/* Mobile Primary Phone Button */}
-              <Button asChild size="lg" className="lg:hidden w-full h-auto py-4 bg-primary text-primary-foreground hover:opacity-90 flex flex-col gap-1 box-glow">
-                <a href="tel:5550000000">
-                  <div className="flex items-center gap-2 font-black text-xl italic tracking-tighter">
-                    <Phone size={20} className="fill-current" />
-                    (555) 000-0000
-                  </div>
-                  <div className="text-[9px] uppercase tracking-[0.15em] font-mono font-bold text-black/60">
-                    WE PICK UP · 7 DAYS A WEEK · 8AM–6PM
-                  </div>
-                </a>
-              </Button>
-
-              {/* Existing Desktop Primary Button */}
-              <Button onClick={openQuote} size="lg" className="hidden lg:flex bg-primary text-primary-foreground font-display uppercase tracking-wider text-sm hover:opacity-90 box-glow">
-                Request A Quote
-              </Button>
-
-              {/* Mobile Secondary Get Quote Button */}
-              <Button onClick={openQuote} variant="outline" size="lg" className="lg:hidden w-full border-border font-display uppercase tracking-wider text-sm hover:border-primary hover:text-primary py-6">
-                GET QUOTE
-              </Button>
-
-              {/* Existing Desktop Secondary Button */}
-              <Button asChild variant="outline" size="lg" className="hidden lg:flex border-border font-display uppercase tracking-wider text-sm hover:border-primary hover:text-primary">
-                <Link to="/services">View Services</Link>
-              </Button>
-            </div>
+      {/* 1. HERO SECTION */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden hero-gradient grid-bg pt-20">
+        <div className="relative z-10 animate-in fade-in zoom-in duration-1000">
+          <div className="relative mx-auto mb-8 w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-[#0066FF]/20 bg-black p-1 shadow-[0_0_50px_rgba(0,102,255,0.3)] group overflow-hidden">
+            <img src={logo} alt="The Auto Barber" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          </div>
+          <p className="font-mono text-xs md:text-sm uppercase tracking-[0.5em] text-[#0066FF] font-black mb-4 animate-in slide-in-from-bottom duration-700 delay-300">INVEST. PROTECT. ENJOY.</p>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-black tracking-tight leading-[0.85] uppercase mb-6 animate-in slide-in-from-bottom duration-1000 delay-500">
+            THE AUTO<br /><span className="text-[#0066FF]">BARBER</span>
+          </h1>
+          <p className="max-w-xl mx-auto text-muted-foreground text-sm md:text-base uppercase tracking-widest font-mono mb-10 animate-in fade-in duration-1000 delay-700">
+            Premium detailing for those who value their investment
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in duration-1000 delay-1000">
+            <Button onClick={() => openQuote()} size="lg" className="w-full sm:w-auto bg-[#0066FF] text-white font-display text-sm uppercase tracking-widest py-8 px-12 rounded-none hover:bg-[#0052CC] transition-all transform hover:scale-105 box-glow">
+              Book Appointment
+            </Button>
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto border-[#0066FF] text-[#0066FF] font-display text-sm uppercase tracking-widest py-8 px-12 rounded-none hover:bg-[#0066FF] hover:text-white transition-all">
+              <a href="tel:2538939452">Call (253) 893-9452</a>
+            </Button>
           </div>
         </div>
-        {/* Stats bar */}
-        <div className="absolute bottom-0 left-0 right-0 border-t border-border bg-background/80 backdrop-blur-md overflow-hidden">
-          <div className="container mx-auto">
-            <div className="grid grid-cols-3 items-center gap-4 px-4 py-4 lg:px-8">
+        
+        {/* Floating Background Badge - Decorative */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#0066FF]/5 rounded-full blur-[120px] pointer-events-none" />
+      </section>
+
+      {/* 2. SERVICES SECTION */}
+      <section className="py-24 lg:py-40 px-6 border-y border-white/5 bg-[#141414]">
+        <div className="container mx-auto">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-8">
+            <div className="border-l-4 border-[#0066FF] pl-8">
+              <h2 className="text-4xl md:text-6xl font-display font-black uppercase leading-none mb-2">THE DIVISION</h2>
+              <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-[0.4em] font-bold">Premium protection packages</p>
+            </div>
+            <Link to="/services" className="font-mono text-[10px] uppercase tracking-widest text-[#0066FF] hover:underline font-bold">See full capabilities →</Link>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {services.map((s, i) => (
+              <div key={i} className="group p-8 bg-[#0A0A0A] border border-white/5 hover:border-[#0066FF]/40 transition-all duration-300 relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-20 transition-opacity">
+                   {s.icon}
+                </div>
+                <h3 className="text-xl font-display font-black uppercase mb-4 text-white group-hover:text-[#0066FF] transition-colors tracking-tight">{s.title}</h3>
+                <p className="text-muted-foreground text-xs leading-relaxed uppercase tracking-wider font-medium">{s.desc}</p>
+                <div className="mt-8 pt-8 border-t border-white/5">
+                  <span className="font-mono text-[9px] text-[#0066FF] font-black tracking-[0.2em] uppercase">The Craftsman Standard</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. THE CRAFTSMAN (Pillars) */}
+      <section className="py-24 lg:py-40 px-6 bg-[#0A0A0A]">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-24">
+            <h2 className="text-5xl md:text-7xl font-display font-black uppercase mb-4 tracking-tighter">THE CRAFTSMAN</h2>
+            <p className="font-mono text-sm text-muted-foreground uppercase tracking-[0.2em]">Why Seattle trusts the barber</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
+            {pillars.map((p, i) => (
+              <div key={i} className="group flex gap-8">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full border border-white/10 flex items-center justify-center font-display text-2xl font-black group-hover:bg-[#0066FF] group-hover:border-[#0066FF] group-hover:text-white transition-all duration-500">
+                  {i + 1}
+                </div>
+                <div>
+                  <h4 className="text-lg font-display font-black uppercase mb-3 tracking-wider">{p.title}</h4>
+                  <p className="text-muted-foreground text-sm font-mono uppercase tracking-[0.05em]">{p.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. THE PROCESS (Timeline) */}
+      <section className="py-24 lg:py-40 px-6 bg-[#141414] border-y border-white/5 overflow-hidden">
+        <div className="container mx-auto">
+          <div className="mb-20">
+            <h2 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tight">THE <span className="text-[#0066FF]">PROCESS</span></h2>
+            <p className="font-mono text-[10px] text-muted-foreground font-bold uppercase mt-2 tracking-[0.3em]">Door-to-door precision</p>
+          </div>
+          
+          <div className="relative">
+            <div className="hidden lg:block absolute top-[28px] left-0 w-full h-px bg-white/5" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
               {[
-                { icon: <Award size={20} />, label: "15+ Years" },
-                { icon: <Clock size={20} />, label: "7 Days/Week" },
-                { icon: <Car size={20} />, label: "Fully Mobile" },
-              ].map(s => (
-                <div key={s.label} className="flex items-center justify-center gap-3">
-                  <span className="text-primary">{s.icon}</span>
-                  <span className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground whitespace-nowrap">{s.label}</span>
+                { title: "Inspect & Consult", desc: "Assess condition. Discuss goals." },
+                { title: "Wash & Decon", desc: "Thorough cleaning. Zero contaminants." },
+                { title: "Cut & Polish", desc: "Paint correction. Mirror finish." },
+                { title: "Protect & Finish", desc: "Wax, ceramic, or tint. Lasting defense." }
+              ].map((step, i) => (
+                <div key={i} className="relative group">
+                  <div className="w-14 h-14 rounded-none bg-[#0A0A0A] border border-white/10 flex items-center justify-center font-display text-xl font-black mb-6 group-hover:bg-[#0066FF] group-hover:border-[#0066FF] transition-all relative z-10 box-glow text-white">
+                    0{i + 1}
+                  </div>
+                  <h4 className="text-lg font-display font-black uppercase mb-3 tracking-wider">{step.title}</h4>
+                  <p className="text-muted-foreground text-xs leading-relaxed uppercase font-mono tracking-widest">{step.desc}</p>
                 </div>
               ))}
             </div>
@@ -94,280 +169,183 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why We're Different / Problem/Solution Hybrid */}
-      <section className="py-16 lg:py-32">
-        <div className="container mx-auto px-4 lg:px-8">
-          {/* Mobile: Simple List */}
-          <div className="lg:hidden max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-10">Why We're <span className="text-primary">Different</span></h2>
-            <ul className="grid gap-8">
-              <li className="flex gap-4 items-start">
-                <div className="shrink-0 w-[34px] h-[34px] bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center">
-                  <Zap className="text-primary" size={18} />
-                </div>
-                <div>
-                  <p className="font-bold text-foreground text-lg leading-none mb-2">Fully mobile</p>
-                  <p className="text-muted-foreground text-sm leading-relaxed">We bring water & power — no hookups needed at your home.</p>
-                </div>
-              </li>
-              <li className="flex gap-4 items-start">
-                <div className="shrink-0 w-[34px] h-[34px] bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center">
-                  <Zap className="text-primary" size={18} />
-                </div>
-                <div>
-                  <p className="font-bold text-foreground text-lg leading-none mb-2">15 years expertise</p>
-                  <p className="text-muted-foreground text-sm leading-relaxed">15 years means we know exactly what your paint needs.</p>
-                </div>
-              </li>
-              <li className="flex gap-4 items-start">
-                <div className="shrink-0 w-[34px] h-[34px] bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center">
-                  <Zap className="text-primary" size={18} />
-                </div>
-                <div>
-                  <p className="font-bold text-foreground text-lg leading-none mb-2">Results that speak for themselves</p>
-                  <p className="text-muted-foreground text-sm leading-relaxed">Not happy? We come back. Simple as that.</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          {/* Desktop: Professional Box Layout */}
-          <div className="hidden lg:grid gap-12 lg:grid-cols-2">
-            <div className="rounded-lg border border-border bg-card p-8 lg:p-12">
-              <h3 className="font-display text-sm uppercase tracking-wider text-destructive mb-6">The Problem</h3>
-              <ul className="space-y-4 text-muted-foreground">
-                <li className="flex gap-3"><X className="mt-1 shrink-0 text-destructive" size={16} />Other detailers make you drive to them — wasting your time</li>
-                <li className="flex gap-3"><X className="mt-1 shrink-0 text-destructive" size={16} />Inconsistent quality from inexperienced operators</li>
-                <li className="flex gap-3"><X className="mt-1 shrink-0 text-destructive" size={16} />Generic, one-size-fits-all results that don't match your vehicle</li>
-              </ul>
-            </div>
-            <div className="rounded-lg border glow-border bg-card p-8 lg:p-12">
-              <h3 className="font-display text-sm uppercase tracking-wider text-primary mb-6">The Solution</h3>
-              <ul className="space-y-4 text-muted-foreground">
-                <li className="flex gap-3"><Zap className="mt-1 shrink-0 text-primary" size={16} />We come to you — fully self-sufficient with generator, pressure washer & water tank</li>
-                <li className="flex gap-3"><Zap className="mt-1 shrink-0 text-primary" size={16} />15+ years of automotive expertise with meticulous attention to detail</li>
-                <li className="flex gap-3"><Zap className="mt-1 shrink-0 text-primary" size={16} />Out-of-this-world results tailored to your specific vehicle</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Overview */}
-      <section className="border-t border-border py-24 lg:py-32 bg-card/50">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3">What We Offer</p>
-            <h2 className="text-3xl font-bold lg:text-5xl">Our Services</h2>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { title: "Interior Detailing", price: "From $180", desc: "Full vacuum, leather treatment, steam clean & more.", image: "/images/bg/interior-bg.png", path: "/services#interior" },
-              { title: "Wax Packages", price: "From $150", desc: "Hand wax, polish & UV protection for lasting shine.", image: "/images/bg/wax-bg.png", path: "/services#other-services" },
-              { title: "Full Detail", price: "From $250", desc: "Deep exterior wash & interior rejuvenation.", image: "/images/bg/full-detail-bg.png", path: "/services#full-detail" },
-              { title: "Paint Correction", price: "Quote Based", desc: "Remove swirls & restore that showroom floor gloss.", image: "/images/bg/onestep-bg.png", path: "/services#paint-correction" },
-              { title: "Ceramic Coating", price: "From $1,100", desc: "Ultimate protection & permanent hydrophobic shine.", image: "/images/bg/ceramic-bg.png", path: "/services/protective/ceramic" },
-              { title: "PPF & Window Tint", price: "From $1,300", desc: "Invisible protection against chips & heat.", image: "/images/bg/ppf-tint-bg.png", path: "/services/protective/ppf" },
-            ].map(s => (
-              <Link 
-                key={s.title} 
-                to={s.path || "/services"}
-                className="group relative aspect-square overflow-hidden rounded-xl border border-primary/10 bg-card transition-all duration-500 active:scale-[0.98]"
-              >
-                {/* Specimen Image Layer */}
-                <img 
-                  src={s.image} 
-                  alt={s.title} 
-                  className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-110" 
-                />
-                
-                {/* Stealth Overlay Layer */}
-                <div className="absolute inset-0 z-10 bg-black/60 backdrop-blur-[2px] transition-all duration-500 group-hover:bg-black/20 group-hover:backdrop-blur-none" />
-
-                {/* Content Layer */}
-                <div className="relative z-20 flex h-full flex-col justify-end p-8">
-                  <div className="space-y-1">
-                    <h3 className="font-display text-lg font-bold tracking-tight text-white group-hover:text-primary transition-colors">{s.title}</h3>
-                    <p className="font-mono text-sm text-primary font-bold drop-shadow-[0_0_10px_rgba(var(--primary),0.5)] mb-1">{s.price}</p>
-                    <p className="text-white/60 text-[11px] leading-tight font-medium uppercase tracking-wider">{s.desc}</p>
-                  </div>
-                  <div className="mt-4 flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 group-hover:text-white transition-colors">
-                    Explore Details <ChevronRight size={12} className="transition-transform group-hover:translate-x-1" />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Us */}
-      <section className="py-16 lg:py-32">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3">Why The Auto Barber</p>
-            <h2 className="text-3xl font-bold lg:text-5xl">Why Us</h2>
-          </div>
-          <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
-            {[
-              { icon: <Clock size={24} />, title: "7 Days/Week", desc: "8AM–6PM, by appt." },
-              { icon: <Car size={24} />, title: "Self-Contained", desc: "Water & power onboard." },
-              { icon: <Shield size={24} />, title: "Insured", desc: "Complete peace of mind." },
-              { icon: <MapPin size={24} />, title: "30-Mile Radius", desc: "Naples & surrounding." },
-            ].map(d => (
-              <div key={d.title} className="flex flex-col items-center text-center bg-[#111111] border border-white/7 rounded-lg p-4">
-                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full border border-border bg-secondary text-primary">
-                  {d.icon}
-                </div>
-                <h3 className="font-display text-xs font-bold uppercase tracking-wider mb-1">{d.title}</h3>
-                <p className="text-muted-foreground text-[10px] leading-tight">{d.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio Teaser */}
-      <section className="border-t border-border py-24 lg:py-32 bg-card/50">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3">Portfolio</p>
-            <h2 className="text-3xl font-bold lg:text-5xl">Our Work</h2>
+      {/* 5. THE MENU (Pricing) */}
+      <section className="py-24 lg:py-40 px-6 bg-[#0A0A0A]">
+        <div className="container mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-7xl font-display font-black uppercase mb-4 tracking-tighter">THE <span className="text-[#0066FF]">MENU</span></h2>
+            <p className="font-mono text-sm text-muted-foreground uppercase tracking-[0.2em]">Select your investment level</p>
           </div>
           
-          <div className="max-w-4xl mx-auto">
-          <div className="max-w-4xl mx-auto">
-            <div className="group relative bg-[#111111] border border-white/10 rounded-[14px] overflow-hidden">
-               <div className="absolute inset-0">
-                  <img src="/images/portfolio/tesla-black.png" alt="Featured Work" className="w-full h-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
-               </div>
-               <div className="relative p-8 lg:p-12 text-center">
-                  <div className="inline-block mb-4 px-3 py-1 rounded-full border border-[#00ff46]/20 bg-[#00ff46]/5">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#00ff46]">Showcase: Tesla Model Y</p>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {menu.map((p, i) => (
+              <div key={i} className={`relative p-10 bg-[#141414] border flex flex-col transition-all duration-300 ${p.popular ? 'border-[#0066FF] scale-105 shadow-[0_0_40px_rgba(0,102,255,0.1)]' : 'border-white/5'}`}>
+                {p.popular && (
+                  <div className="absolute top-0 right-0 bg-[#0066FF] text-white px-4 py-1 text-[10px] font-black uppercase italic tracking-widest">
+                    Recommended
                   </div>
-                  <h3 className="text-3xl font-bold mb-4">Seattle's Finest Transformations</h3>
-                  <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-                    From daily drivers to luxury exotics, we deliver showroom results anywhere in Seattle. Check out our full portfolio.
-                  </p>
-                  <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <Button asChild className="bg-primary text-primary-foreground font-display uppercase tracking-wider text-sm hover:opacity-90 box-glow px-8">
-                      <Link to="/gallery">View Full Gallery</Link>
-                    </Button>
-                    <Button onClick={openQuote} variant="outline" className="border-white/10 font-display uppercase tracking-wider text-sm hover:border-primary hover:text-primary px-8">
-                      Book Now
-                    </Button>
-                  </div>
-               </div>
+                )}
+                <h3 className="text-2xl font-display font-black uppercase mb-1 tracking-wider">{p.name}</h3>
+                <div className="flex items-baseline gap-2 mb-8">
+                   <span className="text-4xl font-display font-black text-[#0066FF]">{p.price}</span>
+                </div>
+                <div className="space-y-4 mb-10 flex-grow">
+                  {p.features.map((f, fi) => (
+                    <div key={fi} className="flex items-center gap-3 text-[11px] font-mono uppercase tracking-widest text-muted-foreground">
+                      <div className="w-1.5 h-1.5 bg-[#0066FF] rounded-none" />
+                      {f}
+                    </div>
+                  ))}
+                </div>
+                <Button onClick={() => openQuote(`Package: ${p.name}`)} className={`w-full font-display uppercase tracking-widest py-8 rounded-none transition-all ${p.popular ? 'bg-[#0066FF] text-white hover:bg-[#0052CC]' : 'bg-transparent border border-white/20 text-white hover:border-[#0066FF] hover:text-[#0066FF]'}`}>
+                  Book {p.name}
+                </Button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. PROOF OF WORK (Gallery) */}
+      <section className="py-24 lg:py-40 px-6 bg-[#141414] border-t border-white/5">
+        <div className="container mx-auto">
+          <div className="flex flex-col lg:flex-row justify-between items-center mb-16 gap-6">
+            <div className="text-center lg:text-left">
+              <h2 className="text-4xl md:text-6xl font-display font-black uppercase mb-1">PROOF OF WORK</h2>
+              <p className="font-mono text-[10px] text-muted-foreground font-bold uppercase tracking-[0.4em]">Handled with care</p>
+            </div>
+            <Button asChild variant="outline" className="rounded-none border-white/10 text-muted-foreground hover:border-[#0066FF] hover:text-[#0066FF] font-display uppercase tracking-widest">
+              <Link to="/gallery">View Complete Portfolio →</Link>
+            </Button>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1">
+            {gallery.map((item, i) => (
+              <div key={i} className="group relative aspect-square overflow-hidden bg-black border border-white/5">
+                <img 
+                  src={item.img} 
+                  alt={item.title} 
+                  className="absolute inset-0 w-full h-full object-cover transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-[#0066FF]/0 group-hover:bg-[#0066FF]/20 transition-all duration-500" />
+                <div className="absolute inset-0 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                  <h4 className="text-xl font-display font-black uppercase tracking-tight text-white mb-1">{item.title}</h4>
+                  <p className="font-mono text-[9px] uppercase tracking-widest text-white/80">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FAQ SECTION */}
+      <section className="py-24 lg:py-40 px-6 bg-[#0A0A0A]">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-4xl md:text-6xl font-display font-black uppercase mb-16 tracking-tight text-center">COMMON <span className="text-[#0066FF]">QUESTIONS</span></h2>
+          <div className="space-y-2">
+            {[
+              { q: "How long does a full detail take?", a: "Most mobile appointments take between 4 to 8 hours depending on vehicle size and condition. We treat every car like a masterwork—no rushing." },
+              { q: "Do I need an appointment?", a: "Yes. To maintain our standard of quality, we operate strictly by appointment only. We recommend booking 1-2 weeks in advance." },
+              { q: "What's the difference between wax and ceramic?", a: "Wax lasts months and adds shine. Ceramic lasts years and adds a hard sacrificial layer that resists chemicals, UV, and minor scratches." },
+              { q: "How long after tint can I wash my car?", a: "Wait at least 3-5 days for the adhesive to fully cure before rolling down windows or cleaning them inside." },
+              { q: "Do you offer mobile service?", a: "Yes. We are 100% mobile and self-sufficient. We bring our own water and power to your location in the Seattle area." }
+            ].map((faq, i) => (
+              <div key={i} className="p-8 bg-[#141414] border-l-2 border-white/5 hover:border-[#0066FF] transition-all">
+                <h4 className="text-lg font-display font-black uppercase mb-4 tracking-wider">{faq.q}</h4>
+                <p className="text-muted-foreground text-sm font-mono uppercase tracking-widest leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. CONTACT SECTION (In-page) */}
+      <section id="contact" className="py-24 lg:py-40 px-6 bg-[#141414] border-t border-white/5">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <div>
+              <div className="mb-12">
+                <div className="w-24 h-24 mb-6 rounded-full overflow-hidden border-2 border-[#0066FF]/20">
+                   <img src={logo} alt="Logo" className="w-full h-full object-cover" />
+                </div>
+                <h2 className="text-5xl md:text-7xl font-display font-black uppercase mb-4 leading-none">THE <span className="text-[#0066FF]">CONTACT</span></h2>
+                <p className="font-mono text-sm text-muted-foreground uppercase tracking-widest">Reserve your spot on the menu</p>
+              </div>
+              
+              <div className="space-y-8 font-mono text-xs uppercase tracking-[0.2em]">
+                <div className="flex gap-4 items-center">
+                   <div className="w-10 h-10 border border-white/5 flex items-center justify-center text-[#0066FF]">
+                     <Phone size={16} />
+                   </div>
+                   <a href="tel:2538939452" className="hover:text-[#0066FF] transition-colors">(253) 893-9452</a>
+                </div>
+                <div className="flex gap-4 items-center">
+                   <div className="w-10 h-10 border border-white/5 flex items-center justify-center text-[#0066FF]">
+                     <MapPin size={16} />
+                   </div>
+                   <span>7418 St 126th Unit 1C, Seattle</span>
+                </div>
+                <div className="flex gap-4 items-center">
+                   <div className="w-10 h-10 border border-white/5 flex items-center justify-center text-[#0066FF]">
+                     <Clock size={16} />
+                   </div>
+                   <span>MON - SUN: 8AM - 6PM</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-[#0A0A0A] p-10 border border-white/5 relative overflow-hidden">
+               <div className="absolute top-0 left-0 w-full h-1 bg-[#0066FF]" />
+               <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); openQuote(); }}>
+                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground pl-1">Full Name</label>
+                      <input type="text" className="w-full bg-[#141414] border border-white/5 p-4 font-mono text-xs uppercase tracking-widest focus:border-[#0066FF] focus:ring-1 focus:ring-[#0066FF] outline-none transition-all" placeholder="John Doe" />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground pl-1">Phone</label>
+                      <input type="tel" className="w-full bg-[#141414] border border-white/5 p-4 font-mono text-xs uppercase tracking-widest focus:border-[#0066FF] focus:ring-1 focus:ring-[#0066FF] outline-none transition-all" placeholder="(000) 000-0000" />
+                    </div>
+                 </div>
+                 <div className="space-y-2">
+                    <label className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground pl-1">Email</label>
+                    <input type="email" className="w-full bg-[#141414] border border-white/5 p-4 font-mono text-xs uppercase tracking-widest focus:border-[#0066FF] focus:ring-1 focus:ring-[#0066FF] outline-none transition-all" placeholder="name@email.com" />
+                 </div>
+                 <div className="space-y-2">
+                    <label className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground pl-1">Service Needed</label>
+                    <select className="w-full bg-[#141414] border border-white/5 p-4 font-mono text-xs uppercase tracking-widest focus:border-[#0066FF] outline-none transition-all">
+                      <option>The Cut (Full Interior/Exterior)</option>
+                      <option>The Trim (Basic Detail)</option>
+                      <option>The Works (Master Package)</option>
+                      <option>Ceramic Coating</option>
+                      <option>Paint Correction</option>
+                      <option>Window Tint</option>
+                    </select>
+                 </div>
+                 <div className="space-y-2">
+                    <label className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground pl-1">Message</label>
+                    <textarea rows={4} className="w-full bg-[#141414] border border-white/5 p-4 font-mono text-xs uppercase tracking-widest focus:border-[#0066FF] outline-none transition-all" placeholder="Tell us about your ride..." />
+                 </div>
+                 <Button className="w-full bg-[#0066FF] text-white font-display text-base uppercase tracking-[0.2em] font-black italic py-8 rounded-none hover:bg-[#0052CC] transition-all box-glow">
+                   Reserve Your Cut
+                 </Button>
+               </form>
             </div>
           </div>
-          </div>
         </div>
       </section>
 
-      {/* Reviews */}
-      <section className="py-16 lg:py-32">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3">Social Proof</p>
-            <h2 className="text-3xl font-bold lg:text-5xl mb-6">What Our Clients Say</h2>
-            <a 
-              href="https://www.google.com/search?q=The+Auto+Barber+Seattle+Reviews" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 rounded-full border border-border bg-card/50 px-6 py-3 transition-all hover:border-primary/50 active:scale-95"
-            >
-              <div className="flex gap-1">
-                {[1, 2, 3, 4, 5].map(s => <Star key={s} size={16} className="fill-primary text-primary" />)}
-              </div>
-              <span className="font-mono text-sm font-bold tracking-tight text-foreground">4.9/5 <span className="text-muted-foreground font-normal">(127 Google Reviews)</span></span>
-            </a>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              { name: "Michael T. · Porsche 911", text: "Best detailer in Seattle, period." },
-              { name: "Sarah K. · Tesla Model Y", text: "Truly out of this world service — water just rolls right off." },
-              { name: "David R. · BMW M3", text: "Professional, on time, and the results speak for themselves." },
-            ].map(r => (
-              <div key={r.name} className="rounded-lg border border-border bg-card p-8">
-                <div className="flex gap-1 mb-4">
-                  {[1, 2, 3, 4, 5].map(s => <Star key={s} size={16} className="fill-primary text-primary" />)}
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">"{r.text}"</p>
-                <p className="font-mono text-[10px] uppercase tracking-wider text-primary font-bold">{r.name}</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <a 
-              href="https://www.google.com/search?q=The+Auto+Barber+Seattle+Reviews" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="font-mono text-sm uppercase tracking-wider text-primary hover:underline"
-            >
-              View all 127 Google Reviews →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Teaser */}
-      <section className="border-t border-border py-24 lg:py-32 bg-card/50">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3">FAQ</p>
-            <h2 className="text-3xl font-bold lg:text-5xl">Common Questions</h2>
-          </div>
-          <div className="max-w-3xl mx-auto space-y-6">
-            {[
-              { q: "How long does ceramic coating take?", a: "4–12 hours. Full cure in 7 days." },
-              { q: "Are you really fully mobile?", a: "Yes. Generator, water tank, pressure washer — all onboard. We're completely self-sufficient." },
-              { q: "How far do you travel?", a: "Up to 30 miles from Seattle." },
-            ].map(f => (
-              <div key={f.q} className="rounded-lg border border-border bg-card p-6">
-                <h3 className="font-display text-sm font-semibold mb-2">{f.q}</h3>
-                <p className="text-muted-foreground text-sm">{f.a}</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Button asChild variant="outline" className="border-border font-display uppercase tracking-wider text-sm hover:border-primary hover:text-primary">
-              <Link to="/faq">View All FAQs</Link>
+      {/* FINAL CALL TO ACTION */}
+      <section className="py-24 text-center border-t border-white/5 bg-[#0A0A0A]">
+         <div className="container mx-auto px-6">
+            <h2 className="text-4xl md:text-6xl font-display font-black uppercase mb-8 tracking-tighter italic animate-pulse-subtle">YOUR CAR DESERVES THE FINEST CUT.</h2>
+            <Button onClick={() => openQuote()} size="lg" className="bg-[#0066FF] text-white font-display text-xl uppercase tracking-widest py-10 px-16 rounded-none hover:bg-[#0052CC] transition-all transform hover:scale-110 box-glow">
+               BOOK NOW
             </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-16 lg:py-32 hero-gradient grid-bg">
-        <div className="container mx-auto px-4 text-center lg:px-8">
-          <div className="inline-block mb-4 px-3 py-1 rounded-full border border-primary/20 bg-primary/5">
-            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-primary">LIMITED SPOTS THIS WEEK</p>
-          </div>
-          <h2 className="text-3xl font-bold lg:text-5xl mb-6">
-            Ready for a <span className="text-primary">Detail?</span>
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto mb-8">
-            Book in 60 seconds. We come to you.
-          </p>
-          <div className="flex flex-col items-center gap-4">
-            <Button onClick={openQuote} size="lg" className="bg-primary text-primary-foreground font-display uppercase tracking-wider text-sm hover:opacity-90 box-glow min-w-[240px]">
-              GET MY FREE QUOTE →
-            </Button>
-            <p className="text-white/25 text-[11px] font-mono uppercase tracking-wider">
-              No commitment · Responds within 1 hour
-            </p>
-          </div>
-        </div>
+         </div>
       </section>
     </div>
   );
 };
-
-const X = ({ className, size }: { className?: string; size?: number }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-  </svg>
-);
 
 export default Index;

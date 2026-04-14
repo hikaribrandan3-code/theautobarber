@@ -61,86 +61,86 @@ const QuoteModal = ({ open, onOpenChange, defaultService, defaultLocation }: Quo
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-lg border-border bg-card">
-        <DialogHeader>
+      <DialogContent className="max-w-lg border-white/5 bg-[#0a0a0a] rounded-none p-8">
+        <DialogHeader className="space-y-4">
           <div className="flex items-center justify-between">
-            <DialogTitle className="text-2xl text-glow">Launch My Quote</DialogTitle>
-            <span className="font-mono text-xs text-[#39FF14] bg-[#39FF14]/10 px-2 py-1 rounded">STEP {step}/2</span>
+            <DialogTitle className="text-4xl font-display font-black uppercase italic tracking-tighter text-white">REQUEST THE <span className="text-[#0066FF] text-glow">CUT</span></DialogTitle>
+            <span className="font-display text-[10px] text-[#0066FF] bg-[#0066FF]/5 border border-[#0066FF]/20 px-3 py-1 italic tracking-widest">PHASE {step}/2</span>
           </div>
-          <p className="text-muted-foreground text-sm">
+          <p className="font-mono text-[10px] text-[#adaaaa] uppercase tracking-[0.2em] italic font-bold leading-relaxed">
             {step === 1 
-              ? "Tell us what you need and how to reach you." 
-              : "Help us understand your vehicle's specific needs."}
+              ? "Identify the target. Enter contact coordinates." 
+              : "Define the level of restoration required."}
           </p>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           {step === 1 ? (
             <>
               <div className="grid grid-cols-1 gap-4">
-                <Input placeholder="First Name" required className="bg-secondary border-border" />
-                <Input placeholder="Phone" type="tel" required className="bg-secondary border-border" />
+                <Input placeholder="FIRST NAME" required className="bg-[#141414] border-white/5 font-display text-lg uppercase tracking-widest text-white h-14 rounded-none focus-visible:ring-[#0066FF]" />
+                <Input placeholder="PHONE" type="tel" required className="bg-[#141414] border-white/5 font-display text-lg uppercase tracking-widest text-white h-14 rounded-none focus-visible:ring-[#0066FF]" />
                 <Select value={service} onValueChange={setService} required>
-                  <SelectTrigger className="bg-secondary border-border">
-                    <SelectValue placeholder="Service Interested In" />
+                  <SelectTrigger className="bg-[#141414] border-white/5 font-display text-lg uppercase tracking-widest text-white h-14 rounded-none">
+                    <SelectValue placeholder="SELECT SERVICE" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-[#141414] border-white/10 rounded-none">
                     {services.map(s => (
-                      <SelectItem key={s} value={s}>{s}</SelectItem>
+                      <SelectItem key={s} value={s} className="font-display text-lg uppercase tracking-widest text-white focus:bg-[#0066FF] focus:text-white">{s}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
-              <Button type="submit" className="w-full bg-primary text-primary-foreground font-display uppercase tracking-wider hover:opacity-90">
-                Continue to Vehicle Details →
+              <Button type="submit" className="w-full bg-[#0066FF] text-white font-display text-xl uppercase tracking-widest font-black py-8 rounded-none italic shadow-[0_0_20px_rgba(0,102,255,0.2)]">
+                VEHICLE SPECS →
               </Button>
             </>
           ) : (
             <>
               <Input 
-                placeholder="Email Address" 
+                placeholder="EMAIL ADDRESS" 
                 type="email" 
                 required 
-                className="bg-secondary border-border" 
+                className="bg-[#141414] border-white/5 font-display text-lg uppercase tracking-widest text-white h-14 rounded-none" 
               />
               <Input 
-                placeholder="City or Neighborhood (e.g. Naples, Pelican Bay)" 
+                placeholder="CITY / NEIGHBORHOOD (e.g. SEATTLE)" 
                 value={location} 
                 onChange={(e) => setLocation(e.target.value)} 
                 required 
-                className="bg-secondary border-border" 
+                className="bg-[#141414] border-white/5 font-display text-lg uppercase tracking-widest text-white h-14 rounded-none" 
               />
               <div className="grid grid-cols-3 gap-3">
-                <Input placeholder="Year" className="bg-secondary border-border" />
-                <Input placeholder="Make" className="bg-secondary border-border" />
-                <Input placeholder="Model" className="bg-secondary border-border" />
+                <Input placeholder="YEAR" className="bg-[#141414] border-white/5 font-display text-lg uppercase tracking-widest text-white h-14 rounded-none" />
+                <Input placeholder="MAKE" className="bg-[#141414] border-white/5 font-display text-lg uppercase tracking-widest text-white h-14 rounded-none" />
+                <Input placeholder="MODEL" className="bg-[#141414] border-white/5 font-display text-lg uppercase tracking-widest text-white h-14 rounded-none" />
               </div>
               <Select>
-                <SelectTrigger className="bg-secondary border-border">
-                  <SelectValue placeholder="Vehicle Condition (1-10)" />
+                <SelectTrigger className="bg-[#141414] border-white/5 font-display text-lg uppercase tracking-widest text-white h-14 rounded-none">
+                  <SelectValue placeholder="CONDITION (1-10)" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-[#141414] border-white/10 rounded-none">
                   {Array.from({ length: 10 }, (_, i) => (
-                    <SelectItem key={i + 1} value={String(i + 1)}>{i + 1} — {i < 3 ? "Needs Heavy Work" : i < 6 ? "Fair Condition" : i < 9 ? "Good Shape" : "Showroom"}</SelectItem>
+                    <SelectItem key={i + 1} value={String(i + 1)} className="font-display text-lg uppercase tracking-widest text-white focus:bg-[#0066FF]">{i + 1} — {i < 3 ? "Heavy Resto" : i < 6 ? "Daily Level" : i < 9 ? "Collector" : "Master Clone"}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
-              <Textarea placeholder="Additional notes or specific requests..." className="bg-secondary border-border" rows={3} />
+              <Textarea placeholder="ADDITIONAL REQUISITION NOTES..." className="bg-[#141414] border-white/5 font-display text-lg uppercase tracking-widest text-white rounded-none" rows={3} />
               
-              <div className="flex gap-3">
+              <div className="flex gap-4 pt-4">
                 <Button 
-                  type="button" 
-                  variant="outline" 
-                  onClick={() => setStep(1)}
-                  className="flex-1 border-border"
+                   type="button" 
+                   variant="outline" 
+                   onClick={() => setStep(1)}
+                   className="flex-1 border-white/10 font-display text-lg uppercase tracking-widest text-white rounded-none h-14 hover:bg-white hover:text-black"
                 >
-                  Back
+                  BACK
                 </Button>
                 <Button 
-                  type="submit" 
-                  disabled={loading} 
-                  className="flex-[2] bg-primary text-primary-foreground font-display uppercase tracking-wider hover:opacity-90 box-glow"
+                   type="submit" 
+                   disabled={loading} 
+                   className="flex-[2] bg-[#0066FF] text-white font-display text-xl uppercase tracking-widest font-black h-14 rounded-none italic shadow-[0_0_30px_rgba(0,102,255,0.2)]"
                 >
-                  {loading ? "Launching..." : "Launch Quote Request →"}
+                  {loading ? "REQUESTING..." : "GET QUOTE →"}
                 </Button>
               </div>
             </>

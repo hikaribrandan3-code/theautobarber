@@ -16,8 +16,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Orbitron", "sans-serif"],
-        body: ["Syne", "sans-serif"],
+        display: ["Bebas Neue", "sans-serif"],
+        body: ["Inter", "sans-serif"],
         mono: ["Space Mono", "monospace"],
       },
       colors: {

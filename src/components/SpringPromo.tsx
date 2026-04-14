@@ -44,7 +44,7 @@ const SpringPromo = ({ onClaim }: SpringPromoProps) => {
 
       {/* Popup Card */}
       <div 
-        className={`relative w-full max-w-sm overflow-hidden rounded-3xl border border-white/10 bg-card shadow-[0_0_50px_rgba(57,255,20,0.15)] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isVisible ? "scale-100 translate-y-0" : "scale-95 translate-y-8"}`}
+        className={`relative w-full max-w-sm overflow-hidden border border-white/5 bg-[#0a0a0a] shadow-[0_30px_60px_rgba(0,102,255,0.2)] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isVisible ? "scale-100 translate-y-0" : "scale-95 translate-y-8"}`}
       >
         {/* Top Section - Hero Image */}
         <div 
@@ -53,9 +53,9 @@ const SpringPromo = ({ onClaim }: SpringPromoProps) => {
         >
           <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
           <div className="absolute top-4 left-4">
-             <div className="flex items-center gap-2 rounded-full bg-[#39FF14] px-3 py-1 text-[10px] font-bold text-black uppercase tracking-tighter shadow-[0_0_15px_#39FF14]">
+             <div className="flex items-center gap-2 bg-[#0066FF] px-4 py-1.5 text-[10px] font-display font-black text-white uppercase tracking-[0.2em] italic shadow-[0_0_20px_rgba(0,102,255,0.4)]">
                 <Sparkles size={12} className="animate-pulse" />
-                Special Offer
+                Special Requisition
              </div>
           </div>
           <button 
@@ -70,24 +70,24 @@ const SpringPromo = ({ onClaim }: SpringPromoProps) => {
         <div className="p-8 pt-4 text-center">
           <div className="mb-6 space-y-2">
             <h3 className="font-display text-2xl font-black italic uppercase tracking-tighter text-white">
-              SPRING <span className="text-[#39FF14] text-glow">RESET</span>
+              SPRING <span className="text-[#0066FF] text-glow">RESET</span>
             </h3>
-            <p className="font-mono text-sm font-bold text-[#39FF14]/90 tracking-widest leading-none">
+            <p className="font-mono text-sm font-bold text-[#0066FF]/90 tracking-widest leading-none">
               INTERIOR + EXTERIOR DECON
             </p>
             <div className="h-px w-8 bg-border mx-auto my-4" />
-            <p className="text-muted-foreground text-xs leading-relaxed max-w-[240px] mx-auto italic">
-              Naples & Marco Island’s Premier Pollen Removal for only $249.
+            <p className="font-mono text-[10px] text-[#adaaaa] leading-relaxed max-w-[240px] mx-auto italic uppercase tracking-widest font-bold">
+              SEATTLE'S PREMIER POLLEN REMOVAL PROTOCOL FOR ONLY $249.
             </p>
           </div>
 
           <div className="space-y-3">
              <Button 
                 onClick={() => onClaim("Spring Reset Special $249")}
-                className="w-full bg-[#39FF14] text-black font-display font-black uppercase italic tracking-widest hover:bg-[#32e612] transition-all h-14 text-sm box-glow group"
+                className="w-full bg-[#0066FF] text-white font-display font-black uppercase italic tracking-[0.2em] transform active:scale-[0.98] transition-all h-16 text-lg rounded-none shadow-[0_0_30px_rgba(0,102,255,0.2)] group"
              >
-                CLAIM SPECIAL
-                <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+                CLAIM THE RESET
+                <span className="ml-3 transition-transform group-hover:translate-x-2">→</span>
              </Button>
              
              <button 
@@ -100,7 +100,7 @@ const SpringPromo = ({ onClaim }: SpringPromoProps) => {
         </div>
         
         {/* Glowing bottom accent */}
-        <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#39FF14]/50 to-transparent" />
+        <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#0066FF]/50 to-transparent" />
       </div>
     </div>
   );

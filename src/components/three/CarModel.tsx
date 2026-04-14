@@ -25,7 +25,7 @@ export function CarModel({ activeZones }: CarModelProps) {
     metalness: 0.3,
     clearcoat: 1.0,
     clearcoatRoughness: 0.05,
-    emissive: new THREE.Color('#39ff14'),
+    emissive: new THREE.Color('#0066FF'),
     emissiveIntensity: 0.15,
     transparent: true,
     opacity: 0.92,

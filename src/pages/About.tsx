@@ -7,60 +7,44 @@ const About = () => {
   return (
     <div className="min-h-screen">
       <SEO 
-        title="About The Auto Barber | Seattle's Master Detailer"
-        description="Meet the mind behind The Auto Barber. 15+ years of automotive expertise and 7+ years of professional mobile detailing in Seattle, WA. Trusted with over $100M in luxury vehicles."
+        title="The Craftsman | The Auto Barber Seattle"
+        description="Meet the Barber of Metal. 15+ years of automotive obsession. We don't just detail; we perform surgery on clear coat. Seattle's standard for paint preservation."
       />
       {/* Hero Section */}
-      <section className="relative border-b border-border bg-card/30 py-16 lg:py-32">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2 items-center">
-            {/* Photo */}
-            <div className="relative">
-              <div className="absolute -inset-1 rounded-lg bg-gradient-to-br from-primary/30 to-primary/5 blur-xl" />
-              <img
-                src={jasonPhoto}
-                alt="Lead Detailer - The Auto Barber"
-                className="relative rounded-lg border border-border object-cover w-full aspect-[4/3]"
-              />
-              <div className="absolute bottom-4 left-4 right-4 rounded bg-background/90 backdrop-blur px-4 py-3 border border-border">
-                <p className="font-display text-sm font-semibold">Jason Midler</p>
-                <p className="font-mono text-xs text-muted-foreground uppercase tracking-wider">CEO & Lead Detailer</p>
-              </div>
-            </div>
-
-            {/* Intro */}
-            <div>
-              <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-4">About Us</p>
-              <h1 className="text-4xl font-bold leading-tight tracking-tight lg:text-5xl mb-6">
-                <span className="lg:hidden text-glow">Seattle's Master Detailer</span>
-                <span className="hidden lg:inline">Meet the Mind Behind <span className="text-primary text-glow">The Auto Barber Seattle</span></span>
-              </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                <span className="lg:hidden">15 years. One mission. Perfect paint.</span>
-                <span className="hidden lg:inline">
-                  What began as a relentless pursuit of automotive perfection has evolved into Seattle's premier mobile detailing experience. 
-                  We're not just detailing cars — we're preserving high-value investments and exceeding the highest expectations, one vehicle at a time.
-                </span>
-              </p>
-            </div>
+      <section className="relative border-b border-white/5 bg-[#0a0a0a] py-24 lg:py-48 overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <img src="/images/portfolio/shop-floor.jpg" alt="Shop Floor" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/80 to-[#0a0a0a]" />
+        </div>
+        
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <div className="max-w-4xl">
+            <p className="font-display text-sm uppercase tracking-[0.4em] text-[#0066FF] mb-6 italic">The Master Barber</p>
+            <h1 className="text-6xl lg:text-[10rem] font-display font-black leading-[0.75] uppercase tracking-tighter italic text-white mb-10">
+              THE BARBER <br/><span className="text-[#0066FF] text-glow">OF METAL</span>
+            </h1>
+            <p className="text-xl lg:text-3xl font-display uppercase tracking-tight text-[#adaaaa] leading-tight italic">
+              15 YEARS OF OBSESSION. ONE MISSION. <span className="text-white">PERFECT PAINT.</span>
+            </p>
           </div>
         </div>
       </section>
 
       {/* Stats Grid */}
-      <section className="py-16 border-b border-border">
+      <section className="py-24 border-b border-white/5 bg-[#0e0e0e]">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: <Award size={24} />, number: "15+", label: "Years in Automotive" },
-              { icon: <Star size={24} />, number: "7+", label: "Years Professional Detailing" },
-              { icon: <Car size={24} />, number: "$100M+", label: "Cars Detailed" },
-              { icon: <Heart size={24} />, number: "∞", label: "Passion for Perfection" },
+              { icon: <Award size={32} />, number: "15+", label: "Years Mastery" },
+              { icon: <Star size={32} />, number: "10-YR", label: "Warranty Standard" },
+              { icon: <Car size={32} />, number: "$100M+", label: "Portfolio Value" },
+              { icon: <Shield size={32} />, number: "100%", label: "Craftsman Bond" },
             ].map((stat, i) => (
-              <div key={i} className="text-center p-6 rounded-lg border border-border bg-card/50">
-                <span className="text-primary mb-3 block">{stat.icon}</span>
-                <p className="text-3xl lg:text-4xl font-bold text-primary mb-1">{stat.number}</p>
-                <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">{stat.label}</p>
+              <div key={i} className="text-center p-8 bg-[#141414] border border-white/5 relative overflow-hidden group">
+                <div className="absolute top-0 left-0 w-full h-1 bg-[#0066FF] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+                <span className="text-[#0066FF] mb-4 block group-hover:scale-110 transition-transform">{stat.icon}</span>
+                <p className="text-4xl lg:text-6xl font-display font-black text-white italic tracking-tighter mb-2 leading-none">{stat.number}</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#adaaaa] font-bold">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -68,124 +52,80 @@ const About = () => {
       </section>
 
       {/* Story Section */}
-      <section className="py-16 lg:py-32">
-        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-          <div className="space-y-12">
-            {/* Block 1 */}
-            <div className="flex gap-4">
-              <div className="hidden sm:flex flex-col items-center">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <Target className="text-primary" size={20} />
-                </div>
-                <div className="w-px h-full bg-border mt-4" />
-              </div>
-              <div className="pb-8">
-                <h3 className="font-display text-lg font-semibold mb-3">
-                  <span className="lg:hidden">Our Story</span>
-                  <span className="hidden lg:inline">Built on a Foundation of Excellence</span>
-                </h3>
-                <div className="lg:hidden">
-                  <p className="text-muted-foreground leading-relaxed">
-                    We don't talk about what happens in the bay. But the results speak for themselves.
-                  </p>
-                  <p className="text-muted-foreground leading-relaxed mt-4">
-                    <strong className="text-foreground">15 years of automotive obsession.</strong> Fully mobile. Fully self-contained.
-                    We come to you because your garage is the cleanest place to work.
-                  </p>
-                </div>
-                <div className="hidden lg:block text-muted-foreground leading-relaxed">
-                  <p>
-                    With over <strong className="text-foreground">15 years in the automotive industry</strong> and 
-                    <strong className="text-foreground"> 7+ years of professional detailing experience</strong>, I've honed my craft 
-                    working on some of the most valuable vehicles in the world. My clients have collectively trusted me with 
-                    over <strong className="text-foreground">$100 million worth of cars</strong> — from daily drivers to rare exotics.
-                  </p>
-                </div>
-              </div>
+      <section className="py-24 lg:py-48 bg-[#0a0a0a]">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-24 items-start">
+            <div className="space-y-12">
+               <div>
+                 <span className="text-[#0066FF] font-display text-sm uppercase tracking-[0.5em] italic mb-4 block">The Division</span>
+                 <h2 className="text-5xl lg:text-8xl font-display font-black uppercase tracking-tighter italic text-white leading-[0.8]">NO SECRETS.<br/><span className="text-[#0066FF]">JUST SURGERY.</span></h2>
+               </div>
+               <p className="font-mono text-sm text-[#adaaaa] leading-relaxed uppercase tracking-widest italic">
+                 We don't talk about what happens in the bay. The results speak for themselves. 15 years of automotive obsession. Fully custom rig. Fully self-contained. 
+                 We treat every vehicle as a master-level restoration, not a "quick wash."
+               </p>
+               <div className="space-y-8">
+                  <div className="flex gap-6 items-start">
+                     <div className="w-12 h-12 bg-[#141414] border border-[#0066FF]/20 flex items-center justify-center shrink-0">
+                        <Target className="text-[#0066FF]" size={24} />
+                     </div>
+                     <div>
+                        <h4 className="font-display text-2xl font-black text-white uppercase italic tracking-wider mb-2">PRECISION DIAGNOSTICS</h4>
+                        <p className="font-mono text-xs text-[#adaaaa] uppercase tracking-widest">We analyze clear coat depth and paint hardness before a single pad touches the car. Science first.</p>
+                     </div>
+                  </div>
+                  <div className="flex gap-6 items-start">
+                     <div className="w-12 h-12 bg-[#141414] border border-[#0066FF]/20 flex items-center justify-center shrink-0">
+                        <Shield className="text-[#0066FF]" size={24} />
+                     </div>
+                     <div>
+                        <h4 className="font-display text-2xl font-black text-white uppercase italic tracking-wider mb-2">THE CRAFTSMAN BOND</h4>
+                        <p className="font-mono text-xs text-[#adaaaa] uppercase tracking-widest">Authorized STEK & XPEL installers. Lifetime warranty backup on all master-tier services.</p>
+                     </div>
+                  </div>
+               </div>
             </div>
-
-            {/* Block 2 */}
-            <div className="flex gap-4">
-              <div className="hidden sm:flex flex-col items-center">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <Sparkles className="text-primary" size={20} />
-                </div>
-                <div className="w-px h-full bg-border mt-4" />
-              </div>
-              <div className="pb-8">
-                <h3 className="font-display text-lg font-semibold mb-3">Above & Beyond Is the Standard</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  When you book The Auto Barber, you're not getting a quick wash and vacuum. You're getting
-                  <strong className="text-foreground"> the highest level of detailing expertise</strong>, period.
-                  We treat every car like it's our own.
-                </p>
-              </div>
-            </div>
-
-            {/* Block 3 */}
-            <div className="flex gap-4">
-              <div className="hidden sm:flex flex-col items-center">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <Zap className="text-primary" size={20} />
-                </div>
-                <div className="w-px h-full bg-border mt-4" />
-              </div>
-              <div className="pb-8">
-                <h3 className="font-display text-lg font-semibold mb-3">The Mobile Revolution</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  I saw a gap in the mobile detailing industry. Too many "mobile" detailers were cutting corners, 
-                  showing up unprepared, or delivering results that didn't justify the price. I knew there was a better way. 
-                  So I made the decision to build a <strong className="text-foreground">full custom detailing rig</strong> — 
-                  complete with generator, pressure washer, water tank, and professional-grade equipment. 
-                  Now I bring the <strong className="text-foreground">best detailing experience directly to your doorstep</strong>, 
-                  fully self-sufficient, with zero compromise on quality.
-                </p>
-              </div>
-            </div>
-
-            {/* Block 4 */}
-            <div className="flex gap-4">
-              <div className="hidden sm:flex flex-col items-center">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <Shield className="text-primary" size={20} />
-                </div>
-              </div>
-              <div>
-                <h3 className="font-display text-lg font-semibold mb-3">Certified</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex gap-3 items-center"><Shield className="text-primary shrink-0" size={16} />STEK Authorized Installer</li>
-                  <li className="flex gap-3 items-center"><Shield className="text-primary shrink-0" size={16} />XPEL Certified</li>
-                  <li className="flex gap-3 items-center"><Shield className="text-primary shrink-0" size={16} />3M Pro Series Trained</li>
-                  <li className="flex gap-3 items-center"><Shield className="text-primary shrink-0" size={16} />Fully insured &amp; licensed</li>
-                </ul>
-              </div>
+            
+            <div className="relative">
+               <div className="absolute -top-12 -left-12 w-48 h-48 border-l border-t border-[#0066FF]/30" />
+               <img src="/images/portfolio/polisher-ready.jpg" alt="The Artisan" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl" />
+               <div className="mt-8 p-8 bg-[#141414] border border-white/5">
+                  <h4 className="font-display text-2xl font-black text-white uppercase italic tracking-widest mb-4">CERTIFIED MASTERY</h4>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <li className="flex gap-3 items-center font-mono text-[10px] uppercase font-bold text-[#adaaaa] tracking-widest"><Shield className="text-[#0066FF] shrink-0" size={16} />STEK Authorized</li>
+                    <li className="flex gap-3 items-center font-mono text-[10px] uppercase font-bold text-[#adaaaa] tracking-widest"><Shield className="text-[#0066FF] shrink-0" size={16} />XPEL Certified</li>
+                    <li className="flex gap-3 items-center font-mono text-[10px] uppercase font-bold text-[#adaaaa] tracking-widest"><Shield className="text-[#0066FF] shrink-0" size={16} />3M Pro Trained</li>
+                    <li className="flex gap-3 items-center font-mono text-[10px] uppercase font-bold text-[#adaaaa] tracking-widest"><Shield className="text-[#0066FF] shrink-0" size={16} />Fully Insured</li>
+                  </ul>
+               </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="border-t border-border py-16 bg-card/30">
-        <div className="container mx-auto px-4 lg:px-8 text-center max-w-2xl">
-          <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-4">Ready to experience the difference?</p>
-          <h2 className="text-3xl font-bold lg:text-4xl mb-6">
-            Let us show you what <span className="text-primary">perfected</span> looks like.
+      <section className="border-t border-white/5 py-32 bg-[#0e0e0e] relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#0066FF]/10 blur-[120px] rounded-full" />
+        <div className="container mx-auto px-4 lg:px-8 text-center max-w-4xl relative z-10">
+          <p className="font-display text-sm uppercase tracking-[0.5em] text-[#0066FF] mb-6 italic">The Master's Call</p>
+          <h2 className="text-5xl lg:text-9xl font-display font-black mb-10 uppercase tracking-tighter italic text-white leading-none">
+            INVEST. PROTECT. <br/><span className="text-[#0066FF]">ENJOY.</span>
           </h2>
-          <p className="text-muted-foreground mb-8">
-            Whether you drive a daily commuter or a garage queen, your vehicle deserves The Auto Barber treatment.
+          <p className="font-mono text-xs lg:text-sm text-[#adaaaa] mb-12 uppercase tracking-[0.3em] font-bold italic">
+            SEATTLE'S STANDARD FOR PAINT PRESERVATION.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 font-display text-sm uppercase tracking-wider text-primary-foreground hover:opacity-90 transition-opacity"
+              className="inline-flex items-center justify-center bg-[#0066FF] px-12 py-6 font-display text-xl uppercase tracking-widest text-white hover:bg-[#0052CC] transition-all rounded-none italic shadow-[0_0_30px_rgba(0,102,255,0.3)]"
             >
-              Get in Touch
+              REQUEST THE CUT
             </Link>
             <Link
               to="/services"
-              className="inline-flex items-center justify-center rounded-md border border-border px-6 py-3 font-display text-sm uppercase tracking-wider hover:border-primary hover:text-primary transition-colors"
+              className="inline-flex items-center justify-center border border-white/20 px-12 py-6 font-display text-xl uppercase tracking-widest text-white hover:bg-white hover:text-black transition-all rounded-none italic"
             >
-              View Services
+              THE DIVISION
             </Link>
           </div>
         </div>
