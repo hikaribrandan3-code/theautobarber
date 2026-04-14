@@ -35,35 +35,77 @@ const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=The+Auto+Barber+Revi
 const Index = () => {
   const { openQuote } = useOutletContext<{ openQuote: (service?: string) => void }>();
 
-  // Service pricing cards
-  const menuItems = [
+  // Service pricing data restructured by categories
+  const categories = [
     {
-      name: "Interior Detail",
-      price: "$199",
-      regularPrice: "$250",
-      badge: "SPRING SPECIAL",
-      desc: "Deep clean every surface. Leather treated. Carpets restored. Like new inside.",
-      time: "2–3 hrs",
-      items: ["Full vacuum & extraction", "Steam clean all surfaces", "Leather conditioning", "Door jambs & glass"],
-      service: "Interior Detail",
+      title: "Interior Services",
+      image: "/Users/daiskebrandan/.gemini/antigravity/brain/5d3fa7be-cb30-42a0-934f-95597e1da69f/interior_detailing_focus_1776187301149.png",
+      items: [
+        {
+          name: "Interior Detail",
+          price: "$199",
+          regularPrice: "$250",
+          badge: "SPRING SPECIAL",
+          desc: "Deep clean every surface. Leather treated. Carpets restored. Like new inside.",
+          time: "2–3 hrs",
+          items: ["Full vacuum & extraction", "Steam clean all surfaces", "Leather conditioning", "Door jambs & glass"],
+          service: "Interior Detail",
+        }
+      ]
     },
     {
-      name: "Full Detail",
-      price: "$350",
-      desc: "Hand wash, decon, paint correction light. Mirror finish. Showroom shine.",
-      time: "5–6 hrs",
-      items: ["Complete Interior Detail", "Multi-stage hand wash", "Decontamination & clay", "Premium hand wax"],
-      service: "Full Detail",
-      popular: true,
+      title: "Exterior Services",
+      image: "/Users/daiskebrandan/.gemini/antigravity/brain/5d3fa7be-cb30-42a0-934f-95597e1da69f/exterior_paint_gloss_1776187353898.png",
+      items: [
+        {
+          name: "Full Detail",
+          price: "$350",
+          desc: "Hand wash, decon, paint correction light. Mirror finish. Showroom shine.",
+          time: "5–6 hrs",
+          items: ["Complete Interior Detail", "Multi-stage hand wash", "Decontamination & clay", "Premium hand wax"],
+          service: "Full Detail",
+          popular: true,
+        },
+        {
+          name: "Correction Consultation",
+          price: "Free",
+          desc: "Required for heavy swirl marks or oxidation. Mandatory prep for ceramic.",
+          time: "30 mins",
+          items: ["Paint depth measurement", "Swirl & scratch analysis", "Custom correction plan", "Quote visualization"],
+          service: "Correction Consultation",
+        }
+      ]
     },
     {
-      name: "Ceramic Coating",
-      price: "$600+",
-      desc: "Precision cut. UV protection. 3-5 year nano-bond gloss. Permanent grade.",
-      time: "8+ hrs",
-      items: ["Multi-stage paint prep", "Ceramic nano-coating", "UV & chemical protection", "Extreme hydrophobics"],
-      service: "Ceramic Coating",
-    },
+      title: "Car Protection",
+      image: "/Users/daiskebrandan/.gemini/antigravity/brain/5d3fa7be-cb30-42a0-934f-95597e1da69f/ceramic_coating_bottle_glow_1776187427504.png",
+      items: [
+        {
+          name: "Ceramic Coating",
+          price: "$600+",
+          desc: "Precision cut. UV protection. 3-5 year nano-bond gloss. Permanent grade.",
+          time: "8+ hrs",
+          items: ["Multi-stage paint prep", "Ceramic nano-coating", "UV & chemical protection", "Extreme hydrophobics"],
+          service: "Ceramic Coating",
+        },
+        {
+          name: "Window Tint",
+          price: "Quote",
+          desc: "Heat rejection. UV blocking. Privacy and aesthetic factory look.",
+          time: "3–4 hrs",
+          items: ["Carbon or Ceramic film", "99% UV blockage", "Precision computer cut", "No-peel guarantee"],
+          service: "Window Tint",
+        },
+        {
+          name: "PPF (Clear Bra)",
+          price: "Quote",
+          desc: "Impact protection. Self-healing film for your front end or full car.",
+          time: "1–3 days",
+          items: ["Xpel or SunTek film", "Rock chip protection", "Self-healing technology", "10-year warranty"],
+          service: "PPF",
+        }
+      ]
+    }
   ];
 
   const gallery = [
@@ -89,12 +131,6 @@ const Index = () => {
     { step: "04", title: "The Result", desc: "Inspect your vehicle & enjoy the protection." },
   ];
 
-  const reviews = [
-    { name: "Marcus T.", rating: 5, text: "Best detail I've ever had on my Tesla. Paint looked like it rolled off the lot. Booked ceramic right after.", service: "Full Detail" },
-    { name: "Jamie L.", rating: 5, text: "On time, professional, absolutely transformed the inside of my Tahoe. Smells and looks brand new.", service: "Interior Detail" },
-    { name: "Derek C.", rating: 5, text: "Came to my office, did the full package on my 4Runner. Results speak for themselves. 165 reviews don't lie.", service: "Ceramic Coating" },
-  ];
-
   return (
     <div className="bg-[#0A0A0A] text-white">
       <SEO
@@ -117,7 +153,6 @@ const Index = () => {
 
       {/* HERO SECTION */}
       <section className="relative min-h-screen flex flex-col pt-16">
-        {/* Full-bleed background */}
         <div className="absolute inset-0 z-0">
           <img
             src="/images/portfolio/paint-correction-5050.jpg"
@@ -128,10 +163,8 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/40 to-[#0A0A0A]" />
         </div>
 
-        {/* Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex-grow flex flex-col justify-center py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Headlines */}
             <div className="text-center lg:text-left">
               <p className="text-white/60 text-xs font-bold uppercase tracking-[0.4em] mb-4">
                 SEATTLE, WA • CAR PROTECTION STUDIO
@@ -160,7 +193,6 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Quick Quote Form */}
             <div className="bg-[#141414] border border-white/10 p-8 lg:p-10 shadow-2xl max-w-md mx-auto lg:ml-auto w-full">
               <h3 className="text-xl font-black uppercase tracking-tight mb-6">GET A QUICK QUOTE</h3>
               <form 
@@ -198,86 +230,81 @@ const Index = () => {
         </div>
       </section>
 
-      {/* THE DIVISION / SERVICES */}
-      <section id="services" className="py-16 lg:py-24 px-6 bg-[#0A0A0A] border-y border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 gap-8">
-            <div className="border-l-4 border-white pl-8">
-              <h2 className="text-4xl md:text-6xl font-black uppercase leading-none mb-2">THE DIVISION</h2>
-              <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.4em]">Master Craftsman Standards</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { title: "Auto Detailing", desc: "Door-to-door precision. Steam, extraction, and protection." },
-              { title: "Ceramic Coatings", desc: "Nano-bond protection. UV, chemical, and scratch resistant." },
-              { title: "Window Tint", desc: "Heat rejection. UV blocking. Privacy and aesthetic." },
-              { title: "PPF (Clear Bra)", desc: "Impact protection. Self-healing film for your paint." },
-            ].map((s, i) => (
-              <div key={i} className="bg-[#141414] border border-white/5 p-8 flex flex-col items-start gap-4 hover:border-white/20 transition-all">
-                <CheckCircle size={20} className="text-white/20" />
-                <div>
-                  <h4 className="font-black text-sm uppercase tracking-widest mb-2">{s.title}</h4>
-                  <p className="text-gray-500 text-xs leading-relaxed">{s.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* THE MENU / PRICING */}
+      {/* THE MENU / PRICING CATEGORIES */}
       <section id="pricing" className="py-16 lg:py-24 px-6 bg-[#0E0E0E]">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
             <h2 className="text-4xl md:text-6xl font-black uppercase leading-none mb-4" style={{ letterSpacing: "-0.03em" }}>THE MENU</h2>
             <p className="text-white/40 text-xs font-bold uppercase tracking-[0.3em]">Direct Pricing. Professional Results.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {menuItems.map((s, i) => (
-              <div
-                key={i}
-                className={`relative border p-10 bg-[#0A0A0A] flex flex-col transition-all duration-300 hover:scale-[1.02] ${s.popular ? "border-white border-2" : "border-white/10"}`}
-              >
-                {s.popular && (
-                  <div className="absolute top-0 right-0 bg-white text-[#0A0A0A] text-[9px] font-black uppercase tracking-widest px-4 py-2">
-                    MOST POPULAR
-                  </div>
-                )}
-                {s.badge && (
-                  <div className="absolute top-0 left-0 bg-amber-400 text-[#0A0A0A] text-[9px] font-black uppercase tracking-widest px-4 py-2">
-                    {s.badge}
-                  </div>
-                )}
-                <div className="mb-8">
-                  <h3 className="text-2xl font-black uppercase tracking-tighter mb-4">{s.name}</h3>
-                  <div className="flex items-baseline gap-2 mb-2">
-                    <span className="text-5xl font-black text-white italic tracking-tighter">{s.price}</span>
-                    {s.regularPrice && <span className="text-gray-600 text-lg line-through italic">{s.regularPrice}</span>}
-                  </div>
-                  <p className="text-white/40 text-[10px] uppercase font-bold tracking-widest mb-6 italic">{s.time} • Mobile Studio</p>
-                  <p className="text-gray-400 text-sm leading-relaxed font-medium">{s.desc}</p>
+          
+          <div className="space-y-24">
+            {categories.map((cat, catIdx) => (
+              <div key={catIdx}>
+                <div className="flex items-center gap-6 mb-10">
+                  <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter whitespace-nowrap">{cat.title}</h3>
+                  <div className="h-[1px] bg-white/10 w-full" />
                 </div>
                 
-                <ul className="space-y-4 mb-10 flex-grow">
-                  {s.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-4">
-                      <div className="w-1.5 h-1.5 rounded-full bg-white/20 mt-1.5 shrink-0" />
-                      <span className="text-xs text-gray-300 font-medium leading-tight">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {cat.items.map((s, i) => (
+                    <div
+                      key={i}
+                      className={`group relative border bg-[#0A0A0A] flex flex-col transition-all duration-500 overflow-hidden ${s.popular ? "border-white border-2" : "border-white/10"}`}
+                    >
+                      {/* Background Image with Overlay */}
+                      <div className="absolute inset-0 z-0 opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700">
+                        <img src={cat.image} alt={cat.title} className="w-full h-full object-cover" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-[#0A0A0A]/10" />
+                      </div>
 
-                <button
-                  onClick={() => openQuote(s.service)}
-                  className={`w-full py-5 font-black uppercase tracking-widest text-xs transition-colors ${s.popular ? "bg-white text-[#0A0A0A]" : "bg-transparent text-white border border-white hover:bg-white hover:text-[#0A0A0A]"}`}
-                >
-                  REQUISITION {s.name.toUpperCase()}
-                </button>
+                      {/* Content */}
+                      <div className="relative z-10 p-10 flex flex-col h-full bg-[#0A0A0A]/20 backdrop-blur-[2px]">
+                        {s.popular && (
+                          <div className="absolute top-0 right-0 bg-white text-[#0A0A0A] text-[9px] font-black uppercase tracking-widest px-4 py-2">
+                            MOST POPULAR
+                          </div>
+                        )}
+                        {s.badge && (
+                          <div className="absolute top-0 left-0 bg-amber-400 text-[#0A0A0A] text-[9px] font-black uppercase tracking-widest px-4 py-2">
+                            {s.badge}
+                          </div>
+                        )}
+                        
+                        <div className="mb-8">
+                          <h3 className="text-2xl font-black uppercase tracking-tighter mb-4">{s.name}</h3>
+                          <div className="flex items-baseline gap-2 mb-2">
+                            <span className="text-5xl font-black text-white italic tracking-tighter">{s.price}</span>
+                            {s.regularPrice && <span className="text-gray-600 text-lg line-through italic">{s.regularPrice}</span>}
+                          </div>
+                          <p className="text-white/40 text-[10px] uppercase font-bold tracking-widest mb-6 italic">{s.time} • Mobile Studio</p>
+                          <p className="text-gray-200 text-sm leading-relaxed font-medium">{s.desc}</p>
+                        </div>
+                        
+                        <ul className="space-y-4 mb-10 flex-grow">
+                          {s.items.map((item, j) => (
+                            <li key={j} className="flex items-start gap-4">
+                              <div className="w-1.5 h-1.5 rounded-full bg-white/40 mt-1.5 shrink-0" />
+                              <span className="text-xs text-gray-300 font-medium leading-tight">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+
+                        <button
+                          onClick={() => openQuote(s.service)}
+                          className={`w-full py-5 px-4 font-black uppercase tracking-widest text-[10px] md:text-xs transition-colors text-center leading-tight ${s.popular ? "bg-white text-[#0A0A0A]" : "bg-transparent text-white border border-white hover:bg-white hover:text-[#0A0A0A]"}`}
+                        >
+                          <span className="block whitespace-normal">BOOK {s.name.toUpperCase()}</span>
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
-          <p className="text-center text-white/20 text-[9px] mt-8 uppercase tracking-[0.2em] font-black">
+          
+          <p className="text-center text-white/20 text-[9px] mt-24 uppercase tracking-[0.2em] font-black">
             Pricing may vary based on condition & size • Final valuation on-site
           </p>
         </div>
@@ -385,7 +412,7 @@ const Index = () => {
                   </div>
                   <div>
                     <p className="text-[10px] text-white/40 uppercase tracking-widest font-black mb-1">Operating Hours</p>
-                    <p className="font-black text-lgUppercase">Mon – Sun: 8AM – 6PM</p>
+                    <p className="font-black text-lg">Mon – Sun: 8AM – 6PM</p>
                     <p className="text-white/30 text-xs uppercase font-bold tracking-widest mt-1">By Appointment Only</p>
                   </div>
                 </div>
