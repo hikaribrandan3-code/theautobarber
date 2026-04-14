@@ -245,7 +245,7 @@ export default function PPF() {
         </div>
 
         {/* ── DETAIL PANEL - LUXURY SPLIT ── */}
-        <div className="max-w-5xl mx-auto px-6 py-20 lg:py-32">
+        <div className="max-w-5xl mx-auto px-6 py-8 lg:py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             
             {/* Left: Bio / Summary */}
