@@ -108,7 +108,7 @@ export default function PPF() {
           </p>
           
           {/* Trust Bar */}
-          <div className="mt-8 mb-10 w-full flex justify-center">
+          <div className="mt-8 mb-4 w-full flex justify-center">
             <p className="text-[10px] lg:text-xs font-mono font-black tracking-[0.2em] lg:tracking-[0.3em] text-[#adaaaa] uppercase border-y border-white/10 py-4 px-4 w-full md:w-auto">
               <span className="hidden md:inline">9MIL THICK • SELF-HEALING • CERAMIC-INFUSED • 10-YEAR WARRANTY</span>
               <span className="md:hidden flex flex-col gap-2">
@@ -117,16 +117,6 @@ export default function PPF() {
               </span>
             </p>
           </div>
-
-          <button
-            onClick={() => {
-              const el = document.getElementById('coverage-map');
-              el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }}
-            className="bg-[#C9A962] text-white font-display font-black uppercase tracking-[0.2em] text-sm lg:text-base px-12 py-5 hover:bg-[#A6884A] active:scale-95 transition-all shadow-[0_0_30px_rgba(201,169,98,0.3)] rounded-none"
-          >
-            SEE COVERAGE OPTIONS
-          </button>
         </div>
       </section>
 
@@ -298,7 +288,7 @@ export default function PPF() {
                 </div>
                 <button
                   onClick={() => openQuote(`PPF: ${currentPkg.name}`)}
-                  className="w-full sm:w-auto bg-[#C9A962] text-white font-display font-black uppercase tracking-[0.2em] text-sm px-12 py-5 hover:bg-[#A6884A] active:scale-95 transition-all shadow-[0_0_24px_rgba(0,102,255,0.3)] rounded-none"
+                  className="w-full sm:w-auto bg-[#C9A962] text-white font-display font-black uppercase tracking-[0.2em] text-base lg:text-lg px-8 py-3 hover:bg-[#A6884A] active:scale-95 transition-all shadow-[0_0_24px_rgba(0,102,255,0.3)] rounded-none"
                 >
                   BOOK NOW →
                 </button>
@@ -310,8 +300,8 @@ export default function PPF() {
 
 
       {/* TRUST LOGOS */}
-      <section className="bg-[#131313] px-6 py-12 lg:py-16 border-y border-white/5">
-        <p className="text-center font-mono font-bold text-[9px] uppercase tracking-[0.4em] text-[#adaaaa] mb-10">Certified Film Partners</p>
+      <section className="bg-[#131313] px-6 py-6 lg:py-8 border-y border-white/5">
+        <p className="text-center font-mono font-bold text-[9px] uppercase tracking-[0.4em] text-[#adaaaa] mb-6">Certified Film Partners</p>
         <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-60">
           <div className="flex flex-col items-center hover:opacity-100 transition-opacity">
             <span className="text-3xl lg:text-5xl font-display font-black italic tracking-tighter text-white">STEK</span>
@@ -367,7 +357,7 @@ export default function PPF() {
         </div>
         <button
           onClick={() => openQuote(`PPF: ${currentPkg.name} (${currentPkg.price})`)}
-          className="whitespace-nowrap shrink-0 px-8 lg:px-12 py-4 lg:py-6 font-display font-black uppercase italic tracking-[0.1em] text-sm lg:text-xl rounded-none transition-all bg-[#C9A962] text-white hover:bg-[#A6884A] shadow-[0_0_20px_rgba(0,102,255,0.4)]"
+          className="whitespace-nowrap shrink-0 px-6 lg:px-8 py-3 lg:py-4 font-display font-black uppercase italic tracking-[0.1em] text-base lg:text-2xl rounded-none transition-all bg-[#C9A962] text-white hover:bg-[#A6884A] shadow-[0_0_20px_rgba(0,102,255,0.4)]"
         >
           <span className="lg:hidden">GET QUOTE →</span>
           <span className="hidden lg:inline">
