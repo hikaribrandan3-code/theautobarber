@@ -297,21 +297,21 @@ export default function Tint() {
                   alt="Tesla Model 3 side profile"
                   className="w-full h-full object-cover object-center"
                 />
-                {/* Window Overlays — aligned to actual Model 3 window glass */}
+                {/* Window Overlays — aligned to actual Model 3 side-profile windows */}
                 <div
-                  className="absolute top-[18%] left-[36%] w-[12%] h-[12%] bg-black transition-all duration-500"
+                  className="absolute top-[26%] left-[35%] w-[14%] h-[7%] bg-black transition-all duration-500"
                   style={{ opacity: currentShade.opacity }}
                 />
                 <div
-                  className="absolute top-[19%] left-[49%] w-[12%] h-[11%] bg-black transition-all duration-500"
+                  className="absolute top-[26%] left-[49%] w-[12%] h-[7%] bg-black transition-all duration-500"
                   style={{ opacity: currentShade.opacity }}
                 />
                 <div
-                  className="absolute top-[21%] left-[62%] w-[8%] h-[10%] bg-black transition-all duration-500"
+                  className="absolute top-[27%] left-[61.5%] w-[8%] h-[6%] bg-black transition-all duration-500"
                   style={{ opacity: currentShade.opacity }}
                 />
                 <div
-                  className="absolute top-[23%] left-[71%] w-[9%] h-[8%] bg-black transition-all duration-500"
+                  className="absolute top-[28%] left-[70%] w-[10%] h-[6%] bg-black transition-all duration-500"
                   style={{ opacity: currentShade.opacity }}
                 />
 
@@ -351,16 +351,16 @@ export default function Tint() {
 
         {/* REVIEW MARQUEE */}
         <section className="py-12 bg-[#191a1a] border-y border-white/10 overflow-hidden">
-          <div className="relative w-full">
+          <div className="relative w-full will-change-transform">
             <div className="flex whitespace-nowrap animate-marquee">
               {[...reviews, ...reviews].map((review, i) => (
-                <div key={i} className="inline-flex flex-col px-12 border-r border-white/10 min-w-[320px]">
+                <div key={i} className="inline-flex flex-col px-8 border-r border-white/10 w-[340px] shrink-0 whitespace-normal">
                   <div className="flex gap-1 text-[#C9A962] mb-2">
                     {[...Array(5)].map((_, j) => (
                       <svg key={j} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
                     ))}
                   </div>
-                  <p className="text-sm font-bold italic font-display uppercase tracking-wider mb-1 text-white">{review.text}</p>
+                  <p className="text-sm font-bold italic font-display uppercase tracking-wider mb-1 text-white line-clamp-2">{review.text}</p>
                   <span className="text-[10px] text-[#adaaaa] uppercase tracking-widest">{review.author}</span>
                 </div>
               ))}

@@ -295,20 +295,20 @@ const Ceramic = () => {
               animation-play-state: paused;
             }
           `}</style>
-          <div className="relative w-full">
+          <div className="relative w-full will-change-transform">
             <div className="flex whitespace-nowrap animate-marquee">
               {[
                 { text: '"Absolutely amazing job. Best detailing I\'ve had on any of my cars. 100% recommended!"', author: 'Manu GP, Tesla Model Y' },
                 { text: '"I found Jesse on Google search in my neighborhood and the great reviews convinced me to bring my 9 months old white Tesla model Y for a paint decontamination & ceramic coating service."', author: 'Tesla Model Y Owner' },
                 { text: '"I found his pricing to be very affordable as I didn\'t want to spend allot of money on a ceramic coating because of my intentions to have my car fully repainted in the next several months, then have it wrapped to protect the new paint job."', author: 'Local Customer' },
               ].map((r, i) => (
-                <div key={i} className="inline-flex flex-col px-12 border-r border-white/10 min-w-[340px]">
+                <div key={i} className="inline-flex flex-col px-8 border-r border-white/10 w-[340px] shrink-0 whitespace-normal">
                   <div className="flex gap-1 text-[#C9A962] mb-2">
                     {[...Array(5)].map((_, j) => (
                       <svg key={j} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
                     ))}
                   </div>
-                  <p className="text-sm font-bold italic font-display uppercase tracking-wider mb-1 text-white">{r.text}</p>
+                  <p className="text-sm font-bold italic font-display uppercase tracking-wider mb-1 text-white line-clamp-2">{r.text}</p>
                   <span className="text-[10px] text-[#adaaaa] uppercase tracking-widest">{r.author}</span>
                 </div>
               ))}
@@ -317,13 +317,13 @@ const Ceramic = () => {
                 { text: '"I found Jesse on Google search in my neighborhood and the great reviews convinced me to bring my 9 months old white Tesla model Y for a paint decontamination & ceramic coating service."', author: 'Tesla Model Y Owner' },
                 { text: '"I found his pricing to be very affordable as I didn\'t want to spend allot of money on a ceramic coating because of my intentions to have my car fully repainted in the next several months, then have it wrapped to protect the new paint job."', author: 'Local Customer' },
               ].map((r, i) => (
-                <div key={`dup-${i}`} className="inline-flex flex-col px-12 border-r border-white/10 min-w-[340px]">
+                <div key={`dup-${i}`} className="inline-flex flex-col px-8 border-r border-white/10 w-[340px] shrink-0 whitespace-normal">
                   <div className="flex gap-1 text-[#C9A962] mb-2">
                     {[...Array(5)].map((_, j) => (
                       <svg key={j} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
                     ))}
                   </div>
-                  <p className="text-sm font-bold italic font-display uppercase tracking-wider mb-1 text-white">{r.text}</p>
+                  <p className="text-sm font-bold italic font-display uppercase tracking-wider mb-1 text-white line-clamp-2">{r.text}</p>
                   <span className="text-[10px] text-[#adaaaa] uppercase tracking-widest">{r.author}</span>
                 </div>
               ))}
