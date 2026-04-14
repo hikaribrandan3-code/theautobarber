@@ -290,10 +290,10 @@ const Index = () => {
                   <h3 className="text-2xl font-black uppercase tracking-widest mb-4">CERAMIC COATINGS</h3>
                   <p className="text-white text-sm leading-relaxed mb-3 font-medium">Nano-bond ceramic protection. Extreme hydrophobics, UV defense, and a deep gloss that lasts years.</p>
                   <ul className="hidden lg:grid grid-cols-2 gap-y-3 gap-x-4 mt-6 text-[9px] font-black uppercase tracking-[0.2em] text-white/50 group-hover:text-white/80 transition-colors">
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> SB3 NANO-COATING</li>
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> EXTREME GLOSS</li>
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> 3-5 YEAR BOND</li>
-                    <li className="flex items-center gap-2.5"><div className="w-1 h-1 bg-[#C9A962] rotate-45 shrink-0" /> HYDROPHOBIC DEFENSE</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> SB3 NANO-COATING</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> EXTREME GLOSS</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> 3-5 YEAR BOND</li>
+                    <li className="flex items-center gap-2.5"><div className="w-1.5 h-1.5 bg-[#C9A962] rotate-45 shrink-0" /> HYDROPHOBIC DEFENSE</li>
                   </ul>
                 </div>
                 <button onClick={() => openQuote('Ceramic Coating')} className="text-xs font-bold uppercase tracking-widest text-white underline underline-offset-4 self-start mt-6">Book Service →</button>
@@ -306,7 +306,10 @@ const Index = () => {
       {/* PRICING CARDS */}
       <section id="pricing" className="py-16 bg-[#0E0E0E] px-6">
         <div className="max-w-7xl mx-auto">
-          
+          <div className="mb-16 text-center lg:text-left">
+            <h2 className="text-5xl md:text-7xl font-black uppercase leading-none tracking-tighter mb-4 italic">OUR MOST POPULAR</h2>
+            <p className="text-white text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em]">The community favorites in Seattle</p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {menuItems.map((s, i) => (
               <div
