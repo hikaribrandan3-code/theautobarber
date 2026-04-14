@@ -82,7 +82,7 @@ export default function PPF() {
     <div className="min-h-screen bg-[#0e0e0e] text-[#adaaaa] font-sans pt-16 pb-32 overflow-x-hidden selection:bg-[#C9A962] selection:text-white">
       
       {/* HERO SECTION - CENTER STACKED */}
-      <section className="px-6 pt-24 pb-12 lg:pt-32 lg:pb-16 relative overflow-hidden bg-[#0e0e0e] flex flex-col items-center justify-center text-center border-b border-white/5">
+      <section className="px-6 pt-24 pb-6 lg:pt-32 lg:pb-8 relative overflow-hidden bg-[#0e0e0e] flex flex-col items-center justify-center text-center border-b border-white/5">
         {/* Background Image with Fade */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -108,7 +108,7 @@ export default function PPF() {
           </p>
           
           {/* Trust Bar */}
-          <div className="mt-8 mb-4 w-full flex justify-center">
+          <div className="mt-8 mb-0 w-full flex justify-center">
             <p className="text-[10px] lg:text-xs font-mono font-black tracking-[0.2em] lg:tracking-[0.3em] text-[#adaaaa] uppercase border-y border-white/10 py-4 px-4 w-full md:w-auto">
               <span className="hidden md:inline">9MIL THICK • SELF-HEALING • CERAMIC-INFUSED • 10-YEAR WARRANTY</span>
               <span className="md:hidden flex flex-col gap-2">
@@ -134,10 +134,10 @@ export default function PPF() {
                 <button
                   key={pkgKey}
                   onClick={() => setSelectedPackage(pkgKey)}
-                  className={`relative flex-shrink-0 px-5 py-3 font-display font-black text-sm lg:text-lg uppercase tracking-[0.1em] transition-all duration-200 border-b-4 ${
+                  className={`relative flex-shrink-0 px-6 py-3 font-display font-black text-sm lg:text-lg uppercase tracking-[0.1em] transition-all duration-200 border ${
                     isActive
-                      ? 'border-[#C9A962] text-[#C9A962] bg-[#C9A962]/5'
-                      : 'border-transparent text-[#adaaaa] hover:text-white hover:border-white/20'
+                      ? 'border-[#C9A962] text-[#C9A962] bg-[#C9A962]/10 shadow-[0_0_15px_rgba(201,169,98,0.1)]'
+                      : 'border-white/10 text-[#adaaaa] hover:text-white hover:border-white/30 hover:bg-white/5'
                   }`}
                 >
                   {pkgKey === 'fullFront' && (
