@@ -81,61 +81,57 @@ export default function PPF() {
   return (
     <div className="min-h-screen bg-[#0e0e0e] text-[#adaaaa] font-sans pt-16 pb-32 overflow-x-hidden selection:bg-[#C9A962] selection:text-white">
       
-      {/* HERO SECTION */}
-      <section className="px-6 py-12 lg:py-32 relative overflow-hidden bg-[#0e0e0e] border-b border-white/5 min-h-[75vh] flex items-center">
+      {/* HERO SECTION - CENTER STACKED */}
+      <section className="px-6 pt-24 pb-12 lg:pt-32 lg:pb-16 relative overflow-hidden bg-[#0e0e0e] flex flex-col items-center justify-center text-center border-b border-white/5">
         {/* Background Image with Fade */}
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/assets/ppf_application_background.png" 
             alt="PPF Application installation preview"
-            className="w-full h-full object-cover opacity-50 contrast-125"
+            className="w-full h-full object-cover opacity-40 contrast-125"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0e0e0e]/90 via-[#0e0e0e]/60 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e0e]/30 via-transparent to-[#0e0e0e]"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] via-[#0e0e0e]/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e0e]/80 via-transparent to-[#0e0e0e]/40"></div>
         </div>
         
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")" }}></div>
-        <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-start w-full">
-          <div className="w-full lg:max-w-5xl">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-display font-black leading-[0.9] uppercase tracking-tighter italic text-white drop-shadow-lg">
-              <span className="block whitespace-nowrap">PAINT PROTECTION FILM</span>
-              <span className="text-[#C9A962]">THE MASTER STANDARD</span>
-            </h2>
-            <p className="mt-6 text-[#adaaaa] max-w-md font-mono text-xs lg:text-sm uppercase tracking-widest leading-relaxed">
-              <span className="lg:hidden text-white/90">One rock chip at highway speed and you're looking at a $800 body shop visit — if they can even match the paint. PPF stops it before it starts. Professionally applied, virtually invisible, and if it ever takes a hit — just peel it off and replace it. Your paint underneath stays factory perfect.</span>
-              <span className="hidden lg:inline">That new car smell comes with a countdown. Highway debris hits at <span className="text-white font-bold">140mph</span>. Your factory paint won't survive the drive home.</span>
+        
+        <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center">
+          <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-display font-black leading-[0.9] uppercase tracking-tighter italic text-white drop-shadow-2xl">
+            PAINT PROTECTION FILM
+          </h1>
+          <p className="mt-4 text-[#C9A962] font-mono text-sm lg:text-base font-bold uppercase tracking-widest">
+            (Polyurethane film to prevent rock chips and road rash)
+          </p>
+          <p className="mt-8 text-[#e5e5e5] text-base lg:text-lg font-medium leading-relaxed max-w-2xl px-4">
+            Your factory paint is under attack the moment you leave the lot. Road debris. Bug guts. UV damage. It adds up.
+          </p>
+          
+          {/* Trust Bar */}
+          <div className="mt-8 mb-10 w-full flex justify-center">
+            <p className="text-[10px] lg:text-xs font-mono font-black tracking-[0.2em] lg:tracking-[0.3em] text-[#adaaaa] uppercase border-y border-white/10 py-4 px-4 w-full md:w-auto">
+              <span className="hidden md:inline">9MIL THICK • SELF-HEALING • CERAMIC-INFUSED • 10-YEAR WARRANTY</span>
+              <span className="md:hidden flex flex-col gap-2">
+                <span>9MIL THICK • SELF-HEALING</span>
+                <span>CERAMIC-INFUSED • 10-YEAR WARRANTY</span>
+              </span>
             </p>
-            {/* Mobile Trust Bar */}
-            <div className="lg:hidden mt-8 grid grid-cols-2 gap-3 py-6 border-y border-white/5 bg-[#131313]/50">
-              {[
-                "NEW CAR? PROTECT IT NOW",
-                "PROFESSIONAL APPLICATION",
-                "10-YEAR WARRANTY",
-                "PEEL & REPLACE IF DAMAGED"
-              ].map(trust => (
-                <div key={trust} className="flex items-center gap-2 px-1">
-                  <span className="text-[#C9A962] text-xs">✓</span>
-                  <span className="text-[8px] font-mono font-black tracking-widest text-[#adaaaa] leading-tight uppercase">{trust}</span>
-                </div>
-              ))}
-            </div>
           </div>
-          <div className="lg:hidden w-full pt-12">
 
-            {/* Mobile-only "Even Easier to Clean" Section */}
-            <div className="bg-[#131313] p-6 border border-[#C9A962]/20 shadow-[0_0_20px_rgba(0,102,255,0.05)]">
-              <h3 className="text-2xl font-display font-black uppercase italic text-white mb-1 leading-none">THE HYBRID CUT</h3>
-              <p className="text-[10px] font-mono font-bold text-[#C9A962] uppercase tracking-[0.2em] mb-3">PPF + CERAMIC COATING</p>
-              <p className="text-[#adaaaa] font-mono text-[9px] uppercase tracking-widest leading-relaxed">
-                PPF alone is great. PPF + ceramic coating is next level. The coating bonds to the film — water beads off, dirt slides off, and your car stays cleaner longer between washes. Ask us about the combo package.
-              </p>
-            </div>
-          </div>
+          <button
+            onClick={() => {
+              const el = document.getElementById('coverage-map');
+              el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+            className="bg-[#C9A962] text-white font-display font-black uppercase tracking-[0.2em] text-sm lg:text-base px-12 py-5 hover:bg-[#A6884A] active:scale-95 transition-all shadow-[0_0_30px_rgba(201,169,98,0.3)] rounded-none"
+          >
+            SEE COVERAGE OPTIONS
+          </button>
         </div>
       </section>
 
       {/* ─── PPF PACKAGE VISUALIZER (unified, clean) ─── */}
-      <section className="bg-[#0e0e0e] border-b border-white/5 scroll-mt-20">
+      <section id="coverage-map" className="bg-[#0e0e0e] border-b border-white/5 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-16 pb-0">
           <p className="text-center font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-4 text-[#adaaaa] italic">The Coverage Map</p>
           <h2 className="text-center font-display text-5xl lg:text-7xl font-black uppercase tracking-tighter text-white mb-4 leading-[0.8]">SELECT YOUR <span className="text-[#C9A962]">SHIELD</span></h2>
