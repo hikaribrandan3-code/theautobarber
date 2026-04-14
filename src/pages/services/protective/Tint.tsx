@@ -1,18 +1,21 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
-import { 
-  Menu, 
-  User, 
-  Settings, 
-  ShieldCheck, 
-  ThermometerSun, 
-  Sun, 
-  EyeOff, 
-  BarChart2, 
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ShieldCheck,
+  ThermometerSun,
+  Sun,
+  EyeOff,
+  ArrowRight,
   AlertTriangle,
-  ArrowRight
+  CheckCircle2,
+  ChevronDown,
+  Settings,
+  Clock,
+  Droplets,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 
 type Coverage = 'full' | 'front' | 'rear' | 'custom';
 type Zone = 'windshield' | 'front' | 'rear-side' | 'rear-windshield';
@@ -21,395 +24,650 @@ type VLT = 70 | 50 | 35 | 20 | 5;
 
 const ALL_ZONES: Zone[] = ['windshield', 'front', 'rear-side', 'rear-windshield'];
 
-const BASE_PRICES = {
-  carbon: { full: 400, front: 160, rear: 240, customBase: 110 },
-  ceramic: { full: 680, front: 250, rear: 430, customBase: 180 },
-  crystal: { full: 950, front: 380, rear: 570, customBase: 250 }
+const packages = {
+  carbon: {
+    id: 'carbon' as Film,
+    name: 'CARBON SERIES',
+    subtitle: 'Matte finish. Signal-safe. Best value.',
+    priceFull: 450,
+    priceFront: 180,
+    priceRear: 270,
+    priceCustomBase: 120,
+    heatRejection: 45,
+    uvRejection: 99,
+    features: ['Non-metal, signal-safe', 'Matte black aesthetic', 'Lifetime warranty'],
+  },
+  ceramic: {
+    id: 'ceramic' as Film,
+    name: 'PERFORMANCE CERAMIC',
+    subtitle: 'Top-tier heat rejection. Most popular.',
+    priceFull: 750,
+    priceFront: 280,
+    priceRear: 470,
+    priceCustomBase: 190,
+    heatRejection: 78,
+    uvRejection: 99,
+    features: ['Nano-ceramic construction', 'Highest heat rejection per dollar', 'GPS & phone signal safe'],
+  },
+  crystal: {
+    id: 'crystal' as Film,
+    name: 'CRYSTAL IR',
+    subtitle: 'Maximum clarity. Maximum performance.',
+    priceFull: 1100,
+    priceFront: 420,
+    priceRear: 680,
+    priceCustomBase: 280,
+    heatRejection: 98,
+    uvRejection: 99,
+    features: ['Infrared heat blocking', 'Crystal-clear optics', 'Transferable lifetime warranty'],
+  },
 };
 
 const vltOpacityMap: Record<VLT, number> = {
-  70: 0.3,
-  50: 0.5,
-  35: 0.65,
-  20: 0.8,
-  5: 0.95
+  70: 0.22,
+  50: 0.42,
+  35: 0.58,
+  20: 0.78,
+  5: 0.95,
 };
 
-const filmNames = {
-  carbon: 'CARBON SERIES',
-  ceramic: 'PERFORMANCE CERAMIC',
-  crystal: 'CRYSTAL INFRARED'
-};
-
-const Tint = () => {
+export default function Tint() {
   const { openQuote } = useOutletContext<{ openQuote: (service?: string) => void }>();
-  
+
   const [coverage, setCoverage] = useState<Coverage>('full');
   const [selectedZones, setSelectedZones] = useState<Zone[]>(ALL_ZONES);
   const [vlt, setVlt] = useState<VLT>(35);
   const [film, setFilm] = useState<Film>('ceramic');
+  const [openAccordion, setOpenAccordion] = useState<string | null>('vlt');
 
-  const handleCoverageClick = (c: Coverage) => {
-    setCoverage(c);
-    if (c === 'full') setSelectedZones([...ALL_ZONES]);
-    else if (c === 'front') setSelectedZones(['windshield', 'front']);
-    else if (c === 'rear') setSelectedZones(['rear-side', 'rear-windshield']);
-  };
+  const funnelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (coverage === 'full') setSelectedZones([...ALL_ZONES]);
+    else if (coverage === 'front') setSelectedZones(['windshield', 'front']);
+    else if (coverage === 'rear') setSelectedZones(['rear-side', 'rear-windshield']);
+  }, [coverage]);
 
   const toggleZone = (z: Zone) => {
-    setSelectedZones(prev => {
+    setSelectedZones((prev) => {
       if (prev.includes(z)) {
-        return prev.filter(item => item !== z);
-      } else {
-        return [...prev, z];
+        return prev.filter((item) => item !== z);
       }
+      return [...prev, z];
     });
     setCoverage('custom');
   };
 
+  const currentPkg = packages[film];
+
   const currentPrice = () => {
     if (selectedZones.length === 0) return 0;
-    if (coverage === 'full') return BASE_PRICES[film].full;
-    if (coverage === 'front') return BASE_PRICES[film].front;
-    if (coverage === 'rear') return BASE_PRICES[film].rear;
-    // For custom, rough estimate based on zone count
-    return BASE_PRICES[film].customBase * selectedZones.length;
+    if (coverage === 'full') return currentPkg.priceFull;
+    if (coverage === 'front') return currentPkg.priceFront;
+    if (coverage === 'rear') return currentPkg.priceRear;
+    return currentPkg.priceCustomBase * selectedZones.length;
+  };
+
+  const configString = `TINT: ${vlt}% ${currentPkg.name} - ${coverage.toUpperCase()}`;
+
+  const toggleAccordion = (id: string) => {
+    setOpenAccordion(openAccordion === id ? null : id);
   };
 
   const getZoneStyle = (z: Zone) => {
     const isSelected = selectedZones.includes(z);
-    
     if (isSelected) {
       const opacity = vltOpacityMap[vlt];
       return {
         fill: `rgba(57, 255, 20, ${opacity})`,
         stroke: '#C9A962',
         strokeWidth: '2px',
-        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
       };
     }
     return {
-      fill: '#262626',
-      stroke: '#484847',
+      fill: '#1a1a1a',
+      stroke: '#333',
       strokeWidth: '1px',
-      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
     };
   };
 
-  const isZoneSelected = (z: Zone) => selectedZones.includes(z);
-  const configString = `TINT: ${vlt}% ${film.toUpperCase()} - ${coverage.toUpperCase()}`;
-
   return (
-    <div className="min-h-screen bg-[#0e0e0e] text-[#adaaaa] font-sans pt-16 pb-32 overflow-x-hidden selection:bg-[#C9A962] selection:text-[#053900]">
-      
+    <div className="min-h-screen bg-[#0e0e0e] text-[#adaaaa] font-sans pt-16 pb-32 overflow-x-hidden selection:bg-[#C9A962] selection:text-white">
+      <SEO
+        title="Window Tint Seattle, WA | Ceramic & Carbon Film Installation"
+        description="Professional window tint in Seattle. Ceramic film blocks 99% UV and up to 98% infrared heat. Computer-cut precision install with lifetime warranty."
+      />
+
       {/* Mobile Sub-header */}
       <div className="bg-[#131313] text-[#C9A962] font-display tracking-tighter uppercase border-b border-white/5 flex justify-between items-center w-full px-6 py-2 z-40 lg:hidden italic">
         <div className="flex items-center gap-2">
           <Settings className="text-[#C9A962] w-4 h-4" />
-          <span className="text-sm font-black tracking-[0.2em]">WINDOW TINT</span>
+          <span className="text-sm font-black tracking-[0.2em]">The Tint Division</span>
         </div>
       </div>
 
-      <main className="w-full max-w-[1400px] mx-auto">
-        
-        {/* HERO SECTION */}
-        <section className="px-6 pt-16 pb-8 lg:px-12 lg:pt-24 lg:pb-12 text-center lg:text-left">
-          <div className="space-y-4">
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#C9A962]/10 border border-[#C9A962]/20 shadow-[0_0_20px_rgba(57,255,20,0.1)] lg:mx-0 mx-auto">
-             <span className="text-[10px] lg:text-xs font-bold text-[#C9A962] tracking-[0.3em] uppercase">Window Tint</span>
-            </div>
-            <h2 className="text-5xl lg:text-[10rem] font-display font-black italic tracking-tighter text-white uppercase leading-[0.75]">
-              <span className="lg:hidden text-glow">SEATTLE <br/><span className="text-[#C9A962]">SHADE.</span></span>
-              <span className="hidden lg:inline">PRECISION <br className="lg:hidden"/><span className="text-[#C9A962]">WINDOW TINT</span></span>
-            </h2>
-            <p className="text-[#adaaaa] font-mono text-sm uppercase tracking-widest leading-relaxed">
-              <span className="lg:hidden text-white/90">Seattle heat is brutal. One professional tint install blocks 99% of UV, drops your cabin temp by up to 60%, and protects your leather and dash from cracking. Installed right — once.</span>
-              <span className="hidden lg:inline">Block 99% of UV. Reject 60% of heat. Premium ceramic film installation.</span>
+      {/* HERO SECTION */}
+      <section className="relative px-6 pt-24 pb-6 lg:pt-32 lg:pb-8 overflow-hidden bg-[#0e0e0e] flex flex-col items-center justify-center text-center border-b border-white/5">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/assets/window_tint_luxury_1776189700411.png"
+            alt="Window tint application"
+            className="w-full h-full object-cover opacity-40 contrast-125"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] via-[#0e0e0e]/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0e0e0e]/80 via-transparent to-[#0e0e0e]/40"></div>
+        </div>
+
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          }}
+        />
+
+        <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center">
+          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#C9A962]/10 border border-[#C9A962]/20 shadow-[0_0_20px_rgba(201,169,98,0.1)] mb-6">
+            <span className="text-[10px] lg:text-xs font-bold text-[#C9A962] tracking-[0.3em] uppercase">Window Tint</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-display font-black leading-[0.9] uppercase tracking-tighter italic text-white drop-shadow-2xl">
+            PRECISION<br /><span className="text-[#C9A962]">WINDOW TINT</span>
+          </h1>
+          <p className="mt-6 text-[#e5e5e5] text-base lg:text-lg font-medium leading-relaxed max-w-2xl px-4">
+            Seattle heat is brutal. One professional tint install blocks 99% of UV, drops cabin temp by up to 60%, and protects your interior from cracking.
+          </p>
+
+          <div className="mt-8 mb-0 w-full flex justify-center">
+            <p className="text-[10px] lg:text-xs font-mono font-black tracking-[0.2em] lg:tracking-[0.3em] text-[#adaaaa] uppercase border-y border-white/10 py-4 px-4 w-full md:w-auto">
+              <span className="hidden md:inline">99% UV BLOCK • 60% HEAT REJECTION • LIFETIME WARRANTY • LEGAL IN WA</span>
+              <span className="md:hidden flex flex-col gap-2">
+                <span>99% UV BLOCK • 60% HEAT REJECTION</span>
+                <span>LIFETIME WARRANTY • LEGAL IN WA</span>
+              </span>
             </p>
           </div>
+        </div>
+      </section>
 
-          {/* Mobile Trust Bar */}
-          <div className="lg:hidden mt-8 grid grid-cols-3 gap-2 py-4 border-y border-white/5 bg-[#131313]/50">
-            {[
-              "LIFETIME WARRANTY",
-              "PROFESSIONALLY INSTALLED",
-              "LEGAL IN FLORIDA"
-            ].map(trust => (
-              <div key={trust} className="flex flex-col items-center text-center px-1">
-                <span className="text-[#C9A962] text-[10px] mb-1">✓</span>
-                <span className="text-[7px] font-mono font-black tracking-widest text-[#adaaaa] leading-tight">{trust}</span>
+      <main className="w-full max-w-[1400px] mx-auto">
+        {/* FILM GRADE SELECTOR */}
+        <section className="bg-[#0e0e0e] border-b border-white/5 py-16 px-6 lg:px-12">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="font-display text-3xl lg:text-5xl font-black uppercase tracking-tighter text-white mb-4 leading-[0.8]">
+                SELECT YOUR <span className="text-[#C9A962]">FILM</span>
+              </h2>
+              <p className="font-mono text-[10px] text-[#adaaaa] font-bold uppercase tracking-[0.4em]">
+                Three grades. One perfect install.
+              </p>
+            </div>
+
+            <div className="flex justify-start lg:justify-center overflow-x-auto no-scrollbar gap-3 pb-2 mb-8">
+              {(Object.keys(packages) as Film[]).map((f) => {
+                const pkg = packages[f];
+                const isActive = film === f;
+                return (
+                  <button
+                    key={f}
+                    onClick={() => setFilm(f)}
+                    className={`relative flex-shrink-0 px-6 py-4 font-display font-black text-sm lg:text-lg uppercase tracking-[0.1em] transition-all duration-200 border text-left min-w-[140px] lg:min-w-[180px] ${
+                      isActive
+                        ? 'border-[#C9A962] text-[#C9A962] bg-[#C9A962]/10 shadow-[0_0_15px_rgba(201,169,98,0.1)]'
+                        : 'border-white/10 text-[#adaaaa] hover:text-white hover:border-white/30 hover:bg-white/5'
+                    }`}
+                  >
+                    {f === 'ceramic' && (
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
+                        <span className="bg-[#C9A962] text-white text-[8px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full whitespace-nowrap shadow-[0_4px_10px_rgba(201,169,98,0.3)]">
+                          ★ RECOMMENDED
+                        </span>
+                      </div>
+                    )}
+                    <span className="block text-xs lg:text-sm opacity-70 mb-1">{f}</span>
+                    <span className="block truncate">{pkg.name}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Package Detail Card */}
+            <div className="p-8 lg:p-12 bg-[#131313] border border-white/5 relative overflow-hidden">
+              <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#C9A962]/10 blur-3xl rounded-full"></div>
+
+              <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-12 gap-12">
+                <div className="lg:col-span-5 space-y-4">
+                  <h3 className="text-4xl font-display font-black text-[#C9A962] italic tracking-tighter leading-none mb-1 uppercase">
+                    {currentPkg.name}
+                  </h3>
+                  <p className="text-sm font-mono text-[#adaaaa] font-bold uppercase tracking-widest">
+                    {currentPkg.subtitle}
+                  </p>
+                  <div className="pt-6 border-t border-white/10 space-y-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-none bg-[#0e0e0e] border border-white/5 flex items-center justify-center shadow-inner">
+                        <ThermometerSun className="text-[#C9A962] w-5 h-5" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-[#adaaaa] uppercase font-bold tracking-widest font-mono">Heat Rejection</p>
+                        <p className="text-lg font-display font-black italic uppercase tracking-tighter">{currentPkg.heatRejection}%</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-none bg-[#0e0e0e] border border-white/5 flex items-center justify-center shadow-inner">
+                        <Sun className="text-[#C9A962] w-5 h-5" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-[#adaaaa] uppercase font-bold tracking-widest font-mono">UV Rejection</p>
+                        <p className="text-lg font-display font-black italic uppercase tracking-tighter">{currentPkg.uvRejection}%</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-7 flex flex-col justify-between">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+                    {currentPkg.features.map((feature, i) => (
+                      <div key={i} className="flex items-center gap-3 py-3 border-b border-white/5 hover:border-[#C9A962]/30 transition-colors">
+                        <CheckCircle2 className="text-[#C9A962] w-4 h-4 shrink-0" />
+                        <span className="text-xs lg:text-sm font-mono uppercase font-bold tracking-wider text-[#e5e2e1]">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-10 flex flex-col sm:flex-row items-center gap-6">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-[#adaaaa] text-[10px] font-bold uppercase tracking-widest">Full Car From</span>
+                      <span className="text-4xl lg:text-5xl font-mono font-black text-white italic tracking-tighter">
+                        ${currentPkg.priceFull}
+                      </span>
+                    </div>
+                    <Button
+                      onClick={() => openQuote(configString)}
+                      className="w-full sm:w-auto bg-[#C9A962] text-white px-10 py-6 font-black uppercase text-xs tracking-[0.2em] hover:bg-[#A6884A] transition-all font-display rounded-none shadow-[0_0_20px_rgba(201,169,98,0.2)]"
+                    >
+                      REQUEST QUOTE
+                    </Button>
+                  </div>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </section>
 
-        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:px-12">
-           
-          {/* LEFT COLUMN: INTERACTIVE VISUALIZER */}
-          <div className="lg:col-span-7 space-y-8">
-            
-            <section className="px-6 lg:px-0">
-              <div className="bg-[#131313] rounded-sm p-6 lg:p-12 border border-white/5 relative overflow-hidden flex flex-col items-center">
-                {/* Background grid */}
-                <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#484847 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-                
-                {/* SVG Configurator */}
-                <svg className="w-full h-auto drop-shadow-2xl relative z-10 max-w-2xl mx-auto" viewBox="0 0 400 120">
-                  {/* Car Base Body */}
-                  <path d="M40,95 L360,95 L355,85 L330,45 L250,30 L100,32 L50,65 Z" fill="#050505"></path>
-                  {/* Outline */}
-                  <path d="M40,95 L70,95 A18,18 0 0,1 106,95 L294,95 A18,18 0 0,1 330,95 L360,95 L350,75 L315,38 C280,30 180,28 115,38 L50,75 Z" fill="none" stroke="#adaaaa" strokeWidth="1.5" opacity="0.3"></path>
-                  {/* Wheels */}
-                  <circle cx="88" cy="95" fill="#111" r="16" stroke="#333" strokeWidth="2"></circle>
-                  <circle cx="312" cy="95" fill="#111" r="16" stroke="#333" strokeWidth="2"></circle>
-                  
-                  {/* Interactive Windows */}
-                  <path 
-                    onClick={() => toggleZone('windshield')} 
-                    style={getZoneStyle('windshield')} 
-                    className="cursor-pointer hover:stroke-[#C9A962] hover:fill-[#C9A962]/20" 
-                    d="M125,40 L160,38 L165,72 L120,74 Z" 
-                  />
-                  <path 
-                    onClick={() => toggleZone('front')} 
-                    style={getZoneStyle('front')} 
-                    className="cursor-pointer hover:stroke-[#C9A962] hover:fill-[#C9A962]/20" 
-                    d="M165,37 L225,36 L225,72 L170,72 Z" 
-                  />
-                  <path 
-                    onClick={() => toggleZone('rear-side')} 
-                    style={getZoneStyle('rear-side')} 
-                    className="cursor-pointer hover:stroke-[#C9A962] hover:fill-[#C9A962]/20" 
-                    d="M230,36 L285,38 L300,72 L230,72 Z" 
-                  />
-                  <path 
-                    onClick={() => toggleZone('rear-windshield')} 
-                    style={getZoneStyle('rear-windshield')} 
-                    className="cursor-pointer hover:stroke-[#C9A962] hover:fill-[#C9A962]/20" 
-                    d="M290,40 L315,45 L320,72 L305,72 Z" 
-                  />
-                </svg>
-                
-                {/* Coverage Quick Select Toggles */}
-                <div className="mt-8 flex gap-2 w-full max-w-xl mx-auto overflow-x-auto no-scrollbar pb-2 z-20">
-                  {(['full', 'front', 'rear', 'custom'] as Coverage[]).map((c) => (
-                    <button 
-                      key={c}
-                      onClick={() => handleCoverageClick(c)}
-                      className={`flex-1 px-4 py-3 text-[9px] lg:text-[10px] font-mono font-black uppercase tracking-[0.2em] transition-all whitespace-nowrap border ${
-                        coverage === c 
-                          ? 'bg-[#C9A962]/10 text-[#C9A962] border-[#C9A962] shadow-[0_0_15px_rgba(57,255,20,0.1)]' 
-                          : 'bg-[#191a1a] text-[#adaaaa] border-[#262626] hover:bg-[#202020]'
-                      }`}
-                    >
-                      {c === 'full' ? 'FULL CAR' : c === 'front' ? 'FRONT ONLY' : c === 'rear' ? 'REAR ONLY' : 'CUSTOM'}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </section>
-
-          </div>
-
-          {/* RIGHT COLUMN: CONTROLS */}
-          <div className="lg:col-span-5 space-y-6 px-6 lg:px-0">
-             
-            {/* VLT SELECTOR */}
-            <section className="bg-[#131313] p-6 border border-white/5">
-              <h3 className="text-[#e5e2e1] text-[10px] font-mono uppercase tracking-[0.3em] font-bold mb-4 flex items-center gap-3">
-                <span className="w-1.5 h-1.5 bg-[#C9A962] rounded-full shadow-[0_0_5px_#C9A962]"></span> 
-                VISIBLE LIGHT TRANSMISSION (VLT)
-              </h3>
-              <div className="grid grid-cols-5 gap-2">
-                {([70, 50, 35, 20, 5] as VLT[]).map(val => (
-                  <div 
-                    key={val}
-                    onClick={() => setVlt(val)}
-                    className={`aspect-square flex flex-col items-center justify-center gap-2 border transition-all cursor-pointer ${
-                      vlt === val 
-                        ? 'bg-[#C9A962]/10 border-[#C9A962] shadow-[0_0_15px_rgba(57,255,20,0.15)]' 
-                        : 'bg-[#191a1a] border-white/5 hover:bg-[#202020] hover:border-white/10'
-                    }`}
-                  >
-                     <div 
-                        className={`w-6 h-6 lg:w-8 lg:h-8 rounded-full border border-white/20`}
-                        style={{ backgroundColor: `rgba(0,0,0, ${vltOpacityMap[val]})`}}
-                     ></div>
-                     <span className={`font-mono text-[9px] lg:text-[10px] font-black ${vlt === val ? 'text-[#C9A962]' : 'text-white'}`}>{val}%</span>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* FILM TYPE SELECTOR */}
-            <section className="bg-[#131313] p-6 border border-white/5">
-              <h3 className="text-[#e5e2e1] text-[10px] font-mono uppercase tracking-[0.3em] font-bold mb-4 flex items-center gap-3">
-                <span className="w-1.5 h-1.5 bg-[#C9A962] rounded-full shadow-[0_0_5px_#C9A962]"></span> 
-                SELECT FILM GRADE
-              </h3>
-              <div className="grid grid-cols-3 gap-2">
-                {(['carbon', 'ceramic', 'crystal'] as Film[]).map(f => (
-                  <div 
-                    key={f}
-                    onClick={() => setFilm(f)}
-                    className={`p-4 flex flex-col gap-1 cursor-pointer transition-all border-b-2 ${
-                      film === f 
-                        ? 'bg-[#C9A962]/5 border-[#C9A962]' 
-                        : 'bg-[#191a1a] border-transparent hover:bg-[#202020]'
-                    }`}
-                  >
-                    <span className={`font-mono text-xs font-black uppercase ${film === f ? 'text-[#C9A962]' : 'text-white'}`}>{f}</span>
-                    <span className="lg:hidden font-mono text-[7px] text-[#adaaaa] uppercase font-bold leading-tight line-clamp-2">
-                      {f === 'carbon' ? 'Great protection, clean matte look. Best value.' : 
-                       f === 'ceramic' ? 'Top-tier heat rejection + signal-safe. Most popular.' : 
-                       'Maximum clarity + performance. The full package.'}
-                    </span>
-                    <span className={`font-mono text-[10px] font-bold italic ${film === f ? 'text-[#C9A962]/70' : 'text-[#adaaaa]'}`}>
-                      {f === 'carbon' ? '$' : f === 'ceramic' ? '$$' : '$$$'}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* SPECS PANEL */}
-            <section className="bg-[#131313] p-6 lg:p-8 border border-[#C9A962]/20 shadow-[0_0_20px_rgba(57,255,20,0.03)] space-y-6">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h4 className="text-xl lg:text-6xl font-display italic font-black text-white uppercase tracking-tighter leading-none mb-2">
-                    {vlt}% {filmNames[film]}
-                  </h4>
-                  <p className="text-[9px] font-mono text-[#adaaaa] uppercase tracking-[0.3em] font-bold italic">
-                     MASTER CONFIGURATION
-                  </p>
-                </div>
-                <div className="text-right">
-                  <span className="text-2xl lg:text-3xl font-mono font-black italic text-[#C9A962] tracking-tighter">${currentPrice()}</span>
-                  <p className="text-[9px] font-mono text-[#adaaaa] uppercase tracking-[0.3em] font-bold">EST. TOTAL</p>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-6 pt-4 border-t border-white/5">
-                <div className="space-y-2">
-                  <p className="text-[9px] font-mono text-white uppercase font-bold tracking-[0.2em] opacity-80">UV PROTECTION</p>
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg font-mono font-black text-[#C9A962] italic">99%</span>
-                    <div className="flex-1 h-[2px] bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full bg-[#C9A962] shadow-[0_0_10px_#C9A962]" style={{ width: '99%' }}></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-[9px] font-mono text-white uppercase font-bold tracking-[0.2em] opacity-80">HEAT REJECTION</p>
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg font-mono font-black text-[#C9A962] italic">
-                      {film === 'carbon' ? '45%' : film === 'ceramic' ? '75%' : '98%'}
-                    </span>
-                    <div className="flex-1 h-[2px] bg-white/10 rounded-full overflow-hidden">
-                      <div 
-                        className="h-full bg-[#C9A962] shadow-[0_0_10px_#C9A962] transition-all duration-1000" 
-                        style={{ width: film === 'carbon' ? '45%' : film === 'ceramic' ? '75%' : '98%' }}
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 p-4 bg-[#191a1a] rounded-sm border border-white/5">
-                <BarChart2 className="text-[#C9A962] w-5 h-5 shrink-0 mt-0.5" />
-                <p className="font-mono text-[10px] text-[#adaaaa] uppercase tracking-wider leading-relaxed">
-                  <strong className="text-white">No signal interference:</strong> Compatible with GPS, mobile data, and keyless entry systems.
+        {/* INTERACTIVE CONFIGURATOR */}
+        <section ref={funnelRef} id="configurator" className="py-16 px-6 lg:px-12 bg-[#0e0e0e]">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 gap-4">
+              <div className="border-l-4 border-[#C9A962] pl-6">
+                <h2 className="font-display text-4xl lg:text-6xl font-black uppercase tracking-tighter text-white">
+                  BUILD YOUR <span className="text-[#C9A962]">SHADE</span>
+                </h2>
+                <p className="font-mono text-[10px] text-[#adaaaa] font-bold uppercase tracking-[0.4em] mt-2">
+                  Select coverage + darkness. See your estimate update live.
                 </p>
               </div>
+            </div>
 
-              {vlt <= 20 && (
-                <div className="flex items-start gap-4 p-4 bg-red-950/20 border border-red-500/20 rounded-sm">
-                  <AlertTriangle className="text-red-500 w-5 h-5 shrink-0 mt-0.5" />
-                  <p className="font-mono text-[10px] text-red-500/80 uppercase tracking-wider leading-relaxed">
-                    <strong className="text-red-500">LEGAL NOTICE:</strong> 35% is the legal limit for front windows in Washington. VLT levels 20% or below may not be street-legal on front side windows.
-                  </p>
+            <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8">
+              {/* LEFT: Visualizer */}
+              <div className="lg:col-span-7 space-y-8">
+                <div className="bg-[#131313] rounded-sm p-6 lg:p-12 border border-white/5 relative overflow-hidden flex flex-col items-center">
+                  <div
+                    className="absolute inset-0 opacity-10 pointer-events-none"
+                    style={{
+                      backgroundImage: 'radial-gradient(#484847 1px, transparent 1px)',
+                      backgroundSize: '20px 20px',
+                    }}
+                  />
+
+                  {/* Car SVG */}
+                  <svg className="w-full h-auto drop-shadow-2xl relative z-10 max-w-2xl mx-auto" viewBox="0 0 400 120">
+                    <path
+                      d="M40,95 L360,95 L355,85 L330,45 L250,30 L100,32 L50,65 Z"
+                      fill="#050505"
+                    />
+                    <path
+                      d="M40,95 L70,95 A18,18 0 0,1 106,95 L294,95 A18,18 0 0,1 330,95 L360,95 L350,75 L315,38 C280,30 180,28 115,38 L50,75 Z"
+                      fill="none"
+                      stroke="#adaaaa"
+                      strokeWidth="1.5"
+                      opacity="0.3"
+                    />
+                    <circle cx="88" cy="95" fill="#111" r="16" stroke="#333" strokeWidth="2" />
+                    <circle cx="312" cy="95" fill="#111" r="16" stroke="#333" strokeWidth="2" />
+
+                    <path
+                      onClick={() => toggleZone('windshield')}
+                      style={getZoneStyle('windshield')}
+                      className="cursor-pointer hover:stroke-[#C9A962] hover:fill-[#C9A962]/20"
+                      d="M125,40 L160,38 L165,72 L120,74 Z"
+                    />
+                    <path
+                      onClick={() => toggleZone('front')}
+                      style={getZoneStyle('front')}
+                      className="cursor-pointer hover:stroke-[#C9A962] hover:fill-[#C9A962]/20"
+                      d="M165,37 L225,36 L225,72 L170,72 Z"
+                    />
+                    <path
+                      onClick={() => toggleZone('rear-side')}
+                      style={getZoneStyle('rear-side')}
+                      className="cursor-pointer hover:stroke-[#C9A962] hover:fill-[#C9A962]/20"
+                      d="M230,36 L285,38 L300,72 L230,72 Z"
+                    />
+                    <path
+                      onClick={() => toggleZone('rear-windshield')}
+                      style={getZoneStyle('rear-windshield')}
+                      className="cursor-pointer hover:stroke-[#C9A962] hover:fill-[#C9A962]/20"
+                      d="M290,40 L315,45 L320,72 L305,72 Z"
+                    />
+                  </svg>
+
+                  <div className="mt-8 flex gap-2 w-full max-w-xl mx-auto overflow-x-auto no-scrollbar pb-2 z-20">
+                    {(['full', 'front', 'rear', 'custom'] as Coverage[]).map((c) => (
+                      <button
+                        key={c}
+                        onClick={() => setCoverage(c)}
+                        className={`flex-1 px-4 py-3 text-[9px] lg:text-[10px] font-mono font-black uppercase tracking-[0.2em] transition-all whitespace-nowrap border ${
+                          coverage === c
+                            ? 'bg-[#C9A962]/10 text-[#C9A962] border-[#C9A962] shadow-[0_0_15px_rgba(201,169,98,0.1)]'
+                            : 'bg-[#191a1a] text-[#adaaaa] border-[#262626] hover:bg-[#202020]'
+                        }`}
+                      >
+                        {c === 'full' ? 'FULL CAR' : c === 'front' ? 'FRONT ONLY' : c === 'rear' ? 'REAR ONLY' : 'CUSTOM'}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              )}
-            </section>
+              </div>
 
+              {/* RIGHT: Controls */}
+              <div className="lg:col-span-5 space-y-6">
+                {/* VLT Selector */}
+                <div className="bg-[#131313] p-6 border border-white/5">
+                  <h3 className="text-[#e5e2e1] text-[10px] font-mono uppercase tracking-[0.3em] font-bold mb-4 flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 bg-[#C9A962] rounded-full shadow-[0_0_5px_#C9A962]"></span>
+                    VISIBLE LIGHT TRANSMISSION (VLT)
+                  </h3>
+                  <div className="grid grid-cols-5 gap-2">
+                    {([70, 50, 35, 20, 5] as VLT[]).map((val) => (
+                      <div
+                        key={val}
+                        onClick={() => setVlt(val)}
+                        className={`aspect-square flex flex-col items-center justify-center gap-2 border transition-all cursor-pointer ${
+                          vlt === val
+                            ? 'bg-[#C9A962]/10 border-[#C9A962] shadow-[0_0_15px_rgba(201,169,98,0.15)]'
+                            : 'bg-[#191a1a] border-white/5 hover:bg-[#202020] hover:border-white/10'
+                        }`}
+                      >
+                        <div
+                          className="w-6 h-6 lg:w-8 lg:h-8 rounded-full border border-white/20"
+                          style={{ backgroundColor: `rgba(0,0,0, ${vltOpacityMap[val]})` }}
+                        />
+                        <span className={`font-mono text-[9px] lg:text-[10px] font-black ${vlt === val ? 'text-[#C9A962]' : 'text-white'}`}>{val}%</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Live Specs Panel */}
+                <div className="bg-[#131313] p-6 lg:p-8 border border-[#C9A962]/20 shadow-[0_0_20px_rgba(201,169,98,0.03)] space-y-6">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h4 className="text-xl lg:text-4xl font-display italic font-black text-white uppercase tracking-tighter leading-none mb-2">
+                        {vlt}% {currentPkg.name}
+                      </h4>
+                      <p className="text-[9px] font-mono text-[#adaaaa] uppercase tracking-[0.3em] font-bold italic">MASTER CONFIGURATION</p>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-2xl lg:text-3xl font-mono font-black italic text-[#C9A962] tracking-tighter">
+                        ${currentPrice()}
+                      </span>
+                      <p className="text-[9px] font-mono text-[#adaaaa] uppercase tracking-[0.3em] font-bold">EST. TOTAL</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-6 pt-4 border-t border-white/5">
+                    <div className="space-y-2">
+                      <p className="text-[9px] font-mono text-white uppercase font-bold tracking-[0.2em] opacity-80">UV PROTECTION</p>
+                      <div className="flex items-center gap-3">
+                        <span className="text-lg font-mono font-black text-[#C9A962] italic">99%</span>
+                        <div className="flex-1 h-[2px] bg-white/10 rounded-full overflow-hidden">
+                          <div className="h-full bg-[#C9A962] shadow-[0_0_10px_#C9A962]" style={{ width: '99%' }}></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-[9px] font-mono text-white uppercase font-bold tracking-[0.2em] opacity-80">HEAT REJECTION</p>
+                      <div className="flex items-center gap-3">
+                        <span className="text-lg font-mono font-black text-[#C9A962] italic">{currentPkg.heatRejection}%</span>
+                        <div className="flex-1 h-[2px] bg-white/10 rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-[#C9A962] shadow-[0_0_10px_#C9A962] transition-all duration-1000"
+                            style={{ width: `${currentPkg.heatRejection}%` }}
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {vlt <= 20 && (
+                    <div className="flex items-start gap-4 p-4 bg-red-950/20 border border-red-500/20 rounded-sm">
+                      <AlertTriangle className="text-red-500 w-5 h-5 shrink-0 mt-0.5" />
+                      <p className="font-mono text-[10px] text-red-500/80 uppercase tracking-wider leading-relaxed">
+                        <strong className="text-red-500">LEGAL NOTICE:</strong> 24% is the legal limit for front side windows in Washington. VLT levels 20% or below may not be street-legal on front side windows.
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
 
         {/* CORE ADVANTAGES */}
-        <section className="px-6 lg:px-12 py-16">
-           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
-             {[
-               { icon: <ShieldCheck className="text-[#C9A962] w-6 h-6" />, title: 'PRIVACY', 
-                 desc: { 
-                   mobile: 'See out clearly. Nobody sees in. Keeps valuables hidden and adds a clean, aggressive look.',
-                   desktop: 'Protects valuables inside your vehicle from outside view.'
-                 }
-               },
-               { icon: <ThermometerSun className="text-[#C9A962] w-6 h-6" />, title: 'HEAT REDUCTION', 
-                 desc: {
-                   mobile: 'Cut cabin heat by up to 60%. Your AC stops working overtime. Your passengers stop complaining.',
-                   desktop: 'Keeps your cabin cooler — especially during summer.'
-                 }
-               },
-               { icon: <Sun className="text-[#C9A962] w-6 h-6" />, title: 'UV REJECTION', 
-                 desc: {
-                   mobile: '99.9% of UV blocked. Your skin, your leather seats, and your dashboard stay protected for years.',
-                   desktop: 'Blocks 99.9% of UV rays. Protects your skin and prevents leather from fading.'
-                 }
-               },
-               { icon: <EyeOff className="text-[#C9A962] w-6 h-6" />, title: 'GLARE REDUCTION', 
-                 desc: {
-                   mobile: 'Drive into the Seattle sun without squinting. Safer driving, cleaner look.',
-                   desktop: 'Reduces glare from direct sunlight and oncoming headlights.'
-                 }
-               },
-             ].map((adv, i) => (
-                <div key={i} className="bg-[#131313] p-6 border-l-2 border-white/5 hover:border-[#C9A962] transition-all space-y-4 shadow-lg group">
-                  <div className="w-12 h-12 flex flex-col justify-center bg-[#191a1a] border border-white/5 pl-3 group-hover:bg-[#C9A962]/10 transition-colors">
+        <section className="px-6 lg:px-12 py-16 bg-[#131313]">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="font-display text-4xl lg:text-6xl font-black uppercase tracking-tighter text-white mb-12 text-center italic">
+              THE <span className="text-[#C9A962]">ADVANTAGES</span>
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                {
+                  icon: <ShieldCheck className="text-[#C9A962] w-6 h-6" />,
+                  title: 'PRIVACY',
+                  desc: 'See out clearly. Nobody sees in. Keeps valuables hidden and adds a clean, aggressive look.',
+                },
+                {
+                  icon: <ThermometerSun className="text-[#C9A962] w-6 h-6" />,
+                  title: 'HEAT REDUCTION',
+                  desc: 'Cut cabin heat by up to 60%. Your AC stops working overtime. Your passengers stop complaining.',
+                },
+                {
+                  icon: <Sun className="text-[#C9A962] w-6 h-6" />,
+                  title: 'UV REJECTION',
+                  desc: '99.9% of UV blocked. Your skin, your leather seats, and your dashboard stay protected for years.',
+                },
+                {
+                  icon: <EyeOff className="text-[#C9A962] w-6 h-6" />,
+                  title: 'GLARE REDUCTION',
+                  desc: 'Drive into the sun without squinting. Safer driving, cleaner look, day and night.',
+                },
+              ].map((adv, i) => (
+                <div
+                  key={i}
+                  className="bg-[#191a1a] p-6 border-l-2 border-white/5 hover:border-[#C9A962] transition-all space-y-4 shadow-lg group"
+                >
+                  <div className="w-12 h-12 flex flex-col justify-center bg-[#0e0e0e] border border-white/5 pl-3 group-hover:bg-[#C9A962]/10 transition-colors">
                     {adv.icon}
                   </div>
                   <h5 className="font-mono text-xs font-black uppercase tracking-widest text-white">{adv.title}</h5>
-                  <p className="font-mono text-[9px] lg:text-[10px] text-[#adaaaa] uppercase tracking-widest leading-relaxed">
-                    <span className="lg:hidden">{adv.desc.mobile}</span>
-                    <span className="hidden lg:inline">{adv.desc.desktop}</span>
+                  <p className="font-mono text-[10px] text-[#adaaaa] uppercase tracking-widest leading-relaxed">
+                    {adv.desc}
                   </p>
                 </div>
-             ))}
-           </div>
+              ))}
+            </div>
+          </div>
         </section>
 
+        {/* PROCESS TIMELINE */}
+        <section className="py-20 px-6 lg:px-12 bg-[#0e0e0e]">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-16 border-l-4 border-[#C9A962] pl-8">
+              <h2 className="font-display text-4xl lg:text-7xl font-black uppercase tracking-tighter">
+                THE <span className="text-[#C9A962]">PROCESS</span>
+              </h2>
+              <p className="font-mono text-xs font-bold text-[#adaaaa] uppercase tracking-[0.3em] mt-3">The Barber's Standard</p>
+            </div>
+
+            <div className="relative space-y-16 ml-6 py-4">
+              <div className="absolute left-[7px] top-6 bottom-6 w-0.5 border-l-2 border-dashed border-[#C9A962]/30"></div>
+
+              {[
+                {
+                  step: '01',
+                  title: 'Prep & Clean',
+                  time: '30M',
+                  desc: 'Windows are deep-cleaned inside and out. Every speck of dust is removed — because tint only sticks to glass, not grime.',
+                },
+                {
+                  step: '02',
+                  title: 'Computer Cut',
+                  time: '15M',
+                  desc: 'Film is precision-cut by machine to your vehicle\'s exact window patterns. No razors on your glass. Zero risk of scratch.',
+                },
+                {
+                  step: '03',
+                  title: 'Heat Form & Apply',
+                  time: '2-3H',
+                  desc: 'Film is heat-shrunk to match curved glass, then applied with slip solution and squeegeed to a flawless finish.',
+                },
+                {
+                  step: '04',
+                  title: 'Cure Window',
+                  time: '3-5D',
+                  desc: 'Keep windows up for 3-5 days while adhesive cures. After that — roll them down and enjoy the shade.',
+                },
+              ].map((item, i) => (
+                <div key={i} className="relative flex gap-8 group">
+                  <div
+                    className={`absolute -left-[14px] top-1.5 w-6 h-6 rounded-none border-4 border-[#0e0e0e] z-10 transition-all duration-500 ${
+                      i === 0 ? 'bg-[#C9A962] shadow-[0_0_20px_#C9A962]' : 'bg-[#202020] group-hover:bg-[#C9A962]/50'
+                    }`}
+                  ></div>
+                  <div className="flex-1 bg-[#131313] p-6 border border-white/5 group-hover:border-[#C9A962]/20 transition-all">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className={`font-display font-black uppercase text-lg tracking-widest ${i === 0 ? 'text-[#C9A962]' : 'text-white/90'}`}>
+                        {item.step} {item.title}
+                      </h4>
+                      <span className="font-mono text-[9px] bg-[#C9A962]/10 text-[#C9A962] px-2 py-1 uppercase font-bold tracking-widest">
+                        {item.time}
+                      </span>
+                    </div>
+                    <p className="font-mono text-xs text-[#adaaaa] leading-relaxed uppercase tracking-wider">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* WASHINGTON LAW CALL-OUT */}
+        <section className="py-16 px-6 lg:px-12 bg-[#0e0e0e]">
+          <div className="max-w-4xl mx-auto bg-[#131313] border border-white/10 p-8 lg:p-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-1 h-full bg-[#C9A962]" />
+            <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+              <div className="w-16 h-16 bg-[#C9A962]/10 flex items-center justify-center shrink-0">
+                <AlertTriangle className="text-[#C9A962] w-8 h-8" />
+              </div>
+              <div>
+                <h3 className="font-display text-2xl lg:text-3xl font-black uppercase tracking-tighter text-white italic mb-2">
+                  WASHINGTON TINT LAW
+                </h3>
+                <p className="font-mono text-xs text-[#adaaaa] uppercase tracking-widest leading-relaxed">
+                  Front side windows must allow <span className="text-white font-bold">more than 24% of light in</span>. Rear windows can be any darkness. Windshield: top 6 inches only (AS-1 line). We stock legal shades and will guide you to a look that turns heads without turning them toward a ticket.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ SECTION */}
+        <section className="py-20 px-6 lg:px-12 bg-[#131313]">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="font-display text-4xl lg:text-7xl font-black uppercase tracking-tighter mb-12 border-l-4 border-[#C9A962] pl-8 leading-none italic">
+              COMMON <span className="text-[#C9A962]">QUESTIONS</span>
+            </h2>
+            <div className="divide-y divide-white/10 border-t border-white/10">
+              {[
+                {
+                  q: 'How long does the install take?',
+                  a: 'Most vehicles take 2–3 hours. Full sedans and SUVs with complex rear windows may take up to 4 hours. You\'ll get a text when it\'s ready.',
+                },
+                {
+                  q: 'How long should I keep my windows up after tint?',
+                  a: 'Keep them rolled up for 3–5 days in dry weather. This allows the adhesive to fully cure. We\'ll leave a reminder sticker on your switch.',
+                },
+                {
+                  q: 'Will ceramic tint interfere with my electronics?',
+                  a: 'No. Our carbon and ceramic films are completely non-metallic. GPS, mobile data, keyless entry, and toll transponders all work perfectly.',
+                },
+                {
+                  q: 'What if my tint bubbles or peels?',
+                  a: 'We stand behind our work. If you see bubbling, peeling, or discoloration under normal use, we\'ll replace it at no charge under our lifetime warranty.',
+                },
+              ].map((faq, i) => (
+                <div key={i} className="py-6 group cursor-pointer overflow-hidden">
+                  <div className="flex justify-between items-center" onClick={() => toggleAccordion(`faq-${i}`)}>
+                    <span className="font-display font-black text-sm lg:text-2xl uppercase tracking-tight text-white/90 group-hover:text-[#C9A962] transition-colors italic leading-none">
+                      {faq.q}
+                    </span>
+                    <ChevronDown
+                      className={`transition-all duration-300 ${openAccordion === `faq-${i}` ? 'rotate-180 text-[#C9A962]' : 'text-[#adaaaa]'}`}
+                    />
+                  </div>
+                  <div
+                    className={`transition-all duration-500 overflow-hidden ${openAccordion === `faq-${i}` ? 'max-h-40 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}
+                  >
+                    <p className="font-mono text-[11px] lg:text-xs text-[#adaaaa] leading-relaxed uppercase tracking-widest bg-[#0e0e0e] p-6 border-l-2 border-[#C9A962]">
+                      {faq.a}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
 
-      {/* STICKY BOTTOM / CTA ALIGNMENT */}
-      <footer className="fixed bottom-0 left-0 w-full z-50 bg-[#0e0e0e]/95 backdrop-blur-xl border-t border-[#C9A962]/20 lg:hidden">
-        <div className="px-6 py-5 flex flex-col gap-4">
-          <div className="flex justify-between items-end">
-            <div className="flex flex-col">
-              <span className="text-[10px] text-[#C9A962] uppercase font-black tracking-[0.3em] font-display mb-1 animate-pulse italic">MASTER INSTALL. SEATTLE STANDARD.</span>
-              <span className="text-[10px] font-black font-display italic uppercase tracking-tighter text-white/90">{vlt}% {filmNames[film].split(' ')[0]} / {coverage}</span>
-            </div>
-            <span className="text-3xl font-display font-black text-[#C9A962] tracking-tighter italic leading-none">${currentPrice()}</span>
+      {/* STICKY BOTTOM CONVERSION BAR (MOBILE) */}
+      <div className="lg:hidden fixed bottom-0 left-0 w-full bg-[#0e0e0e]/95 backdrop-blur-xl z-50 flex items-center justify-between px-6 pb-8 pt-4 border-t border-[#C9A962]/20 safe-area-bottom">
+        <div className="flex flex-col">
+          <span className="text-[10px] font-bold text-[#adaaaa] uppercase tracking-[0.4em] mb-1">Selected Shade</span>
+          <div className="flex items-baseline gap-1">
+            <span className="text-3xl font-display font-black text-white tracking-tighter italic">${currentPrice()}</span>
+            <span className="text-[10px] font-black text-[#C9A962] font-display tracking-widest uppercase bg-[#C9A962]/10 px-2 ml-1">
+              {vlt}% {film}
+            </span>
           </div>
-          <Button 
-            onClick={() => openQuote(configString)}
-            className="w-full bg-[#C9A962] text-white py-8 font-display font-black uppercase text-xl tracking-[0.2em] shadow-[0_0_30px_rgba(0,102,255,0.3)] rounded-none italic"
-          >
-             BOOK THE TINT →
-          </Button>
         </div>
-      </footer>
-
-      <div className="hidden lg:flex fixed bottom-12 right-12 z-50">
-        <Button 
+        <button
           onClick={() => openQuote(configString)}
-          className="bg-[#C9A962] text-white p-12 lg:px-16 lg:py-12 font-display font-black italic text-2xl lg:text-3xl uppercase tracking-[0.2em] rounded-none hover:bg-[#A6884A] shadow-[0_30px_60px_rgba(0,102,255,0.4)] transition-all group"
+          className="bg-[#C9A962] px-8 py-4 rounded-none text-white font-display font-black uppercase text-xs tracking-[0.3em] active:scale-90 transition-all shadow-[0_0_20px_rgba(201,169,98,0.3)]"
         >
-          REQUEST THE TINT <ArrowRight className="ml-6 w-8 h-8 transition-transform group-hover:translate-x-2" />
-        </Button>
+          GET TINT
+        </button>
       </div>
 
+      {/* STICKY CTA (DESKTOP) */}
+      <div className="hidden lg:flex fixed bottom-8 right-8 z-50">
+        <Button
+          onClick={() => openQuote(configString)}
+          className="bg-[#C9A962] text-white p-12 font-display font-black italic text-2xl uppercase tracking-[0.2em] rounded-none hover:bg-[#A6884A] shadow-[0_20px_50px_rgba(201,169,98,0.4)] transition-all transform hover:scale-110"
+        >
+          REQUEST THE TINT <ArrowRight className="ml-4 w-8 h-8" />
+        </Button>
+      </div>
     </div>
   );
-};
-
-export default Tint;
+}
