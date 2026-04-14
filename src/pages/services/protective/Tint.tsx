@@ -290,68 +290,90 @@ export default function Tint() {
             </div>
 
             <div className="flex flex-col lg:flex-row gap-6 items-start">
-              {/* Preview Canvas */}
-              <div className="flex-1 relative bg-[#0e0e0e] flex items-center justify-center aspect-[16/9] overflow-hidden border border-white/10 rounded-sm">
-                <img
-                  src="/images/tesla-model3-side-studio.png"
-                  alt="Tesla Model 3 side profile"
-                  className="w-full h-full object-cover object-center"
-                />
-                {/* Window Overlays — absolute divs with clip-path mapped to glass */}
-                <div className="absolute inset-0 pointer-events-none">
-                  {/* Front driver window */}
-                  <div
-                    className="absolute bg-black transition-all duration-500"
-                    style={{
-                      top: '38.7%',
-                      left: '33.5%',
-                      width: '8.5%',
-                      height: '5.2%',
-                      opacity: currentShade.opacity,
-                      mixBlendMode: 'multiply',
-                      clipPath: 'polygon(0% 21%, 100% 0%, 92% 87%, 0% 100%)',
-                    }}
+              {/* Clean Diagram Canvas */}
+              <div className="flex-1 relative bg-[#0e0e0e] flex items-center justify-center p-8 lg:p-12 overflow-hidden border border-white/10">
+                <svg className="w-full max-w-2xl h-auto drop-shadow-2xl" viewBox="0 0 400 140">
+                  {/* Car body outline */}
+                  <path
+                    d="M40,110 L360,110 L355,100 L330,60 L250,45 L100,47 L50,80 Z"
+                    fill="none"
+                    stroke="#adaaaa"
+                    strokeWidth="1.5"
+                    opacity="0.4"
                   />
-                  {/* Rear driver window */}
-                  <div
-                    className="absolute bg-black transition-all duration-500"
-                    style={{
-                      top: '38.7%',
-                      left: '42%',
-                      width: '10.2%',
-                      height: '5.2%',
-                      opacity: currentShade.opacity,
-                      mixBlendMode: 'multiply',
-                      clipPath: 'polygon(7% 0%, 100% 13%, 93% 100%, 0% 87%)',
-                    }}
+                  {/* Roof line */}
+                  <path
+                    d="M50,80 L100,47 L250,45 L330,60 L355,100"
+                    fill="none"
+                    stroke="#adaaaa"
+                    strokeWidth="1.5"
+                    opacity="0.4"
                   />
-                  {/* Rear quarter window */}
-                  <div
-                    className="absolute bg-black transition-all duration-500"
-                    style={{
-                      top: '39.4%',
-                      left: '52%',
-                      width: '5.6%',
-                      height: '4.9%',
-                      opacity: currentShade.opacity,
-                      mixBlendMode: 'multiply',
-                      clipPath: 'polygon(13% 0%, 100% 22%, 82% 100%, 0% 92%)',
-                    }}
+                  {/* Wheels */}
+                  <circle cx="88" cy="110" fill="#111" r="18" stroke="#333" strokeWidth="2" />
+                  <circle cx="312" cy="110" fill="#111" r="18" stroke="#333" strokeWidth="2" />
+
+                  {/* Pillars */}
+                  <line x1="165" y1="48" x2="165" y2="75" stroke="#555" strokeWidth="3" />
+                  <line x1="230" y1="47" x2="230" y2="75" stroke="#555" strokeWidth="3" />
+                  <line x1="285" y1="49" x2="285" y2="72" stroke="#555" strokeWidth="2" />
+
+                  {/* Window glass areas with fill transition */}
+                  <polygon
+                    points="125,52 160,50 160,72 120,74"
+                    fill="#2a2a2a"
+                    stroke="#adaaaa"
+                    strokeWidth="1"
+                    className="transition-all duration-500"
                   />
-                  {/* Rear windshield */}
-                  <div
-                    className="absolute bg-black transition-all duration-500"
-                    style={{
-                      top: '40.5%',
-                      left: '56.2%',
-                      width: '10.2%',
-                      height: '6%',
-                      opacity: currentShade.opacity,
-                      mixBlendMode: 'multiply',
-                      clipPath: 'polygon(19% 0%, 100% 38%, 81% 100%, 0% 70%)',
-                    }}
+                  <polygon
+                    points="168,50 225,49 225,72 170,72"
+                    fill="#2a2a2a"
+                    stroke="#adaaaa"
+                    strokeWidth="1"
+                    className="transition-all duration-500"
                   />
-                </div>
+                  <polygon
+                    points="235,49 280,51 295,70 235,70"
+                    fill="#2a2a2a"
+                    stroke="#adaaaa"
+                    strokeWidth="1"
+                    className="transition-all duration-500"
+                  />
+                  <polygon
+                    points="288,53 315,58 315,72 300,70"
+                    fill="#2a2a2a"
+                    stroke="#adaaaa"
+                    strokeWidth="1"
+                    className="transition-all duration-500"
+                  />
+
+                  {/* Tint overlays */}
+                  <polygon
+                    points="125,52 160,50 160,72 120,74"
+                    fill="black"
+                    className="transition-all duration-500"
+                    style={{ opacity: currentShade.opacity }}
+                  />
+                  <polygon
+                    points="168,50 225,49 225,72 170,72"
+                    fill="black"
+                    className="transition-all duration-500"
+                    style={{ opacity: currentShade.opacity }}
+                  />
+                  <polygon
+                    points="235,49 280,51 295,70 235,70"
+                    fill="black"
+                    className="transition-all duration-500"
+                    style={{ opacity: currentShade.opacity }}
+                  />
+                  <polygon
+                    points="288,53 315,58 315,72 300,70"
+                    fill="black"
+                    className="transition-all duration-500"
+                    style={{ opacity: currentShade.opacity }}
+                  />
+                </svg>
 
                 {/* Info Badge */}
                 <div className="absolute bottom-6 left-6 border-l-4 border-[#C9A962] pl-4 py-2 bg-[#0e0e0e]/90 backdrop-blur-sm">
