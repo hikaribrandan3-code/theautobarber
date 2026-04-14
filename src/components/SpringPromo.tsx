@@ -80,7 +80,7 @@ const SpringPromo = ({ onClaim }: SpringPromoProps) => {
         {/* RIGHT — Cockpit image */}
         <div className="relative w-[45%] overflow-hidden">
           <img
-            src="/images/bg/interior-promo.png"
+            src="/images/assets/interior_detailing_focus_1776187301149.png"
             alt="Premium interior detail"
             className="absolute inset-0 w-full h-full object-cover"
           />

@@ -165,19 +165,28 @@ const Index = () => {
           {/* Top: Text */}
           <div className="flex flex-col items-center w-full">
             <h1 
-              className="text-[64px] md:text-[90px] font-black leading-[0.9] md:leading-[0.85] tracking-tighter uppercase italic"
-              style={{ textShadow: "0 10px 30px rgba(0,0,0,0.8)" }}
+              className="text-[60px] md:text-[100px] font-black leading-[0.85] tracking-tighter uppercase italic"
+              style={{ textShadow: "0 10px 40px rgba(0,0,0,0.9)" }}
             >
-              YOUR CAR.<br />OUR <span className="text-[#C9A962]">CRAFT.</span>
+              YOUR CAR.<br />
+              <span className="text-[#C9A962]">OUR CRAFT.</span>
             </h1>
             
             <div className="mt-8 flex flex-col items-center gap-6">
-              <p className="text-white text-[12px] md:text-[14px] font-black uppercase tracking-[0.4em]">
-                <span className="text-[#C9A962] text-lg">★★★★★</span> 4.9/5 — <span className="text-[#C9A962] font-black">165 Google Reviews</span> • Seattle's Trusted Detailer
+              <p className="text-white text-[10px] md:text-[13px] font-black uppercase tracking-[0.5em] flex items-center gap-2 md:gap-4 flex-wrap justify-center">
+                <span className="text-[#C9A962] text-lg flex gap-1">
+                  <Star size={16} fill="currentColor" />
+                  <Star size={16} fill="currentColor" />
+                  <Star size={16} fill="currentColor" />
+                  <Star size={16} fill="currentColor" />
+                  <Star size={16} fill="currentColor" />
+                </span>
+                <span>4.9 / 5 — 165 GOOGLE REVIEWS</span>
+                <span className="hidden md:inline text-white/40">•</span>
+                <span>SEATTLE'S TRUSTED DETAILER</span>
               </p>
               
-              {/* Floating Testimonial Space */}
-              <div className="h-12 flex items-center justify-center italic text-white/90 text-sm md:text-lg font-medium max-w-lg">
+              <div className="h-12 flex items-center justify-center italic text-white/90 text-sm md:text-xl font-medium max-w-2xl leading-relaxed">
                 "Absolutely amazing job... 100% recommended!" — Manu GP, Tesla Model Y
               </div>
             </div>
@@ -282,7 +291,7 @@ const Index = () => {
             {menuItems.map((s, i) => (
               <div
                 key={i}
-                className={`group relative border bg-[#0A0A0A] flex flex-col transition-all duration-500 overflow-hidden ${s.popular ? "border-white border-2" : "border-white/10"}`}
+                className={`group relative border bg-white flex flex-col transition-all duration-500 overflow-hidden ${s.popular ? "border-[#C9A962] border-2" : "border-black/10"}`}
               >
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700">
@@ -291,9 +300,9 @@ const Index = () => {
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 p-10 flex flex-col h-full">
+                <div className="relative z-10 p-10 flex flex-col h-full text-black">
                   <div className="flex justify-between items-start mb-6">
-                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white border border-white/20 px-3 py-1.5 backdrop-blur-md">
+                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-black border border-black/20 px-3 py-1.5 backdrop-blur-md">
                       {s.category}
                     </span>
                     {s.popular && (
@@ -306,25 +315,25 @@ const Index = () => {
                   <div className="mb-10">
                     <h3 className="text-2xl font-black uppercase tracking-tighter mb-4 pr-4">{s.name}</h3>
                     <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-5xl font-black text-white italic tracking-tighter">{s.price}</span>
-                      {s.regularPrice && <span className="text-white/60 text-lg line-through italic">{s.regularPrice}</span>}
+                      <span className="text-5xl font-black text-black italic tracking-tighter">{s.price}</span>
+                      {s.regularPrice && <span className="text-black/40 text-lg line-through italic">{s.regularPrice}</span>}
                     </div>
-                    <p className="text-white text-[10px] uppercase font-bold tracking-widest mb-6 italic">{s.time}</p>
-                    <p className="text-white text-sm leading-relaxed font-medium">{s.desc}</p>
+                    <p className="text-black text-[10px] uppercase font-bold tracking-widest mb-6 italic">{s.time}</p>
+                    <p className="text-black/80 text-sm leading-relaxed font-medium">{s.desc}</p>
                   </div>
                   
                   <ul className="space-y-4 mb-12 flex-grow">
                     {s.items.map((item, j) => (
-                      <li key={j} className="flex items-start gap-4">
-                        <div className="w-1.5 h-1.5 rounded-full bg-white/60 mt-1.5 shrink-0" />
-                        <span className="text-xs text-white font-medium leading-tight">{item}</span>
+                      <li key={j} className="flex items-start gap-4 text-black">
+                        <div className="w-1.5 h-1.5 rounded-full bg-black/20 mt-1.5 shrink-0" />
+                        <span className="text-xs font-medium leading-tight">{item}</span>
                       </li>
                     ))}
                   </ul>
 
                   <button
                     onClick={() => openQuote(s.service)}
-                    className={`w-full py-5 px-6 font-black uppercase tracking-widest text-[10px] md:text-xs transition-all shadow-lg active:scale-95 ${s.popular ? "bg-white text-black" : "bg-transparent text-white border border-white hover:bg-white hover:text-black"}`}
+                    className={`w-full py-5 px-6 font-black uppercase tracking-widest text-[10px] md:text-xs transition-all shadow-lg active:scale-95 ${s.popular ? "bg-[#C9A962] text-white" : "bg-black text-white hover:bg-[#C9A962]"}`}
                   >
                     <span className="block whitespace-normal leading-tight">BOOK THIS PACKAGE</span>
                   </button>
@@ -333,26 +342,28 @@ const Index = () => {
             ))}
           </div>
           
-          <p className="text-center text-white text-[10px] lg:text-sm mt-20 uppercase tracking-[0.2em] font-black">
+          <p className="text-center text-black text-[10px] lg:text-sm mt-20 uppercase tracking-[0.2em] font-black">
             Pricing may vary based on condition & size • Final valuation on-site
           </p>
         </div>
       </section>
 
-      {/* WHY THE BARBER */}
-      <section className="py-16 px-6 bg-[#0E0E0E] text-white border-y border-white/5">
+      {/* STATS BAR */}
+      <section className="py-24 px-6 bg-[#0E0E0E] text-white border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-24">
-            {trust.map((t, i) => (
+            {[
+              { stat: "165+", label: "Google Reviews", sub: "★★★★★ Avg Rating" },
+              { stat: "Studio", label: "Shop Based", sub: "Drop off & Relax" },
+              { stat: "100%", label: "Satisfaction", sub: "Results Guaranteed" },
+              { stat: "Zero", label: "Defects", sub: "Detailer's Standard" },
+            ].map((t, i) => (
               <div key={i} className="text-center lg:text-left">
-                <div className="text-white opacity-40 mb-8 flex justify-center lg:justify-start">
-                  {t.icon}
+                <div className="text-[56px] md:text-[72px] font-black italic tracking-tighter leading-none mb-4 text-[#C9A962]">
+                  {t.stat}
                 </div>
-                <div className="text-4xl md:text-5xl font-black italic tracking-tighter mb-2">
-                  {t.stat === "165" ? <Counter end={165} /> : t.stat}
-                </div>
-                <div className="font-black text-[10px] uppercase tracking-widest text-white/60 mb-1">{t.label}</div>
-                <div className="text-[10px] font-bold text-white uppercase tracking-widest">{t.sub}</div>
+                <div className="font-black text-[10px] uppercase tracking-[0.3em] text-white mb-1">{t.label}</div>
+                <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest">{t.sub}</div>
               </div>
             ))}
           </div>
