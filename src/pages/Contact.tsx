@@ -17,15 +17,15 @@ const ContactPage = () => {
   return (
     <div>
       <SEO 
-        title="Contact Area 51 Detailing | Naples, FL Mobile Service"
-        description="Book your next detail in Naples, FL. We reply within 2 hours. Mobile service for ceramic coating, paint correction, and full detailing. Licensed and insured."
+        title="Contact The Auto Barber | Seattle, WA Mobile Service"
+        description="Book your next detail in Seattle, WA. We reply within 2 hours. Mobile service for ceramic coating, paint correction, and full detailing. Licensed and insured."
       />
       <section className="py-16 lg:py-32 hero-gradient grid-bg">
         <div className="container mx-auto px-4 text-center lg:px-8">
           <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3">Get In Touch</p>
           <h1 className="text-4xl font-bold lg:text-6xl">
-            <span className="lg:hidden text-glow">Contact Naples</span>
-            <span className="hidden lg:inline">Contact <span className="text-primary text-glow">Area 51 Naples</span></span>
+            <span className="lg:hidden text-glow">Contact Seattle</span>
+            <span className="hidden lg:inline">Contact <span className="text-primary text-glow">The Auto Barber Seattle</span></span>
           </h1>
           <p className="mt-6 text-muted-foreground max-w-xl mx-auto">
             <span className="lg:hidden">We typically respond within 2 hours.</span>
@@ -43,9 +43,9 @@ const ContactPage = () => {
                 <h2 className="text-2xl font-bold mb-6">Direct Lines</h2>
                 <div className="space-y-4">
                   {[
-                    { icon: <Phone size={20} />, label: "(914) 329-5929", href: "tel:9143295929" },
-                    { icon: <Mail size={20} />, label: "Area51DetailingLLC@gmail.com", href: "mailto:Area51DetailingLLC@gmail.com" },
-                    { icon: <MapPin size={20} />, label: "Naples, FL — Mobile Service", href: null },
+                    { icon: <Phone size={20} />, label: "(555) 000-0000", href: "tel:5550000000" },
+                    { icon: <Mail size={20} />, label: "hikaribrandan3@gmail.com", href: "mailto:hikaribrandan3@gmail.com" },
+                    { icon: <MapPin size={20} />, label: "Seattle, WA — Mobile Service", href: null },
                     { icon: <Clock size={20} />, label: "Mon–Sun 8:00 AM – 6:00 PM", href: null },
                   ].map(c => (
                     <div key={c.label} className="flex items-center gap-4 rounded-lg border border-border bg-card p-4">
@@ -63,13 +63,13 @@ const ContactPage = () => {
               <div>
                 <h3 className="font-display text-sm uppercase tracking-wider text-primary mb-4">Follow Us</h3>
                 <div className="flex gap-4">
-                  <a href="https://instagram.com/Area51DetailingLLC" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-                    <Instagram size={20} /> @Area51DetailingLLC
+                  <a href="https://instagram.com/theautobarber" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                    <Instagram size={20} /> @theautobarber
                   </a>
                 </div>
                 <div className="flex gap-4 mt-2">
-                  <a href="https://facebook.com/Area51DetailingLLC" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-                    <Facebook size={20} /> Area 51 Detailing LLC
+                  <a href="https://facebook.com/theautobarber" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                    <Facebook size={20} /> The Auto Barber
                   </a>
                 </div>
               </div>

@@ -26,9 +26,9 @@ const Navbar = ({ onQuoteClick }: { onQuoteClick: (service?: string) => void }) 
       <nav className="fixed top-0 left-0 right-0 z-[100] border-b border-border bg-background/80 backdrop-blur-xl">
         <div className="container mx-auto flex items-center justify-between px-4 py-4 lg:px-8">
           <Link to="/" className="flex items-center gap-3 shrink-0">
-            <img src={logo} alt="Area 51 Detailing" className="h-9 w-9 object-contain sm:h-[44px] sm:w-[44px]" />
+            <img src={logo} alt="The Auto Barber" className="h-9 w-9 object-contain sm:h-[44px] sm:w-[44px]" />
             <span className="font-display text-sm font-bold tracking-wider text-foreground sm:text-xl whitespace-nowrap leading-none pt-1">
-              AREA 51 DETAILING
+              THE AUTO BARBER
             </span>
           </Link>
 

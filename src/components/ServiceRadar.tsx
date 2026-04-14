@@ -14,11 +14,11 @@ interface City {
 }
 
 const cities: City[] = [
-  { id: "naples", name: "NAPLES NORTH", x: 200, y: 200, dist: "0 MI", time: "0 MIN", isCenter: true },
-  { id: "bonita", name: "BONITA SPRINGS", x: 200, y: 120, dist: "12 MI", time: "~20 MIN" },
-  { id: "estero", name: "ESTERO CORR", x: 260, y: 140, dist: "18 MI", time: "~25 MIN" },
-  { id: "ftmyers", name: "FT MYERS Z.0", x: 280, y: 60, dist: "25 MI", time: "~35 MIN" },
-  { id: "marco", name: "MARCO ISLAND", x: 200, y: 320, dist: "20 MI", time: "~30 MIN" },
+  { id: "seattle", name: "SEATTLE", x: 200, y: 200, dist: "0 MI", time: "0 MIN", isCenter: true },
+  { id: "bellevue", name: "BELLEVUE", x: 250, y: 180, dist: "10 MI", time: "~15 MIN" },
+  { id: "redmond", name: "REDMOND", x: 280, y: 140, dist: "16 MI", time: "~20 MIN" },
+  { id: "kirkland", name: "KIRKLAND", x: 240, y: 120, dist: "12 MI", time: "~18 MIN" },
+  { id: "tacoma", name: "TACOMA", x: 180, y: 340, dist: "32 MI", time: "~45 MIN" },
 ];
 
 interface ServiceRadarProps {
@@ -45,7 +45,7 @@ const ServiceRadar = ({ onCityClick }: ServiceRadarProps) => {
       
       <div className="text-center mb-8 space-y-2">
         <h3 className="font-mono text-xs uppercase tracking-[0.4em] text-[#39FF14] font-bold">
-          AREA 51 SERVICE LOCATIONS
+          THE AUTO BARBER SERVICE LOCATIONS
         </h3>
         <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground italic">
           Regional Service Coverage / Active Response Area
@@ -176,7 +176,7 @@ const ServiceRadar = ({ onCityClick }: ServiceRadarProps) => {
           </div>
 
           <p className="font-mono text-[8px] text-muted-foreground text-center italic uppercase opacity-50">
-            * Location data updated in real-time / Naples North active
+            * Location data updated in real-time / Seattle North active
           </p>
         </div>
 

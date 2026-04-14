@@ -7,8 +7,8 @@ const About = () => {
   return (
     <div className="min-h-screen">
       <SEO 
-        title="About Area 51 Detailing | Naples' Master Detailer Jason Midler"
-        description="Meet the mind behind Area 51 Detailing. 15+ years of automotive expertise and 7+ years of professional mobile detailing in Naples, FL. Trusted with over $100M in luxury vehicles."
+        title="About The Auto Barber | Seattle's Master Detailer"
+        description="Meet the mind behind The Auto Barber. 15+ years of automotive expertise and 7+ years of professional mobile detailing in Seattle, WA. Trusted with over $100M in luxury vehicles."
       />
       {/* Hero Section */}
       <section className="relative border-b border-border bg-card/30 py-16 lg:py-32">
@@ -19,7 +19,7 @@ const About = () => {
               <div className="absolute -inset-1 rounded-lg bg-gradient-to-br from-primary/30 to-primary/5 blur-xl" />
               <img
                 src={jasonPhoto}
-                alt="Jason Midler - CEO of Area 51 Detailing"
+                alt="Lead Detailer - The Auto Barber"
                 className="relative rounded-lg border border-border object-cover w-full aspect-[4/3]"
               />
               <div className="absolute bottom-4 left-4 right-4 rounded bg-background/90 backdrop-blur px-4 py-3 border border-border">
@@ -32,13 +32,13 @@ const About = () => {
             <div>
               <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-4">About Us</p>
               <h1 className="text-4xl font-bold leading-tight tracking-tight lg:text-5xl mb-6">
-                <span className="lg:hidden text-glow">Naples' Master Detailer</span>
-                <span className="hidden lg:inline">Meet the Mind Behind <span className="text-primary text-glow">Area 51 Naples</span></span>
+                <span className="lg:hidden text-glow">Seattle's Master Detailer</span>
+                <span className="hidden lg:inline">Meet the Mind Behind <span className="text-primary text-glow">The Auto Barber Seattle</span></span>
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 <span className="lg:hidden">15 years. One mission. Perfect paint.</span>
                 <span className="hidden lg:inline">
-                  What began as a relentless pursuit of automotive perfection has evolved into Naples' premier mobile detailing experience. 
+                  What began as a relentless pursuit of automotive perfection has evolved into Seattle's premier mobile detailing experience. 
                   We're not just detailing cars — we're preserving high-value investments and exceeding the highest expectations, one vehicle at a time.
                 </span>
               </p>
@@ -115,7 +115,7 @@ const About = () => {
               <div className="pb-8">
                 <h3 className="font-display text-lg font-semibold mb-3">Above & Beyond Is the Standard</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  When you book Area 51 Detailing, you're not getting a quick wash and vacuum. You're getting
+                  When you book The Auto Barber, you're not getting a quick wash and vacuum. You're getting
                   <strong className="text-foreground"> the highest level of detailing expertise</strong>, period.
                   We treat every car like it's our own.
                 </p>
@@ -172,7 +172,7 @@ const About = () => {
             Let us show you what <span className="text-primary">perfected</span> looks like.
           </h2>
           <p className="text-muted-foreground mb-8">
-            Whether you drive a daily commuter or a garage queen, your vehicle deserves the Area 51 treatment.
+            Whether you drive a daily commuter or a garage queen, your vehicle deserves The Auto Barber treatment.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link

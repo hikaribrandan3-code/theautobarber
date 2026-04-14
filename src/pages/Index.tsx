@@ -11,8 +11,8 @@ const Index = () => {
   return (
     <div>
       <SEO 
-        title="Area 51 Detailing | Naples' #1 Mobile Detailing & Ceramic Coating"
-        description="Experience the ultimate in vehicle care. Area 51 serves Naples, FL with professional-grade ceramic coatings, precision paint correction, and full mobile detailing. 15+ years of master-level expertise. We come to you."
+        title="The Auto Barber | Seattle's #1 Mobile Detailing & Ceramic Coating"
+        description="Experience the ultimate in vehicle care. The Auto Barber serves Seattle, WA with professional-grade ceramic coatings, precision paint correction, and full mobile detailing. 15+ years of master-level expertise. We come to you."
       />
       {/* Hero */}
       <section className="relative min-h-[100vh] flex items-center hero-gradient grid-bg overflow-hidden">
@@ -22,14 +22,14 @@ const Index = () => {
         </div>
         <div className="container relative mx-auto px-4 py-32 lg:px-8">
           <div className="max-w-3xl">
-            <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-4">Naples' #1 Mobile Detailing</p>
+            <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-4">Seattle's #1 Mobile Detailing</p>
             <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-7xl">
               <div className="lg:hidden flex flex-col">
                 <span>We Show Up.</span>
-                <span>We Detail.</span>
-                <span className="text-primary font-black italic text-glow">Naples, FL.</span>
+                <span>We Barbe.</span>
+                <span className="text-primary font-black italic text-glow">Seattle, WA.</span>
               </div>
-              <span className="hidden lg:inline text-glow-subtle">Mobile Detailing & Ceramic Coating <span className="text-primary">Naples, FL</span></span>
+              <span className="hidden lg:inline text-glow-subtle">Mobile Detailing & Ceramic Coating <span className="text-primary">Seattle, WA</span></span>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
               <span className="lg:hidden text-white/90">One call and we're at your door — water, power, and 15 years of expertise loaded in the truck. You don't lift a finger.</span>
@@ -41,16 +41,16 @@ const Index = () => {
               <div className="flex gap-1 text-primary">
                 {[1, 2, 3, 4, 5].map(s => <Star key={s} size={12} className="fill-current" />)}
               </div>
-              <span className="text-white/40 text-[12px] font-medium">200+ five-star reviews · Naples, FL</span>
+              <span className="text-white/40 text-[12px] font-medium">200+ five-star reviews · Seattle, WA</span>
             </div>
 
             <div className="mt-8 flex flex-col lg:flex-row gap-4 mb-6 lg:mb-0">
               {/* Mobile Primary Phone Button */}
               <Button asChild size="lg" className="lg:hidden w-full h-auto py-4 bg-primary text-primary-foreground hover:opacity-90 flex flex-col gap-1 box-glow">
-                <a href="tel:9143295929">
+                <a href="tel:5550000000">
                   <div className="flex items-center gap-2 font-black text-xl italic tracking-tighter">
                     <Phone size={20} className="fill-current" />
-                    (914) 329-5929
+                    (555) 000-0000
                   </div>
                   <div className="text-[9px] uppercase tracking-[0.15em] font-mono font-bold text-black/60">
                     WE PICK UP · 7 DAYS A WEEK · 8AM–6PM
@@ -205,7 +205,7 @@ const Index = () => {
       <section className="py-16 lg:py-32">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-16">
-            <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3">Why Area 51</p>
+            <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3">Why The Auto Barber</p>
             <h2 className="text-3xl font-bold lg:text-5xl">Why Us</h2>
           </div>
           <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
@@ -259,7 +259,7 @@ const Index = () => {
             <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-3">Social Proof</p>
             <h2 className="text-3xl font-bold lg:text-5xl mb-6">What Our Clients Say</h2>
             <a 
-              href="https://www.google.com/search?q=Area+51+Detailing+Naples+Reviews" 
+              href="https://www.google.com/search?q=The+Auto+Barber+Seattle+Reviews" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 rounded-full border border-border bg-card/50 px-6 py-3 transition-all hover:border-primary/50 active:scale-95"
@@ -272,7 +272,7 @@ const Index = () => {
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
-              { name: "Michael T. · Porsche 911", text: "Best detailer in Naples, period." },
+              { name: "Michael T. · Porsche 911", text: "Best detailer in Seattle, period." },
               { name: "Sarah K. · Tesla Model Y", text: "Truly out of this world service — water just rolls right off." },
               { name: "David R. · BMW M3", text: "Professional, on time, and the results speak for themselves." },
             ].map(r => (
@@ -287,7 +287,7 @@ const Index = () => {
           </div>
           <div className="text-center mt-12">
             <a 
-              href="https://www.google.com/search?q=Area+51+Detailing+Naples+Reviews" 
+              href="https://www.google.com/search?q=The+Auto+Barber+Seattle+Reviews" 
               target="_blank" 
               rel="noopener noreferrer"
               className="font-mono text-sm uppercase tracking-wider text-primary hover:underline"
@@ -309,7 +309,7 @@ const Index = () => {
             {[
               { q: "How long does ceramic coating take?", a: "4–12 hours. Full cure in 7 days." },
               { q: "Are you really fully mobile?", a: "Yes. Generator, water tank, pressure washer — all onboard. We're completely self-sufficient." },
-              { q: "How far do you travel?", a: "Up to 30 miles from Naples." },
+              { q: "How far do you travel?", a: "Up to 30 miles from Seattle." },
             ].map(f => (
               <div key={f.q} className="rounded-lg border border-border bg-card p-6">
                 <h3 className="font-display text-sm font-semibold mb-2">{f.q}</h3>

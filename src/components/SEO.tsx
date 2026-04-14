@@ -8,12 +8,12 @@ interface SEOProps {
 }
 
 const SEO = ({ 
-  title = "Area 51 Detailing | Naples' Premier Mobile Detailing", 
-  description = "Naples' #1 mobile detailing service. Ceramic coatings, master paint correction, PPF, and full detailing. Licensed & insured. We come to you.",
-  canonical = "https://area51detailing.com",
+  title = "The Auto Barber | Seattle's Premier Mobile Detailing", 
+  description = "Seattle's #1 mobile detailing service. Ceramic coatings, master paint correction, PPF, and full detailing. Licensed & insured. We come to you.",
+  canonical = "https://theautobarber.com",
   ogType = "website"
 }: SEOProps) => {
-  const fullTitle = title.includes("Area 51") ? title : `${title} | Area 51 Detailing`;
+  const fullTitle = title.includes("The Auto Barber") ? title : `${title} | The Auto Barber`;
   
   return (
     <Helmet>
