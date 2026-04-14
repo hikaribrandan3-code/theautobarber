@@ -2,7 +2,6 @@ import { useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Star, Phone, MapPin, Clock, CheckCircle, Award, Truck, Shield, ChevronRight } from "lucide-react";
 import SEO from "@/components/SEO";
-import logo from "@/assets/logo.png";
 import { useState, useEffect, useRef } from "react";
 
 // Animated counter
@@ -36,32 +35,33 @@ const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=The+Auto+Barber+Revi
 const Index = () => {
   const { openQuote } = useOutletContext<{ openQuote: (service?: string) => void }>();
 
-  const services = [
+  // Service pricing cards
+  const menuItems = [
     {
       name: "Interior Detail",
       price: "$199",
       regularPrice: "$250",
       badge: "SPRING SPECIAL",
-      desc: "Full vacuum, steam clean, leather conditioning, glass, and door jambs. Like new inside.",
+      desc: "Deep clean every surface. Leather treated. Carpets restored. Like new inside.",
       time: "2–3 hrs",
-      items: ["Full vacuum & extraction", "Steam clean surfaces", "Leather condition", "Glass & door jambs"],
+      items: ["Full vacuum & extraction", "Steam clean all surfaces", "Leather conditioning", "Door jambs & glass"],
       service: "Interior Detail",
     },
     {
       name: "Full Detail",
       price: "$350",
-      desc: "Complete interior + exterior. Hand wash, clay bar, hand wax, tire dressing. The full works.",
+      desc: "Hand wash, decon, paint correction light. Mirror finish. Showroom shine.",
       time: "5–6 hrs",
-      items: ["Everything in Interior", "Hand wash & clay bar", "Hand wax & polish", "Wheels & tire dressing"],
+      items: ["Complete Interior Detail", "Multi-stage hand wash", "Decontamination & clay", "Premium hand wax"],
       service: "Full Detail",
       popular: true,
     },
     {
       name: "Ceramic Coating",
       price: "$600+",
-      desc: "3–5 year nano-ceramic protection. Hydrophobic, UV-resistant, permanent-grade gloss.",
+      desc: "Precision cut. UV protection. 3-5 year nano-bond gloss. Permanent grade.",
       time: "8+ hrs",
-      items: ["Paint correction prep", "Ceramic nano-bond", "5-year protection", "Annual maintenance plan"],
+      items: ["Multi-stage paint prep", "Ceramic nano-coating", "UV & chemical protection", "Extreme hydrophobics"],
       service: "Ceramic Coating",
     },
   ];
@@ -83,369 +83,114 @@ const Index = () => {
   ];
 
   const process = [
-    { step: "01", title: "Book Online", desc: "Pick your service, date, and location. Takes 60 seconds." },
-    { step: "02", title: "We Show Up", desc: "Fully self-contained van arrives at your door on time." },
-    { step: "03", title: "We Get to Work", desc: "Detail performed with professional-grade products." },
-    { step: "04", title: "Pick Up the Keys", desc: "Inspect your ride. You'll be impressed. Guaranteed." },
+    { step: "01", title: "Book Online", desc: "Pick your service and date in 60 seconds." },
+    { step: "02", title: "We Show Up", desc: "Mobile van arrives at your location on time." },
+    { step: "03", title: "The Detail", desc: "Performed with the barber's standard precision." },
+    { step: "04", title: "The Result", desc: "Inspect your vehicle & enjoy the protection." },
   ];
 
   const reviews = [
-    { name: "Marcus T.", rating: 5, text: "Best detail I've ever had on my Tesla. The paint looked like it just rolled off the lot. Booked a ceramic coating after seeing the results.", service: "Full Detail" },
-    { name: "Jamie L.", rating: 5, text: "On time, professional, absolutely transformed the inside of my Tahoe. Kids had wrecked it. Now it smells and looks brand new. Will not go anywhere else.", service: "Interior Detail" },
-    { name: "Derek C.", rating: 5, text: "Came to my office parking lot, did the full ceramic package on my 4Runner. Didn't have to drop it off anywhere. The results speak for themselves.", service: "Ceramic Coating" },
-    { name: "Priya M.", rating: 5, text: "Messaged him on Sunday, booked for Tuesday, done by noon. Fast, clean, my car literally gleamed. 165 reviews don't lie.", service: "Full Detail" },
+    { name: "Marcus T.", rating: 5, text: "Best detail I've ever had on my Tesla. Paint looked like it rolled off the lot. Booked ceramic right after.", service: "Full Detail" },
+    { name: "Jamie L.", rating: 5, text: "On time, professional, absolutely transformed the inside of my Tahoe. Smells and looks brand new.", service: "Interior Detail" },
+    { name: "Derek C.", rating: 5, text: "Came to my office, did the full package on my 4Runner. Results speak for themselves. 165 reviews don't lie.", service: "Ceramic Coating" },
   ];
 
   return (
-    <div className="bg-white text-[#0A0A0A]">
+    <div className="bg-[#0A0A0A] text-white">
       <SEO
         title="The Auto Barber | Seattle Mobile Detailing — 165 Five-Star Reviews"
         description="Seattle's top-rated mobile detailing service. Interior Detail $199. Full Detail $350. Ceramic Coating from $600. We come to you. Book now."
       />
 
-      {/* PROMO BAR */}
-      <div className="bg-[#0A0A0A] text-white text-center py-2.5 px-4">
-        <p className="text-xs font-bold uppercase tracking-widest">
-          🌸 Spring Special: Interior Detail{" "}
-          <span className="text-white font-black">$199</span>{" "}
-          <span className="text-[#6B7280] line-through font-normal">Reg $250</span>
+      {/* PROMO BAR (STATIC TOP) */}
+      <div className="bg-white text-[#0A0A0A] text-center py-2 px-4 sticky top-0 z-[110]">
+        <p className="text-[10px] font-black uppercase tracking-[0.3em]">
+          Spring Special: Interior Detail{" "}
+          <span className="font-black">$199</span>{" "}
+          <span className="text-gray-400 line-through font-normal">(Reg $250)</span>
           {"  "}·{"  "}
-          <button onClick={() => openQuote("Interior Detail")} className="underline underline-offset-2 hover:no-underline">
-            Book Now →
+          <button onClick={() => openQuote("Interior Detail")} className="underline underline-offset-2 hover:no-underline font-black">
+            Claim Offer →
           </button>
         </p>
       </div>
 
-      {/* HERO */}
-      <section className="relative">
-        {/* Full-bleed image */}
-        <div className="relative h-[85vh] min-h-[500px] overflow-hidden">
+      {/* HERO SECTION */}
+      <section className="relative min-h-screen flex flex-col pt-16">
+        {/* Full-bleed background */}
+        <div className="absolute inset-0 z-0">
           <img
             src="/images/portfolio/paint-correction-5050.jpg"
             alt="Seattle auto detailing"
             className="w-full h-full object-cover"
-            style={{ filter: "brightness(0.55)" }}
+            style={{ filter: "brightness(0.4)" }}
           />
-          {/* Small logo top-left */}
-          <div className="absolute top-6 left-6 z-10">
-            <div className="flex items-center gap-3">
-              <img src={logo} alt="The Auto Barber" className="w-10 h-10 rounded-full object-cover" />
-              <span className="text-white font-bold text-sm tracking-wider uppercase">The Auto Barber</span>
-            </div>
-          </div>
-          {/* Nav links top-right */}
-          <div className="hidden md:flex absolute top-6 right-6 z-10 gap-8">
-            {["Services", "Gallery", "Reviews", "Contact"].map(l => (
-              <a key={l} href={`#${l.toLowerCase()}`} className="text-white/80 hover:text-white text-sm font-semibold uppercase tracking-widest transition-colors">
-                {l}
-              </a>
-            ))}
-          </div>
-          {/* Headline over image */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-10">
-            <p className="text-white/70 text-xs font-bold uppercase tracking-[0.3em] mb-4">Seattle, WA • Mobile Detailing</p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.0] mb-6 max-w-4xl" style={{ letterSpacing: "-0.03em" }}>
-              165 FIVE-STAR<br />DETAILS IN SEATTLE
-            </h1>
-            <p className="text-white/80 text-base md:text-lg font-medium mb-10">
-              Interior • Exterior • Paint Protection
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() => openQuote()}
-                className="bg-white text-[#0A0A0A] font-black uppercase tracking-widest px-10 py-4 text-sm hover:bg-gray-100 transition-colors"
-              >
-                BOOK NOW
-              </button>
-              <a
-                href="tel:2538939452"
-                className="border-2 border-white text-white font-black uppercase tracking-widest px-10 py-4 text-sm hover:bg-white hover:text-[#0A0A0A] transition-colors text-center"
-              >
-                CALL (253) 893-9452
-              </a>
-            </div>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/40 to-[#0A0A0A]" />
         </div>
 
-        {/* Review badge + subtitle below hero */}
-        <div className="bg-white border-b border-[#E5E7EB] py-6 px-6">
-          <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <a
-              href={GOOGLE_REVIEWS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 group"
-            >
-              <div className="flex gap-0.5">
-                {[1,2,3,4,5].map(i => (
-                  <Star key={i} size={18} fill="#F59E0B" stroke="none" />
-                ))}
-              </div>
-              <span className="font-bold text-[#0A0A0A] text-sm">165 Google Reviews</span>
-              <span className="text-[#6B7280] text-xs underline group-hover:no-underline">See all →</span>
-            </a>
-            <p className="text-[#6B7280] text-sm font-medium">
-              📍 Serving all of Seattle, WA · (253) 893-9452
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section id="services" className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <p className="text-[#6B7280] text-xs font-bold uppercase tracking-[0.2em] mb-3">What We Offer</p>
-            <h2 className="text-4xl md:text-5xl font-black" style={{ letterSpacing: "-0.03em" }}>Services & Pricing</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {services.map((s, i) => (
-              <div
-                key={i}
-                className={`relative border bg-white p-8 card-hover flex flex-col ${s.popular ? "border-[#0A0A0A] border-2" : "border-[#E5E7EB]"}`}
-              >
-                {s.popular && (
-                  <div className="absolute top-0 left-0 bg-[#0A0A0A] text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5">
-                    MOST POPULAR
-                  </div>
-                )}
-                {s.badge && (
-                  <div className="absolute top-0 right-0 bg-amber-400 text-[#0A0A0A] text-[10px] font-black uppercase tracking-widest px-4 py-1.5">
-                    {s.badge}
-                  </div>
-                )}
-                <div className={`${(s.popular || s.badge) ? "mt-6" : ""}`}>
-                  <h3 className="text-xl font-bold mb-2">{s.name}</h3>
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-4xl font-black">{s.price}</span>
-                    {s.regularPrice && <span className="text-[#6B7280] text-sm line-through">{s.regularPrice}</span>}
-                  </div>
-                  <p className="text-[#6B7280] text-xs uppercase tracking-widest mb-6 font-medium">{s.time} · Mobile Service</p>
-                  <p className="text-[#374151] text-sm leading-relaxed mb-6">{s.desc}</p>
-                  <ul className="space-y-2 mb-8 flex-grow">
-                    {s.items.map((item, j) => (
-                      <li key={j} className="flex items-center gap-2 text-sm text-[#374151]">
-                        <CheckCircle size={14} className="text-[#6B7280] shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <button
-                  onClick={() => openQuote(s.service)}
-                  className={`w-full py-4 font-bold uppercase tracking-widest text-sm transition-colors mt-auto ${s.popular ? "bg-[#0A0A0A] text-white hover:bg-[#333]" : "bg-white text-[#0A0A0A] border border-[#0A0A0A] hover:bg-[#f5f5f5]"}`}
+        {/* Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex-grow flex flex-col justify-center py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Headlines */}
+            <div className="text-center lg:text-left">
+              <p className="text-white/60 text-xs font-bold uppercase tracking-[0.4em] mb-4">
+                SEATTLE, WA • CAR PROTECTION STUDIO
+              </p>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.95] mb-6" style={{ letterSpacing: "-0.04em" }}>
+                165 FIVE-STAR<br />DETAILS IN SEATTLE
+              </h1>
+              <p className="text-white/80 text-sm md:text-lg font-bold uppercase tracking-widest mb-2">
+                Auto Detailing • Ceramic Coatings • Window Tint • PPF
+              </p>
+              <p className="text-white/40 text-xs md:text-sm font-medium italic">
+                Visit our studio or we come to you for premium vehicle protection
+              </p>
+              <div className="mt-8 flex items-center justify-center lg:justify-start gap-4">
+                <a
+                  href={GOOGLE_REVIEWS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 group"
                 >
-                  BOOK {s.name.toUpperCase()}
-                </button>
-              </div>
-            ))}
-          </div>
-          <p className="text-center text-[#6B7280] text-xs mt-6 uppercase tracking-widest font-medium">
-            All prices vary by vehicle size & condition · Free estimate available
-          </p>
-        </div>
-      </section>
-
-      {/* GALLERY / THE WORK */}
-      <section id="gallery" className="py-20 px-6 bg-[#F9FAFB]">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
-            <div>
-              <p className="text-[#6B7280] text-xs font-bold uppercase tracking-[0.2em] mb-3">Real Work. Real Results.</p>
-              <h2 className="text-4xl md:text-5xl font-black" style={{ letterSpacing: "-0.03em" }}>The Work</h2>
-            </div>
-            <Link to="/gallery" className="text-sm font-bold uppercase tracking-widest underline underline-offset-4 text-[#6B7280] hover:text-[#0A0A0A] transition-colors">
-              View All Photos →
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-            {gallery.map((item, i) => (
-              <div key={i} className="group relative aspect-square overflow-hidden bg-black">
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-75"
-                />
-                <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="text-white font-bold text-sm">{item.title}</p>
-                  <p className="text-white/70 text-xs uppercase tracking-widest">{item.tag}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* WHY CHOOSE US */}
-      <section id="why" className="py-20 px-6 bg-white border-y border-[#E5E7EB]">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12 text-center">
-            <p className="text-[#6B7280] text-xs font-bold uppercase tracking-[0.2em] mb-3">Why Seattle Chooses Us</p>
-            <h2 className="text-4xl md:text-5xl font-black" style={{ letterSpacing: "-0.03em" }}>Proven. Local. Trusted.</h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {trust.map((t, i) => (
-              <div key={i} className="text-center">
-                <div className="w-14 h-14 border border-[#E5E7EB] flex items-center justify-center mx-auto mb-4 text-[#0A0A0A]">
-                  {t.icon}
-                </div>
-                <div className="text-3xl font-black mb-1">
-                  {t.stat === "165" ? <Counter end={165} /> : t.stat}
-                </div>
-                <div className="font-bold text-sm mb-1">{t.label}</div>
-                <div className="text-[#6B7280] text-xs uppercase tracking-widest">{t.sub}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROCESS */}
-      <section id="process" className="py-20 px-6 bg-[#F9FAFB]">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <p className="text-[#6B7280] text-xs font-bold uppercase tracking-[0.2em] mb-3">Simple & Easy</p>
-            <h2 className="text-4xl md:text-5xl font-black" style={{ letterSpacing: "-0.03em" }}>How It Works</h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            {process.map((p, i) => (
-              <div key={i} className="relative">
-                <div className="text-6xl font-black text-[#E5E7EB] leading-none mb-4">{p.step}</div>
-                <h3 className="text-lg font-bold mb-2">{p.title}</h3>
-                <p className="text-[#6B7280] text-sm leading-relaxed">{p.desc}</p>
-                {i < process.length - 1 && (
-                  <div className="hidden md:block absolute top-8 right-0 text-[#D1D5DB] translate-x-1/2">
-                    <ChevronRight size={24} />
+                  <div className="flex gap-0.5">
+                    {[1,2,3,4,5].map(i => <Star key={i} size={16} fill="#F59E0B" stroke="none" />)}
                   </div>
-                )}
-              </div>
-            ))}
-          </div>
-          <div className="mt-12 text-center">
-            <button
-              onClick={() => openQuote()}
-              className="bg-[#0A0A0A] text-white font-black uppercase tracking-widest px-12 py-5 text-sm hover:bg-[#333] transition-colors"
-            >
-              BOOK YOUR DETAIL
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* REVIEWS */}
-      <section id="reviews" className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
-            <div>
-              <p className="text-[#6B7280] text-xs font-bold uppercase tracking-[0.2em] mb-3">Don't Take Our Word For It</p>
-              <h2 className="text-4xl md:text-5xl font-black" style={{ letterSpacing: "-0.03em" }}>
-                165 Five-Star Reviews
-              </h2>
-            </div>
-            <a
-              href={GOOGLE_REVIEWS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm"
-            >
-              <div className="flex gap-0.5">
-                {[1,2,3,4,5].map(i => <Star key={i} size={14} fill="#F59E0B" stroke="none" />)}
-              </div>
-              <span className="text-[#6B7280] font-medium underline underline-offset-2">Google Reviews →</span>
-            </a>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {reviews.map((r, i) => (
-              <div key={i} className="border border-[#E5E7EB] p-8 card-hover">
-                <div className="flex gap-0.5 mb-4">
-                  {Array.from({ length: r.rating }).map((_, j) => (
-                    <Star key={j} size={14} fill="#F59E0B" stroke="none" />
-                  ))}
-                </div>
-                <p className="text-[#374151] text-sm leading-relaxed mb-6">"{r.text}"</p>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-bold text-sm">{r.name}</p>
-                    <p className="text-[#6B7280] text-xs uppercase tracking-widest">{r.service}</p>
-                  </div>
-                  <div className="text-xs text-[#6B7280] font-medium">Google</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section id="contact" className="py-20 px-6 bg-[#F9FAFB] border-t border-[#E5E7EB]">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Info */}
-            <div>
-              <p className="text-[#6B7280] text-xs font-bold uppercase tracking-[0.2em] mb-3">Get In Touch</p>
-              <h2 className="text-4xl md:text-5xl font-black mb-10" style={{ letterSpacing: "-0.03em" }}>Book Your Detail</h2>
-              <div className="space-y-6">
-                <a href="tel:2538939452" className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 border border-[#E5E7EB] flex items-center justify-center bg-white group-hover:border-[#0A0A0A] transition-colors">
-                    <Phone size={18} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-[#6B7280] uppercase tracking-widest font-bold mb-0.5">Call or Text</p>
-                    <p className="font-bold text-lg">(253) 893-9452</p>
-                  </div>
+                  <span className="font-bold text-sm tracking-tight border-b border-white/20 group-hover:border-white transition-all">165 Google Reviews</span>
                 </a>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 border border-[#E5E7EB] flex items-center justify-center bg-white">
-                    <MapPin size={18} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-[#6B7280] uppercase tracking-widest font-bold mb-0.5">Location</p>
-                    <p className="font-bold">Seattle, WA · Mobile Service</p>
-                    <p className="text-[#6B7280] text-sm">We come to you — anywhere in Seattle</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 border border-[#E5E7EB] flex items-center justify-center bg-white">
-                    <Clock size={18} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-[#6B7280] uppercase tracking-widest font-bold mb-0.5">Hours</p>
-                    <p className="font-bold">Mon – Sun: 8AM – 6PM</p>
-                  </div>
-                </div>
               </div>
             </div>
-            {/* Quick form */}
-            <div className="bg-white border border-[#E5E7EB] p-8">
-              <h3 className="text-xl font-black mb-6">Get a Free Quote</h3>
-              <form className="space-y-4" onSubmit={e => { e.preventDefault(); openQuote(); }}>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-widest text-[#6B7280] mb-2">Name</label>
-                    <input type="text" className="w-full border border-[#E5E7EB] p-3 text-sm focus:border-[#0A0A0A] outline-none transition-colors" placeholder="Your name" required />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-widest text-[#6B7280] mb-2">Phone</label>
-                    <input type="tel" className="w-full border border-[#E5E7EB] p-3 text-sm focus:border-[#0A0A0A] outline-none transition-colors" placeholder="(000) 000-0000" required />
-                  </div>
+
+            {/* Quick Quote Form */}
+            <div className="bg-[#141414] border border-white/10 p-8 lg:p-10 shadow-2xl max-w-md mx-auto lg:ml-auto w-full">
+              <h3 className="text-xl font-black uppercase tracking-tight mb-6">GET A QUICK QUOTE</h3>
+              <form 
+                className="space-y-4" 
+                onSubmit={e => { 
+                  e.preventDefault(); 
+                  const formData = new FormData(e.currentTarget);
+                  openQuote(formData.get('service') as string); 
+                }}
+              >
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2">Name</label>
+                  <input name="name" type="text" className="w-full bg-[#0A0A0A] border border-white/10 p-3.5 text-sm focus:border-white outline-none transition-colors text-white" placeholder="Name" required />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-[#6B7280] mb-2">Service</label>
-                  <select className="w-full border border-[#E5E7EB] p-3 text-sm focus:border-[#0A0A0A] outline-none transition-colors bg-white">
-                    <option>Interior Detail — $199</option>
-                    <option>Full Detail — $350</option>
-                    <option>Ceramic Coating — $600+</option>
-                    <option>Paint Correction — Quote</option>
-                    <option>Window Tint — $199+</option>
-                    <option>Other / Not sure</option>
+                  <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2">Phone</label>
+                  <input name="phone" type="tel" className="w-full bg-[#0A0A0A] border border-white/10 p-3.5 text-sm focus:border-white outline-none transition-colors text-white" placeholder="(000) 000-0000" required />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2">Service Needed</label>
+                  <select name="service" className="w-full bg-[#0A0A0A] border border-white/10 p-3.5 text-sm focus:border-white outline-none transition-colors text-white appearance-none cursor-pointer">
+                    <option>Interior Detailing</option>
+                    <option>Full Detail (Paint Correction)</option>
+                    <option>Ceramic Coating</option>
+                    <option>Window Tint</option>
+                    <option>PPF (Clear Bra)</option>
                   </select>
                 </div>
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-[#6B7280] mb-2">Vehicle</label>
-                  <input type="text" className="w-full border border-[#E5E7EB] p-3 text-sm focus:border-[#0A0A0A] outline-none transition-colors" placeholder="Year, Make, Model" />
-                </div>
-                <button type="submit" className="w-full bg-[#0A0A0A] text-white font-black uppercase tracking-widest py-4 text-sm hover:bg-[#333] transition-colors">
-                  GET FREE QUOTE
+                <button type="submit" className="w-full bg-white text-[#0A0A0A] font-black uppercase tracking-widest py-5 text-sm hover:bg-gray-200 transition-colors mt-4">
+                  GET QUOTE NOW
                 </button>
               </form>
             </div>
@@ -453,43 +198,255 @@ const Index = () => {
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="py-20 px-6 bg-[#0A0A0A] text-white text-center">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-white/50 text-xs font-bold uppercase tracking-[0.2em] mb-4">Ready to Book?</p>
-          <h2 className="text-4xl md:text-6xl font-black mb-6" style={{ letterSpacing: "-0.03em" }}>
-            Your Car Deserves<br />The Best.
-          </h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => openQuote()}
-              className="bg-white text-[#0A0A0A] font-black uppercase tracking-widest px-12 py-5 text-sm hover:bg-gray-100 transition-colors"
-            >
-              BOOK A DETAIL
-            </button>
-            <a
-              href="tel:2538939452"
-              className="border-2 border-white text-white font-black uppercase tracking-widest px-12 py-5 text-sm hover:bg-white hover:text-[#0A0A0A] transition-colors text-center"
-            >
-              CALL (253) 893-9452
-            </a>
+      {/* THE DIVISION / SERVICES */}
+      <section id="services" className="py-16 lg:py-24 px-6 bg-[#0A0A0A] border-y border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 gap-8">
+            <div className="border-l-4 border-white pl-8">
+              <h2 className="text-4xl md:text-6xl font-black uppercase leading-none mb-2">THE DIVISION</h2>
+              <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.4em]">Master Craftsman Standards</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { title: "Auto Detailing", desc: "Door-to-door precision. Steam, extraction, and protection." },
+              { title: "Ceramic Coatings", desc: "Nano-bond protection. UV, chemical, and scratch resistant." },
+              { title: "Window Tint", desc: "Heat rejection. UV blocking. Privacy and aesthetic." },
+              { title: "PPF (Clear Bra)", desc: "Impact protection. Self-healing film for your paint." },
+            ].map((s, i) => (
+              <div key={i} className="bg-[#141414] border border-white/5 p-8 flex flex-col items-start gap-4 hover:border-white/20 transition-all">
+                <CheckCircle size={20} className="text-white/20" />
+                <div>
+                  <h4 className="font-black text-sm uppercase tracking-widest mb-2">{s.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed">{s.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Mobile sticky bottom bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden grid grid-cols-2 border-t border-[#E5E7EB] shadow-2xl">
+      {/* THE MENU / PRICING */}
+      <section id="pricing" className="py-16 lg:py-24 px-6 bg-[#0E0E0E]">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-4xl md:text-6xl font-black uppercase leading-none mb-4" style={{ letterSpacing: "-0.03em" }}>THE MENU</h2>
+            <p className="text-white/40 text-xs font-bold uppercase tracking-[0.3em]">Direct Pricing. Professional Results.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {menuItems.map((s, i) => (
+              <div
+                key={i}
+                className={`relative border p-10 bg-[#0A0A0A] flex flex-col transition-all duration-300 hover:scale-[1.02] ${s.popular ? "border-white border-2" : "border-white/10"}`}
+              >
+                {s.popular && (
+                  <div className="absolute top-0 right-0 bg-white text-[#0A0A0A] text-[9px] font-black uppercase tracking-widest px-4 py-2">
+                    MOST POPULAR
+                  </div>
+                )}
+                {s.badge && (
+                  <div className="absolute top-0 left-0 bg-amber-400 text-[#0A0A0A] text-[9px] font-black uppercase tracking-widest px-4 py-2">
+                    {s.badge}
+                  </div>
+                )}
+                <div className="mb-8">
+                  <h3 className="text-2xl font-black uppercase tracking-tighter mb-4">{s.name}</h3>
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span className="text-5xl font-black text-white italic tracking-tighter">{s.price}</span>
+                    {s.regularPrice && <span className="text-gray-600 text-lg line-through italic">{s.regularPrice}</span>}
+                  </div>
+                  <p className="text-white/40 text-[10px] uppercase font-bold tracking-widest mb-6 italic">{s.time} • Mobile Studio</p>
+                  <p className="text-gray-400 text-sm leading-relaxed font-medium">{s.desc}</p>
+                </div>
+                
+                <ul className="space-y-4 mb-10 flex-grow">
+                  {s.items.map((item, j) => (
+                    <li key={j} className="flex items-start gap-4">
+                      <div className="w-1.5 h-1.5 rounded-full bg-white/20 mt-1.5 shrink-0" />
+                      <span className="text-xs text-gray-300 font-medium leading-tight">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  onClick={() => openQuote(s.service)}
+                  className={`w-full py-5 font-black uppercase tracking-widest text-xs transition-colors ${s.popular ? "bg-white text-[#0A0A0A]" : "bg-transparent text-white border border-white hover:bg-white hover:text-[#0A0A0A]"}`}
+                >
+                  REQUISITION {s.name.toUpperCase()}
+                </button>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-white/20 text-[9px] mt-8 uppercase tracking-[0.2em] font-black">
+            Pricing may vary based on condition & size • Final valuation on-site
+          </p>
+        </div>
+      </section>
+
+      {/* PROOF OF WORK / GALLERY */}
+      <section id="gallery" className="py-16 lg:py-24 px-6 bg-[#0A0A0A]">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
+            <div>
+              <h2 className="text-4xl md:text-6xl font-black uppercase leading-none" style={{ letterSpacing: "-0.03em" }}>PROOF OF WORK</h2>
+              <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.4em] mt-4">Actual results. No corporate fluff.</p>
+            </div>
+            <Link to="/gallery" className="text-xs font-black uppercase tracking-[0.2em] underline underline-offset-8 text-white/60 hover:text-white transition-colors">
+              Full Archive →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+            {gallery.map((item, i) => (
+              <div key={i} className="group relative aspect-[4/5] overflow-hidden bg-black">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-all duration-700 opacity-80 group-hover:opacity-100 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+                <div className="absolute bottom-0 left-0 p-8 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                  <p className="text-white font-black text-lg uppercase mb-1">{item.title}</p>
+                  <p className="text-white/50 text-xs font-bold uppercase tracking-widest italic">{item.tag}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY THE BARBER */}
+      <section className="py-16 lg:py-24 px-6 bg-[#0E0E0E] text-white border-y border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+            {trust.map((t, i) => (
+              <div key={i} className="text-center lg:text-left">
+                <div className="text-white opacity-20 mb-6 flex justify-center lg:justify-start">
+                  {t.icon}
+                </div>
+                <div className="text-4xl md:text-5xl font-black italic tracking-tighter mb-2">
+                  {t.stat === "165" ? <Counter end={165} /> : t.stat}
+                </div>
+                <div className="font-black text-xs uppercase tracking-widest text-white/40 mb-1">{t.label}</div>
+                <div className="text-xs font-bold text-white/20 uppercase tracking-widest">{t.sub}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* THE PROCESS */}
+      <section id="process" className="py-16 lg:py-24 px-6 bg-[#0A0A0A]">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-4xl md:text-6xl font-black uppercase leading-none" style={{ letterSpacing: "-0.03em" }}>THE PROCESS</h2>
+            <p className="text-white/40 text-xs font-bold uppercase tracking-[0.3em] mt-4">Self-Contained Mobile Studio.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16">
+            {process.map((p, i) => (
+              <div key={i} className="relative group">
+                <div className="text-7xl font-black text-white/5 leading-none transition-colors group-hover:text-white/10 mb-4">{p.step}</div>
+                <h3 className="text-xl font-black uppercase tracking-tight mb-3">{p.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed font-medium">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT / BOOKING */}
+      <section id="contact" className="py-16 lg:py-24 px-6 bg-[#0E0E0E]">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <div>
+              <h2 className="text-4xl md:text-6xl font-black uppercase leading-[0.9] mb-12">THE<br />BOOKING</h2>
+              <div className="space-y-10">
+                <a href="tel:2538939452" className="flex items-center gap-6 group">
+                  <div className="w-14 h-14 border border-white/10 flex items-center justify-center group-hover:border-white transition-colors">
+                    <Phone size={20} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/40 uppercase tracking-widest font-black mb-1">Direct Line / Text</p>
+                    <p className="font-black text-2xl italic">(253) 893-9452</p>
+                  </div>
+                </a>
+                <div className="flex items-center gap-6">
+                  <div className="w-14 h-14 border border-white/10 flex items-center justify-center">
+                    <MapPin size={20} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/40 uppercase tracking-widest font-black mb-1">Studio Location</p>
+                    <p className="font-black text-lg">7418 St 126th Unit 1C, Seattle</p>
+                    <p className="text-white/30 text-xs uppercase font-bold tracking-widest mt-1">Mobile Service also available</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-6">
+                  <div className="w-14 h-14 border border-white/10 flex items-center justify-center">
+                    <Clock size={20} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/40 uppercase tracking-widest font-black mb-1">Operating Hours</p>
+                    <p className="font-black text-lgUppercase">Mon – Sun: 8AM – 6PM</p>
+                    <p className="text-white/30 text-xs uppercase font-bold tracking-widest mt-1">By Appointment Only</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-[#0A0A0A] border border-white/5 p-10 lg:p-12">
+              <h3 className="text-2xl font-black uppercase mb-8">Service Requisition</h3>
+              <form className="space-y-6" onSubmit={e => { e.preventDefault(); openQuote(); }}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-[10px] font-black uppercase tracking-widest text-white/40 mb-3">Vehicle Year/Make/Model</label>
+                    <input type="text" className="w-full bg-transparent border-b border-white/10 py-3 text-sm focus:border-white outline-none transition-colors" placeholder="e.g. 2024 Tesla Model Y" required />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-black uppercase tracking-widest text-white/40 mb-3">Service Interest</label>
+                    <select className="w-full bg-transparent border-b border-white/10 py-3 text-sm focus:border-white outline-none transition-colors">
+                      <option className="bg-[#0A0A0A]">Auto Detailing</option>
+                      <option className="bg-[#0A0A0A]">Ceramic Coating</option>
+                      <option className="bg-[#0A0A0A]">Window Tint</option>
+                      <option className="bg-[#0A0A0A]">PPF (Clear Bra)</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" className="w-full bg-white text-[#0A0A0A] font-black uppercase tracking-[0.2em] py-5 text-sm hover:bg-gray-200 transition-colors">
+                  SEND REQUISITION
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER CITY LIST */}
+      <footer className="py-12 bg-[#080808] border-t border-white/5 px-6 text-center">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-white/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-4">The Auto Barber Seattle</p>
+          <p className="text-white/20 text-[10px] font-black uppercase tracking-widest max-w-lg mx-auto leading-relaxed">
+            Serving Seattle, Bellevue, Tacoma, Kirkland, Redmond, Renton, Kent, Edmonds & surrounding areas.
+          </p>
+          <div className="mt-8 flex justify-center gap-8 border-t border-white/5 pt-8">
+            <Link to="/about" className="text-white/30 text-[9px] uppercase tracking-widest hover:text-white transition-colors">About Craftsman</Link>
+            <Link to="/services" className="text-white/30 text-[9px] uppercase tracking-widest hover:text-white transition-colors">Capabilities</Link>
+            <Link to="/contact" className="text-white/30 text-[9px] uppercase tracking-widest hover:text-white transition-colors">Location</Link>
+          </div>
+        </div>
+      </footer>
+
+      {/* MOBILE STICKY BAR */}
+      <div className="fixed bottom-0 left-0 right-0 z-[120] lg:hidden grid grid-cols-2 border-t border-white/10">
         <a
           href="tel:2538939452"
-          className="bg-white text-[#0A0A0A] font-black uppercase tracking-widest py-5 text-sm text-center border-r border-[#E5E7EB] hover:bg-[#f5f5f5] transition-colors flex items-center justify-center gap-2"
+          className="bg-[#0A0A0A] text-white font-black uppercase tracking-widest py-6 text-xs text-center border-r border-white/10 hover:bg-[#141414] transition-colors"
         >
-          📞 CALL
+          📞 Call Direct
         </a>
         <button
           onClick={() => openQuote()}
-          className="bg-[#0A0A0A] text-white font-black uppercase tracking-widest py-5 text-sm hover:bg-[#333] transition-colors flex items-center justify-center gap-2"
+          className="bg-white text-[#0A0A0A] font-black uppercase tracking-widest py-6 text-xs hover:bg-gray-200 transition-colors"
         >
-          📅 BOOK
+          📅 Book Detail
         </button>
       </div>
     </div>

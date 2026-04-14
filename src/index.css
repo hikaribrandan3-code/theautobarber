@@ -6,44 +6,44 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 4%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 4%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 4%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 0 0% 4%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 4%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 4%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 42%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 4%;
+    --accent: 0 0% 12%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 4%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 0 0% 100%;
 
     --radius: 0rem;
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 0 0% 4%;
-    --sidebar-primary: 0 0% 4%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 4%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 0 0% 4%;
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 14%;
+    --sidebar-ring: 0 0% 100%;
   }
 }
 
@@ -53,7 +53,7 @@
   }
 
   body {
-    @apply bg-white text-[#0A0A0A] font-sans antialiased;
+    @apply bg-[#0A0A0A] text-white font-sans antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
@@ -67,25 +67,26 @@
 
 @layer utilities {
   .card-hover {
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    transition: all 0.2s ease;
   }
   .card-hover:hover {
-    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    box-shadow: 0 8px 32px rgba(255,255,255,0.05);
     transform: translateY(-2px);
+    border-color: rgba(255,255,255,0.3);
   }
   .btn-primary {
-    @apply bg-[#0A0A0A] text-white font-bold uppercase tracking-widest px-8 py-4 transition-colors duration-150;
+    @apply bg-white text-[#0A0A0A] font-bold uppercase tracking-widest px-8 py-4 transition-colors duration-150;
   }
   .btn-primary:hover {
-    @apply bg-[#333];
+    @apply bg-gray-200;
   }
   .btn-outline {
-    @apply bg-white text-[#0A0A0A] border border-[#0A0A0A] font-bold uppercase tracking-widest px-8 py-4 transition-colors duration-150;
+    @apply bg-transparent text-white border border-white font-bold uppercase tracking-widest px-8 py-4 transition-colors duration-150;
   }
   .btn-outline:hover {
-    @apply bg-[#f5f5f5];
+    @apply bg-white text-[#0A0A0A];
   }
   .section-label {
-    @apply text-[#6B7280] text-xs font-bold uppercase tracking-[0.2em];
+    @apply text-gray-500 text-xs font-bold uppercase tracking-[0.2em];
   }
 }
