@@ -297,17 +297,6 @@ export default function Tint() {
         {/* INTERACTIVE CONFIGURATOR */}
         <section ref={funnelRef} id="configurator" className="py-16 px-6 lg:px-12 bg-[#0e0e0e]">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 gap-4">
-              <div className="border-l-4 border-[#C9A962] pl-6">
-                <h2 className="font-display text-4xl lg:text-6xl font-black uppercase tracking-tighter text-white">
-                  BUILD YOUR <span className="text-[#C9A962]">SHADE</span>
-                </h2>
-                <p className="font-mono text-[10px] text-[#adaaaa] font-bold uppercase tracking-[0.4em] mt-2">
-                  Select coverage + darkness. See your estimate update live.
-                </p>
-              </div>
-            </div>
-
             <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8">
               {/* LEFT: Visualizer */}
               <div className="lg:col-span-7 space-y-8">
