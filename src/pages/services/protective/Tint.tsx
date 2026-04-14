@@ -59,12 +59,9 @@ const shadeMap: Record<Shade, { label: string; tag: string; opacity: number }> =
 };
 
 const reviews = [
-  { text: '"Absolutely amazing job... 100% recommended!"', author: 'Manu GP, Tesla Model Y' },
-  { text: '"Flawless execution."', author: 'Tesla Model S Owner' },
-  { text: '"Best tint in the city."', author: 'Porsche GT3 Owner' },
-  { text: '"Absolute perfection."', author: 'BMW M4 Owner' },
-  { text: '"Elite service level."', author: 'Range Rover Owner' },
-  { text: '"My car stays so much cooler now."', author: 'Mercedes GLE Owner' },
+  { text: '"Absolutely amazing job. Best detailing I\'ve had on any of my cars. 100% recommended!"', author: 'Manu GP, Tesla Model Y' },
+  { text: '"I found Jesse on Google search in my neighborhood and the great reviews convinced me to bring my 9 months old white Tesla model Y for a paint decontamination & ceramic coating service."', author: 'Tesla Model Y Owner' },
+  { text: '"I found his pricing to be very affordable as I didn\'t want to spend allot of money on a ceramic coating because of my intentions to have my car fully repainted in the next several months, then have it wrapped to protect the new paint job."', author: 'Local Customer' },
 ];
 
 export default function Tint() {
@@ -297,24 +294,24 @@ export default function Tint() {
               <div className="flex-1 relative bg-[#0e0e0e] flex items-center justify-center aspect-[16/9] overflow-hidden border border-white/10 rounded-sm">
                 <img
                   src="/images/tesla-model3-side-studio.png"
-                  alt="Matte black Tesla Model 3 side profile"
+                  alt="Tesla Model 3 side profile"
                   className="w-full h-full object-cover object-center"
                 />
-                {/* Window Overlays - positioned for centered side-profile Model 3 */}
+                {/* Window Overlays — aligned to actual Model 3 window glass */}
                 <div
-                  className="absolute top-[24%] left-[31%] w-[13%] h-[22%] bg-black transition-all duration-500 rounded-sm"
+                  className="absolute top-[18%] left-[36%] w-[12%] h-[12%] bg-black transition-all duration-500"
                   style={{ opacity: currentShade.opacity }}
                 />
                 <div
-                  className="absolute top-[24%] left-[45%] w-[11%] h-[20%] bg-black transition-all duration-500 rounded-sm"
+                  className="absolute top-[19%] left-[49%] w-[12%] h-[11%] bg-black transition-all duration-500"
                   style={{ opacity: currentShade.opacity }}
                 />
                 <div
-                  className="absolute top-[26%] left-[56%] w-[9%] h-[16%] bg-black transition-all duration-500 rounded-sm"
+                  className="absolute top-[21%] left-[62%] w-[8%] h-[10%] bg-black transition-all duration-500"
                   style={{ opacity: currentShade.opacity }}
                 />
                 <div
-                  className="absolute top-[28%] left-[65%] w-[8%] h-[14%] bg-black transition-all duration-500 rounded-sm"
+                  className="absolute top-[23%] left-[71%] w-[9%] h-[8%] bg-black transition-all duration-500"
                   style={{ opacity: currentShade.opacity }}
                 />
 
