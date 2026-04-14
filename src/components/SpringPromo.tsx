@@ -44,18 +44,18 @@ const SpringPromo = ({ onClaim }: SpringPromoProps) => {
 
       {/* Popup Card */}
       <div 
-        className={`relative w-full max-w-sm overflow-hidden border border-white/5 bg-[#0a0a0a] shadow-[0_30px_60px_rgba(0,102,255,0.2)] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isVisible ? "scale-100 translate-y-0" : "scale-95 translate-y-8"}`}
+        className={`relative w-full max-w-sm overflow-hidden border border-white/5 bg-[#0a0a0a] shadow-[0_30px_60px_rgba(201,169,98,0.2)] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isVisible ? "scale-100 translate-y-0" : "scale-95 translate-y-8"}`}
       >
         {/* Top Section - Hero Image */}
         <div 
           className="relative h-48 bg-cover bg-center"
-          style={{ backgroundImage: `url(/images/bg/exterior-bg.png)` }}
+          style={{ backgroundImage: `url(/images/bg/interior-promo.png)` }}
         >
           <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
           <div className="absolute top-4 left-4">
-             <div className="flex items-center gap-2 bg-[#C9A962] px-4 py-1.5 text-[10px] font-display font-black text-white uppercase tracking-[0.2em] italic shadow-[0_0_20px_rgba(0,102,255,0.4)]">
+             <div className="flex items-center gap-2 bg-[#C9A962] px-4 py-1.5 text-[10px] font-display font-black text-white uppercase tracking-[0.2em] italic shadow-[0_0_20px_rgba(201,169,98,0.4)]">
                 <Sparkles size={12} className="animate-pulse" />
-                Special Requisition
+                Limited Engagement
              </div>
           </div>
           <button 
@@ -70,23 +70,23 @@ const SpringPromo = ({ onClaim }: SpringPromoProps) => {
         <div className="p-8 pt-4 text-center">
           <div className="mb-6 space-y-2">
             <h3 className="font-display text-2xl font-black italic uppercase tracking-tighter text-white">
-              SPRING <span className="text-[#C9A962] text-glow">RESET</span>
+              INTERIOR <span className="text-[#C9A962] text-glow">DETAIL</span>
             </h3>
             <p className="font-mono text-sm font-bold text-[#C9A962]/90 tracking-widest leading-none">
-              INTERIOR + EXTERIOR DECON
+              SPECIAL $199 <span className="text-white/40 line-through text-[10px] ml-1">(REG $250)</span>
             </p>
             <div className="h-px w-8 bg-border mx-auto my-4" />
             <p className="font-mono text-[10px] text-[#adaaaa] leading-relaxed max-w-[240px] mx-auto italic uppercase tracking-widest font-bold">
-              SEATTLE'S PREMIER POLLEN REMOVAL PROTOCOL FOR ONLY $249.
+              Deep clean every surface. Leather treated. Carpets restored. Like new inside.
             </p>
           </div>
 
           <div className="space-y-3">
              <Button 
-                onClick={() => onClaim("Spring Reset Special $249")}
-                className="w-full bg-[#C9A962] text-white font-display font-black uppercase italic tracking-[0.2em] transform active:scale-[0.98] transition-all h-16 text-lg rounded-none shadow-[0_0_30px_rgba(0,102,255,0.2)] group"
+                onClick={() => onClaim("Interior Special $199")}
+                className="w-full bg-[#C9A962] text-white font-display font-black uppercase italic tracking-[0.2em] transform active:scale-[0.98] transition-all h-16 text-lg rounded-none shadow-[0_0_30px_rgba(201,169,98,0.2)] group"
              >
-                CLAIM THE RESET
+                BOOK $199 SPECIAL
                 <span className="ml-3 transition-transform group-hover:translate-x-2">→</span>
              </Button>
              

@@ -313,7 +313,7 @@ export default function PPF() {
       </section>
 
       {/* QUOTE FORM */}
-      <section className="px-6 py-16 bg-[#0e0e0e] border-t border-white/5 pb-48">
+      <section className="px-6 py-6 lg:py-12 bg-[#0e0e0e] border-t border-white/5 pb-48">
         <div className="max-w-3xl mx-auto">
           <h2 className="font-display text-4xl lg:text-7xl font-black uppercase tracking-tighter text-white mb-8 text-center italic">REQUEST A <span className="text-[#C9A962]">QUOTE</span></h2>
           <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); openQuote(`Quote Request from PPF page`); }}>
