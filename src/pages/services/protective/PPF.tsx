@@ -98,8 +98,8 @@ export default function PPF() {
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24 w-full">
           <div className="lg:w-1/2">
             <span className="text-[#C9A962] font-display font-bold uppercase tracking-[0.2em] text-[10px] lg:text-xs italic">Protect Your Investment</span>
-            <h2 className="mt-4 text-5xl md:text-6xl lg:text-8xl font-display font-black leading-[0.8] uppercase tracking-tighter italic text-white drop-shadow-lg">
-              <span className="lg:hidden text-[#C9A962]">P.P.F.</span><br className="lg:hidden"/>THE MASTER<br/><span className="text-[#C9A962]">STANDARD</span>
+            <h2 className="mt-4 text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[0.9] uppercase tracking-tighter italic text-white drop-shadow-lg">
+              PAINT PROTECTION FILM<br/><span className="text-[#C9A962]">THE MASTER STANDARD</span>
             </h2>
             <p className="mt-6 text-[#adaaaa] max-w-md font-mono text-xs lg:text-sm uppercase tracking-widest leading-relaxed">
               <span className="lg:hidden text-white/90">One rock chip at highway speed and you're looking at a $800 body shop visit — if they can even match the paint. PPF stops it before it starts. Professionally applied, virtually invisible, and if it ever takes a hit — just peel it off and replace it. Your paint underneath stays factory perfect.</span>
@@ -139,10 +139,10 @@ export default function PPF() {
       <section className="bg-[#0e0e0e] border-b border-white/5 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-16 pb-0">
           <p className="text-center font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-4 text-[#adaaaa] italic">The Coverage Map</p>
-          <h2 className="text-center font-display text-5xl lg:text-9xl font-black uppercase tracking-tighter text-white mb-4 leading-[0.8]">SELECT YOUR <span className="text-[#C9A962]">SHIELD</span></h2>
+          <h2 className="text-center font-display text-5xl lg:text-7xl font-black uppercase tracking-tighter text-white mb-4 leading-[0.8]">SELECT YOUR <span className="text-[#C9A962]">SHIELD</span></h2>
 
           {/* ── TAB STRIP ── */}
-          <div className="flex overflow-x-auto no-scrollbar gap-2 pb-2 mb-0 pt-4">
+          <div className="flex justify-start md:justify-center overflow-x-auto no-scrollbar gap-2 pb-2 mb-0 pt-4">
             {(Object.keys(packages) as PpfPackage[]).map((pkgKey) => {
               const pkg = packages[pkgKey];
               const isActive = selectedPackage === pkgKey;
@@ -260,7 +260,7 @@ export default function PPF() {
           {/* Coverage label badge */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#0e0e0e]/80 backdrop-blur-sm border border-[#C9A962]/30 px-5 py-2 z-30">
             <span className="font-display font-black text-[#C9A962] text-xl uppercase tracking-[0.15em] italic">
-              {currentPkg.name} — {currentPkg.price !== 'GET QUOTE' ? `$${currentPkg.price}` : 'THE CUT'}
+              {currentPkg.name} — {currentPkg.price !== 'GET QUOTE' ? `$${currentPkg.price}` : 'GET QUOTE'}
             </span>
           </div>
         </div>
@@ -298,7 +298,7 @@ export default function PPF() {
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <div className="flex items-baseline gap-2">
                   <span className="text-[#adaaaa] font-mono text-[10px] uppercase tracking-widest">Base Investment</span>
-                  <span className="font-display font-black italic text-4xl lg:text-7xl tracking-tighter text-white leading-none">
+                  <span className="font-display font-black italic text-4xl lg:text-6xl tracking-tighter text-white leading-none">
                     {currentPkg.price !== 'GET QUOTE' ? `$${currentPkg.price}` : 'CALL'}
                   </span>
                 </div>
@@ -306,7 +306,7 @@ export default function PPF() {
                   onClick={() => openQuote(`PPF: ${currentPkg.name}`)}
                   className="w-full sm:w-auto bg-[#C9A962] text-white font-display font-black uppercase tracking-[0.2em] text-sm px-12 py-5 hover:bg-[#A6884A] active:scale-95 transition-all shadow-[0_0_24px_rgba(0,102,255,0.3)] rounded-none"
                 >
-                  RESERVE THE CUT →
+                  BOOK NOW →
                 </button>
               </div>
             </div>
