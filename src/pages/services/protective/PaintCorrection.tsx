@@ -19,7 +19,7 @@ const PaintCorrection = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-24 pb-32 selection:bg-[#C9A962] selection:text-white w-full overflow-x-hidden">
+    <div className="min-h-screen bg-background pt-24 pb-16 selection:bg-[#C9A962] selection:text-white w-full overflow-x-hidden">
       <SEO 
         title="Paint Correction Seattle, WA | Mirror Finish Restoration"
         description="Seattle's master paint correction specialists. We remove swirls, scratches, and oxidation permanently. The Auto Barber restores clear coat to Level-0 clarity."

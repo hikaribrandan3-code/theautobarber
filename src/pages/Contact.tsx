@@ -15,7 +15,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0e0e0e] text-[#adaaaa] font-sans pt-16 pb-32 overflow-x-hidden selection:bg-[#C9A962] selection:text-white">
+    <div className="min-h-screen bg-[#0e0e0e] text-[#adaaaa] font-sans pt-16 pb-12 overflow-x-hidden selection:bg-[#C9A962] selection:text-white">
       <SEO 
         title="Contact The Auto Barber | Seattle, WA Mobile Service"
         description="Book your next detail in Seattle, WA. We reply within 2 hours. Mobile service for ceramic coating, paint correction, and full detailing. Licensed and insured."

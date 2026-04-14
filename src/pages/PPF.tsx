@@ -37,7 +37,7 @@ const PPF = () => {
   const isActive = (zone: string) => packages[selectedPackage].zones.includes(zone);
 
   return (
-    <div className="min-h-screen bg-background pt-24 pb-32 overflow-hidden selection:bg-[#C9A962] selection:text-black">
+    <div className="min-h-screen bg-background pt-24 pb-24 overflow-hidden selection:bg-[#C9A962] selection:text-black">
       <SEO 
         title="PPF Seattle, FL | Paint Protection Film Specialists"
         description="Seattle' premier Paint Protection Film (PPF) installation. Self-healing clear bra protects your exotic or luxury vehicle from rock chips, debris, and road wear. Invisible armor for Seattle drivers."

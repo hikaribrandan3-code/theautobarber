@@ -80,7 +80,7 @@ export default function Tint() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0e0e0e] text-[#adaaaa] font-sans pt-16 pb-32 overflow-x-hidden selection:bg-[#C9A962] selection:text-white">
+    <div className="min-h-screen bg-[#0e0e0e] text-[#adaaaa] font-sans pt-16 pb-24 overflow-x-hidden selection:bg-[#C9A962] selection:text-white">
       <SEO
         title="Window Tint Seattle, WA | Ceramic & Carbon Film Installation"
         description="Professional window tint in Seattle. Ceramic film blocks 99% UV and up to 98% infrared heat. Computer-cut precision install with lifetime warranty."
@@ -175,7 +175,7 @@ export default function Tint() {
                     }`}
                   >
                     {f === 'ceramic' && (
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
+                      <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20">
                         <span className="bg-[#C9A962] text-white text-[8px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full whitespace-nowrap shadow-[0_4px_10px_rgba(201,169,98,0.3)]">
                           ★ RECOMMENDED
                         </span>

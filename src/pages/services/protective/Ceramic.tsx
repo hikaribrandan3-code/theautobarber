@@ -76,7 +76,7 @@ const Ceramic = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0e0e0e] text-white font-sans antialiased overflow-x-hidden pt-16 pb-32">
+    <div className="min-h-screen bg-[#0e0e0e] text-white font-sans antialiased overflow-x-hidden pt-16 pb-24">
       <SEO 
         title="Ceramic Coating Seattle, WA | 2-7 Year Paint Protection"
         description="Experience the Barber's Standard. The Auto Barber specializes in professional ceramic coating in Seattle, WA. Ultra-high gloss, hydrophobic surface, and permanent UV protection for your investment."
