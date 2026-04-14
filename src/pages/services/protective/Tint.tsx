@@ -297,41 +297,61 @@ export default function Tint() {
                   alt="Tesla Model 3 side profile"
                   className="w-full h-full object-cover object-center"
                 />
-                {/* SVG Window Overlays — responsive, perspective-matched polygons */}
-                <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none"
-                  viewBox="0 0 100 100"
-                  preserveAspectRatio="xMidYMid slice"
-                >
+                {/* Window Overlays — absolute divs with clip-path mapped to glass */}
+                <div className="absolute inset-0 pointer-events-none">
                   {/* Front driver window */}
-                  <polygon
-                    points="34.5,48.5 36,44.5 43.5,44 42.5,48"
-                    fill="black"
-                    className="transition-all duration-500"
-                    style={{ opacity: currentShade.opacity, mixBlendMode: 'multiply' }}
+                  <div
+                    className="absolute bg-black transition-all duration-500"
+                    style={{
+                      top: '38.7%',
+                      left: '33.5%',
+                      width: '8.5%',
+                      height: '5.2%',
+                      opacity: currentShade.opacity,
+                      mixBlendMode: 'multiply',
+                      clipPath: 'polygon(0% 21%, 100% 0%, 92% 87%, 0% 100%)',
+                    }}
                   />
                   {/* Rear driver window */}
-                  <polygon
-                    points="43.5,48 44.5,44 53.5,44.5 52.5,48.5"
-                    fill="black"
-                    className="transition-all duration-500"
-                    style={{ opacity: currentShade.opacity, mixBlendMode: 'multiply' }}
+                  <div
+                    className="absolute bg-black transition-all duration-500"
+                    style={{
+                      top: '38.7%',
+                      left: '42%',
+                      width: '10.2%',
+                      height: '5.2%',
+                      opacity: currentShade.opacity,
+                      mixBlendMode: 'multiply',
+                      clipPath: 'polygon(7% 0%, 100% 13%, 93% 100%, 0% 87%)',
+                    }}
                   />
                   {/* Rear quarter window */}
-                  <polygon
-                    points="53.5,48.5 54.5,45.5 58.5,46 57.5,49"
-                    fill="black"
-                    className="transition-all duration-500"
-                    style={{ opacity: currentShade.opacity, mixBlendMode: 'multiply' }}
+                  <div
+                    className="absolute bg-black transition-all duration-500"
+                    style={{
+                      top: '39.4%',
+                      left: '52%',
+                      width: '5.6%',
+                      height: '4.9%',
+                      opacity: currentShade.opacity,
+                      mixBlendMode: 'multiply',
+                      clipPath: 'polygon(13% 0%, 100% 22%, 82% 100%, 0% 92%)',
+                    }}
                   />
                   {/* Rear windshield */}
-                  <polygon
-                    points="58.5,49 60,45.5 67,46.5 65,50"
-                    fill="black"
-                    className="transition-all duration-500"
-                    style={{ opacity: currentShade.opacity, mixBlendMode: 'multiply' }}
+                  <div
+                    className="absolute bg-black transition-all duration-500"
+                    style={{
+                      top: '40.5%',
+                      left: '56.2%',
+                      width: '10.2%',
+                      height: '6%',
+                      opacity: currentShade.opacity,
+                      mixBlendMode: 'multiply',
+                      clipPath: 'polygon(19% 0%, 100% 38%, 81% 100%, 0% 70%)',
+                    }}
                   />
-                </svg>
+                </div>
 
                 {/* Info Badge */}
                 <div className="absolute bottom-6 left-6 border-l-4 border-[#C9A962] pl-4 py-2 bg-[#0e0e0e]/90 backdrop-blur-sm">
