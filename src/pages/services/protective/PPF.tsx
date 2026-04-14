@@ -141,7 +141,7 @@ export default function PPF() {
                   }`}
                 >
                   {pkgKey === 'fullFront' && (
-                    <span className="absolute -top-2 right-1 text-[8px] bg-[#C9A962] text-white px-1.5 font-black uppercase tracking-wider">★ Standard</span>
+                    <span className="absolute -top-1.5 right-0.5 text-[6px] bg-[#C9A962] text-white px-1 py-0.5 font-black uppercase tracking-[0.05em]">★ Standard</span>
                   )}
                   {pkg.name}
                 </button>
