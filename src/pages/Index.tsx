@@ -216,9 +216,9 @@ const Index = () => {
       </section>
 
       {/* SERVICES 2x2 GRID */}
-      <section id="services-grid" className="py-24 px-6 bg-[#0E0E0E] text-white border-b border-white/5">
+      <section id="services-grid" className="py-14 px-6 bg-[#0E0E0E] text-white border-b border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16 text-center lg:text-left">
+          <div className="mb-10 text-center lg:text-left">
             <h2 className="text-5xl md:text-7xl font-black uppercase leading-none tracking-tighter mb-4 italic">SERVICES</h2>
             <p className="text-white text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em]">Professional protection for vehicles you value</p>
           </div>
@@ -304,14 +304,14 @@ const Index = () => {
       </section>
 
       {/* MOST POPULAR HEADER BREAK */}
-      <section className="bg-[#0E0E0E] pt-32 pb-12 px-6 border-t border-white/5">
+      <section className="bg-[#0E0E0E] pt-20 pb-10 px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-6xl md:text-8xl font-black uppercase leading-none tracking-tighter italic shadow-2xl">OUR MOST POPULAR</h2>
         </div>
       </section>
 
       {/* PRICING CARDS */}
-      <section id="pricing" className="pb-32 bg-[#0E0E0E] px-6">
+      <section id="pricing" className="pb-20 bg-[#0E0E0E] px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {menuItems.map((s, i) => (
@@ -375,7 +375,7 @@ const Index = () => {
       </section>
 
       {/* STATS BAR */}
-      <section className="py-24 px-6 bg-[#0E0E0E] text-white border-y border-white/5">
+      <section className="py-14 px-6 bg-[#0E0E0E] text-white border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-24">
             {[
@@ -397,9 +397,9 @@ const Index = () => {
       </section>
 
       {/* PROOF OF WORK / GALLERY */}
-      <section id="gallery" className="pt-16 pb-8 px-6 bg-[#0A0A0A]">
+      <section id="gallery" className="pt-14 pb-8 px-6 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-16 gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-4">
             <div>
               <h2 className="text-5xl md:text-7xl font-black uppercase leading-none tracking-tighter">PROOF OF WORK</h2>
             </div>
@@ -427,9 +427,9 @@ const Index = () => {
       </section>
 
       {/* THE PROCESS */}
-      <section id="process" className="pt-8 pb-16 px-6 bg-[#0A0A0A]">
+      <section id="process" className="pt-8 pb-14 px-6 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
+          <div className="mb-10">
             <h2 className="text-5xl md:text-7xl font-black uppercase leading-none tracking-tighter">THE PROCESS</h2>
             <p className="text-white text-xs font-bold uppercase tracking-[0.3em] mt-4">SEATTLE'S CAR PROTECTION STUDIO.</p>
           </div>
@@ -446,7 +446,7 @@ const Index = () => {
       </section>
 
       {/* CONTACT / BOOKING */}
-      <section id="contact" className="py-20 px-6 bg-[#0E0E0E] border-t border-white/5">
+      <section id="contact" className="py-14 px-6 bg-[#0E0E0E] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
