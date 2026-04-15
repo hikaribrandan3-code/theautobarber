@@ -39,8 +39,8 @@ const PPF = () => {
   return (
     <div className="min-h-screen bg-background pt-24 pb-24 overflow-hidden selection:bg-[#C9A962] selection:text-black">
       <SEO 
-        title="PPF Seattle, FL | Paint Protection Film Specialists"
-        description="Seattle' premier Paint Protection Film (PPF) installation. Self-healing clear bra protects your exotic or luxury vehicle from rock chips, debris, and road wear. Invisible armor for Seattle drivers."
+        title="PPF Seattle, WA | Paint Protection Film Specialists"
+        description="Seattle's premier Paint Protection Film (PPF) installation. Self-healing clear bra protects your exotic or luxury vehicle from rock chips, debris, and road wear. Invisible armor for Seattle drivers."
       />
       <div className="container mx-auto px-4 lg:px-8">
         
@@ -51,7 +51,7 @@ const PPF = () => {
              Strategic Preservation System
           </div>
           <h1 className="text-4xl lg:text-7xl font-black italic uppercase tracking-tighter leading-none">
-            NAPLES FL <span className="text-[#C9A962] text-glow">PPF</span>
+            SEATTLE WA <span className="text-[#C9A962] text-glow">PPF</span>
           </h1>
           <p className="font-mono text-xs lg:text-sm uppercase tracking-[0.4em] text-muted-foreground max-w-2xl mx-auto italic">
             TACTICAL PROTECTION MAP / SPECIMEN: TESLA MODEL 3

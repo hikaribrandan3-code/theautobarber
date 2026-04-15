@@ -64,7 +64,7 @@ const QuoteModal = ({ open, onOpenChange, defaultService, defaultLocation }: Quo
       <DialogContent className="max-w-lg border-white/5 bg-[#0a0a0a] rounded-none p-8">
         <DialogHeader className="space-y-4">
           <div className="flex items-center justify-between">
-            <DialogTitle className="text-4xl font-display font-black uppercase italic tracking-tighter text-white">REQUEST THE <span className="text-[#C9A962] text-glow">CUT</span></DialogTitle>
+            <DialogTitle className="text-4xl font-display font-black uppercase italic tracking-tighter text-white">REQUEST A <span className="text-[#C9A962] text-glow">QUOTE</span></DialogTitle>
             <span className="font-display text-[10px] text-[#C9A962] bg-[#C9A962]/5 border border-[#C9A962]/20 px-3 py-1 italic tracking-widest">PHASE {step}/2</span>
           </div>
           <p className="font-mono text-[10px] text-[#adaaaa] uppercase tracking-[0.2em] italic font-bold leading-relaxed">

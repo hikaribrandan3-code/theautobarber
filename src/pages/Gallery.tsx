@@ -5,7 +5,7 @@ const GalleryPage = () => {
     <div className="min-h-screen bg-[#0e0e0e] text-[#adaaaa] font-sans pt-16 pb-12 overflow-x-hidden selection:bg-[#C9A962] selection:text-white">
       <SEO 
         title="Seattle Detailing Gallery | Before & After Portfolio"
-        description="See the mirror-finish results of our ceramic coating, paint correction, and mobile detailing in Seattle, FL. Real transformations, real luxury."
+        description="See the mirror-finish results of our ceramic coating, paint correction, and detailing in Seattle, WA. Real transformations, real luxury."
       />
 
       {/* HERO — DARK, NO WHITE */}

@@ -121,15 +121,15 @@ const Index = () => {
   const process = [
     { step: "01", title: "Book Online", desc: "Pick your service and date in 60 seconds." },
     { step: "02", title: "Drop Off", desc: "Bring your vehicle to our Seattle studio." },
-    { step: "03", title: "The Detail", desc: "Performed with the barber's standard precision." },
+    { step: "03", title: "The Detail", desc: "Performed with precision and care. Every step documented." },
     { step: "04", title: "The Result", desc: "Inspect your vehicle & enjoy the protection." },
   ];
 
   return (
     <div className="bg-[#0A0A0A] text-white">
       <SEO
-        title="The Auto Barber | Seattle Mobile Detailing — 165 Five-Star Reviews"
-        description="Seattle's top-rated mobile detailing service. Interior Detail $199. Full Detail $350. Ceramic Coating from $600. We come to you. Book now."
+        title="The Auto Barber | Seattle Auto Detailing — 165 Five-Star Reviews"
+        description="Seattle's top-rated car protection studio. Interior Detail $199. Full Detail $350. Ceramic Coating from $600. Drop off & relax. Book now."
       />
 
 

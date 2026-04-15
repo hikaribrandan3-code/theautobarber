@@ -142,7 +142,7 @@ const Ceramic = () => {
           
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 gap-4 lg:gap-8 max-w-7xl mx-auto">
             <div className="border-l-4 border-[#C9A962] pl-6">
-              <h2 className="font-display text-4xl lg:text-6xl font-black uppercase tracking-tighter text-white">Select Your <span className="text-[#C9A962]">Cut</span></h2>
+              <h2 className="font-display text-4xl lg:text-6xl font-black uppercase tracking-tighter text-white">Select Your <span className="text-[#C9A962]">Package</span></h2>
               <p className="font-mono text-[10px] text-[#adaaaa] font-bold uppercase tracking-[0.4em] mt-2">Ceramic coating tiers — Matched to your investment.</p>
             </div>
           </div>
@@ -564,7 +564,7 @@ const Ceramic = () => {
           onClick={() => openQuote(`Ceramic: ${currentPkg.name}`)}
           className="bg-[#C9A962] px-8 py-4 rounded-none text-white font-display font-black uppercase text-xs tracking-[0.3em] active:scale-90 transition-all shadow-[0_0_20px_rgba(0,102,255,0.3)]"
         >
-          GET THE CUT
+          GET A QUOTE
         </button>
       </div>
 
@@ -574,7 +574,7 @@ const Ceramic = () => {
           onClick={() => openQuote(`Ceramic: ${currentPkg.name}`)}
           className="bg-[#C9A962] text-white px-8 py-5 font-display font-black italic text-lg uppercase tracking-[0.15em] rounded-none hover:bg-[#A6884A] shadow-[0_10px_30px_rgba(201,169,98,0.35)] transition-all"
         >
-          RESERVE YOUR CUT <ArrowRight className="ml-3 w-5 h-5" />
+          REQUEST A QUOTE <ArrowRight className="ml-3 w-5 h-5" />
         </Button>
       </div>
     </div>
