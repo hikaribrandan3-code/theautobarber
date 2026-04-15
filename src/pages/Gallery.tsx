@@ -33,6 +33,12 @@ const GalleryPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
+              { title: "Corvette C5", desc: "Full Detail & Window Tint", img: "/images/portfolio/corvette-c5-red.jpg" },
+              { title: "Dodge Challenger", desc: "Vinyl Roof Wrap — Gloss Black", img: "/images/portfolio/challenger-blue-roof.jpg" },
+              { title: "BMW X7", desc: "Ceramic Pro Coating — Mirror Finish", img: "/images/portfolio/bmw-x7-black.jpg" },
+              { title: "Paint Correction", desc: "Swirl Removal — Before Stage", img: "/images/portfolio/paint-correction-swirls.jpg" },
+              { title: "GMC Sierra AT4", desc: "Full Ceramic Coating — Ceramic Pro", img: "/images/portfolio/gmc-sierra-gray.jpg" },
+
               { title: "Toyota Tacoma", desc: "Full Paint Correction — Before & After", img: "/images/portfolio/tacoma-before-after.jpg" },
               { title: "Subaru WRX", desc: "Full Detail & Ceramic Coating", img: "/images/portfolio/subaru-wrx-shop.jpg" },
               { title: "BMW M Series", desc: "Ceramic Coating & Paint Protection", img: "/images/portfolio/bmw-blue-detail.jpg" },
