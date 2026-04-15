@@ -33,6 +33,11 @@ const GalleryPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
+              { title: "The Auto Barber", desc: "Hikari — Founder & Master Detailer", img: "/images/portfolio/hikari-apron-brand.jpg" },
+              { title: "Corvette C5", desc: "Mobile Detail — The Auto Barber Van", img: "/images/portfolio/corvette-c5-red-van.jpg" },
+              { title: "Subaru Crosstrek", desc: "PPF Prep — Full Perimeter Tape", img: "/images/portfolio/subaru-crosstrek-ppf.jpg" },
+              { title: "Tesla Model 3", desc: "Full Detail & Ceramic Coating", img: "/images/portfolio/tesla-model3-front.jpg" },
+              { title: "Ceramic Pro Wheels", desc: "Wheel & Caliper Ceramic Coating", img: "/images/portfolio/ceramic-pro-wheel-caliper.jpg" },
               { title: "Chevy Chevelle", desc: "Classic Restoration Detail", img: "/images/portfolio/chevelle-blue-classic.jpg" },
               { title: "Mazda Miata", desc: "Taillight Tint — Precision Film Work", img: "/images/portfolio/hikari-miata-taillights.jpg" },
               { title: "Honda Pilot", desc: "PPF Prep & Full Front Protection", img: "/images/portfolio/honda-pilot-white.jpg" },

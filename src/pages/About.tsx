@@ -89,14 +89,14 @@ const About = () => {
               <div className="absolute -top-6 -left-6 w-32 h-32 border-l-2 border-t-2 border-[#C9A962]/30 pointer-events-none z-10" />
               <div className="relative overflow-hidden">
                 <img
-                  src="/images/hikari-van.jpg"
-                  alt="Founder Hikari Brandan with the original Auto Barber van"
-                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                  src="/images/hikari-apron.jpg"
+                  alt="Hikari Brandan — Founder, The Auto Barber"
+                  className="w-full h-auto object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 p-6">
-                  <p className="text-white font-black text-base uppercase tracking-widest">Founder Hikari Brandan</p>
-                  <p className="text-[#C9A962] text-[10px] font-bold uppercase tracking-[0.3em] mt-1 italic">This Is Where It Started</p>
+                  <p className="text-white font-black text-base uppercase tracking-widest">Hikari Brandan</p>
+                  <p className="text-[#C9A962] text-[10px] font-bold uppercase tracking-[0.3em] mt-1 italic">Founder · Master Detailer</p>
                 </div>
               </div>
               {/* Quote pull */}
