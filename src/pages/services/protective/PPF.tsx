@@ -343,6 +343,22 @@ export default function PPF() {
         </div>
       </section>
 
+      {/* REAL WORK PHOTO */}
+      <section className="relative h-[50vh] overflow-hidden">
+        <img
+          src="/images/portfolio/stek-ppf-steam.jpg"
+          alt="PPF installation at The Auto Barber — STEK film application"
+          className="w-full h-full object-cover object-center"
+          style={{ filter: "brightness(0.7)" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] via-transparent to-[#0e0e0e]/40" />
+        <div className="absolute bottom-0 left-0 p-8 lg:p-12">
+          <p className="text-[#C9A962] text-[9px] font-black uppercase tracking-[0.4em] mb-2">The Studio</p>
+          <p className="text-white text-2xl lg:text-4xl font-black uppercase tracking-tighter italic">STEK PPF · Precision Application</p>
+          <p className="text-white/50 text-[10px] font-bold uppercase tracking-widest mt-1">Skyway, Seattle WA</p>
+        </div>
+      </section>
+
       {/* TRUST LOGOS */}
       <section className="bg-[#131313] px-6 py-6 lg:py-8 border-y border-white/5">
         <p className="text-center font-mono font-bold text-[9px] uppercase tracking-[0.4em] text-white mb-6">Certified Film Partners</p>

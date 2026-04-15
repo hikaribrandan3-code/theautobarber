@@ -70,22 +70,22 @@ const PaintCorrection = () => {
           >
             {/* After Image */}
             <img 
-              src="/images/portfolio/paint-correction-5050.jpg" 
-              alt="Mirror Finish After" 
-              className="absolute inset-0 w-full h-full object-cover" 
+              src="/images/portfolio/tacoma-before-after.jpg" 
+              alt="Toyota Tacoma — After Paint Correction" 
+              className="absolute inset-0 w-full h-full object-cover object-bottom" 
             />
             
             {/* Before Overlay (Left Side) */}
             <div 
-              className="absolute inset-0 w-full h-full overflow-hidden transition-all duration-75 grayscale brightness-50"
+              className="absolute inset-0 w-full h-full overflow-hidden transition-all duration-75"
               style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
             >
                <img 
-                 src="/images/portfolio/paint-correction-5050.jpg" 
-                 alt="Swirl Marks Before" 
-                 className="absolute inset-0 w-full h-full object-cover" 
+                 src="/images/portfolio/tacoma-before-after.jpg" 
+                 alt="Toyota Tacoma — Before Paint Correction" 
+                 className="absolute inset-0 w-full h-full object-cover object-top" 
                />
-               <div className="absolute inset-0 bg-red-500/10 mix-blend-overlay" />
+               <div className="absolute inset-0 bg-red-900/30 mix-blend-overlay" />
             </div>
 
             {/* Slider Handle */}

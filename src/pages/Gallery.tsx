@@ -33,13 +33,15 @@ const GalleryPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
+              { title: "Toyota Tacoma", desc: "Full Paint Correction — Before & After", img: "/images/portfolio/tacoma-before-after.jpg" },
+              { title: "Subaru WRX", desc: "Full Detail & Ceramic Coating", img: "/images/portfolio/subaru-wrx-shop.jpg" },
+              { title: "BMW M Series", desc: "Ceramic Coating & Paint Protection", img: "/images/portfolio/bmw-blue-detail.jpg" },
+              { title: "BMW E36", desc: "Paint Correction — Mirror Finish", img: "/images/portfolio/bmw-e36-thumbsup.jpg" },
+              { title: "STEK PPF Application", desc: "PPF Installation — Red Sports Car", img: "/images/portfolio/stek-ppf-steam.jpg" },
               { title: "Tesla Model Y", desc: "Full Decontamination & Ceramic Coating", img: "/images/portfolio/tesla-black.png" },
-              { title: "Tesla Model 3", desc: "Multi-Stage Paint Correction", img: "/images/portfolio/tesla-blue.png" },
               { title: "Corvette C7 Stingray", desc: "Level 2 Paint Correction & Sealant", img: "/images/portfolio/vett-red-1.png" },
-              { title: "Ford Mustang GT", desc: "Interior Restoration & Exterior Detail", img: "/images/portfolio/mustang-red.png" },
-              { title: "Corvette C7 Profile", desc: "Hydrophobic Gloss Enhancement", img: "/images/portfolio/vett-red-2.png" },
-              { title: "Chevy Camaro Prep", desc: "Surface Decontamination & Tape-up", img: "/images/portfolio/camaro-prep.jpg" },
               { title: "BMW 50/50 Reveal", desc: "Master Level Paint Correction", img: "/images/portfolio/paint-correction-5050.jpg" },
+              { title: "Chevy Camaro Prep", desc: "Surface Decontamination & Tape-up", img: "/images/portfolio/camaro-prep.jpg" },
               { title: "Red Corolla Shine", desc: "Ceramic Pro Top Coat Application", img: "/images/portfolio/ceramic-red-car.jpg" },
             ].map((project, i) => (
               <div key={i} className="group relative aspect-[4/3] border border-white/10 bg-[#131313] overflow-hidden">
