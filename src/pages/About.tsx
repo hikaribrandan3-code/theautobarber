@@ -110,63 +110,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* FOUNDER PHOTO STRIP — 2 wide photos centered */}
-      <section className="py-20 px-6 bg-[#0A0A0A] border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
-
-          {/* Section Label */}
-          <div className="mb-10 text-center">
-            <span className="text-[#C9A962] text-[10px] font-black uppercase tracking-[0.5em]">The Craft</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter italic mt-2">
-              FOUNDER <span className="text-[#C9A962]">HIKARI BRANDAN</span>
-            </h2>
-          </div>
-
-          {/* Photo Grid — 2 now, ready for 3rd */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="relative overflow-hidden group aspect-[4/5]">
-              <img
-                src="/images/hikari-van.jpg"
-                alt="Founder Hikari Brandan — The Auto Barber van, day one"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-6">
-                <p className="text-white font-black text-sm uppercase tracking-widest">Day One</p>
-                <p className="text-white/50 text-[10px] font-bold uppercase tracking-widest italic mt-1">The Van & The Grind</p>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden group aspect-[4/5]">
-              <img
-                src="/images/hikari-red-car.jpg"
-                alt="Founder Hikari Brandan — The Auto Barber branded van with red corvette"
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-6">
-                <p className="text-white font-black text-sm uppercase tracking-widest">The Studio Era</p>
-                <p className="text-white/50 text-[10px] font-bold uppercase tracking-widest italic mt-1">Skyway Location</p>
-              </div>
-            </div>
-
-            {/* 3RD PHOTO PLACEHOLDER — drop in /images/hikari-photo3.jpg when ready */}
-            {/* Uncomment when 3rd photo arrives:
-            <div className="relative overflow-hidden group aspect-[4/5] md:col-span-2 lg:col-span-1">
-              <img
-                src="/images/hikari-photo3.jpg"
-                alt="Hikari Brandan"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-6">
-                <p className="text-white font-black text-sm uppercase tracking-widest">Founder Hikari Brandan</p>
-              </div>
-            </div>
-            */}
-          </div>
-        </div>
-      </section>
 
       {/* A NEW CHAPTER SECTION */}
       <section className="py-20 px-6 bg-[#0E0E0E] border-t border-white/5">
