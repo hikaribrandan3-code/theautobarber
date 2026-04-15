@@ -10,7 +10,7 @@ const SpringPromo = ({ onClaim }: SpringPromoProps) => {
   const [isDismissed, setIsDismissed] = useState(true);
 
   useEffect(() => {
-    const hidePromo = document.cookie.split("; ").find(row => row.startsWith("hidePromo="));
+    const hidePromo = sessionStorage.getItem("hidePromo");
     if (!hidePromo) {
       setIsDismissed(false);
       const timer = setTimeout(() => setIsVisible(true), 800);
@@ -20,9 +20,7 @@ const SpringPromo = ({ onClaim }: SpringPromoProps) => {
 
   const handleDismiss = () => {
     setIsVisible(false);
-    const date = new Date();
-    date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
-    document.cookie = `hidePromo=true; expires=${date.toUTCString()}; path=/`;
+    sessionStorage.setItem("hidePromo", "true");
     setTimeout(() => setIsDismissed(true), 500);
   };
 

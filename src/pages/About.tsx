@@ -1,135 +1,296 @@
-import { Award, Star, Shield, Zap, Car, Heart, Target, Sparkles } from "lucide-react";
+import { useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Shield, Star, Award, ChevronRight } from "lucide-react";
 import SEO from "@/components/SEO";
-import jasonPhoto from "/jason.png";
 
 const About = () => {
+  const { openQuote } = useOutletContext<{ openQuote: (service?: string) => void }>();
+
   return (
-    <div className="min-h-screen">
-      <SEO 
-        title="The Craftsman | The Auto Barber Seattle"
-        description="Meet the Barber of Metal. 15+ years of automotive obsession. We don't just detail; we perform surgery on clear coat. Seattle's standard for paint preservation."
+    <div className="bg-[#0A0A0A] text-white min-h-screen">
+      <SEO
+        title="About The Auto Barber | Seattle's Trusted Detailer Since 2020"
+        description="The Auto Barber was built from the ground up — dealership experience, elite training at Metropolitan Detail, and over 160 five-star reviews. Seattle's standard for car protection."
       />
-      {/* Hero Section */}
-      <section className="relative border-b border-white/5 bg-[#0a0a0a] py-24 lg:py-48 overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <img src="/images/portfolio/shop-floor.jpg" alt="Shop Floor" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/80 to-[#0a0a0a]" />
-        </div>
-        
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="max-w-4xl">
-            <p className="font-display text-sm uppercase tracking-[0.4em] text-[#C9A962] mb-6 italic">The Master Barber</p>
-            <h1 className="text-6xl lg:text-[8rem] font-display font-black leading-[0.9] uppercase tracking-tighter italic text-white mb-10">
-              YOUR CAR.<br/>OUR CRAFT.
-            </h1>
-            <p className="text-xl lg:text-3xl font-display uppercase tracking-tight text-[#adaaaa] leading-tight italic">
-              Seattle's car protection studio. Established 2020.
-            </p>
-          </div>
-        </div>
-      </section>
 
-      {/* Stats Grid */}
-      <section className="py-24 border-b border-white/5 bg-[#0e0e0e]">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: <Award size={32} />, number: "15+", label: "Years Mastery" },
-              { icon: <Star size={32} />, number: "10-YR", label: "Warranty Standard" },
-              { icon: <Car size={32} />, number: "$100M+", label: "Portfolio Value" },
-              { icon: <Shield size={32} />, number: "100%", label: "Craftsman Bond" },
-            ].map((stat, i) => (
-              <div key={i} className="text-center p-8 bg-[#141414] border border-white/5 relative overflow-hidden group">
-                <div className="absolute top-0 left-0 w-full h-1 bg-[#C9A962] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
-                <span className="text-[#C9A962] mb-4 block group-hover:scale-110 transition-transform">{stat.icon}</span>
-                <p className="text-4xl lg:text-6xl font-display font-black text-white italic tracking-tighter mb-2 leading-none">{stat.number}</p>
-                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#adaaaa] font-bold">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+      {/* HERO */}
+      <section className="relative overflow-hidden pt-[140px] pb-28 px-6">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/hikari-red-car.jpg"
+            alt="Hikari Brandan — Founder, The Auto Barber"
+            className="w-full h-full object-cover object-top"
+            style={{ filter: "brightness(0.25)" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-[#0A0A0A]" />
         </div>
-      </section>
 
-      {/* Story Section */}
-      <section className="py-24 lg:py-48 bg-[#0a0a0a]">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-24 items-start">
-            <div className="space-y-12">
-               <div>
-                 <span className="text-[#C9A962] font-display text-sm uppercase tracking-[0.5em] italic mb-4 block">The Division</span>
-                 <h2 className="text-5xl lg:text-8xl font-display font-black uppercase tracking-tighter italic text-white leading-[0.8]">NO SECRETS.<br/><span className="text-[#C9A962]">JUST SURGERY.</span></h2>
-               </div>
-               <p className="font-mono text-sm text-[#adaaaa] leading-relaxed uppercase tracking-widest italic">
-                 We don't talk about what happens in the bay. The results speak for themselves. 15 years of automotive obsession. Fully custom rig. Fully self-contained. 
-                 We treat every vehicle as a master-level restoration, not a "quick wash."
-               </p>
-               <div className="space-y-8">
-                  <div className="flex gap-6 items-start">
-                     <div className="w-12 h-12 bg-[#141414] border border-[#C9A962]/20 flex items-center justify-center shrink-0">
-                        <Target className="text-[#C9A962]" size={24} />
-                     </div>
-                     <div>
-                        <h4 className="font-display text-2xl font-black text-white uppercase italic tracking-wider mb-2">PRECISION DIAGNOSTICS</h4>
-                        <p className="font-mono text-xs text-[#adaaaa] uppercase tracking-widest">We analyze clear coat depth and paint hardness before a single pad touches the car. Science first.</p>
-                     </div>
-                  </div>
-                  <div className="flex gap-6 items-start">
-                     <div className="w-12 h-12 bg-[#141414] border border-[#C9A962]/20 flex items-center justify-center shrink-0">
-                        <Shield className="text-[#C9A962]" size={24} />
-                     </div>
-                     <div>
-                        <h4 className="font-display text-2xl font-black text-white uppercase italic tracking-wider mb-2">THE CRAFTSMAN BOND</h4>
-                        <p className="font-mono text-xs text-[#adaaaa] uppercase tracking-widest">Authorized STEK & XPEL installers. Lifetime warranty backup on all master-tier services.</p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            
-            <div className="relative">
-               <div className="absolute -top-12 -left-12 w-48 h-48 border-l border-t border-[#C9A962]/30" />
-               <img src="/images/portfolio/polisher-ready.jpg" alt="The Artisan" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl" />
-               <div className="mt-8 p-8 bg-[#141414] border border-white/5">
-                  <h4 className="font-display text-2xl font-black text-white uppercase italic tracking-widest mb-4">CERTIFIED MASTERY</h4>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <li className="flex gap-3 items-center font-mono text-[10px] uppercase font-bold text-[#adaaaa] tracking-widest"><Shield className="text-[#C9A962] shrink-0" size={16} />STEK Authorized</li>
-                    <li className="flex gap-3 items-center font-mono text-[10px] uppercase font-bold text-[#adaaaa] tracking-widest"><Shield className="text-[#C9A962] shrink-0" size={16} />XPEL Certified</li>
-                    <li className="flex gap-3 items-center font-mono text-[10px] uppercase font-bold text-[#adaaaa] tracking-widest"><Shield className="text-[#C9A962] shrink-0" size={16} />3M Pro Trained</li>
-                    <li className="flex gap-3 items-center font-mono text-[10px] uppercase font-bold text-[#adaaaa] tracking-widest"><Shield className="text-[#C9A962] shrink-0" size={16} />Fully Insured</li>
-                  </ul>
-               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="border-t border-white/5 py-32 bg-[#0e0e0e] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#C9A962]/10 blur-[120px] rounded-full" />
-        <div className="container mx-auto px-4 lg:px-8 text-center max-w-4xl relative z-10">
-          <p className="font-display text-sm uppercase tracking-[0.5em] text-[#C9A962] mb-6 italic">The Master's Call</p>
-          <h2 className="text-5xl lg:text-9xl font-display font-black mb-10 uppercase tracking-tighter italic text-white leading-none">
-            INVEST. PROTECT. <br/><span className="text-[#C9A962]">ENJOY.</span>
-          </h2>
-          <p className="font-mono text-xs lg:text-sm text-[#adaaaa] mb-12 uppercase tracking-[0.3em] font-bold italic">
-            SEATTLE'S STANDARD FOR PAINT PRESERVATION.
+        <div className="relative z-10 max-w-5xl mx-auto">
+          <p className="text-[#C9A962] text-[10px] font-black uppercase tracking-[0.5em] mb-6">
+            Est. 2020 · Seattle, WA
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center bg-[#C9A962] px-12 py-6 font-display text-xl uppercase tracking-widest text-white hover:bg-[#A6884A] transition-all rounded-none italic shadow-[0_0_30px_rgba(0,102,255,0.3)]"
-            >
-              REQUEST THE CUT
-            </Link>
+          <h1 className="text-[60px] md:text-[100px] font-black leading-[0.85] tracking-tighter uppercase italic mb-8"
+              style={{ textShadow: "0 10px 40px rgba(0,0,0,0.9)" }}>
+            ABOUT THE<br />
+            <span className="text-[#C9A962]">AUTO BARBER</span>
+          </h1>
+          <p className="text-white/70 text-base md:text-lg font-medium leading-relaxed max-w-2xl">
+            Built from the ground up. Refined in one of the country's top shops.
+            Over 160 five-star reviews and a standard that doesn't change.
+          </p>
+        </div>
+      </section>
+
+      {/* STORY SECTION */}
+      <section className="py-20 px-6 bg-[#0E0E0E] border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+
+            {/* LEFT — Bio Text */}
+            <div className="space-y-8">
+              <div>
+                <span className="text-[#C9A962] text-[10px] font-black uppercase tracking-[0.5em] block mb-4">
+                  The Origin
+                </span>
+                <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none italic mb-8">
+                  WHERE IT <span className="text-[#C9A962]">STARTED</span>
+                </h2>
+              </div>
+
+              <div className="space-y-6 text-white/75 text-sm md:text-base leading-relaxed font-medium border-l-2 border-[#C9A962]/30 pl-6">
+                <p>
+                  The Auto Barber officially opened in <strong className="text-white">2020</strong>, but the foundation was built long before that.
+                </p>
+                <p>
+                  It started with years in high-end <strong className="text-white">Bellevue dealerships</strong>, then a paid internship at <strong className="text-white">Metropolitan Detail in Redmond</strong> — one of the top 10 detail shops in the country. That's where the craft was really refined: a year and a half of elite-level training that set the standard for everything that followed.
+                </p>
+                <p>
+                  From there, it was a van and a grind. Within 8 months we moved into a vinyl wrap shop, and eventually into our own <strong className="text-white">brick-and-mortar location in Skyway</strong>. Over <strong className="text-white">160 five-star reviews</strong> later, the reputation speaks for itself — built on consistency and treating every car with the respect it deserves.
+                </p>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-4 pt-4">
+                {[
+                  { stat: "2020", label: "Founded" },
+                  { stat: "160+", label: "5-Star Reviews" },
+                  { stat: "Top 10", label: "Training Pedigree" },
+                ].map((s, i) => (
+                  <div key={i} className="bg-[#0A0A0A] border border-white/10 p-5 text-center">
+                    <div className="text-2xl md:text-3xl font-black italic text-[#C9A962] leading-none mb-2">{s.stat}</div>
+                    <div className="text-[9px] font-black uppercase tracking-[0.2em] text-white/40">{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* RIGHT — Van Photo + caption */}
+            <div className="relative">
+              <div className="absolute -top-6 -left-6 w-32 h-32 border-l-2 border-t-2 border-[#C9A962]/30 pointer-events-none z-10" />
+              <div className="relative overflow-hidden">
+                <img
+                  src="/images/hikari-van.jpg"
+                  alt="Founder Hikari Brandan with the original Auto Barber van"
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 p-6">
+                  <p className="text-white font-black text-base uppercase tracking-widest">Founder Hikari Brandan</p>
+                  <p className="text-[#C9A962] text-[10px] font-bold uppercase tracking-[0.3em] mt-1 italic">This Is Where It Started</p>
+                </div>
+              </div>
+              {/* Quote pull */}
+              <div className="bg-[#0A0A0A] border border-white/10 border-t-2 border-t-[#C9A962] p-6 mt-0">
+                <p className="text-white/60 text-[10px] font-black uppercase tracking-[0.3em] mb-2">★★★★★ Google Review</p>
+                <p className="text-white italic text-sm leading-relaxed">"Absolutely amazing job. Best detailing I've had on any of my cars. 100% recommended!"</p>
+                <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold mt-2">— Manu GP, Tesla Model Y</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOUNDER PHOTO STRIP — 2 wide photos centered */}
+      <section className="py-20 px-6 bg-[#0A0A0A] border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+
+          {/* Section Label */}
+          <div className="mb-10 text-center">
+            <span className="text-[#C9A962] text-[10px] font-black uppercase tracking-[0.5em]">The Craft</span>
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter italic mt-2">
+              FOUNDER <span className="text-[#C9A962]">HIKARI BRANDAN</span>
+            </h2>
+          </div>
+
+          {/* Photo Grid — 2 now, ready for 3rd */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="relative overflow-hidden group aspect-[4/5]">
+              <img
+                src="/images/hikari-van.jpg"
+                alt="Founder Hikari Brandan — The Auto Barber van, day one"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+              <div className="absolute bottom-0 left-0 p-6">
+                <p className="text-white font-black text-sm uppercase tracking-widest">Day One</p>
+                <p className="text-white/50 text-[10px] font-bold uppercase tracking-widest italic mt-1">The Van & The Grind</p>
+              </div>
+            </div>
+
+            <div className="relative overflow-hidden group aspect-[4/5]">
+              <img
+                src="/images/hikari-red-car.jpg"
+                alt="Founder Hikari Brandan — The Auto Barber branded van with red corvette"
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+              <div className="absolute bottom-0 left-0 p-6">
+                <p className="text-white font-black text-sm uppercase tracking-widest">The Studio Era</p>
+                <p className="text-white/50 text-[10px] font-bold uppercase tracking-widest italic mt-1">Skyway Location</p>
+              </div>
+            </div>
+
+            {/* 3RD PHOTO PLACEHOLDER — drop in /images/hikari-photo3.jpg when ready */}
+            {/* Uncomment when 3rd photo arrives:
+            <div className="relative overflow-hidden group aspect-[4/5] md:col-span-2 lg:col-span-1">
+              <img
+                src="/images/hikari-photo3.jpg"
+                alt="Hikari Brandan"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+              <div className="absolute bottom-0 left-0 p-6">
+                <p className="text-white font-black text-sm uppercase tracking-widest">Founder Hikari Brandan</p>
+              </div>
+            </div>
+            */}
+          </div>
+        </div>
+      </section>
+
+      {/* A NEW CHAPTER SECTION */}
+      <section className="py-20 px-6 bg-[#0E0E0E] border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+            {/* Left — Text */}
+            <div className="space-y-8">
+              <div>
+                <span className="text-[#C9A962] text-[10px] font-black uppercase tracking-[0.5em] block mb-4">
+                  What's Next
+                </span>
+                <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none italic mb-8">
+                  A NEW CHAPTER,<br /><span className="text-[#C9A962]">SAME STANDARD.</span>
+                </h2>
+              </div>
+
+              <div className="space-y-5 text-white/75 text-sm md:text-base leading-relaxed font-medium border-l-2 border-[#C9A962]/30 pl-6">
+                <p>
+                  The founder is relocating to Argentina, but <strong className="text-white">The Auto Barber isn't going anywhere.</strong>
+                </p>
+                <p>
+                  His brother has been training under him for over a year, learning the craft the right way — <strong className="text-white">hands-on, no shortcuts.</strong>
+                </p>
+                <p className="text-white font-bold italic">
+                  The ownership stays in the family. The standard stays the same.
+                </p>
+              </div>
+
+              {[
+                { icon: <Shield size={20} />, title: "Same Craft", desc: "Over a year of hands-on training. Every skill passed down directly." },
+                { icon: <Award size={20} />, title: "Family Owned", desc: "Ownership stays in the family. Trust built over years, transferred properly." },
+                { icon: <Star size={20} />, title: "Same Reviews", desc: "160+ five-star reviews set the floor. That standard doesn't drop." },
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-5 bg-[#0A0A0A] border border-white/10 p-5">
+                  <div className="text-[#C9A962] mt-0.5 shrink-0">{item.icon}</div>
+                  <div>
+                    <p className="font-black text-sm uppercase tracking-wide text-white mb-1">{item.title}</p>
+                    <p className="text-white/50 text-xs leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Right — CTA block */}
+            <div className="bg-[#0A0A0A] border border-white/10 p-10 lg:p-14 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-[#C9A962]" />
+              <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-[#C9A962]/5 blur-3xl rounded-full pointer-events-none" />
+
+              <p className="text-[#C9A962] text-[9px] font-black uppercase tracking-[0.5em] mb-2">No Commitment Required</p>
+              <h3 className="text-4xl font-black uppercase tracking-tighter italic mb-4 leading-none">
+                BOOK YOUR SPOT
+              </h3>
+              <p className="text-white/60 text-sm leading-relaxed mb-8 font-medium">
+                Same studio. Same hands. Same obsession with doing it right. Schedule a quote and see the standard for yourself.
+              </p>
+
+              <div className="space-y-4">
+                <button
+                  onClick={() => openQuote()}
+                  className="w-full bg-white text-black font-black uppercase tracking-[0.2em] px-8 py-5 text-xs hover:bg-[#C9A962] hover:text-white transition-all active:scale-95"
+                >
+                  REQUEST A QUOTE →
+                </button>
+                <a
+                  href="tel:2538939452"
+                  className="w-full block bg-transparent border border-white/20 text-white font-black uppercase tracking-[0.2em] px-8 py-5 text-xs hover:border-white transition-all text-center active:scale-95"
+                >
+                  (253) 893-9452
+                </a>
+              </div>
+
+              <div className="mt-8 pt-8 border-t border-white/10">
+                <div className="flex gap-1 mb-2">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={12} className="text-[#C9A962]" fill="currentColor" />
+                  ))}
+                </div>
+                <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest">165 Reviews on Google · 4.9 avg</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* BOTTOM CTA STRIP */}
+      <section className="py-16 px-6 bg-[#0A0A0A] border-t border-white/5 text-center">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-[#C9A962] text-[10px] font-black uppercase tracking-[0.5em] mb-4">Seattle's Car Protection Studio</p>
+          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic leading-none mb-8">
+            YOUR CAR.<br /><span className="text-[#C9A962]">OUR CRAFT.</span>
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/services"
-              className="inline-flex items-center justify-center border border-white/20 px-12 py-6 font-display text-xl uppercase tracking-widest text-white hover:bg-white hover:text-black transition-all rounded-none italic"
+              className="bg-white text-black font-black uppercase tracking-[0.2em] px-10 py-5 text-xs hover:bg-[#C9A962] hover:text-white transition-all flex items-center gap-2 justify-center"
             >
-              THE DIVISION
+              VIEW SERVICES <ChevronRight size={14} />
+            </Link>
+            <Link
+              to="/contact"
+              className="border border-white/20 text-white font-black uppercase tracking-[0.2em] px-10 py-5 text-xs hover:bg-white hover:text-black transition-all"
+            >
+              GET IN TOUCH
             </Link>
           </div>
         </div>
       </section>
+
+      {/* MOBILE STICKY BAR */}
+      <div className="fixed bottom-0 left-0 right-0 z-[120] lg:hidden grid grid-cols-2 border-t border-white/10 shadow-2xl">
+        <a
+          href="tel:2538939452"
+          className="bg-[#0A0A0A] text-white font-black uppercase tracking-widest py-7 text-xs text-center border-r border-white/10 hover:bg-[#141414] transition-colors"
+        >
+          📞 Call Direct
+        </a>
+        <button
+          onClick={() => openQuote()}
+          className="bg-white text-black font-black uppercase tracking-widest py-7 text-xs hover:bg-gray-200 transition-colors shadow-[0_-4px_20px_rgba(255,255,255,0.1)]"
+        >
+          📅 Get A Quote
+        </button>
+      </div>
     </div>
   );
 };
