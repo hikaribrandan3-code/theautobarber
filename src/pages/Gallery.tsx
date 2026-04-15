@@ -33,6 +33,11 @@ const GalleryPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
+              { title: "Chevy Chevelle", desc: "Classic Restoration Detail", img: "/images/portfolio/chevelle-blue-classic.jpg" },
+              { title: "Mazda Miata", desc: "Taillight Tint — Precision Film Work", img: "/images/portfolio/hikari-miata-taillights.jpg" },
+              { title: "Honda Pilot", desc: "PPF Prep & Full Front Protection", img: "/images/portfolio/honda-pilot-white.jpg" },
+              { title: "Tesla Model Y", desc: "Ceramic Coating — Mirror Black Finish", img: "/images/portfolio/tesla-model-y-black.jpg" },
+              { title: "Jeep Trackhawk", desc: "Full Detail & Ceramic Coating", img: "/images/portfolio/jeep-trackhawk-gray.jpg" },
               { title: "Corvette C5", desc: "Full Detail & Window Tint", img: "/images/portfolio/corvette-c5-red.jpg" },
               { title: "Dodge Challenger", desc: "Vinyl Roof Wrap — Gloss Black", img: "/images/portfolio/challenger-blue-roof.jpg" },
               { title: "BMW X7", desc: "Ceramic Pro Coating — Mirror Finish", img: "/images/portfolio/bmw-x7-black.jpg" },
